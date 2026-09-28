@@ -82,7 +82,7 @@ body {
 }
 .hero h1 span { color: var(--o); }
 .hero p {
-  font-size: 16px; color: var(--dim); max-width: 600px; margin: 0 auto 32px;
+  font-size: 16px; color: var(--dim); max-width: 640px; margin: 0 auto 32px;
 }
 .hero-meta {
   display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
@@ -105,6 +105,22 @@ body {
 }
 .section h2 span { color: var(--o); }
 .section-desc { color: var(--dim); font-size: 14px; margin-bottom: 32px; max-width: 700px; }
+
+/* TIP / EXPLAINER */
+.tip {
+  background: rgba(255,92,0,0.04);
+  border-left: 3px solid var(--o);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: rgba(245,245,245,0.75);
+  margin: 12px 0;
+  line-height: 1.7;
+}
+.tip strong { color: var(--txt); }
+.tip-green { border-left-color: var(--green); background: rgba(52,211,153,0.04); }
+.tip-yellow { border-left-color: var(--yellow); background: rgba(251,191,36,0.04); }
+.tip-purple { border-left-color: var(--purple); background: rgba(155,125,184,0.04); }
 
 /* TIMELINE */
 .timeline { position: relative; padding-left: 32px; }
@@ -144,6 +160,26 @@ body {
 .card ul li::before { content: '→'; color: var(--o); flex-shrink: 0; font-weight: 700; }
 .card ul li:last-child { border-bottom: none; }
 
+/* FUNNEL STEPS */
+.funnel-steps { display: flex; flex-direction: column; gap: 12px; }
+.funnel-step {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 24px;
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.funnel-step-num {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: grid; place-items: center;
+  font-size: 16px; font-weight: 800; flex-shrink: 0;
+}
+.funnel-step-num.f1 { background: rgba(155,125,184,0.12); color: var(--purple); }
+.funnel-step-num.f2 { background: rgba(52,211,153,0.12); color: var(--green); }
+.funnel-step-num.f3 { background: rgba(255,92,0,0.12); color: var(--o); }
+.funnel-step-num.f4 { background: rgba(251,191,36,0.12); color: var(--yellow); }
+.funnel-step-num.f5 { background: rgba(59,130,246,0.12); color: #3B82F6; }
+.funnel-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.funnel-step p { font-size: 13px; color: var(--dim); line-height: 1.6; }
+
 /* PHASE BLOCK */
 .phase {
   background: var(--card); border: 1px solid var(--border);
@@ -169,8 +205,9 @@ body {
 .badge-purple { background: rgba(155,125,184,0.08); color: var(--purple); }
 .phase-body h4 {
   font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--o); margin: 20px 0 10px;
+  text-transform: uppercase; color: var(--o); margin: 24px 0 10px;
 }
+.phase-body h4:first-child { margin-top: 0; }
 .phase-body ul { list-style: none; }
 .phase-body ul li {
   font-size: 14px; color: rgba(245,245,245,0.8); padding: 5px 0;
@@ -198,7 +235,10 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .script-block h4 {
   font-size: 13px; font-weight: 700; color: var(--o);
-  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;
+}
+.script-block .script-context {
+  font-size: 13px; color: var(--dim); margin-bottom: 12px;
 }
 .script-msg {
   background: rgba(255,255,255,0.03); border-radius: 10px;
@@ -248,9 +288,7 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: 8px; padding: 8px 6px; min-height: 70px;
   font-size: 11px; text-align: center;
 }
-.day-cell .day-num {
-  font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--txt);
-}
+.day-cell .day-num { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--txt); }
 .day-cell .day-tag {
   font-size: 9px; font-weight: 600; letter-spacing: 0.03em;
   text-transform: uppercase; padding: 2px 6px; border-radius: 4px;
@@ -275,7 +313,28 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .creative-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
 .creative-card .format { font-size: 11px; color: var(--o); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-.creative-card p { font-size: 13px; color: var(--dim); }
+.creative-card p { font-size: 13px; color: var(--dim); line-height: 1.7; }
+
+/* STEP BY STEP */
+.steps { counter-reset: step; }
+.step {
+  counter-increment: step;
+  padding: 12px 0 12px 40px;
+  position: relative;
+  font-size: 14px;
+  color: rgba(245,245,245,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.step:last-child { border-bottom: none; }
+.step::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 12px;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,92,0,0.1); color: var(--o);
+  display: grid; place-items: center;
+  font-size: 12px; font-weight: 800;
+}
+.step strong { color: var(--txt); }
 
 /* PRINT */
 @media print {
@@ -294,12 +353,12 @@ tbody tr:last-child td { border-bottom: none; }
   .day-cell { padding: 4px 2px; min-height: 56px; }
   .day-cell .day-num { font-size: 12px; }
   .day-cell .day-tag { font-size: 8px; padding: 1px 4px; }
+  .funnel-step { flex-direction: column; gap: 10px; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 28px; }
   .cards { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr 1fr; }
-  .week-grid { grid-template-columns: repeat(7, 1fr); }
 }
 </style>
 </head>
@@ -308,14 +367,16 @@ tbody tr:last-child td { border-bottom: none; }
 <!-- NAV -->
 <nav class="top-nav">
   <a href="#visao" class="active">Visão Geral</a>
+  <a href="#funil">Funil</a>
+  <a href="#base">Base de Clientes</a>
   <a href="#calendario">Calendário</a>
   <a href="#fase1">Esquentamento</a>
   <a href="#fase2">Dia das Crianças</a>
-  <a href="#fase3">Remarketing</a>
-  <a href="#fase4">Contínuo</a>
-  <a href="#criativos">Criativos</a>
+  <a href="#fase3">Recuperação</a>
+  <a href="#fase4">Dia a Dia</a>
+  <a href="#anuncios">Anúncios</a>
   <a href="#whatsapp">WhatsApp</a>
-  <a href="#orcamento">Orçamento</a>
+  <a href="#investimento">Investimento</a>
   <a href="#metas">Metas</a>
   <a href="#discutir">Discutir</a>
 </nav>
@@ -329,12 +390,12 @@ tbody tr:last-child td { border-bottom: none; }
 <section class="hero">
   <div class="hero-badge">Plano de Ação — Outubro 2026</div>
   <h1>Outubro é o mês que <span>Viviane Utilidades</span> chega no digital</h1>
-  <p>Estratégia completa: Dia das Crianças como porta de entrada, campanha contínua para o resto do mês e além.</p>
+  <p>Plano completo de vendas: Dia das Crianças como porta de entrada, ativação da base de clientes que a Viviane já tem, e campanha contínua para o resto do mês.</p>
   <div class="hero-meta">
     <span><strong>Cliente:</strong> Ana Neri</span>
     <span><strong>Região:</strong> São Desidério-BA</span>
-    <span><strong>Investimento:</strong> R$ 20-30/dia</span>
-    <span><strong>Canal:</strong> WhatsApp</span>
+    <span><strong>Investimento em anúncios:</strong> R$ 20-30/dia</span>
+    <span><strong>Canal de vendas:</strong> WhatsApp</span>
   </div>
 </section>
 
@@ -342,40 +403,136 @@ tbody tr:last-child td { border-bottom: none; }
 
 <!-- VISÃO GERAL -->
 <section class="section" id="visao">
-  <div class="section-label">Contexto</div>
-  <h2>Por que <span>outubro</span> é estratégico</h2>
-  <p class="section-desc">Primeiro mês de campanha paga. O Dia das Crianças (12/10) dá um motivo de compra urgente e emocional — o gatilho perfeito para ativar o digital. Depois dele, mantemos o motor ligado para criar hábito.</p>
+  <div class="section-label">Por que outubro</div>
+  <h2>O momento certo para <span>começar</span></h2>
+  <p class="section-desc">A Viviane Utilidades tem 15 anos de história e uma base de clientes fiéis. Hoje, toda venda vem do boca a boca e do movimento da rua. Em outubro, a gente liga o digital — e o Dia das Crianças (12/10) dá o motivo de compra urgente e emocional perfeito para estrear.</p>
 
   <div class="cards">
     <div class="card">
       <div class="card-icon">🎯</div>
-      <h3>A Grande Ideia</h3>
+      <h3>A Grande Ideia da Campanha</h3>
       <p>"A loja que conhece você pelo nome há 15 anos"</p>
       <ul>
-        <li>Tradição que se Renova</li>
-        <li>Para Toda a Família</li>
-        <li>Proximidade Real</li>
+        <li><strong>Tradição que se Renova</strong> — 15 anos de confiança, agora no digital</li>
+        <li><strong>Para Toda a Família</strong> — roupa, presente, utilidade, tudo num lugar só</li>
+        <li><strong>Proximidade Real</strong> — atendimento de verdade, não robô</li>
       </ul>
     </div>
     <div class="card">
       <div class="card-icon">📱</div>
-      <h3>O Caminho da Venda</h3>
-      <p>Pessoa vê o anúncio → clica e abre o WhatsApp → atendimento personalizado → venda fechada (loja ou entrega)</p>
+      <h3>Como a venda acontece</h3>
+      <p>A pessoa descobre a Viviane (pelo Instagram, pelo anúncio ou pela lista de transmissão) → manda mensagem no WhatsApp → recebe atendimento personalizado → compra na loja ou por entrega.</p>
       <ul>
-        <li>Anúncio no Instagram/Facebook</li>
-        <li>Conversa no WhatsApp (77) 99925-4343</li>
-        <li>Fechamento na loja ou via entrega</li>
+        <li>Tudo passa pelo WhatsApp (77) 99925-4343</li>
+        <li>Atendimento rápido e com opções na mão</li>
+        <li>Fechamento na loja ou por entrega</li>
       </ul>
     </div>
     <div class="card">
       <div class="card-icon">📊</div>
       <h3>O que muda na prática</h3>
-      <p>Hoje: 100% boca a boca. Meta: gente chamando no WhatsApp todos os dias, vinda do Instagram e dos anúncios.</p>
+      <p>Hoje: zero digital. Meta: gente chamando no WhatsApp todos os dias, vinda do Instagram, dos anúncios e da lista de transmissão.</p>
       <ul>
-        <li>+5 vendas/dia pagam todo o serviço</li>
-        <li>Parciais seg/qua/sex desde a 1ª semana</li>
-        <li>Campanha contínua — nunca liga-desliga</li>
+        <li>+5 vendas por dia já pagam todo o serviço e a mídia</li>
+        <li>Resultados parciais toda segunda, quarta e sexta</li>
+        <li>Campanha fica ligada o mês inteiro — sem liga-desliga</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FUNIL COMPLETO — AS 5 FRENTES -->
+<section class="section" id="funil">
+  <div class="section-label">Funil de Vendas</div>
+  <h2>As <span>5 frentes</span> que vão trabalhar juntas</h2>
+  <p class="section-desc">Não vamos depender só de anúncio. A Viviane já tem uma base de clientes forte — vamos ativar tudo ao mesmo tempo.</p>
+
+  <div class="funnel-steps">
+    <div class="funnel-step">
+      <div class="funnel-step-num f1">1</div>
+      <div>
+        <h4>Ativação da base de clientes</h4>
+        <p>A Viviane tem 15 anos de clientes fiéis. Vamos usar o sistema de vendas (ou caderno/planilha) para levantar quem comprou presente de criança no ano passado — e entrar em contato direto pelo WhatsApp. Essa é a frente mais rápida de resultado, porque a pessoa já confia na loja.</p>
+      </div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-step-num f2">2</div>
+      <div>
+        <h4>Lista de transmissão no WhatsApp</h4>
+        <p>Enviar mensagem em massa para os contatos que a Viviane já tem salvo. Diferente do grupo, cada pessoa recebe a mensagem como se fosse individual — mais pessoal, mais resultado. Vamos criar listas separadas por tipo de cliente.</p>
+      </div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-step-num f3">3</div>
+      <div>
+        <h4>Publicações no Instagram (sem pagar)</h4>
+        <p>Posts, stories (aquelas fotos/vídeos que ficam 24h) e vídeos curtos no @viviane.utilidades. Isso não custa nada — é o conteúdo do dia a dia que mantém a loja presente na cabeça das pessoas.</p>
+      </div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-step-num f4">4</div>
+      <div>
+        <h4>Anúncios pagos no Instagram e Facebook</h4>
+        <p>Aparecer para pessoas que AINDA NÃO conhecem a Viviane. A gente paga para o Instagram/Facebook mostrar a loja para pais e mães de São Desidério e região. Quando a pessoa clica, abre o WhatsApp direto.</p>
+      </div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-step-num f5">5</div>
+      <div>
+        <h4>Atendimento no WhatsApp</h4>
+        <p>Quando a pessoa chama — seja pelo anúncio, pela lista de transmissão ou pelo Instagram — como responder para transformar interesse em venda. Scripts prontos com mensagens para copiar e colar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip" style="margin-top:24px;">
+    <strong>Por que 5 frentes e não só anúncio?</strong> O anúncio traz gente nova, mas demora uns dias para o Instagram aprender a quem mostrar e começar a dar resultado. Enquanto isso, a base de clientes e a lista de transmissão já geram vendas desde o primeiro dia — porque são pessoas que já confiam na Viviane.
+  </div>
+</section>
+
+<!-- ATIVAÇÃO DA BASE DE CLIENTES -->
+<section class="section" id="base">
+  <div class="section-label">Frente 1</div>
+  <h2>Ativação da <span>base de clientes</span></h2>
+  <p class="section-desc">Antes de gastar um centavo com anúncio, vamos aproveitar o maior ativo que a Viviane tem: os clientes dos últimos 15 anos.</p>
+
+  <div class="phase">
+    <div class="phase-body">
+      <h4>O que precisamos levantar</h4>
+      <ul>
+        <li><strong>Clientes que compraram presente infantil no Dia das Crianças de 2025</strong> — se a loja tem sistema de vendas (programa no caixa, caderno, planilha), vamos puxar esse histórico. Essas pessoas provavelmente vão comprar de novo.</li>
+        <li><strong>Clientes mais frequentes</strong> — as "VIPs" da loja. Aquelas que compram todo mês e sempre voltam.</li>
+        <li><strong>Contatos do WhatsApp</strong> — toda pessoa que já mandou mensagem pedindo preço, fazendo encomenda ou tirando dúvida.</li>
+      </ul>
+
+      <div class="tip-green tip" style="margin-top:16px;">
+        <strong>Pergunta para Ana Neri e Viviane:</strong> A loja usa algum sistema de vendas (programa no computador, caderno, planilha)? Se sim, conseguimos puxar o nome e telefone de quem comprou no período do Dia das Crianças do ano passado? Isso faz MUITA diferença.
+      </div>
+
+      <h4>Como organizar os contatos</h4>
+      <ul>
+        <li><strong>Lista 1 — "Dia das Crianças":</strong> Clientes que compraram presente infantil antes. São as mais quentes — elas já sabem o que a Viviane vende.</li>
+        <li><strong>Lista 2 — "VIP":</strong> Clientes que compram com frequência, independente do que compram. Merecem uma mensagem especial.</li>
+        <li><strong>Lista 3 — "Base geral":</strong> Todos os outros contatos. Recebem uma mensagem mais genérica de novidades.</li>
+      </ul>
+
+      <h4>Como criar a lista de transmissão no WhatsApp — passo a passo</h4>
+    </div>
+  </div>
+
+  <div class="phase" style="border-color: rgba(52,211,153,0.2);">
+    <div class="phase-body">
+      <div class="steps">
+        <div class="step"><strong>Abrir o WhatsApp</strong> e tocar nos três pontinhos (⋮) no canto superior direito.</div>
+        <div class="step"><strong>Tocar em "Nova transmissão"</strong> (ou "Nova lista de transmissão", dependendo da versão).</div>
+        <div class="step"><strong>Selecionar os contatos</strong> que quer incluir nessa lista. Pode selecionar até 256 pessoas por lista.</div>
+        <div class="step"><strong>Dar um nome para a lista</strong> — exemplo: "Dia das Crianças 2026" ou "Clientes VIP".</div>
+        <div class="step"><strong>Pronto!</strong> Quando enviar uma mensagem nessa lista, cada pessoa recebe como mensagem individual — não aparece como grupo.</div>
+      </div>
+
+      <div class="tip-yellow tip" style="margin-top:16px;">
+        <strong>Atenção:</strong> Para a pessoa receber a mensagem da lista de transmissão, ela precisa ter o número da Viviane salvo na agenda do celular. Por isso, nas próximas visitas à loja, vale pedir: "Salva nosso contato aí pra você receber as novidades!"
+      </div>
     </div>
   </div>
 </section>
@@ -391,25 +548,25 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="tl-dot active"></div>
       <div class="tl-date">28/09 → 02/10 · 5 dias</div>
       <div class="tl-title">Fase 1 — Esquentamento</div>
-      <div class="tl-desc">Conteúdo orgânico preparatório. Enquetes, bastidores, teaser dos produtos infantis. Zero investimento em ads.</div>
+      <div class="tl-desc">Preparar o terreno no Instagram, ativar a base de clientes pelo WhatsApp, separar os produtos e tirar fotos. Sem gastar com anúncio ainda.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">03/10 → 12/10 · 10 dias</div>
       <div class="tl-title">Fase 2 — Campanha Dia das Crianças</div>
-      <div class="tl-desc">Meta Ads ligado. Objetivo: mensagens no WhatsApp. Criativos de presente + urgência. Orgânico intenso paralelo.</div>
+      <div class="tl-desc">Anúncios ligados. Objetivo: fazer as pessoas chamarem no WhatsApp. Conteúdo no Instagram no ritmo máximo. Listas de transmissão ativas.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">13/10 → 19/10 · 7 dias</div>
-      <div class="tl-title">Fase 3 — Remarketing + Transição</div>
-      <div class="tl-desc">Remarketing para quem interagiu. Liquidação infantil. Transição suave para campanha contínua.</div>
+      <div class="tl-title">Fase 3 — Recuperação</div>
+      <div class="tl-desc">Mostrar anúncios de novo para quem se interessou mas não comprou. Liquidação do que sobrou. Começar a transição para o dia a dia.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">20/10 → 31/10 · 12 dias</div>
-      <div class="tl-title">Fase 4 — Campanha Contínua</div>
-      <div class="tl-desc">Motor de vendas ligado para o dia a dia. Novidades, moda, utilidades. Preparação para novembro.</div>
+      <div class="tl-title">Fase 4 — Campanha do Dia a Dia</div>
+      <div class="tl-desc">O motor de vendas fica ligado para o dia a dia da loja. Sem depender de data comemorativa. Preparação para novembro.</div>
     </div>
   </div>
 </section>
@@ -418,77 +575,60 @@ tbody tr:last-child td { border-bottom: none; }
 <section class="section" id="calendario">
   <div class="section-label">Mês Inteiro</div>
   <h2>Calendário de <span>outubro</span></h2>
-  <p class="section-desc">Visão completa do mês com as 4 fases marcadas. Dia das Crianças no dia 12.</p>
+  <p class="section-desc">Visão completa do mês com as 4 fases marcadas por cores. O Dia das Crianças é no dia 12 (segunda-feira). "Parcial" nos dias marcados = dia em que Davidson envia os números no grupo do WhatsApp.</p>
 
-  <!-- Semana final de setembro (contexto) -->
   <div style="font-size:12px;font-weight:700;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">Setembro (esquentamento)</div>
   <div class="week-grid">
     <div class="week-header">Seg</div><div class="week-header">Ter</div><div class="week-header">Qua</div><div class="week-header">Qui</div><div class="week-header">Sex</div><div class="week-header">Sáb</div><div class="week-header">Dom</div>
     <div class="day-cell phase-1 today"><div class="day-num">28</div><div class="day-tag">Início</div></div>
     <div class="day-cell phase-1"><div class="day-num">29</div><div class="day-tag">Esquenta</div></div>
     <div class="day-cell phase-1"><div class="day-num">30</div><div class="day-tag">Esquenta</div></div>
-    <div class="day-cell empty"></div>
-    <div class="day-cell empty"></div>
-    <div class="day-cell empty"></div>
-    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
   </div>
 
   <div style="font-size:12px;font-weight:700;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin:20px 0 10px;">Outubro</div>
   <div class="week-grid">
     <div class="week-header">Seg</div><div class="week-header">Ter</div><div class="week-header">Qua</div><div class="week-header">Qui</div><div class="week-header">Sex</div><div class="week-header">Sáb</div><div class="week-header">Dom</div>
-
-    <!-- Semana 1: 1-4 (qui-dom) -->
-    <div class="day-cell empty"></div>
-    <div class="day-cell empty"></div>
-    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
     <div class="day-cell phase-1"><div class="day-num">01</div><div class="day-tag">Esquenta</div></div>
     <div class="day-cell phase-1"><div class="day-num">02</div><div class="day-tag">Esquenta</div></div>
-    <div class="day-cell phase-2"><div class="day-num">03</div><div class="day-tag">Ads ON</div></div>
+    <div class="day-cell phase-2"><div class="day-num">03</div><div class="day-tag">Anúncio</div></div>
     <div class="day-cell phase-2"><div class="day-num">04</div><div class="day-tag">Campanha</div></div>
-
-    <!-- Semana 2: 5-11 -->
-    <div class="day-cell phase-2"><div class="day-num">05</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell phase-2"><div class="day-num">05</div><div class="day-tag">Parcial</div></div>
     <div class="day-cell phase-2"><div class="day-num">06</div><div class="day-tag">Campanha</div></div>
     <div class="day-cell phase-2"><div class="day-num">07</div><div class="day-tag">Parcial</div></div>
     <div class="day-cell phase-2"><div class="day-num">08</div><div class="day-tag">Campanha</div></div>
     <div class="day-cell phase-2"><div class="day-num">09</div><div class="day-tag">Parcial</div></div>
     <div class="day-cell phase-2"><div class="day-num">10</div><div class="day-tag">Campanha</div></div>
     <div class="day-cell phase-2"><div class="day-num">11</div><div class="day-tag">Véspera</div></div>
-
-    <!-- Semana 3: 12-18 -->
     <div class="day-cell phase-2 highlight"><div class="day-num">12</div><div class="day-tag">Crianças</div></div>
-    <div class="day-cell phase-3"><div class="day-num">13</div><div class="day-tag">Remarket</div></div>
+    <div class="day-cell phase-3"><div class="day-num">13</div><div class="day-tag">Recupera</div></div>
     <div class="day-cell phase-3"><div class="day-num">14</div><div class="day-tag">Parcial</div></div>
-    <div class="day-cell phase-3"><div class="day-num">15</div><div class="day-tag">Remarket</div></div>
+    <div class="day-cell phase-3"><div class="day-num">15</div><div class="day-tag">Recupera</div></div>
     <div class="day-cell phase-3"><div class="day-num">16</div><div class="day-tag">Parcial</div></div>
     <div class="day-cell phase-3"><div class="day-num">17</div><div class="day-tag">Transição</div></div>
     <div class="day-cell phase-3"><div class="day-num">18</div><div class="day-tag">Transição</div></div>
-
-    <!-- Semana 4: 19-25 -->
     <div class="day-cell phase-3"><div class="day-num">19</div><div class="day-tag">Transição</div></div>
-    <div class="day-cell phase-4"><div class="day-num">20</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">20</div><div class="day-tag">Dia a dia</div></div>
     <div class="day-cell phase-4"><div class="day-num">21</div><div class="day-tag">Parcial</div></div>
-    <div class="day-cell phase-4"><div class="day-num">22</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">22</div><div class="day-tag">Dia a dia</div></div>
     <div class="day-cell phase-4"><div class="day-num">23</div><div class="day-tag">Parcial</div></div>
-    <div class="day-cell phase-4"><div class="day-num">24</div><div class="day-tag">Contínuo</div></div>
-    <div class="day-cell phase-4"><div class="day-num">25</div><div class="day-tag">Contínuo</div></div>
-
-    <!-- Semana 5: 26-31 -->
-    <div class="day-cell phase-4"><div class="day-num">26</div><div class="day-tag">Contínuo</div></div>
-    <div class="day-cell phase-4"><div class="day-num">27</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">24</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell phase-4"><div class="day-num">25</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell phase-4"><div class="day-num">26</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell phase-4"><div class="day-num">27</div><div class="day-tag">Dia a dia</div></div>
     <div class="day-cell phase-4"><div class="day-num">28</div><div class="day-tag">Parcial</div></div>
-    <div class="day-cell phase-4"><div class="day-num">29</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">29</div><div class="day-tag">Dia a dia</div></div>
     <div class="day-cell phase-4"><div class="day-num">30</div><div class="day-tag">Parcial</div></div>
     <div class="day-cell phase-4"><div class="day-num">31</div><div class="day-tag">Balanço</div></div>
     <div class="day-cell empty"></div>
   </div>
 
-  <!-- Legenda -->
   <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;font-size:12px;">
-    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(155,125,184,0.3);"></span> Esquentamento</span>
-    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(255,92,0,0.3);"></span> Dia das Crianças</span>
-    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(251,191,36,0.3);"></span> Remarketing</span>
-    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(52,211,153,0.3);"></span> Contínuo</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(155,125,184,0.3);"></span> Esquentamento (sem anúncio)</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(255,92,0,0.3);"></span> Campanha Dia das Crianças</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(251,191,36,0.3);"></span> Recuperação</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(52,211,153,0.3);"></span> Campanha do dia a dia</span>
   </div>
 </section>
 
@@ -496,7 +636,7 @@ tbody tr:last-child td { border-bottom: none; }
 <section class="section" id="fase1">
   <div class="section-label">Fase 1</div>
   <h2>Esquentamento</h2>
-  <p class="section-desc">Semana preparatória. Criar expectativa e engajamento antes de ligar os anúncios.</p>
+  <p class="section-desc">Semana preparatória. Criar expectativa, ativar a base de clientes e preparar tudo antes de ligar os anúncios.</p>
 
   <div class="phase">
     <div class="phase-header">
@@ -504,39 +644,48 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="phase-meta">
         <h3>28/09 → 02/10 · <span>5 dias</span></h3>
         <div class="phase-badges">
-          <span class="badge badge-purple">Orgânico</span>
+          <span class="badge badge-purple">Sem anúncio</span>
           <span class="badge badge-green">Custo zero</span>
         </div>
       </div>
     </div>
     <div class="phase-body">
-      <h4>Instagram — Stories (3-5/dia)</h4>
+
+      <h4>Ativação da Base (WhatsApp)</h4>
       <ul>
-        <li>Bastidores: vitrine sendo montada com produtos infantis</li>
-        <li>Enquete: "Já escolheu o presente do Dia das Crianças?"</li>
-        <li>Caixinha de perguntas: "Que presente seu filho quer ganhar?"</li>
-        <li>Countdown: "Faltam X dias — Viviane Utilidades já está preparada"</li>
-        <li>Preview de produtos: "Dá uma olhada no que separamos"</li>
+        <li><strong>Levantar contatos:</strong> Puxar do sistema de vendas (ou caderno/planilha) os clientes que compraram presente infantil no Dia das Crianças de 2025</li>
+        <li><strong>Criar as 3 listas de transmissão</strong> no WhatsApp (ver seção "Base de Clientes" acima)</li>
+        <li><strong>Enviar a primeira mensagem</strong> para a Lista "Dia das Crianças" — uma mensagem especial avisando que chegou mercadoria nova (ver script na seção WhatsApp)</li>
+        <li><strong>Enviar para a Lista "VIP"</strong> — mensagem de cliente especial com pré-visualização exclusiva</li>
+      </ul>
+
+      <h4>Instagram — Stories (3-5 por dia)</h4>
+      <ul>
+        <li><strong>Bastidores:</strong> Gravar a vitrine sendo montada com produtos infantis — o "por trás das câmeras" da preparação</li>
+        <li><strong>Enquete:</strong> "Já escolheu o presente do Dia das Crianças?" com as opções "Já sim!" e "Ainda não 😅" — isso gera interação e mostra pro Instagram que o conteúdo é relevante</li>
+        <li><strong>Caixinha de perguntas:</strong> "Que presente seu filho quer ganhar?" — as respostas viram conteúdo para os próximos dias</li>
+        <li><strong>Contagem regressiva:</strong> Usar o adesivo de timer dos stories que mostra quantos dias faltam até o Dia das Crianças. Funciona assim: você coloca a data (12/10) e o Instagram mostra um relógio contando os dias, horas e minutos. As pessoas podem ativar o lembrete.</li>
+        <li><strong>Mostrar produtos:</strong> "Olha o que separamos pra vocês" — filmar os produtos na prateleira ou na mão</li>
       </ul>
 
       <h4>Instagram — Feed (1 post a cada 2 dias)</h4>
       <ul>
-        <li>Post institucional: "15 anos vestindo as famílias de São Desidério"</li>
-        <li>Carrossel: "5 presentes que toda criança quer" (com preços)</li>
-        <li>Post de autoridade: "A loja que seu vizinho já conhece"</li>
+        <li>Post da história da loja: "15 anos vestindo as famílias de São Desidério"</li>
+        <li>Sequência de imagens (carrossel — a pessoa desliza pro lado): "5 presentes que toda criança quer" com fotos e preços</li>
+        <li>Post de confiança: "A loja que seu vizinho já conhece"</li>
       </ul>
 
-      <h4>WhatsApp Status</h4>
+      <h4>WhatsApp Status (diário)</h4>
       <ul>
-        <li>Foto diária de produto com preço e CTA "chama no WhatsApp"</li>
-        <li>Usar lista de transmissão existente para avisar das novidades</li>
+        <li>Postar 1 foto de produto por dia no Status do WhatsApp (funciona como os stories do Instagram — as pessoas veem ao abrir o WhatsApp)</li>
+        <li>Sempre colocar preço e a frase "Chama no WhatsApp pra reservar"</li>
       </ul>
 
-      <h4>Ações na Loja</h4>
+      <h4>Ações na Loja (preparação para os anúncios)</h4>
       <ul>
-        <li>Tirar fotos e vídeos dos produtos infantis para os criativos da Fase 2</li>
-        <li>Gravar vídeo curto da Ana ou da filha mostrando as opções de presente</li>
-        <li>Separar os produtos destaque por faixa de preço (até R$ 50, R$ 50-100, R$ 100+)</li>
+        <li><strong>Fotografar os produtos infantis:</strong> Tirar fotos com boa luz (perto da janela ou na frente da loja) de pelo menos 8-10 produtos de presente. Fundo limpo ou na vitrine.</li>
+        <li><strong>Gravar vídeo curto:</strong> Ana ou a filha mostrando 3 opções de presente na loja. Duração: 15-30 segundos. Celular na vertical.</li>
+        <li><strong>Separar por faixa de preço:</strong> Quais produtos custam até R$ 50? De R$ 50 a R$ 100? Acima de R$ 100? Essa organização vai ser usada nos anúncios.</li>
       </ul>
     </div>
   </div>
@@ -546,7 +695,7 @@ tbody tr:last-child td { border-bottom: none; }
 <section class="section" id="fase2">
   <div class="section-label">Fase 2</div>
   <h2>Campanha <span>Dia das Crianças</span></h2>
-  <p class="section-desc">Anúncios no ar. Foco total em gerar conversas no WhatsApp com ofertas de presente.</p>
+  <p class="section-desc">Anúncios no ar + todas as frentes ativas. Foco total em fazer as pessoas chamarem no WhatsApp.</p>
 
   <div class="phase">
     <div class="phase-header">
@@ -554,59 +703,63 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="phase-meta">
         <h3>03/10 → 12/10 · <span>10 dias</span></h3>
         <div class="phase-badges">
-          <span class="badge badge-orange">Meta Ads</span>
+          <span class="badge badge-orange">Anúncios pagos</span>
           <span class="badge badge-orange">R$ 25/dia</span>
-          <span class="badge badge-purple">Orgânico</span>
+          <span class="badge badge-purple">Instagram</span>
+          <span class="badge badge-green">Listas WhatsApp</span>
         </div>
       </div>
     </div>
     <div class="phase-body">
-      <h4>Meta Ads — Configuração</h4>
+
+      <h4>Anúncios pagos (Meta Ads) — Como vai funcionar</h4>
       <ul>
-        <li><strong>Objetivo:</strong> Mensagens (conversas no WhatsApp)</li>
-        <li><strong>Orçamento:</strong> R$ 25/dia (R$ 250 na fase)</li>
-        <li><strong>Público:</strong> São Desidério + 30 km, 25-50 anos, pais e mães</li>
-        <li><strong>Interesses:</strong> Moda infantil, presente, família, compras</li>
-        <li><strong>Posicionamento:</strong> Feed + Stories + Reels (Instagram e Facebook)</li>
-        <li><strong>Horários de pico:</strong> 11h-13h e 18h-21h</li>
+        <li><strong>O que acontece:</strong> A Viviane aparece no Instagram e Facebook de pessoas de São Desidério e região que ainda não conhecem a loja. Quando a pessoa clica, abre o WhatsApp direto.</li>
+        <li><strong>Quanto custa:</strong> R$ 25 por dia (total de R$ 250 nessa fase). Esse valor é pago no cartão que está na conta de anúncios — não sai da mensalidade.</li>
+        <li><strong>Quem vai ver o anúncio:</strong> Pessoas de São Desidério e arredores (raio de 30 km), entre 25 e 50 anos, com interesse em moda infantil, presentes e família.</li>
+        <li><strong>Onde aparece:</strong> No feed do Instagram (a timeline principal), nos stories, nos vídeos curtos (Reels) e no Facebook.</li>
+        <li><strong>Melhores horários:</strong> Os anúncios vão rodar o dia todo, mas o Instagram mostra mais nos horários de pico: das 11h às 13h (almoço) e das 18h às 21h (fim do dia).</li>
       </ul>
 
-      <h4>Criativos do Anúncio (3 variações)</h4>
+      <div class="tip">
+        <strong>O que é "o anúncio aprender"?</strong> Nos primeiros 2-3 dias, o Instagram está testando — mostrando para diferentes pessoas para descobrir quem se interessa mais. É normal o resultado ser fraco no começo. A partir do 3º/4º dia, o resultado melhora porque o sistema já entendeu quem é o público certo.
+      </div>
+
+      <h4>Peças do anúncio (o que a pessoa vai ver)</h4>
       <ul>
-        <li><strong>Carrossel:</strong> "Presente de Dia das Crianças? A Viviane separou opções pra todo bolso" — 4-5 cards com produtos e preços</li>
-        <li><strong>Imagem única:</strong> Produto destaque + "Dia das Crianças na Viviane — chame no WhatsApp" — visual limpo, CTA claro</li>
-        <li><strong>Vídeo curto (15s):</strong> Ana ou a filha mostrando 3 produtos na loja — "A gente te ajuda a escolher, chama no WhatsApp"</li>
+        <li><strong>Formato 1 — Sequência de imagens:</strong> 4-5 fotos que a pessoa desliza pro lado, cada uma com um produto e preço. Exemplo: "Presente de Dia das Crianças? A Viviane separou opções pra todo bolso."</li>
+        <li><strong>Formato 2 — Foto única:</strong> Uma foto bonita do produto destaque com o preço e a frase "Chame no WhatsApp". Visual limpo e direto.</li>
+        <li><strong>Formato 3 — Vídeo curto (15-30 segundos):</strong> Ana ou a filha mostrando 3 opções na loja. "Oi! Tem presente pra todo bolso aqui na Viviane — chama no WhatsApp que a gente te ajuda!"</li>
       </ul>
 
-      <h4>Copy dos Anúncios (ângulo central)</h4>
+      <h4>Texto dos anúncios (o que vai escrito)</h4>
       <ul>
-        <li>Abertura com a dor: "Procurando presente de Dia das Crianças sem estourar o orçamento?"</li>
-        <li>Solução: "Na Viviane Utilidades tem opções a partir de R$ XX — roupa, brinquedo, acessório"</li>
-        <li>Prova social: "15 anos em São Desidério. A loja que sua família já conhece."</li>
-        <li>CTA: "Chame no WhatsApp e a gente te ajuda a escolher o presente certo"</li>
+        <li><strong>Começo (chamar atenção):</strong> "Procurando presente de Dia das Crianças sem estourar o orçamento?"</li>
+        <li><strong>Meio (a solução):</strong> "Na Viviane Utilidades tem opções a partir de R$ XX — conjunto infantil, brinquedo, acessório."</li>
+        <li><strong>Confiança:</strong> "15 anos em São Desidério. A loja que sua família já conhece."</li>
+        <li><strong>Final (o que a pessoa deve fazer):</strong> "Chame no WhatsApp e a gente te ajuda a escolher o presente certo."</li>
       </ul>
 
-      <h4>Orgânico Paralelo (diário)</h4>
+      <h4>Listas de transmissão (WhatsApp)</h4>
       <ul>
-        <li><strong>Stories:</strong> 5+/dia — produtos, bastidores, contagem regressiva, depoimentos</li>
-        <li><strong>Feed:</strong> 1 post/dia — produto com preço, carrossel de sugestões, storytelling</li>
-        <li><strong>Reels:</strong> 2-3 na semana — tendência + produto, antes/depois de arrumação, "qual você escolhe?"</li>
+        <li><strong>Dia 03/10:</strong> Enviar para a lista "Base geral" — avisando que a campanha de Dia das Crianças começou, com 2-3 opções de destaque</li>
+        <li><strong>Dia 07/10:</strong> Enviar para todas as listas — "Última semana! Garanta o presente" com as opções mais pedidas</li>
+        <li><strong>Dia 11/10 (véspera):</strong> Enviar para todas — "Amanhã é Dia das Crianças! Ainda dá tempo de garantir o presente. Chama no WhatsApp!"</li>
       </ul>
 
-      <h4>WhatsApp (atendimento de leads)</h4>
+      <h4>Instagram (publicações sem pagar)</h4>
       <ul>
-        <li>Responder em até 15 minutos no horário comercial</li>
-        <li>Script de primeiro contato pronto (ver seção WhatsApp abaixo)</li>
-        <li>Catálogo atualizado com fotos e preços dos produtos infantis</li>
-        <li>Enviar opções por faixa de preço quando o lead perguntar</li>
+        <li><strong>Stories:</strong> 5 ou mais por dia — produtos com preço, bastidores, contagem regressiva, clientes comprando, enquetes</li>
+        <li><strong>Feed:</strong> 1 post por dia — foto de produto com preço, sequência de sugestões, ou post de confiança (depoimento, história da loja)</li>
+        <li><strong>Vídeos curtos (Reels):</strong> 2-3 por semana — mostrar o produto, a loja ou uma tendência. Exemplo: "Qual presente você escolhe?" com 3 opções</li>
       </ul>
 
-      <h4>Semana de Pico (07/10 → 12/10)</h4>
+      <h4>Semana de pico (07/10 → 12/10)</h4>
       <ul>
-        <li>Intensificar stories: "Últimos dias para garantir o presente"</li>
-        <li>Se performance estiver boa, subir orçamento para R$ 30/dia</li>
-        <li>Stories de prova social: clientes comprando, sacolas, entregas</li>
-        <li>Dia 12: post especial "Feliz Dia das Crianças — obrigada por confiar na Viviane"</li>
+        <li>Intensificar os stories: "Últimos dias para garantir o presente!"</li>
+        <li>Se o anúncio estiver trazendo bom resultado, subir o investimento para R$ 30/dia nessa semana</li>
+        <li>Postar stories de clientes comprando (com autorização): sacolas, entregas, sorriso — isso mostra que é real</li>
+        <li>Dia 12/10: post especial de Dia das Crianças agradecendo São Desidério</li>
       </ul>
     </div>
   </div>
@@ -615,8 +768,8 @@ tbody tr:last-child td { border-bottom: none; }
 <!-- FASE 3 -->
 <section class="section" id="fase3">
   <div class="section-label">Fase 3</div>
-  <h2>Remarketing + <span>Transição</span></h2>
-  <p class="section-desc">Recuperar quem interagiu mas não comprou. Transição suave para a campanha contínua.</p>
+  <h2>Recuperação e <span>transição</span></h2>
+  <p class="section-desc">Recuperar quem se interessou mas não comprou. Aproveitar o que sobrou de estoque. Começar a transição para a campanha do dia a dia.</p>
 
   <div class="phase">
     <div class="phase-header">
@@ -624,40 +777,47 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="phase-meta">
         <h3>13/10 → 19/10 · <span>7 dias</span></h3>
         <div class="phase-badges">
-          <span class="badge badge-yellow">Remarketing</span>
+          <span class="badge badge-yellow">Recuperação</span>
           <span class="badge badge-orange">R$ 20/dia</span>
         </div>
       </div>
     </div>
     <div class="phase-body">
-      <h4>Meta Ads — Remarketing</h4>
+
+      <h4>Anúncios de recuperação</h4>
       <ul>
-        <li><strong>Público:</strong> Quem interagiu com os anúncios da Fase 2 (clicou, enviou mensagem, visualizou perfil)</li>
-        <li><strong>Ângulo:</strong> "Ainda não escolheu? Passa na Viviane — a gente te ajuda"</li>
-        <li><strong>Orçamento:</strong> R$ 20/dia (R$ 140 na fase)</li>
-        <li>Se sobrou estoque infantil: "Últimas peças com desconto especial"</li>
+        <li><strong>O que é:</strong> Mostrar o anúncio DE NOVO para as pessoas que viram, clicaram ou mandaram mensagem na Fase 2 mas não compraram. O Instagram sabe quem são essas pessoas e consegue filtrar.</li>
+        <li><strong>Por que funciona:</strong> A pessoa já viu a loja — às vezes ela só precisa de um segundo empurrão. Talvez estava sem dinheiro no dia, ou esqueceu, ou ficou em dúvida.</li>
+        <li><strong>Ângulo da mensagem:</strong> "Ainda não escolheu? Passa na Viviane — a gente te ajuda" ou "Últimas peças infantis com desconto!"</li>
+        <li><strong>Investimento:</strong> R$ 20/dia (R$ 140 na fase)</li>
       </ul>
 
-      <h4>Orgânico — Transição</h4>
+      <h4>Liquidação do estoque infantil (se sobrou)</h4>
       <ul>
-        <li>Conteúdo de agradecimento: "Obrigada São Desidério! Foi uma semana incrível"</li>
-        <li>Repost de clientes (stories repostados, fotos de sacolas)</li>
-        <li>Começar a mostrar produtos gerais: moda adulta, utilidades, acessórios</li>
-        <li>Manter ritmo de 3-5 stories/dia</li>
+        <li>Se sobraram produtos infantis, fazer promoção "Resto de Dia das Crianças — com desconto"</li>
+        <li>Postar nos stories, na lista de transmissão e como anúncio — tudo ao mesmo tempo</li>
+        <li>Funciona como "queima de estoque rápida" — gera vendas extras e abre espaço para novidade</li>
       </ul>
 
-      <h4>WhatsApp</h4>
+      <h4>Lista de transmissão</h4>
       <ul>
-        <li>Follow-up com leads que conversaram mas não fecharam</li>
-        <li>Mensagem: "Oi! Vi que você se interessou por X. Ainda temos disponível — quer que eu separe pra você?"</li>
-        <li>Lista de transmissão: "Novidades chegando essa semana na Viviane"</li>
+        <li><strong>Follow-up de quem conversou:</strong> Quem mandou mensagem durante a campanha mas não fechou — mandar uma mensagem leve perguntando se ainda tem interesse (ver script na seção WhatsApp)</li>
+        <li><strong>Aviso de novidades:</strong> "Novidades chegando essa semana na Viviane" — começar a mostrar que a loja não é só infantil</li>
       </ul>
 
-      <h4>Análise e Ajuste</h4>
+      <h4>Instagram — transição de conteúdo</h4>
       <ul>
-        <li>Relatório parcial da campanha de Dia das Crianças: conversas, custo, vendas</li>
-        <li>Identificar o criativo que mais performou para replicar na Fase 4</li>
-        <li>Ajustar público com base nos dados (quem converteu mais)</li>
+        <li>Post de agradecimento: "Obrigada, São Desidério! Foi uma semana incrível de Dia das Crianças"</li>
+        <li>Repostar stories de clientes que compraram (com autorização)</li>
+        <li>Começar a mostrar outros produtos: moda adulta, utilidades, acessórios — sinalizar que a loja tem de tudo</li>
+        <li>Manter ritmo de 3-5 stories por dia</li>
+      </ul>
+
+      <h4>Análise dos resultados</h4>
+      <ul>
+        <li>Davidson manda no grupo o relatório parcial da campanha: quantas pessoas chamaram no WhatsApp, quanto custou cada conversa, quantas vendas conseguimos rastrear</li>
+        <li>Identificar qual anúncio deu mais resultado — esse vai ser a base para a Fase 4</li>
+        <li>Ajustar: se mulheres converteram mais que homens, por exemplo, focamos nesse público</li>
       </ul>
     </div>
   </div>
@@ -666,8 +826,8 @@ tbody tr:last-child td { border-bottom: none; }
 <!-- FASE 4 -->
 <section class="section" id="fase4">
   <div class="section-label">Fase 4</div>
-  <h2>Campanha <span>Contínua</span></h2>
-  <p class="section-desc">O motor de vendas fica ligado. Sem data comemorativa — o motivo de compra agora é o dia a dia.</p>
+  <h2>Campanha do <span>dia a dia</span></h2>
+  <p class="section-desc">O motor de vendas fica ligado. Não precisa de data comemorativa — o motivo de compra agora é a confiança, a variedade e a conveniência de chamar no WhatsApp.</p>
 
   <div class="phase">
     <div class="phase-header">
@@ -675,155 +835,234 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="phase-meta">
         <h3>20/10 → 31/10 · <span>12 dias</span></h3>
         <div class="phase-badges">
-          <span class="badge badge-green">Contínuo</span>
+          <span class="badge badge-green">Campanha contínua</span>
           <span class="badge badge-orange">R$ 20/dia</span>
-          <span class="badge badge-purple">Orgânico</span>
+          <span class="badge badge-purple">Instagram</span>
         </div>
       </div>
     </div>
     <div class="phase-body">
-      <h4>Meta Ads — Campanha Always-On</h4>
+
+      <h4>Anúncios pagos — campanha que fica ligada o mês inteiro</h4>
       <ul>
-        <li><strong>Objetivo:</strong> Mensagens no WhatsApp (mesmo da Fase 2)</li>
-        <li><strong>Orçamento:</strong> R$ 20/dia (R$ 240 na fase)</li>
-        <li><strong>Público:</strong> São Desidério + região, 25-50 anos — excluir quem já comprou</li>
-        <li><strong>Ângulo principal:</strong> "A Viviane agora também atende pelo WhatsApp — mais perto de você"</li>
-        <li><strong>Criativos:</strong> Produtos do dia a dia — moda adulta, utilidades domésticas, acessórios</li>
+        <li><strong>O que é:</strong> O anúncio continua rodando, agora mostrando os produtos do dia a dia (não só infantil). A Viviane fica aparecendo para pessoas novas que ainda não conhecem a loja.</li>
+        <li><strong>Investimento:</strong> R$ 20/dia (R$ 240 na fase)</li>
+        <li><strong>Quem vai ver:</strong> Pessoas de São Desidério e região, 25-50 anos — excluindo quem já comprou (pra não gastar dinheiro mostrando pra quem já é cliente)</li>
+        <li><strong>Mensagem principal:</strong> "A Viviane agora também atende pelo WhatsApp — mais perto de você"</li>
+        <li><strong>Peças:</strong> Fotos e vídeos dos produtos que mais vendem: moda adulta, utilidades domésticas, acessórios</li>
       </ul>
 
-      <h4>Conteúdo Orgânico</h4>
+      <h4>Conteúdo no Instagram</h4>
       <ul>
-        <li><strong>Feed:</strong> 3-4 posts/semana — produto + storytelling + prova social</li>
-        <li><strong>Stories:</strong> 3-5/dia — bastidores, produtos, enquetes, interação</li>
-        <li><strong>Reels:</strong> 2/semana — tendências, "novidades que chegaram", antes/depois</li>
+        <li><strong>Feed:</strong> 3-4 posts por semana — foto de produto com storytelling (contar uma história), prova de que outras pessoas compraram</li>
+        <li><strong>Stories:</strong> 3-5 por dia — bastidores da loja, novos produtos, enquetes, interação com os seguidores</li>
+        <li><strong>Vídeos curtos (Reels):</strong> 2 por semana — tendências, "novidades que chegaram", antes e depois de vitrine</li>
       </ul>
 
-      <h4>Ângulos de Conteúdo para o Dia a Dia</h4>
+      <h4>Ideias de conteúdo para o dia a dia</h4>
       <ul>
-        <li>"Chegou novidade na Viviane" — novos produtos toda semana</li>
-        <li>"Sua loja de confiança, agora no seu celular" — WhatsApp como canal</li>
+        <li>"Chegou novidade na Viviane" — mostrar produtos novos toda semana</li>
+        <li>"Sua loja de confiança, agora no seu celular" — reforçar o WhatsApp como canal</li>
         <li>"15 anos ao seu lado" — tradição e confiança</li>
         <li>"Vista a família inteira sem pesar no bolso" — custo-benefício</li>
+        <li>"De São Desidério pra São Desidério" — proximidade e pertencimento</li>
       </ul>
 
-      <h4>Preparação para Novembro</h4>
+      <h4>Lista de transmissão — manutenção semanal</h4>
       <ul>
-        <li>Identificar os produtos campeões de outubro</li>
-        <li>Planejar Black Friday (28/11) — criar lista de espera no WhatsApp</li>
-        <li>Consolidar base de leads para remarketing de novembro</li>
-        <li>Relatório mensal completo (entrega até 17/10 para Ana Neri)</li>
+        <li>Enviar 1 mensagem por semana na lista "Base geral" com novidades ou promoção pontual</li>
+        <li>Adicionar novos contatos (quem mandou mensagem durante outubro) à lista correspondente</li>
+        <li>Na última semana de outubro, fazer uma enquete: "O que você mais gostaria de ver na Viviane em novembro?"</li>
+      </ul>
+
+      <h4>Preparação para novembro</h4>
+      <ul>
+        <li>Identificar os produtos campeões de outubro (os que mais venderam)</li>
+        <li>Começar a montar lista de espera no WhatsApp para promoções de novembro</li>
+        <li>Consolidar todos os contatos novos que chegaram em outubro</li>
+        <li>Relatório mensal completo — entrega até 17/10 para Ana Neri</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- CRIATIVOS -->
-<section class="section" id="criativos">
-  <div class="section-label">Direção Criativa</div>
-  <h2>Criativos <span>propostos</span></h2>
-  <p class="section-desc">3 formatos principais para os anúncios. Todos derivados da Big Idea aprovada.</p>
+<!-- PEÇAS DO ANÚNCIO -->
+<section class="section" id="anuncios">
+  <div class="section-label">Peças do Anúncio</div>
+  <h2>O que a pessoa vai <span>ver</span></h2>
+  <p class="section-desc">3 formatos de anúncio que vamos criar. Cada um precisa de fotos e/ou vídeo que a equipe da loja vai produzir.</p>
 
   <div class="creative-card">
-    <div class="format">Formato 1 — Carrossel (4-5 cards)</div>
+    <div class="format">Formato 1 — Sequência de imagens (a pessoa desliza pro lado)</div>
     <h4>"Dia das Crianças na Viviane — presente pra todo bolso"</h4>
-    <p><strong>Card 1:</strong> Capa — "Presente de Dia das Crianças? A Viviane separou opções especiais" · Fundo com produtos infantis<br>
-    <strong>Card 2:</strong> Até R$ 50 — Conjunto infantil básico ou acessório · Foto do produto + preço<br>
-    <strong>Card 3:</strong> R$ 50-100 — Conjunto de marca ou kit completo · Foto + preço<br>
-    <strong>Card 4:</strong> Acima de R$ 100 — Peça premium ou kit presente · Foto + preço<br>
-    <strong>Card 5:</strong> CTA — "Chame no WhatsApp e a gente te ajuda a escolher" · Botão de ação</p>
+    <p><strong>Imagem 1 (capa):</strong> "Presente de Dia das Crianças? A Viviane separou opções especiais" — fundo bonito com vários produtos.<br><br>
+    <strong>Imagem 2:</strong> Produto até R$ 50 — foto com o preço embaixo. Exemplo: conjunto infantil básico ou acessório.<br><br>
+    <strong>Imagem 3:</strong> Produto de R$ 50 a R$ 100 — foto com preço. Exemplo: conjunto de marca ou kit completo.<br><br>
+    <strong>Imagem 4:</strong> Produto acima de R$ 100 — foto com preço. Exemplo: peça premium ou cesta de presente.<br><br>
+    <strong>Imagem 5 (final):</strong> "Chame no WhatsApp e a gente te ajuda a escolher" com o botão para chamar.</p>
+    <div class="tip" style="margin-top:12px;"><strong>O que a equipe precisa fazer:</strong> Tirar foto de 1 produto por faixa de preço (3 no total). Fundo limpo ou na vitrine. Boa iluminação (perto da janela funciona). Davidson monta o anúncio com as fotos.</div>
   </div>
 
   <div class="creative-card">
-    <div class="format">Formato 2 — Imagem Única</div>
+    <div class="format">Formato 2 — Foto única</div>
     <h4>"A loja que toda mãe de São Desidério já conhece"</h4>
-    <p><strong>Visual:</strong> Foto de produto destaque (conjunto infantil ou cesta de presente) · Fundo limpo ou foto na loja<br>
-    <strong>Texto no criativo:</strong> Preço + "Dia das Crianças" + logo Viviane<br>
-    <strong>Copy do anúncio:</strong> Dor (preço) → Solução (variedade na Viviane) → CTA (WhatsApp)<br>
-    <strong>Variação urgência:</strong> "Últimos dias! Garanta o presente antes que acabe"</p>
+    <p><strong>O que é:</strong> Uma foto bonita de UM produto destaque (o mais vendido ou o mais bonito) com o preço e o nome da Viviane. Limpo, direto, fácil de entender.<br><br>
+    <strong>O texto que aparece junto (no Instagram):</strong> "Procurando presente de Dia das Crianças? Na Viviane tem opção pra todo bolso. 15 anos em São Desidério. Chame no WhatsApp!"<br><br>
+    <strong>Versão de urgência (na semana do dia 12):</strong> Mesma foto, mas com "Últimos dias! Garanta o presente antes que acabe."</p>
+    <div class="tip" style="margin-top:12px;"><strong>O que a equipe precisa fazer:</strong> Tirar foto do produto mais bonito/mais vendido. Se puder, gravar a Ana ou a filha segurando o produto — fotos com pessoas geram mais resultado.</div>
   </div>
 
   <div class="creative-card">
-    <div class="format">Formato 3 — Vídeo Curto (15-30s)</div>
+    <div class="format">Formato 3 — Vídeo curto (15 a 30 segundos)</div>
     <h4>"A gente te ajuda a escolher o presente certo"</h4>
-    <p><strong>Roteiro:</strong><br>
-    [0-3s] Ana ou a filha na loja: "Oi! Aqui é da Viviane Utilidades"<br>
-    [3-10s] Mostra 3 opções de presente, uma de cada faixa de preço<br>
-    [10-15s] "Tem opção pra todo bolso — e a gente entrega em São Desidério"<br>
-    [15s] Tela final: "Chame no WhatsApp" + número<br>
-    <strong>Dica:</strong> Gravar na loja, com boa iluminação. Celular na vertical (Stories/Reels). Som ambiente ok, mas falar olhando pra câmera.</p>
+    <p><strong>Roteiro (o que falar e mostrar):</strong><br><br>
+    <strong>Segundos 0 a 3:</strong> Ana ou a filha na loja, olhando pra câmera: "Oi! Aqui é a Viviane Utilidades!"<br><br>
+    <strong>Segundos 3 a 12:</strong> Mostrar 3 opções de presente, uma de cada faixa de preço. Apontar, segurar, girar o produto. Falar o preço de cada um.<br><br>
+    <strong>Segundos 12 a 15:</strong> "Tem opção pra todo bolso — e a gente entrega em São Desidério!"<br><br>
+    <strong>Final:</strong> Tela com "Chame no WhatsApp" e o número (77) 99925-4343.</p>
+    <div class="tip" style="margin-top:12px;"><strong>Dicas para gravar:</strong> Celular na vertical (de pé, não deitado). Boa iluminação (perto da porta ou janela). Falar olhando pra câmera. Não precisa ser perfeito — o natural funciona melhor que o ensaiado. Som da loja ao fundo é ok.</div>
   </div>
 </section>
 
 <!-- WHATSAPP SCRIPTS -->
 <section class="section" id="whatsapp">
-  <div class="section-label">Atendimento</div>
+  <div class="section-label">Mensagens Prontas</div>
   <h2>Scripts de <span>WhatsApp</span></h2>
-  <p class="section-desc">Mensagens prontas para atender os leads que chegam pelo anúncio. Personalizar com o nome da pessoa.</p>
+  <p class="section-desc">Mensagens prontas para copiar e colar. Trocar [nome] pelo nome da pessoa. Divididas por situação.</p>
 
   <div class="script-block">
-    <h4>1. Primeiro Contato (lead chegou do anúncio)</h4>
+    <h4>1. Mensagem para a Lista "Dia das Crianças"</h4>
+    <div class="script-context">Para os clientes que compraram presente infantil no ano passado. Enviar na Fase 1 (28/09-02/10).</div>
     <div class="script-msg">
-      <div class="tag">Mensagem</div>
+      <div class="tag">Lista de Transmissão</div>
+      Oi! Tudo bem? Aqui é da Viviane Utilidades 💜<br><br>
+      O Dia das Crianças tá chegando e a gente separou opções lindas de presente — roupa, acessório, kit completo.<br><br>
+      Como você já é cliente da casa, quis te avisar primeiro! 😊<br><br>
+      Quer ver as opções? Me chama aqui que eu te mando fotos com preço!
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Essa mensagem funciona bem porque a pessoa já comprou antes — é um lembrete personalizado, não uma propaganda fria.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>2. Mensagem para a Lista "VIP"</h4>
+    <div class="script-context">Para as clientes mais fiéis. Enviar na Fase 1 (28/09-02/10).</div>
+    <div class="script-msg">
+      <div class="tag">Lista de Transmissão</div>
+      Oi! Aqui é da Viviane 💜<br><br>
+      Como você é cliente especial da casa, queria te mostrar ANTES as novidades que chegaram pro Dia das Crianças.<br><br>
+      Tem opção pra todo bolso — e posso separar o que você gostar antes de colocar na vitrine. 😊<br><br>
+      Quer que eu te mande as fotos?
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">O "antes de colocar na vitrine" cria exclusividade. A cliente se sente privilegiada.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>3. Mensagem para a Lista "Base Geral"</h4>
+    <div class="script-context">Para todos os contatos. Enviar no dia 03/10 (quando os anúncios entram no ar).</div>
+    <div class="script-msg">
+      <div class="tag">Lista de Transmissão</div>
+      Oi! Viviane Utilidades aqui 💜<br><br>
+      O Dia das Crianças tá chegando e a loja tá cheia de opções de presente!<br><br>
+      ✅ Conjunto infantil a partir de R$ XX<br>
+      ✅ Kits de presente prontos<br>
+      ✅ Acessórios e brinquedos<br><br>
+      Quer ver as opções? Me chama aqui que eu te mando fotos com preço! 😊
+    </div>
+  </div>
+
+  <div class="script-block">
+    <h4>4. Primeiro contato (pessoa veio do anúncio)</h4>
+    <div class="script-context">Quando alguém chama no WhatsApp depois de ver o anúncio no Instagram/Facebook. Responder rápido — ideal em até 15 minutos.</div>
+    <div class="script-msg">
+      <div class="tag">Resposta</div>
       Oi, [nome]! Tudo bem? 😊<br><br>
       Vi que você se interessou pelos nossos produtos de Dia das Crianças!<br><br>
       Me conta: é presente pra menino ou menina? E qual a idade? Assim eu já te mando as melhores opções 🎁
     </div>
-    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Objetivo: engajar rápido, perguntar pra qualificar, não jogar catálogo inteiro de cara.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">O objetivo aqui é perguntar pra entender o que a pessoa quer — não jogar o catálogo inteiro de cara. Quando você pergunta, a pessoa se sente atendida de verdade.</p>
   </div>
 
   <div class="script-block">
-    <h4>2. Envio de Opções (após qualificar)</h4>
+    <h4>5. Envio de opções</h4>
+    <div class="script-context">Depois de entender o que a pessoa quer (menino/menina, idade, faixa de preço).</div>
     <div class="script-msg">
-      <div class="tag">Mensagem</div>
+      <div class="tag">Resposta</div>
       Separei essas opções pra você:<br><br>
       ✅ [Produto 1] — R$ XX<br>
       ✅ [Produto 2] — R$ XX<br>
       ✅ [Produto 3] — R$ XX<br><br>
       Qual desses te chamou mais atenção? Se quiser, posso te mostrar mais opções na mesma faixa de preço 😊
     </div>
-    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Máximo 3 opções de uma vez. Mais que isso confunde. Usar fotos reais dos produtos.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Máximo 3 opções de uma vez. Mais que isso confunde e a pessoa desiste. Sempre mandar FOTO junto com o texto.</p>
   </div>
 
   <div class="script-block">
-    <h4>3. Follow-up (não respondeu em 24h)</h4>
+    <h4>6. Pessoa não respondeu (depois de 24 horas)</h4>
+    <div class="script-context">A pessoa mandou mensagem, você respondeu, mas ela sumiu. Mandar essa mensagem no dia seguinte.</div>
     <div class="script-msg">
-      <div class="tag">Mensagem</div>
+      <div class="tag">Follow-up</div>
       Oi, [nome]! Tudo certo por aí?<br><br>
       Só passando pra lembrar que aquelas opções de Dia das Crianças ainda estão disponíveis 😊<br><br>
       Se quiser, posso te mostrar outras opções ou tirar alguma dúvida. Fique à vontade!
     </div>
-    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Tom leve, sem pressão. Se não responder no 2º follow-up, não insistir.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Tom leve, sem pressão. Se a pessoa não responder depois dessa segunda tentativa, não insistir — ela pode voltar depois por conta própria.</p>
   </div>
 
   <div class="script-block">
-    <h4>4. Fechamento</h4>
+    <h4>7. Fechamento da venda</h4>
+    <div class="script-context">A pessoa escolheu o produto. Hora de fechar.</div>
     <div class="script-msg">
-      <div class="tag">Mensagem</div>
+      <div class="tag">Fechamento</div>
       Ótima escolha, [nome]! 🎉<br><br>
       Vou separar pra você. Prefere retirar na loja ou quer que a gente entregue?<br><br>
       🏪 Loja: Rua Principal, São Desidério — segunda a sábado, 8h às 18h<br>
-      🚗 Entrega: a gente combina o melhor horário
+      🚗 Entrega: a gente combina o melhor horário<br><br>
+      Qual prefere?
     </div>
-    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Confirmar produto, quantidade, forma de pagamento e entrega/retirada.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Confirmar: produto, quantidade, tamanho, forma de pagamento (Pix, cartão, dinheiro) e entrega/retirada.</p>
   </div>
 
   <div class="script-block">
-    <h4>5. Pós-venda (dia seguinte)</h4>
+    <h4>8. Pós-venda (dia seguinte à compra)</h4>
+    <div class="script-context">Mandar no dia seguinte à entrega/retirada. Gera recomendação e confiança.</div>
     <div class="script-msg">
-      <div class="tag">Mensagem</div>
+      <div class="tag">Pós-venda</div>
       Oi, [nome]! A criançada gostou do presente? 😊<br><br>
       Qualquer coisa, troca ou dúvida — pode contar com a gente.<br><br>
       E se alguém perguntar onde você comprou, já sabe: Viviane Utilidades! 💜
     </div>
-    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Pós-venda gera recomendação. E o emoji roxo é a cor da Viviane.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Essa mensagem parece simples, mas faz diferença. Mostra cuidado — e a pessoa lembra da loja quando alguém perguntar onde comprar presente.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>9. Mensagem de urgência (dia 07/10 — lista de transmissão)</h4>
+    <div class="script-context">Enviar para TODAS as listas na semana do Dia das Crianças.</div>
+    <div class="script-msg">
+      <div class="tag">Lista de Transmissão</div>
+      Faltam 5 dias pro Dia das Crianças! 🎁<br><br>
+      Se você ainda não escolheu o presente, corre que a Viviane tá com opções lindas — e muitas já estão acabando!<br><br>
+      Me chama aqui que eu te ajudo a escolher rapidinho 😊
+    </div>
+  </div>
+
+  <div class="script-block">
+    <h4>10. Recuperação (Fase 3 — pessoa que conversou mas não comprou)</h4>
+    <div class="script-context">Para quem mandou mensagem durante a campanha mas não fechou. Enviar entre 13/10 e 15/10.</div>
+    <div class="script-msg">
+      <div class="tag">Recuperação</div>
+      Oi, [nome]! Tudo bem?<br><br>
+      Lembra daquele [produto] que você se interessou? Ainda temos disponível! 😊<br><br>
+      Se quiser, posso separar pra você. E se preferir, a gente entrega na sua casa.<br><br>
+      Me avisa! 💜
+    </div>
   </div>
 </section>
 
 <!-- ORÇAMENTO -->
-<section class="section" id="orcamento">
+<section class="section" id="investimento">
   <div class="section-label">Investimento</div>
-  <h2>Orçamento de <span>outubro</span></h2>
-  <p class="section-desc">Investimento em mídia paga + detalhamento por fase. Pago diretamente pela cliente no cartão da conta de anúncios.</p>
+  <h2>Quanto vamos <span>investir</span></h2>
+  <p class="section-desc">Valor em anúncios pagos por fase. Esse dinheiro é pago diretamente ao Instagram/Facebook pelo cartão que está na conta de anúncios — não faz parte da mensalidade.</p>
 
   <div class="tbl-wrap">
     <table>
@@ -832,8 +1071,8 @@ tbody tr:last-child td { border-bottom: none; }
           <th>Fase</th>
           <th>Período</th>
           <th>Dias</th>
-          <th>R$/dia</th>
-          <th>Total Fase</th>
+          <th>Valor/dia</th>
+          <th>Total da Fase</th>
         </tr>
       </thead>
       <tbody>
@@ -852,14 +1091,14 @@ tbody tr:last-child td { border-bottom: none; }
           <td>R$ 250</td>
         </tr>
         <tr>
-          <td>03 — Remarketing</td>
+          <td>03 — Recuperação</td>
           <td>13/10 → 19/10</td>
           <td>7</td>
           <td>R$ 20</td>
           <td>R$ 140</td>
         </tr>
         <tr>
-          <td>04 — Contínuo</td>
+          <td>04 — Dia a Dia</td>
           <td>20/10 → 31/10</td>
           <td>12</td>
           <td>R$ 20</td>
@@ -874,33 +1113,37 @@ tbody tr:last-child td { border-bottom: none; }
     </table>
   </div>
 
-  <div style="margin-top:16px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--dim);">
-    <strong style="color:var(--yellow);">Nota:</strong> O orçamento pode subir para R$ 30/dia na semana de pico (07-12/10) se a performance estiver boa — isso seria decidido com base nos resultados parciais. Máximo adicional: R$ 50.
+  <div class="tip-yellow tip" style="margin-top:16px;">
+    <strong>Sobre a semana de pico (07 a 12/10):</strong> Se o anúncio estiver trazendo bom resultado, podemos aumentar para R$ 30/dia nessa semana. Isso seria um adicional de até R$ 50 no total. A decisão é tomada com base nos resultados parciais que Davidson envia no grupo.
+  </div>
+
+  <div class="tip" style="margin-top:8px;">
+    <strong>Lembrete:</strong> A Fase 1 (esquentamento) e todas as ações de lista de transmissão e conteúdo no Instagram NÃO custam nada — são gratuitas. O investimento é só nos anúncios pagos (Fases 2, 3 e 4).
   </div>
 </section>
 
 <!-- METAS -->
 <section class="section" id="metas">
   <div class="section-label">Resultados Esperados</div>
-  <h2>Metas de <span>outubro</span></h2>
-  <p class="section-desc">O que vamos acompanhar e reportar. Parciais toda segunda, quarta e sexta desde o dia 03/10.</p>
+  <h2>O que esperamos <span>alcançar</span></h2>
+  <p class="section-desc">Números que vamos acompanhar e reportar no grupo do WhatsApp. Davidson manda os resultados parciais toda segunda, quarta e sexta a partir do dia 03/10.</p>
 
   <div class="metrics">
     <div class="metric">
       <div class="metric-value">10-15</div>
-      <div class="metric-label">Conversas/dia via ads</div>
+      <div class="metric-label">Pessoas chamando por dia via anúncio</div>
     </div>
     <div class="metric">
       <div class="metric-value">R$ 2-3</div>
-      <div class="metric-label">Custo por conversa</div>
+      <div class="metric-label">Custo por cada conversa</div>
     </div>
     <div class="metric">
       <div class="metric-value">+5</div>
-      <div class="metric-label">Vendas extras/dia</div>
+      <div class="metric-label">Vendas extras por dia</div>
     </div>
     <div class="metric">
       <div class="metric-value">R$ 630</div>
-      <div class="metric-label">Investimento total</div>
+      <div class="metric-label">Investimento total no mês</div>
     </div>
   </div>
 
@@ -909,50 +1152,44 @@ tbody tr:last-child td { border-bottom: none; }
       <table>
         <thead>
           <tr>
-            <th>Indicador</th>
-            <th>Meta Semanal</th>
-            <th>Meta Mensal</th>
-            <th>Como Medimos</th>
+            <th>O que medimos</th>
+            <th>Meta por semana</th>
+            <th>Meta no mês</th>
+            <th>Como sabemos</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Conversas no WhatsApp (via anúncio)</td>
+            <td>Pessoas chamando no WhatsApp pelo anúncio</td>
             <td>70-100</td>
             <td>280-400</td>
-            <td>Meta Ads + contagem manual</td>
+            <td>Relatório do Meta Ads + contagem manual</td>
           </tr>
           <tr>
-            <td>Custo por conversa</td>
-            <td>≤ R$ 3,00</td>
-            <td>≤ R$ 3,00</td>
-            <td>Meta Ads (gasto ÷ conversas)</td>
+            <td>Custo por cada conversa</td>
+            <td>Até R$ 3,00</td>
+            <td>Até R$ 3,00</td>
+            <td>Valor gasto ÷ número de conversas</td>
           </tr>
           <tr>
-            <td>Vendas atribuídas ao digital</td>
+            <td>Vendas que vieram do digital</td>
             <td>25-35</td>
             <td>100-140</td>
-            <td>Registrar na planilha do Drive</td>
+            <td>Anotar na planilha do Drive</td>
           </tr>
           <tr>
-            <td>Seguidores Instagram</td>
+            <td>Novos seguidores no Instagram</td>
             <td>+30-50</td>
             <td>+120-200</td>
-            <td>Insights do Instagram</td>
-          </tr>
-          <tr>
-            <td>Alcance orgânico (stories + feed)</td>
-            <td>definir na semana 1</td>
-            <td>—</td>
-            <td>Insights do Instagram</td>
+            <td>Painel de estatísticas do Instagram</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div style="margin-top:16px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--dim);">
-    <strong style="color:var(--green);">Âncora de sucesso:</strong> Se as campanhas trouxerem 5 vendas extras por dia (ticket médio R$ 180-420), o retorno sobre o investimento já cobre o serviço + a mídia. O relatório mensal mostra isso de forma clara.
+  <div class="tip-green tip" style="margin-top:16px;">
+    <strong>A conta que importa:</strong> Se as campanhas trouxerem 5 vendas extras por dia (considerando o ticket médio de R$ 180-420 da loja), o retorno já paga o serviço da ADS Company + o dinheiro investido nos anúncios — e ainda sobra lucro. O relatório mensal vai mostrar essa conta de forma clara.
   </div>
 </section>
 
@@ -960,40 +1197,48 @@ tbody tr:last-child td { border-bottom: none; }
 <section class="section" id="discutir">
   <div class="section-label">Reunião de Hoje</div>
   <h2>Pontos para <span>discutir</span></h2>
-  <p class="section-desc">Decisões que precisamos tomar juntos antes de iniciar a campanha.</p>
+  <p class="section-desc">Decisões que precisamos tomar juntos antes de começar. Cada ponto abaixo é uma pergunta que precisa de resposta para a estratégia funcionar.</p>
 
   <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;">
     <div class="discuss-item">
       <div class="discuss-num">1</div>
-      <div class="discuss-text"><strong>Produtos destaque:</strong> Quais os 5-8 produtos infantis que mais vendem e que queremos colocar no anúncio? Precisamos de fotos boas de cada um com preço.</div>
+      <div class="discuss-text"><strong>Sistema de vendas da loja:</strong> A Viviane usa algum programa no computador, caderno ou planilha para registrar vendas? Conseguimos puxar o nome e telefone de quem comprou presente infantil no ano passado? Isso é a frente mais valiosa de toda a estratégia.</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">2</div>
-      <div class="discuss-text"><strong>Faixas de preço:</strong> Até quanto vale como "presente barato" e a partir de quanto é "presente especial"? Precisamos definir as faixas do carrossel.</div>
+      <div class="discuss-text"><strong>Contatos no WhatsApp:</strong> Quantos contatos de clientes a Viviane tem salvo no WhatsApp hoje? E esses clientes têm o número da Viviane salvo na agenda? (Isso importa para a lista de transmissão funcionar.)</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">3</div>
-      <div class="discuss-text"><strong>Entrega:</strong> Fazem entrega em São Desidério? Se sim, é grátis ou cobrado? Isso muda a copy do anúncio.</div>
+      <div class="discuss-text"><strong>Produtos destaque:</strong> Quais são os 5-8 produtos infantis que mais vendem e que queremos colocar no anúncio? Precisamos de fotos boas de cada um com o preço.</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">4</div>
-      <div class="discuss-text"><strong>Quem grava o vídeo?</strong> Ana ou a filha fica mais confortável na câmera? O vídeo é o formato que mais converte — vale o esforço.</div>
+      <div class="discuss-text"><strong>Faixas de preço:</strong> Até quanto vale como "presente barato"? E a partir de quanto é "presente especial"? Precisamos definir as 3 faixas: até R$ X, de R$ X a R$ Y, acima de R$ Y.</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">5</div>
-      <div class="discuss-text"><strong>Horário de atendimento no WhatsApp:</strong> Quem responde e até que horas? Precisamos definir a mensagem de ausência fora do horário.</div>
+      <div class="discuss-text"><strong>Entrega:</strong> A loja faz entrega em São Desidério? Se sim, é grátis ou cobrada? E até que distância? Isso muda o que a gente fala no anúncio.</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">6</div>
-      <div class="discuss-text"><strong>Orçamento diário:</strong> O plano prevê R$ 20-25/dia. O cartão que está na conta suporta? Queremos subir para R$ 30 na semana de pico?</div>
+      <div class="discuss-text"><strong>Quem grava o vídeo?</strong> Ana ou a filha — quem fica mais à vontade na frente da câmera? O vídeo é o formato de anúncio que mais traz resultado.</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">7</div>
-      <div class="discuss-text"><strong>Pós Dia das Crianças:</strong> Quais categorias de produto focamos em outubro (moda adulta, utilidades, acessórios)? Vai ter promoção de liquidação infantil?</div>
+      <div class="discuss-text"><strong>Horário de atendimento no WhatsApp:</strong> Quem responde as mensagens? Até que horas? Precisamos configurar a mensagem automática de "estamos fora do horário".</div>
     </div>
     <div class="discuss-item">
       <div class="discuss-num">8</div>
-      <div class="discuss-text"><strong>Material visual:</strong> Quando podemos receber as fotos dos produtos para montar os criativos? Ideal: até quarta (30/09).</div>
+      <div class="discuss-text"><strong>Investimento diário nos anúncios:</strong> O plano prevê R$ 20-25 por dia. O cartão que está na conta de anúncios suporta? Se o resultado estiver bom, queremos subir para R$ 30 na semana do dia 12?</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">9</div>
+      <div class="discuss-text"><strong>Depois do Dia das Crianças:</strong> Quais categorias de produto focamos no resto de outubro — moda adulta, utilidades, acessórios? Vai ter promoção com o que sobrar de estoque infantil?</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">10</div>
+      <div class="discuss-text"><strong>Prazo para fotos e vídeo:</strong> Precisamos receber as fotos dos produtos e o vídeo até quarta-feira (30/09) para montar as peças do anúncio a tempo. Dá pra fazer?</div>
     </div>
   </div>
 </section>
@@ -1011,7 +1256,6 @@ tbody tr:last-child td { border-bottom: none; }
 <script>
 const sections = document.querySelectorAll('.section[id]');
 const navLinks = document.querySelectorAll('.top-nav a');
-
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1021,7 +1265,6 @@ const obs = new IntersectionObserver(entries => {
     }
   });
 }, { rootMargin: '-20% 0px -70% 0px' });
-
 sections.forEach(s => obs.observe(s));
 </script>
 </body>
