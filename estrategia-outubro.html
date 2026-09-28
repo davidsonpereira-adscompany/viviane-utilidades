@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia de Outubro &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --o: #FF5C00;
+  --o2: #FF7A33;
+  --bg: #060606;
+  --card: #111;
+  --card2: #141414;
+  --border: rgba(255,255,255,0.06);
+  --txt: #F5F5F5;
+  --dim: #888;
+  --green: #34D399;
+  --yellow: #FBBF24;
+  --purple: #9B7DB8;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(6,6,6,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex; align-items: center; gap: 16px;
+  overflow-x: auto;
+}
+.top-nav a {
+  color: var(--dim); text-decoration: none; font-size: 12px;
+  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  white-space: nowrap; padding: 6px 12px; border-radius: 6px;
+  transition: all 0.2s;
+}
+.top-nav a:hover { color: var(--txt); background: rgba(255,255,255,0.04); }
+.top-nav a.active { color: var(--o); background: rgba(255,92,0,0.08); }
+.back-btn {
+  position: fixed; top: 56px; left: 12px; z-index: 200;
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; background: rgba(6,6,6,0.85);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--dim); font-size: 11px; font-weight: 500;
+  font-family: var(--sans); letter-spacing: 0.04em;
+  text-decoration: none; transition: all 0.2s;
+}
+.back-btn:hover { color: var(--txt); border-color: rgba(255,92,0,0.3); }
+.back-btn svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+/* HERO */
+.hero {
+  padding: 100px 32px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,92,0,0.06) 0%, transparent 60%);
+}
+.hero-badge {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--o); background: rgba(255,92,0,0.1);
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; line-height: 1.15; margin-bottom: 16px;
+}
+.hero h1 span { color: var(--o); }
+.hero p {
+  font-size: 16px; color: var(--dim); max-width: 600px; margin: 0 auto 32px;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+  font-size: 13px; color: var(--dim);
+}
+.hero-meta strong { color: var(--txt); font-weight: 600; }
+
+/* CONTAINER */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* SECTIONS */
+.section { margin-top: 64px; scroll-margin-top: 80px; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--o); margin-bottom: 8px;
+}
+.section h2 {
+  font-family: var(--serif); font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700; line-height: 1.2; margin-bottom: 8px;
+}
+.section h2 span { color: var(--o); }
+.section-desc { color: var(--dim); font-size: 14px; margin-bottom: 32px; max-width: 700px; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+  width: 2px; background: rgba(255,92,0,0.2); border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 32px; }
+.tl-dot {
+  position: absolute; left: -32px; top: 6px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--o);
+  display: grid; place-items: center;
+}
+.tl-dot.active { background: var(--o); }
+.tl-dot.active::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.tl-date { font-size: 12px; font-weight: 700; color: var(--o); letter-spacing: 0.04em; margin-bottom: 4px; }
+.tl-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.tl-desc { font-size: 14px; color: var(--dim); }
+
+/* CARDS */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px; transition: border-color 0.2s;
+}
+.card:hover { border-color: rgba(255,92,0,0.2); }
+.card-icon { font-size: 28px; margin-bottom: 12px; }
+.card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.card p { font-size: 13px; color: var(--dim); line-height: 1.6; }
+.card ul { list-style: none; margin-top: 12px; }
+.card ul li {
+  font-size: 13px; color: var(--dim); padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.card ul li::before { content: '→'; color: var(--o); flex-shrink: 0; font-weight: 700; }
+.card ul li:last-child { border-bottom: none; }
+
+/* PHASE BLOCK */
+.phase {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px; margin-bottom: 24px;
+}
+.phase-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.phase-num {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(255,92,0,0.1); display: grid; place-items: center;
+  font-size: 18px; font-weight: 800; color: var(--o); flex-shrink: 0;
+}
+.phase-meta { flex: 1; min-width: 200px; }
+.phase-meta h3 { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.phase-meta h3 span { color: var(--o); }
+.phase-badges { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.badge {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 6px;
+}
+.badge-orange { background: rgba(255,92,0,0.08); color: var(--o); }
+.badge-green { background: rgba(52,211,153,0.08); color: var(--green); }
+.badge-yellow { background: rgba(251,191,36,0.08); color: var(--yellow); }
+.badge-purple { background: rgba(155,125,184,0.08); color: var(--purple); }
+.phase-body h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--o); margin: 20px 0 10px;
+}
+.phase-body ul { list-style: none; }
+.phase-body ul li {
+  font-size: 14px; color: rgba(245,245,245,0.8); padding: 5px 0;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.phase-body ul li::before { content: '•'; color: var(--o); flex-shrink: 0; font-weight: 700; }
+
+/* TABLE */
+.tbl-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+thead th {
+  text-align: left; padding: 14px 16px; font-size: 11px;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--o); background: var(--card2);
+  border-bottom: 1px solid var(--border);
+}
+tbody td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+tbody tr:last-child td { border-bottom: none; }
+.total-row td { font-weight: 700; color: var(--o); background: rgba(255,92,0,0.04); }
+
+/* SCRIPT BLOCK (WhatsApp) */
+.script-block {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px; margin-bottom: 16px;
+}
+.script-block h4 {
+  font-size: 13px; font-weight: 700; color: var(--o);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+}
+.script-msg {
+  background: rgba(255,255,255,0.03); border-radius: 10px;
+  padding: 16px; font-size: 14px; line-height: 1.7;
+  color: rgba(245,245,245,0.85); position: relative;
+  margin-bottom: 8px; border-left: 3px solid var(--green);
+}
+.script-msg .tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 6px;
+}
+
+/* METRIC CARDS */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.metric {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; text-align: center;
+}
+.metric-value { font-size: 28px; font-weight: 800; color: var(--o); margin-bottom: 4px; }
+.metric-label { font-size: 12px; color: var(--dim); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* DISCUSS */
+.discuss-item {
+  display: flex; gap: 12px; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: flex-start;
+}
+.discuss-item:last-child { border-bottom: none; }
+.discuss-num {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(251,191,36,0.1); color: var(--yellow);
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 800; flex-shrink: 0;
+}
+.discuss-text { font-size: 14px; color: rgba(245,245,245,0.8); }
+.discuss-text strong { color: var(--txt); }
+
+/* WEEK GRID */
+.week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 20px; }
+.week-header {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--dim); text-align: center; padding: 8px 4px;
+}
+.day-cell {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 6px; min-height: 70px;
+  font-size: 11px; text-align: center;
+}
+.day-cell .day-num {
+  font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--txt);
+}
+.day-cell .day-tag {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.03em;
+  text-transform: uppercase; padding: 2px 6px; border-radius: 4px;
+  display: inline-block; margin-top: 2px;
+}
+.day-cell.phase-1 { border-color: rgba(155,125,184,0.3); }
+.day-cell.phase-1 .day-tag { background: rgba(155,125,184,0.15); color: var(--purple); }
+.day-cell.phase-2 { border-color: rgba(255,92,0,0.3); }
+.day-cell.phase-2 .day-tag { background: rgba(255,92,0,0.12); color: var(--o); }
+.day-cell.phase-3 { border-color: rgba(251,191,36,0.3); }
+.day-cell.phase-3 .day-tag { background: rgba(251,191,36,0.12); color: var(--yellow); }
+.day-cell.phase-4 { border-color: rgba(52,211,153,0.3); }
+.day-cell.phase-4 .day-tag { background: rgba(52,211,153,0.12); color: var(--green); }
+.day-cell.highlight { background: rgba(255,92,0,0.08); }
+.day-cell.empty { background: transparent; border-color: transparent; }
+.day-cell.today { border-color: var(--o); box-shadow: 0 0 0 1px var(--o); }
+
+/* CREATIVE CARDS */
+.creative-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px; margin-bottom: 16px;
+}
+.creative-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.creative-card .format { font-size: 11px; color: var(--o); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+.creative-card p { font-size: 13px; color: var(--dim); }
+
+/* PRINT */
+@media print {
+  .top-nav, .back-btn { display: none; }
+  body { padding: 0; }
+  .phase, .card, .script-block, .creative-card { break-inside: avoid; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 80px 20px 40px; }
+  .hero-meta { gap: 16px; }
+  .container { padding: 0 16px 60px; }
+  .phase { padding: 20px; }
+  .week-grid { grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .day-cell { padding: 4px 2px; min-height: 56px; }
+  .day-cell .day-num { font-size: 12px; }
+  .day-cell .day-tag { font-size: 8px; padding: 1px 4px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 28px; }
+  .cards { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  .week-grid { grid-template-columns: repeat(7, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="#visao" class="active">Visão Geral</a>
+  <a href="#calendario">Calendário</a>
+  <a href="#fase1">Esquentamento</a>
+  <a href="#fase2">Dia das Crianças</a>
+  <a href="#fase3">Remarketing</a>
+  <a href="#fase4">Contínuo</a>
+  <a href="#criativos">Criativos</a>
+  <a href="#whatsapp">WhatsApp</a>
+  <a href="#orcamento">Orçamento</a>
+  <a href="#metas">Metas</a>
+  <a href="#discutir">Discutir</a>
+</nav>
+
+<a href="index.html" class="back-btn">
+  <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  Central
+</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Plano de Ação — Outubro 2026</div>
+  <h1>Outubro é o mês que <span>Viviane Utilidades</span> chega no digital</h1>
+  <p>Estratégia completa: Dia das Crianças como porta de entrada, campanha contínua para o resto do mês e além.</p>
+  <div class="hero-meta">
+    <span><strong>Cliente:</strong> Ana Neri</span>
+    <span><strong>Região:</strong> São Desidério-BA</span>
+    <span><strong>Investimento:</strong> R$ 20-30/dia</span>
+    <span><strong>Canal:</strong> WhatsApp</span>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- VISÃO GERAL -->
+<section class="section" id="visao">
+  <div class="section-label">Contexto</div>
+  <h2>Por que <span>outubro</span> é estratégico</h2>
+  <p class="section-desc">Primeiro mês de campanha paga. O Dia das Crianças (12/10) dá um motivo de compra urgente e emocional — o gatilho perfeito para ativar o digital. Depois dele, mantemos o motor ligado para criar hábito.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>A Grande Ideia</h3>
+      <p>"A loja que conhece você pelo nome há 15 anos"</p>
+      <ul>
+        <li>Tradição que se Renova</li>
+        <li>Para Toda a Família</li>
+        <li>Proximidade Real</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>O Caminho da Venda</h3>
+      <p>Pessoa vê o anúncio → clica e abre o WhatsApp → atendimento personalizado → venda fechada (loja ou entrega)</p>
+      <ul>
+        <li>Anúncio no Instagram/Facebook</li>
+        <li>Conversa no WhatsApp (77) 99925-4343</li>
+        <li>Fechamento na loja ou via entrega</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>O que muda na prática</h3>
+      <p>Hoje: 100% boca a boca. Meta: gente chamando no WhatsApp todos os dias, vinda do Instagram e dos anúncios.</p>
+      <ul>
+        <li>+5 vendas/dia pagam todo o serviço</li>
+        <li>Parciais seg/qua/sex desde a 1ª semana</li>
+        <li>Campanha contínua — nunca liga-desliga</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section class="section" id="timeline">
+  <div class="section-label">Planejamento</div>
+  <h2>Linha do <span>tempo</span></h2>
+  <p class="section-desc">4 fases que se conectam — cada uma prepara a próxima.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot active"></div>
+      <div class="tl-date">28/09 → 02/10 · 5 dias</div>
+      <div class="tl-title">Fase 1 — Esquentamento</div>
+      <div class="tl-desc">Conteúdo orgânico preparatório. Enquetes, bastidores, teaser dos produtos infantis. Zero investimento em ads.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">03/10 → 12/10 · 10 dias</div>
+      <div class="tl-title">Fase 2 — Campanha Dia das Crianças</div>
+      <div class="tl-desc">Meta Ads ligado. Objetivo: mensagens no WhatsApp. Criativos de presente + urgência. Orgânico intenso paralelo.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">13/10 → 19/10 · 7 dias</div>
+      <div class="tl-title">Fase 3 — Remarketing + Transição</div>
+      <div class="tl-desc">Remarketing para quem interagiu. Liquidação infantil. Transição suave para campanha contínua.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">20/10 → 31/10 · 12 dias</div>
+      <div class="tl-title">Fase 4 — Campanha Contínua</div>
+      <div class="tl-desc">Motor de vendas ligado para o dia a dia. Novidades, moda, utilidades. Preparação para novembro.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDÁRIO VISUAL -->
+<section class="section" id="calendario">
+  <div class="section-label">Mês Inteiro</div>
+  <h2>Calendário de <span>outubro</span></h2>
+  <p class="section-desc">Visão completa do mês com as 4 fases marcadas. Dia das Crianças no dia 12.</p>
+
+  <!-- Semana final de setembro (contexto) -->
+  <div style="font-size:12px;font-weight:700;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">Setembro (esquentamento)</div>
+  <div class="week-grid">
+    <div class="week-header">Seg</div><div class="week-header">Ter</div><div class="week-header">Qua</div><div class="week-header">Qui</div><div class="week-header">Sex</div><div class="week-header">Sáb</div><div class="week-header">Dom</div>
+    <div class="day-cell phase-1 today"><div class="day-num">28</div><div class="day-tag">Início</div></div>
+    <div class="day-cell phase-1"><div class="day-num">29</div><div class="day-tag">Esquenta</div></div>
+    <div class="day-cell phase-1"><div class="day-num">30</div><div class="day-tag">Esquenta</div></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin:20px 0 10px;">Outubro</div>
+  <div class="week-grid">
+    <div class="week-header">Seg</div><div class="week-header">Ter</div><div class="week-header">Qua</div><div class="week-header">Qui</div><div class="week-header">Sex</div><div class="week-header">Sáb</div><div class="week-header">Dom</div>
+
+    <!-- Semana 1: 1-4 (qui-dom) -->
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell empty"></div>
+    <div class="day-cell phase-1"><div class="day-num">01</div><div class="day-tag">Esquenta</div></div>
+    <div class="day-cell phase-1"><div class="day-num">02</div><div class="day-tag">Esquenta</div></div>
+    <div class="day-cell phase-2"><div class="day-num">03</div><div class="day-tag">Ads ON</div></div>
+    <div class="day-cell phase-2"><div class="day-num">04</div><div class="day-tag">Campanha</div></div>
+
+    <!-- Semana 2: 5-11 -->
+    <div class="day-cell phase-2"><div class="day-num">05</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell phase-2"><div class="day-num">06</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell phase-2"><div class="day-num">07</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-2"><div class="day-num">08</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell phase-2"><div class="day-num">09</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-2"><div class="day-num">10</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell phase-2"><div class="day-num">11</div><div class="day-tag">Véspera</div></div>
+
+    <!-- Semana 3: 12-18 -->
+    <div class="day-cell phase-2 highlight"><div class="day-num">12</div><div class="day-tag">Crianças</div></div>
+    <div class="day-cell phase-3"><div class="day-num">13</div><div class="day-tag">Remarket</div></div>
+    <div class="day-cell phase-3"><div class="day-num">14</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-3"><div class="day-num">15</div><div class="day-tag">Remarket</div></div>
+    <div class="day-cell phase-3"><div class="day-num">16</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-3"><div class="day-num">17</div><div class="day-tag">Transição</div></div>
+    <div class="day-cell phase-3"><div class="day-num">18</div><div class="day-tag">Transição</div></div>
+
+    <!-- Semana 4: 19-25 -->
+    <div class="day-cell phase-3"><div class="day-num">19</div><div class="day-tag">Transição</div></div>
+    <div class="day-cell phase-4"><div class="day-num">20</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">21</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-4"><div class="day-num">22</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">23</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-4"><div class="day-num">24</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">25</div><div class="day-tag">Contínuo</div></div>
+
+    <!-- Semana 5: 26-31 -->
+    <div class="day-cell phase-4"><div class="day-num">26</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">27</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">28</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-4"><div class="day-num">29</div><div class="day-tag">Contínuo</div></div>
+    <div class="day-cell phase-4"><div class="day-num">30</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell phase-4"><div class="day-num">31</div><div class="day-tag">Balanço</div></div>
+    <div class="day-cell empty"></div>
+  </div>
+
+  <!-- Legenda -->
+  <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;font-size:12px;">
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(155,125,184,0.3);"></span> Esquentamento</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(255,92,0,0.3);"></span> Dia das Crianças</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(251,191,36,0.3);"></span> Remarketing</span>
+    <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:rgba(52,211,153,0.3);"></span> Contínuo</span>
+  </div>
+</section>
+
+<!-- FASE 1 -->
+<section class="section" id="fase1">
+  <div class="section-label">Fase 1</div>
+  <h2>Esquentamento</h2>
+  <p class="section-desc">Semana preparatória. Criar expectativa e engajamento antes de ligar os anúncios.</p>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">01</div>
+      <div class="phase-meta">
+        <h3>28/09 → 02/10 · <span>5 dias</span></h3>
+        <div class="phase-badges">
+          <span class="badge badge-purple">Orgânico</span>
+          <span class="badge badge-green">Custo zero</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <h4>Instagram — Stories (3-5/dia)</h4>
+      <ul>
+        <li>Bastidores: vitrine sendo montada com produtos infantis</li>
+        <li>Enquete: "Já escolheu o presente do Dia das Crianças?"</li>
+        <li>Caixinha de perguntas: "Que presente seu filho quer ganhar?"</li>
+        <li>Countdown: "Faltam X dias — Viviane Utilidades já está preparada"</li>
+        <li>Preview de produtos: "Dá uma olhada no que separamos"</li>
+      </ul>
+
+      <h4>Instagram — Feed (1 post a cada 2 dias)</h4>
+      <ul>
+        <li>Post institucional: "15 anos vestindo as famílias de São Desidério"</li>
+        <li>Carrossel: "5 presentes que toda criança quer" (com preços)</li>
+        <li>Post de autoridade: "A loja que seu vizinho já conhece"</li>
+      </ul>
+
+      <h4>WhatsApp Status</h4>
+      <ul>
+        <li>Foto diária de produto com preço e CTA "chama no WhatsApp"</li>
+        <li>Usar lista de transmissão existente para avisar das novidades</li>
+      </ul>
+
+      <h4>Ações na Loja</h4>
+      <ul>
+        <li>Tirar fotos e vídeos dos produtos infantis para os criativos da Fase 2</li>
+        <li>Gravar vídeo curto da Ana ou da filha mostrando as opções de presente</li>
+        <li>Separar os produtos destaque por faixa de preço (até R$ 50, R$ 50-100, R$ 100+)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FASE 2 -->
+<section class="section" id="fase2">
+  <div class="section-label">Fase 2</div>
+  <h2>Campanha <span>Dia das Crianças</span></h2>
+  <p class="section-desc">Anúncios no ar. Foco total em gerar conversas no WhatsApp com ofertas de presente.</p>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">02</div>
+      <div class="phase-meta">
+        <h3>03/10 → 12/10 · <span>10 dias</span></h3>
+        <div class="phase-badges">
+          <span class="badge badge-orange">Meta Ads</span>
+          <span class="badge badge-orange">R$ 25/dia</span>
+          <span class="badge badge-purple">Orgânico</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <h4>Meta Ads — Configuração</h4>
+      <ul>
+        <li><strong>Objetivo:</strong> Mensagens (conversas no WhatsApp)</li>
+        <li><strong>Orçamento:</strong> R$ 25/dia (R$ 250 na fase)</li>
+        <li><strong>Público:</strong> São Desidério + 30 km, 25-50 anos, pais e mães</li>
+        <li><strong>Interesses:</strong> Moda infantil, presente, família, compras</li>
+        <li><strong>Posicionamento:</strong> Feed + Stories + Reels (Instagram e Facebook)</li>
+        <li><strong>Horários de pico:</strong> 11h-13h e 18h-21h</li>
+      </ul>
+
+      <h4>Criativos do Anúncio (3 variações)</h4>
+      <ul>
+        <li><strong>Carrossel:</strong> "Presente de Dia das Crianças? A Viviane separou opções pra todo bolso" — 4-5 cards com produtos e preços</li>
+        <li><strong>Imagem única:</strong> Produto destaque + "Dia das Crianças na Viviane — chame no WhatsApp" — visual limpo, CTA claro</li>
+        <li><strong>Vídeo curto (15s):</strong> Ana ou a filha mostrando 3 produtos na loja — "A gente te ajuda a escolher, chama no WhatsApp"</li>
+      </ul>
+
+      <h4>Copy dos Anúncios (ângulo central)</h4>
+      <ul>
+        <li>Abertura com a dor: "Procurando presente de Dia das Crianças sem estourar o orçamento?"</li>
+        <li>Solução: "Na Viviane Utilidades tem opções a partir de R$ XX — roupa, brinquedo, acessório"</li>
+        <li>Prova social: "15 anos em São Desidério. A loja que sua família já conhece."</li>
+        <li>CTA: "Chame no WhatsApp e a gente te ajuda a escolher o presente certo"</li>
+      </ul>
+
+      <h4>Orgânico Paralelo (diário)</h4>
+      <ul>
+        <li><strong>Stories:</strong> 5+/dia — produtos, bastidores, contagem regressiva, depoimentos</li>
+        <li><strong>Feed:</strong> 1 post/dia — produto com preço, carrossel de sugestões, storytelling</li>
+        <li><strong>Reels:</strong> 2-3 na semana — tendência + produto, antes/depois de arrumação, "qual você escolhe?"</li>
+      </ul>
+
+      <h4>WhatsApp (atendimento de leads)</h4>
+      <ul>
+        <li>Responder em até 15 minutos no horário comercial</li>
+        <li>Script de primeiro contato pronto (ver seção WhatsApp abaixo)</li>
+        <li>Catálogo atualizado com fotos e preços dos produtos infantis</li>
+        <li>Enviar opções por faixa de preço quando o lead perguntar</li>
+      </ul>
+
+      <h4>Semana de Pico (07/10 → 12/10)</h4>
+      <ul>
+        <li>Intensificar stories: "Últimos dias para garantir o presente"</li>
+        <li>Se performance estiver boa, subir orçamento para R$ 30/dia</li>
+        <li>Stories de prova social: clientes comprando, sacolas, entregas</li>
+        <li>Dia 12: post especial "Feliz Dia das Crianças — obrigada por confiar na Viviane"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FASE 3 -->
+<section class="section" id="fase3">
+  <div class="section-label">Fase 3</div>
+  <h2>Remarketing + <span>Transição</span></h2>
+  <p class="section-desc">Recuperar quem interagiu mas não comprou. Transição suave para a campanha contínua.</p>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">03</div>
+      <div class="phase-meta">
+        <h3>13/10 → 19/10 · <span>7 dias</span></h3>
+        <div class="phase-badges">
+          <span class="badge badge-yellow">Remarketing</span>
+          <span class="badge badge-orange">R$ 20/dia</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <h4>Meta Ads — Remarketing</h4>
+      <ul>
+        <li><strong>Público:</strong> Quem interagiu com os anúncios da Fase 2 (clicou, enviou mensagem, visualizou perfil)</li>
+        <li><strong>Ângulo:</strong> "Ainda não escolheu? Passa na Viviane — a gente te ajuda"</li>
+        <li><strong>Orçamento:</strong> R$ 20/dia (R$ 140 na fase)</li>
+        <li>Se sobrou estoque infantil: "Últimas peças com desconto especial"</li>
+      </ul>
+
+      <h4>Orgânico — Transição</h4>
+      <ul>
+        <li>Conteúdo de agradecimento: "Obrigada São Desidério! Foi uma semana incrível"</li>
+        <li>Repost de clientes (stories repostados, fotos de sacolas)</li>
+        <li>Começar a mostrar produtos gerais: moda adulta, utilidades, acessórios</li>
+        <li>Manter ritmo de 3-5 stories/dia</li>
+      </ul>
+
+      <h4>WhatsApp</h4>
+      <ul>
+        <li>Follow-up com leads que conversaram mas não fecharam</li>
+        <li>Mensagem: "Oi! Vi que você se interessou por X. Ainda temos disponível — quer que eu separe pra você?"</li>
+        <li>Lista de transmissão: "Novidades chegando essa semana na Viviane"</li>
+      </ul>
+
+      <h4>Análise e Ajuste</h4>
+      <ul>
+        <li>Relatório parcial da campanha de Dia das Crianças: conversas, custo, vendas</li>
+        <li>Identificar o criativo que mais performou para replicar na Fase 4</li>
+        <li>Ajustar público com base nos dados (quem converteu mais)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FASE 4 -->
+<section class="section" id="fase4">
+  <div class="section-label">Fase 4</div>
+  <h2>Campanha <span>Contínua</span></h2>
+  <p class="section-desc">O motor de vendas fica ligado. Sem data comemorativa — o motivo de compra agora é o dia a dia.</p>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">04</div>
+      <div class="phase-meta">
+        <h3>20/10 → 31/10 · <span>12 dias</span></h3>
+        <div class="phase-badges">
+          <span class="badge badge-green">Contínuo</span>
+          <span class="badge badge-orange">R$ 20/dia</span>
+          <span class="badge badge-purple">Orgânico</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <h4>Meta Ads — Campanha Always-On</h4>
+      <ul>
+        <li><strong>Objetivo:</strong> Mensagens no WhatsApp (mesmo da Fase 2)</li>
+        <li><strong>Orçamento:</strong> R$ 20/dia (R$ 240 na fase)</li>
+        <li><strong>Público:</strong> São Desidério + região, 25-50 anos — excluir quem já comprou</li>
+        <li><strong>Ângulo principal:</strong> "A Viviane agora também atende pelo WhatsApp — mais perto de você"</li>
+        <li><strong>Criativos:</strong> Produtos do dia a dia — moda adulta, utilidades domésticas, acessórios</li>
+      </ul>
+
+      <h4>Conteúdo Orgânico</h4>
+      <ul>
+        <li><strong>Feed:</strong> 3-4 posts/semana — produto + storytelling + prova social</li>
+        <li><strong>Stories:</strong> 3-5/dia — bastidores, produtos, enquetes, interação</li>
+        <li><strong>Reels:</strong> 2/semana — tendências, "novidades que chegaram", antes/depois</li>
+      </ul>
+
+      <h4>Ângulos de Conteúdo para o Dia a Dia</h4>
+      <ul>
+        <li>"Chegou novidade na Viviane" — novos produtos toda semana</li>
+        <li>"Sua loja de confiança, agora no seu celular" — WhatsApp como canal</li>
+        <li>"15 anos ao seu lado" — tradição e confiança</li>
+        <li>"Vista a família inteira sem pesar no bolso" — custo-benefício</li>
+      </ul>
+
+      <h4>Preparação para Novembro</h4>
+      <ul>
+        <li>Identificar os produtos campeões de outubro</li>
+        <li>Planejar Black Friday (28/11) — criar lista de espera no WhatsApp</li>
+        <li>Consolidar base de leads para remarketing de novembro</li>
+        <li>Relatório mensal completo (entrega até 17/10 para Ana Neri)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CRIATIVOS -->
+<section class="section" id="criativos">
+  <div class="section-label">Direção Criativa</div>
+  <h2>Criativos <span>propostos</span></h2>
+  <p class="section-desc">3 formatos principais para os anúncios. Todos derivados da Big Idea aprovada.</p>
+
+  <div class="creative-card">
+    <div class="format">Formato 1 — Carrossel (4-5 cards)</div>
+    <h4>"Dia das Crianças na Viviane — presente pra todo bolso"</h4>
+    <p><strong>Card 1:</strong> Capa — "Presente de Dia das Crianças? A Viviane separou opções especiais" · Fundo com produtos infantis<br>
+    <strong>Card 2:</strong> Até R$ 50 — Conjunto infantil básico ou acessório · Foto do produto + preço<br>
+    <strong>Card 3:</strong> R$ 50-100 — Conjunto de marca ou kit completo · Foto + preço<br>
+    <strong>Card 4:</strong> Acima de R$ 100 — Peça premium ou kit presente · Foto + preço<br>
+    <strong>Card 5:</strong> CTA — "Chame no WhatsApp e a gente te ajuda a escolher" · Botão de ação</p>
+  </div>
+
+  <div class="creative-card">
+    <div class="format">Formato 2 — Imagem Única</div>
+    <h4>"A loja que toda mãe de São Desidério já conhece"</h4>
+    <p><strong>Visual:</strong> Foto de produto destaque (conjunto infantil ou cesta de presente) · Fundo limpo ou foto na loja<br>
+    <strong>Texto no criativo:</strong> Preço + "Dia das Crianças" + logo Viviane<br>
+    <strong>Copy do anúncio:</strong> Dor (preço) → Solução (variedade na Viviane) → CTA (WhatsApp)<br>
+    <strong>Variação urgência:</strong> "Últimos dias! Garanta o presente antes que acabe"</p>
+  </div>
+
+  <div class="creative-card">
+    <div class="format">Formato 3 — Vídeo Curto (15-30s)</div>
+    <h4>"A gente te ajuda a escolher o presente certo"</h4>
+    <p><strong>Roteiro:</strong><br>
+    [0-3s] Ana ou a filha na loja: "Oi! Aqui é da Viviane Utilidades"<br>
+    [3-10s] Mostra 3 opções de presente, uma de cada faixa de preço<br>
+    [10-15s] "Tem opção pra todo bolso — e a gente entrega em São Desidério"<br>
+    [15s] Tela final: "Chame no WhatsApp" + número<br>
+    <strong>Dica:</strong> Gravar na loja, com boa iluminação. Celular na vertical (Stories/Reels). Som ambiente ok, mas falar olhando pra câmera.</p>
+  </div>
+</section>
+
+<!-- WHATSAPP SCRIPTS -->
+<section class="section" id="whatsapp">
+  <div class="section-label">Atendimento</div>
+  <h2>Scripts de <span>WhatsApp</span></h2>
+  <p class="section-desc">Mensagens prontas para atender os leads que chegam pelo anúncio. Personalizar com o nome da pessoa.</p>
+
+  <div class="script-block">
+    <h4>1. Primeiro Contato (lead chegou do anúncio)</h4>
+    <div class="script-msg">
+      <div class="tag">Mensagem</div>
+      Oi, [nome]! Tudo bem? 😊<br><br>
+      Vi que você se interessou pelos nossos produtos de Dia das Crianças!<br><br>
+      Me conta: é presente pra menino ou menina? E qual a idade? Assim eu já te mando as melhores opções 🎁
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Objetivo: engajar rápido, perguntar pra qualificar, não jogar catálogo inteiro de cara.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>2. Envio de Opções (após qualificar)</h4>
+    <div class="script-msg">
+      <div class="tag">Mensagem</div>
+      Separei essas opções pra você:<br><br>
+      ✅ [Produto 1] — R$ XX<br>
+      ✅ [Produto 2] — R$ XX<br>
+      ✅ [Produto 3] — R$ XX<br><br>
+      Qual desses te chamou mais atenção? Se quiser, posso te mostrar mais opções na mesma faixa de preço 😊
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Máximo 3 opções de uma vez. Mais que isso confunde. Usar fotos reais dos produtos.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>3. Follow-up (não respondeu em 24h)</h4>
+    <div class="script-msg">
+      <div class="tag">Mensagem</div>
+      Oi, [nome]! Tudo certo por aí?<br><br>
+      Só passando pra lembrar que aquelas opções de Dia das Crianças ainda estão disponíveis 😊<br><br>
+      Se quiser, posso te mostrar outras opções ou tirar alguma dúvida. Fique à vontade!
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Tom leve, sem pressão. Se não responder no 2º follow-up, não insistir.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>4. Fechamento</h4>
+    <div class="script-msg">
+      <div class="tag">Mensagem</div>
+      Ótima escolha, [nome]! 🎉<br><br>
+      Vou separar pra você. Prefere retirar na loja ou quer que a gente entregue?<br><br>
+      🏪 Loja: Rua Principal, São Desidério — segunda a sábado, 8h às 18h<br>
+      🚗 Entrega: a gente combina o melhor horário
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Confirmar produto, quantidade, forma de pagamento e entrega/retirada.</p>
+  </div>
+
+  <div class="script-block">
+    <h4>5. Pós-venda (dia seguinte)</h4>
+    <div class="script-msg">
+      <div class="tag">Mensagem</div>
+      Oi, [nome]! A criançada gostou do presente? 😊<br><br>
+      Qualquer coisa, troca ou dúvida — pode contar com a gente.<br><br>
+      E se alguém perguntar onde você comprou, já sabe: Viviane Utilidades! 💜
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">Pós-venda gera recomendação. E o emoji roxo é a cor da Viviane.</p>
+  </div>
+</section>
+
+<!-- ORÇAMENTO -->
+<section class="section" id="orcamento">
+  <div class="section-label">Investimento</div>
+  <h2>Orçamento de <span>outubro</span></h2>
+  <p class="section-desc">Investimento em mídia paga + detalhamento por fase. Pago diretamente pela cliente no cartão da conta de anúncios.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Período</th>
+          <th>Dias</th>
+          <th>R$/dia</th>
+          <th>Total Fase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01 — Esquentamento</td>
+          <td>28/09 → 02/10</td>
+          <td>5</td>
+          <td>R$ 0</td>
+          <td>R$ 0</td>
+        </tr>
+        <tr>
+          <td>02 — Dia das Crianças</td>
+          <td>03/10 → 12/10</td>
+          <td>10</td>
+          <td>R$ 25</td>
+          <td>R$ 250</td>
+        </tr>
+        <tr>
+          <td>03 — Remarketing</td>
+          <td>13/10 → 19/10</td>
+          <td>7</td>
+          <td>R$ 20</td>
+          <td>R$ 140</td>
+        </tr>
+        <tr>
+          <td>04 — Contínuo</td>
+          <td>20/10 → 31/10</td>
+          <td>12</td>
+          <td>R$ 20</td>
+          <td>R$ 240</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="3">TOTAL OUTUBRO</td>
+          <td>—</td>
+          <td>R$ 630</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:16px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--dim);">
+    <strong style="color:var(--yellow);">Nota:</strong> O orçamento pode subir para R$ 30/dia na semana de pico (07-12/10) se a performance estiver boa — isso seria decidido com base nos resultados parciais. Máximo adicional: R$ 50.
+  </div>
+</section>
+
+<!-- METAS -->
+<section class="section" id="metas">
+  <div class="section-label">Resultados Esperados</div>
+  <h2>Metas de <span>outubro</span></h2>
+  <p class="section-desc">O que vamos acompanhar e reportar. Parciais toda segunda, quarta e sexta desde o dia 03/10.</p>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-value">10-15</div>
+      <div class="metric-label">Conversas/dia via ads</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">R$ 2-3</div>
+      <div class="metric-label">Custo por conversa</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">+5</div>
+      <div class="metric-label">Vendas extras/dia</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">R$ 630</div>
+      <div class="metric-label">Investimento total</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Indicador</th>
+            <th>Meta Semanal</th>
+            <th>Meta Mensal</th>
+            <th>Como Medimos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Conversas no WhatsApp (via anúncio)</td>
+            <td>70-100</td>
+            <td>280-400</td>
+            <td>Meta Ads + contagem manual</td>
+          </tr>
+          <tr>
+            <td>Custo por conversa</td>
+            <td>≤ R$ 3,00</td>
+            <td>≤ R$ 3,00</td>
+            <td>Meta Ads (gasto ÷ conversas)</td>
+          </tr>
+          <tr>
+            <td>Vendas atribuídas ao digital</td>
+            <td>25-35</td>
+            <td>100-140</td>
+            <td>Registrar na planilha do Drive</td>
+          </tr>
+          <tr>
+            <td>Seguidores Instagram</td>
+            <td>+30-50</td>
+            <td>+120-200</td>
+            <td>Insights do Instagram</td>
+          </tr>
+          <tr>
+            <td>Alcance orgânico (stories + feed)</td>
+            <td>definir na semana 1</td>
+            <td>—</td>
+            <td>Insights do Instagram</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;color:var(--dim);">
+    <strong style="color:var(--green);">Âncora de sucesso:</strong> Se as campanhas trouxerem 5 vendas extras por dia (ticket médio R$ 180-420), o retorno sobre o investimento já cobre o serviço + a mídia. O relatório mensal mostra isso de forma clara.
+  </div>
+</section>
+
+<!-- PARA DISCUTIR -->
+<section class="section" id="discutir">
+  <div class="section-label">Reunião de Hoje</div>
+  <h2>Pontos para <span>discutir</span></h2>
+  <p class="section-desc">Decisões que precisamos tomar juntos antes de iniciar a campanha.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;">
+    <div class="discuss-item">
+      <div class="discuss-num">1</div>
+      <div class="discuss-text"><strong>Produtos destaque:</strong> Quais os 5-8 produtos infantis que mais vendem e que queremos colocar no anúncio? Precisamos de fotos boas de cada um com preço.</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">2</div>
+      <div class="discuss-text"><strong>Faixas de preço:</strong> Até quanto vale como "presente barato" e a partir de quanto é "presente especial"? Precisamos definir as faixas do carrossel.</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">3</div>
+      <div class="discuss-text"><strong>Entrega:</strong> Fazem entrega em São Desidério? Se sim, é grátis ou cobrado? Isso muda a copy do anúncio.</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">4</div>
+      <div class="discuss-text"><strong>Quem grava o vídeo?</strong> Ana ou a filha fica mais confortável na câmera? O vídeo é o formato que mais converte — vale o esforço.</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">5</div>
+      <div class="discuss-text"><strong>Horário de atendimento no WhatsApp:</strong> Quem responde e até que horas? Precisamos definir a mensagem de ausência fora do horário.</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">6</div>
+      <div class="discuss-text"><strong>Orçamento diário:</strong> O plano prevê R$ 20-25/dia. O cartão que está na conta suporta? Queremos subir para R$ 30 na semana de pico?</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">7</div>
+      <div class="discuss-text"><strong>Pós Dia das Crianças:</strong> Quais categorias de produto focamos em outubro (moda adulta, utilidades, acessórios)? Vai ter promoção de liquidação infantil?</div>
+    </div>
+    <div class="discuss-item">
+      <div class="discuss-num">8</div>
+      <div class="discuss-text"><strong>Material visual:</strong> Quando podemos receber as fotos dos produtos para montar os criativos? Ideal: até quarta (30/09).</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px;">
+  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px;">ADS Company</div>
+  <div>Estratégia para Viviane Utilidades — Outubro 2026</div>
+  <div style="margin-top:4px;">Apresentado em 28/09/2026 · Revisão aberta para feedback</div>
+</div>
+
+</div>
+
+<!-- Active nav highlight -->
+<script>
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.top-nav a');
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.top-nav a[href="#' + e.target.id + '"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

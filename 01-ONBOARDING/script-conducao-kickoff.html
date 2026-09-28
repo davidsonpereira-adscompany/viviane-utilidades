@@ -428,5 +428,29 @@ header p{font-size:14px;color:var(--dim);margin-top:12px}
   <label><input type="checkbox"> Disparar alerta: "Kickoff concluído, X acessos pendentes"</label>
 </div>
 
+<script>
+const STORAGE_KEY='viviane-chk-script';
+
+function saveChk(){
+  try{
+    const cbs=[...document.querySelectorAll('input[type=checkbox]')].map(c=>c.checked);
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(cbs));
+  }catch(e){}
+}
+
+(function loadChk(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    const all=document.querySelectorAll('input[type=checkbox]');
+    data.forEach((v,i)=>{if(all[i]) all[i].checked=v});
+  }catch(e){}
+})();
+
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change',saveChk);
+});
+</script>
 </body>
 </html>

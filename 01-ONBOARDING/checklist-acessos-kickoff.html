@@ -299,6 +299,37 @@ body{padding-top:80px}
 </div>
 
 <script>
+const STORAGE_KEY='viviane-chk-acessos';
+
+function saveState(){
+  try{
+    const cbs=[...document.querySelectorAll('.checks input[type=checkbox]')].map(c=>c.checked);
+    const fields={};
+    document.querySelectorAll('.id-field input, .note-field textarea').forEach(el=>{
+      if(el.id) fields[el.id]=el.value;
+    });
+    localStorage.setItem(STORAGE_KEY,JSON.stringify({cbs,fields}));
+  }catch(e){}
+}
+
+function loadState(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    if(data.cbs){
+      const all=document.querySelectorAll('.checks input[type=checkbox]');
+      data.cbs.forEach((v,i)=>{if(all[i]) all[i].checked=v});
+    }
+    if(data.fields){
+      for(const[id,val] of Object.entries(data.fields)){
+        const el=document.getElementById(id);
+        if(el) el.value=val;
+      }
+    }
+  }catch(e){}
+}
+
 function upd(){
   const all=document.querySelectorAll('.checks input[type=checkbox]');
   const done=[...all].filter(c=>c.checked).length;
@@ -328,12 +359,15 @@ function upd(){
     document.getElementById('sum-'+k).textContent=v||'—';
     document.getElementById('sum-'+k).classList.toggle('pending',!v);
   }
+
+  saveState();
 }
 
 document.querySelectorAll('.id-field input, .note-field textarea').forEach(el=>{
   el.addEventListener('input',upd);
 });
 
+loadState();
 upd();
 </script>
 </body>
