@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesquisa de Mercado — Viviane Utilidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060606;
+  --surface: #111;
+  --surface-2: #1a1a1a;
+  --border: #222;
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --accent: #FF5C00;
+  --accent-soft: rgba(255,92,0,.12);
+  --green: #22c55e;
+  --green-soft: rgba(34,197,94,.12);
+  --yellow: #facc15;
+  --yellow-soft: rgba(250,204,21,.12);
+  --red: #ef4444;
+  --red-soft: rgba(239,68,68,.12);
+  --purple: #9B7DB8;
+  --purple-soft: rgba(155,125,184,.12);
+  --blue: #3b82f6;
+  --blue-soft: rgba(59,130,246,.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0 16px 80px;
+}
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #222;
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.back-btn:hover { color: #e8e8e8; border-color: rgba(255,92,0,0.3); }
+.back-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+.container { max-width: 900px; margin: 0 auto; }
+
+header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+header .tag {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+header p.sub {
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+section { margin-bottom: 40px; }
+section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: .95rem;
+  font-weight: 600;
+  margin: 20px 0 8px;
+}
+p { margin-bottom: 10px; font-size: .9rem; }
+ul { padding-left: 20px; margin-bottom: 12px; }
+li { font-size: .88rem; margin-bottom: 5px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.card.highlight {
+  border-left: 3px solid var(--accent);
+}
+
+.competitor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.competitor .threat {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: .65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.threat-alta { background: var(--red-soft); color: var(--red); }
+.threat-media { background: var(--yellow-soft); color: var(--yellow); }
+.threat-baixa { background: var(--green-soft); color: var(--green); }
+.threat-ref { background: var(--blue-soft); color: var(--blue); }
+
+.competitor h3 { margin-top: 0; font-size: 1rem; }
+.competitor .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 8px 0 12px;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+.competitor .meta span { display: flex; align-items: center; gap: 4px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.4rem; }
+  .competitor .meta { flex-direction: column; gap: 6px; }
+}
+
+.insight-box {
+  background: var(--accent-soft);
+  border: 1px solid rgba(255,92,0,.25);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.insight-box h3 { color: var(--accent); margin-top: 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+  margin: 12px 0;
+}
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+tr:last-child td { border-bottom: none; }
+
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .75rem;
+}
+</style>
+</head>
+<body>
+<a href="../index.html" class="back-btn">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  Central
+</a>
+<div class="container">
+
+<header>
+  <span class="tag">A.C 40 — ADS Company</span>
+  <h1>Pesquisa de Mercado e Concorrentes</h1>
+  <p class="sub">São Desidério e Barreiras-BA + 2 referências nacionais — versão enxuta</p>
+</header>
+
+<!-- CONTEXTO DO MERCADO -->
+<section>
+  <h2>1. Panorama do Mercado Local</h2>
+  <div class="card highlight">
+    <h3>São Desidério-BA — oceano azul digital</h3>
+    <p>São Desidério é uma cidade agrícola no oeste baiano com forte economia rural (maior produtor de soja da Bahia). O comércio local é de pequeno porte, concentrado no centro da cidade, e <strong>praticamente invisível no digital</strong>.</p>
+    <p>Nenhuma outra loja de roupas ou variedades da cidade possui presença digital relevante. Viviane Utilidades, com 11K seguidores no Instagram, é a líder digital absoluta da cidade.</p>
+    <p><strong>Barreiras-BA</strong> (45 km) é o polo comercial da região, com lojas de rede e concorrentes diretos. É de lá que vem a concorrência real — mas nenhum deles investe em tráfego pago de forma estruturada.</p>
+  </div>
+</section>
+
+<!-- CONCORRENTES REGIONAIS -->
+<section>
+  <h2>2. Concorrentes Regionais (Barreiras-BA)</h2>
+
+  <!-- Mega Top -->
+  <div class="competitor">
+    <span class="threat threat-alta">Ameaça alta</span>
+    <h3>Mega Top 20 &amp; 25</h3>
+    <div class="meta">
+      <span>Barreiras-BA</span>
+      <span>@megatop20barreiras · 13K seguidores</span>
+      <span>Fundação: 2021</span>
+    </div>
+    <p><strong>Mix:</strong> Moda feminina, masculina e infantil + cama, mesa e banho + utilidades domésticas — quase idêntico ao da Viviane.</p>
+    <p><strong>Posicionamento:</strong> "Lugar de comprar barato!" — foco total em preço baixo e volume.</p>
+    <p><strong>Meta Ads:</strong> Sem anúncios ativos identificados. Presença limitada a posts orgânicos.</p>
+    <div class="grid-2">
+      <div><strong style="color:var(--green);">Acertos:</strong> Posicionamento claro de preço; mix amplo para toda a família.</div>
+      <div><strong style="color:var(--yellow);">Lacunas:</strong> Comunicação visual amadora; pouco vídeo; sem estratégia de tráfego pago.</div>
+    </div>
+  </div>
+
+  <!-- Closet -->
+  <div class="competitor">
+    <span class="threat threat-media">Ameaça média</span>
+    <h3>Loja Closet</h3>
+    <div class="meta">
+      <span>Marechal Hermes, Barreiras-BA</span>
+      <span>@closet_barreiras · 20K seguidores · 3.000+ posts</span>
+      <span>Desde 2013</span>
+    </div>
+    <p><strong>Mix:</strong> Moda feminina multimarcas (apenas feminino).</p>
+    <p><strong>Posicionamento:</strong> "Referência em moda multimarcas" — tom aspiracional, focado em tendência e estilo.</p>
+    <p><strong>Meta Ads:</strong> Provável (atendida por agência local).</p>
+    <div class="grid-2">
+      <div><strong style="color:var(--green);">Acertos:</strong> Consistência de marca (13 anos); volume alto de conteúdo; engajamento sólido.</div>
+      <div><strong style="color:var(--yellow);">Lacunas:</strong> Nicho restrito (só feminino); posicionamento premium pode afastar público C/D.</div>
+    </div>
+  </div>
+
+  <!-- LuXus -->
+  <div class="competitor">
+    <span class="threat threat-media">Ameaça média</span>
+    <h3>LuXus</h3>
+    <div class="meta">
+      <span>Barreiras-BA + Luís Eduardo Magalhães</span>
+      <span>@luxusbarreiras · 27K seguidores</span>
+      <span>@luxus.melhorloja · 409K seguidores</span>
+    </div>
+    <p><strong>Mix:</strong> Maquiagem, cosméticos, bijuterias, acessórios (atacado e varejo). Não vende roupas.</p>
+    <p><strong>Posicionamento:</strong> "A Melhor Loja Barreiras" — agressivo, autoconfiante, jovem.</p>
+    <p><strong>Meta Ads:</strong> Provável (dado o volume de seguidores e expansão regional).</p>
+    <div class="grid-2">
+      <div><strong style="color:var(--green);">Acertos:</strong> Marca forte; expansão regional; volume massivo de seguidores.</div>
+      <div><strong style="color:var(--yellow);">Lacunas:</strong> Concorre só na faixa de acessórios — não vende roupas como categoria principal.</div>
+    </div>
+  </div>
+
+  <!-- Oxigênio -->
+  <div class="competitor">
+    <span class="threat threat-alta">Ameaça alta</span>
+    <h3>Lojas Oxigênio</h3>
+    <div class="meta">
+      <span>Centro, Barreiras-BA</span>
+      <span>Rede de MG (Tocantins, Maranhão, Bahia)</span>
+    </div>
+    <p><strong>Mix:</strong> Moda feminina, masculina, infantil, plus size, moda praia, lingerie, calçados, cama/mesa/banho — departamento completo.</p>
+    <p><strong>Posicionamento:</strong> "A loja do benefício — Maior variedade, menor preço do Brasil." Programa de fidelidade "Clube Oxi" com descontos de até 80%.</p>
+    <p><strong>Meta Ads:</strong> Provável (rede com estrutura de marketing profissional).</p>
+    <div class="grid-2">
+      <div><strong style="color:var(--green);">Acertos:</strong> Estrutura profissional de rede; programa de fidelidade; WhatsApp VIP para promoções.</div>
+      <div><strong style="color:var(--yellow);">Lacunas:</strong> Sem conexão emocional com público local; experiência impessoal de loja de rede.</div>
+    </div>
+  </div>
+
+  <!-- Menores -->
+  <div class="card">
+    <h3>Outros concorrentes menores</h3>
+    <table>
+      <thead>
+        <tr><th>Loja</th><th>Instagram</th><th>Seguidores</th><th>Foco</th><th>Ameaça</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Uso Pink Modas</td><td>@usopinkmodas</td><td>11K</td><td>Feminino + envio nacional</td><td style="color:var(--green)">Baixa</td></tr>
+        <tr><td>Eli Moda Feminina</td><td>@modafemininaeli</td><td>10K</td><td>Feminino</td><td style="color:var(--green)">Baixa</td></tr>
+        <tr><td>Paraíba Shopping</td><td>@paraiba.shoppingoficial</td><td>Novo</td><td>Preço único / variedades</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>Lojas Avenida</td><td>Rede nacional</td><td>170+ lojas</td><td>Moda popular</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>Havan</td><td>Megaloja Barreiras</td><td>Rede</td><td>Variedades + eletro</td><td style="color:var(--green)">Baixa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- REFERENCIAS NACIONAIS -->
+<section>
+  <h2>3. Referências Nacionais</h2>
+
+  <div class="competitor">
+    <span class="threat threat-ref">Referência</span>
+    <h3>Pernambucanas — "Faz parte da família"</h3>
+    <div class="meta">
+      <span>@pernambucanas · 3M seguidores</span>
+      <span>Fundação: 1908 · Centenas de lojas</span>
+    </div>
+    <p><strong>Posicionamento:</strong> Moda acessível para toda a família brasileira. Classes C/D, forte no interior. Parcelamento facilitado, crédito digital em 10 minutos.</p>
+    <p><strong>Comunicação:</strong> Familiar, calorosa, inclusiva. Usa sazonalidade como motor (volta às aulas, Dia das Mães, São João, Natal). Nunca fala só de produto — fala de momentos.</p>
+    <h3 style="color:var(--accent);">O que Viviane pode copiar</h3>
+    <ul>
+      <li>Abordagem "de família para família" — a Viviane também é negócio familiar</li>
+      <li>Sazonalidade como motor de campanha (Dia das Crianças, Natal, etc.)</li>
+      <li>Conteúdo mostrando a loja como "destino para toda a família"</li>
+      <li>Programa de fidelidade simplificado (mesmo manual via WhatsApp)</li>
+    </ul>
+    <p><strong>Vantagem Viviane:</strong> Pernambucanas é impessoal. Viviane tem 15 anos de relacionamento — conhece clientes pelo nome.</p>
+  </div>
+
+  <div class="competitor">
+    <span class="threat threat-ref">Referência</span>
+    <h3>Lojas Besni — "A moda que conecta pessoas"</h3>
+    <div class="meta">
+      <span>@lojasbesni · 2M seguidores · 3.400+ Reels</span>
+      <span>Fundação: 1966 · 31 lojas</span>
+    </div>
+    <p><strong>Posicionamento:</strong> Moda popular com valor emocional. Preço justo + emoção. Classes C/D.</p>
+    <p><strong>Comunicação:</strong> Divertida, inclusiva, muito vídeo curto. Volume massivo de Reels. Conteúdo de provador com clientes reais. Moda plus size como categoria explícita.</p>
+    <h3 style="color:var(--accent);">O que Viviane pode copiar</h3>
+    <ul>
+      <li><strong>Reels de provador:</strong> Clientes experimentando roupas na loja — conteúdo autêntico, custo zero</li>
+      <li>Frequência de postagem alta (mínimo 1 post/dia)</li>
+      <li>Mostrar clientes reais, não modelos — gera identificação</li>
+      <li>Plus size como categoria explícita (inclusão gera conexão)</li>
+    </ul>
+    <p><strong>Vantagem Viviane:</strong> Besni é SP-cêntrica. Viviane tem a autenticidade do interior baiano e a proximidade real com a comunidade.</p>
+  </div>
+</section>
+
+<!-- MAPA COMPARATIVO -->
+<section>
+  <h2>4. Mapa Comparativo</h2>
+  <div class="card" style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Concorrente</th><th>Local</th><th>Seguidores</th><th>Meta Ads</th><th>Mix vs Viviane</th><th>Ameaça</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Mega Top 20</strong></td><td>Barreiras</td><td>13K</td><td style="color:var(--red)">Não</td><td>Muito similar</td><td style="color:var(--red)"><strong>Alta</strong></td></tr>
+        <tr><td><strong>Lojas Oxigênio</strong></td><td>Barreiras</td><td>Rede</td><td style="color:var(--yellow)">Provável</td><td>Similar + maior</td><td style="color:var(--red)"><strong>Alta</strong></td></tr>
+        <tr><td>Loja Closet</td><td>Barreiras</td><td>20K</td><td style="color:var(--yellow)">Provável</td><td>Só feminino</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>LuXus</td><td>Barreiras/LEM</td><td>27K</td><td style="color:var(--yellow)">Provável</td><td>Acessórios</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>Paraíba Shopping</td><td>Barreiras</td><td>Novo</td><td style="color:var(--red)">Não</td><td>Similar</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>Lojas Avenida</td><td>Barreiras</td><td>Rede</td><td style="color:var(--green)">Sim</td><td>Similar</td><td style="color:var(--yellow)">Média</td></tr>
+        <tr><td>Uso Pink</td><td>Barreiras</td><td>11K</td><td style="color:var(--red)">Não</td><td>Só feminino</td><td style="color:var(--green)">Baixa</td></tr>
+        <tr><td>Eli Moda</td><td>Barreiras</td><td>10K</td><td style="color:var(--red)">Não</td><td>Só feminino</td><td style="color:var(--green)">Baixa</td></tr>
+        <tr><td>Havan</td><td>Barreiras</td><td>Rede</td><td style="color:var(--green)">Sim</td><td>Mais amplo</td><td style="color:var(--green)">Baixa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONCLUSÕES -->
+<section>
+  <h2>5. Conclusões Estratégicas</h2>
+
+  <div class="insight-box">
+    <h3>1. São Desidério é oceano azul digital</h3>
+    <p>Nenhum concorrente local investe em tráfego pago. Viviane Utilidades já é líder digital da cidade com 11K seguidores. Investir agora em Meta Ads significa dominar o mercado local sem concorrência de anúncios.</p>
+  </div>
+
+  <div class="insight-box">
+    <h3>2. Nenhum concorrente regional usa Meta Ads de forma estruturada</h3>
+    <p>Mesmo em Barreiras, o tráfego pago é subutilizado. A Mega Top 20 (concorrente mais similar) não anuncia. Janela aberta para Viviane ser a primeira a ocupar esse espaço.</p>
+  </div>
+
+  <div class="insight-box">
+    <h3>3. O diferencial de Viviane é o relacionamento, não o preço</h3>
+    <p>As redes competem em preço e variedade. Viviane compete em <strong>confiança</strong> — 15 anos na cidade, clientes conhecidos pelo nome, atendimento por áudio no WhatsApp. A comunicação deve explorar: "sua loja de confiança há 15 anos" vs "loja de rede sem rosto".</p>
+  </div>
+
+  <div class="insight-box">
+    <h3>4. Reels de provador = conteúdo com maior potencial</h3>
+    <p>Referências nacionais (Besni) mostram que vídeos curtos de clientes experimentando roupas na loja são o formato com maior engajamento, custo zero e autenticidade. Viviane como porta-voz + clientes reais é a fórmula.</p>
+  </div>
+
+  <div class="insight-box">
+    <h3>5. Sazonalidade como motor de campanha</h3>
+    <p>Pernambucanas usa cada data comemorativa como motor. Viviane deve fazer o mesmo: Dia das Crianças (out), Black Friday (nov), Natal (dez) — cada mês do contrato tem uma data-âncora natural.</p>
+  </div>
+</section>
+
+<div class="footer">
+  ADS Company · Viviane Utilidades · A.C 40 · Pesquisa de mercado realizada em 24/09/2026
+</div>
+
+</div>
+</body>
+</html>

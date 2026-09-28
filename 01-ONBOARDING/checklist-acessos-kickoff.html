@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist de Acessos — Viviane Utilidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#0E0E0E;--border:rgba(255,255,255,.06);--txt:#F5F5F5;--dim:#888;--green:#22C55E;--yellow:#FACC15;--blue:#60A5FA;--red:#EF4444}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.7;scroll-behavior:smooth}
+body{max-width:780px;margin:0 auto;padding:40px 32px 80px}
+
+header{text-align:center;padding:32px 0 40px;border-bottom:1px solid var(--border);margin-bottom:40px}
+header .tag{font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+header h1{font-size:32px;font-weight:800}
+header h1 span{color:var(--o)}
+header p{font-size:13px;color:var(--dim);margin-top:10px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* === PROGRESS === */
+.progress-bar{position:fixed;top:0;left:0;right:0;height:48px;background:rgba(6,6,6,.9);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:center;gap:24px;backdrop-filter:blur(8px);padding:0 20px}
+.progress-bar .stat{font-size:13px;font-weight:600}
+.progress-bar .stat span{color:var(--o)}
+.progress-bar .bar-track{flex:1;max-width:400px;height:6px;background:#1A1A1A;border-radius:3px;overflow:hidden}
+.progress-bar .bar-fill{height:100%;background:var(--o);border-radius:3px;transition:width .3s}
+
+body{padding-top:80px}
+
+/* === SECTION === */
+.section{margin-bottom:40px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s}
+.section.done{border-color:rgba(34,197,94,.2)}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;cursor:pointer}
+.section-num{width:36px;height:36px;border-radius:9px;background:rgba(255,92,0,.1);display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--o);flex-shrink:0}
+.section.done .section-num{background:rgba(34,197,94,.1);color:var(--green)}
+.section-head h2{font-size:18px;font-weight:700;flex:1}
+.section-status{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+.status-pending{background:rgba(255,92,0,.08);color:var(--o)}
+.status-ok{background:rgba(34,197,94,.08);color:var(--green)}
+
+/* === CHECK ITEMS === */
+.checks{display:flex;flex-direction:column;gap:8px}
+.chk{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-radius:8px;cursor:pointer;transition:background .15s;font-size:14px;color:rgba(245,245,245,.85)}
+.chk:hover{background:rgba(255,255,255,.02)}
+.chk input{accent-color:var(--green);width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer}
+.chk.checked{color:var(--dim);text-decoration:line-through}
+
+/* === DECISION === */
+.dec{margin:10px 0 10px 30px;padding:10px 16px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px;color:var(--dim)}
+.dec .y{color:var(--green);font-weight:600}
+.dec .n{color:var(--yellow);font-weight:600}
+
+/* === ID FIELD === */
+.id-field{display:flex;align-items:center;gap:10px;margin:12px 0 0 30px}
+.id-field label{font-size:12px;font-weight:600;color:var(--dim);letter-spacing:.05em;text-transform:uppercase;min-width:40px}
+.id-field input{flex:1;background:#1A1A1A;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;color:var(--txt);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.id-field input:focus{border-color:var(--o)}
+.id-field input::placeholder{color:#444}
+
+/* === NOTE FIELD === */
+.note-field{margin:10px 0 0 30px}
+.note-field textarea{width:100%;background:#1A1A1A;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 14px;color:var(--txt);font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:vertical;min-height:48px;transition:border-color .2s}
+.note-field textarea:focus{border-color:var(--o)}
+.note-field textarea::placeholder{color:#444}
+
+/* === SUMMARY TABLE === */
+.summary{margin-top:48px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.summary h3{padding:18px 24px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:var(--card);border-bottom:1px solid var(--border)}
+.summary table{width:100%;border-collapse:collapse}
+.summary th{text-align:left;padding:10px 16px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--border);background:var(--card)}
+.summary td{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.03);font-size:14px}
+.summary .id-val{font-family:monospace;color:var(--o)}
+.summary .pending{color:#555;font-style:italic}
+
+/* === PENDENTES === */
+.pendentes{margin-top:32px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px}
+.pendentes h3{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+.pend-row{display:grid;grid-template-columns:1fr 120px 100px;gap:10px;margin-bottom:8px}
+.pend-row input,.pend-row select{background:#1A1A1A;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;color:var(--txt);font-family:'Inter',sans-serif;font-size:13px;outline:none}
+.pend-row select{appearance:none;cursor:pointer}
+.pend-row input:focus,.pend-row select:focus{border-color:var(--o)}
+
+/* === RESPONSIVE === */
+@media(max-width:600px){
+  body{padding:64px 16px 60px}
+  header h1{font-size:24px}
+  .section{padding:20px}
+  .pend-row{grid-template-columns:1fr}
+}
+
+@media print{
+  .progress-bar{display:none}
+  body{padding-top:20px}
+  .section{break-inside:avoid}
+  .back-btn{display:none}
+}
+.back-btn{position:fixed;top:12px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--dim);font-size:11px;font-weight:500;font-family:'Inter',sans-serif;letter-spacing:.04em;text-decoration:none;transition:all .2s}
+.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
+.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
+</style>
+</head>
+<body>
+<a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Central</a>
+<div class="progress-bar">
+  <div class="stat"><span id="countDone">0</span> / <span id="countTotal">0</span> itens</div>
+  <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+  <div class="stat"><span id="pct">0</span>%</div>
+</div>
+
+<header>
+  <div class="tag">Checklist de Acessos Meta</div>
+  <h1>Viviane <span>Utilidades</span></h1>
+  <p>Slide 09 da apresentação. Passar item a item no kickoff. Resolver o que puder na hora. Pendências com prazo até segunda.</p>
+</header>
+
+<!-- 1. PÁGINA -->
+<div class="section" id="sec1">
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <h2>Página do Facebook</h2>
+    <span class="section-status status-pending" id="st1">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Página da Viviane Utilidades existe</label>
+    <div class="dec"><span class="y">SIM →</span> pegar link/ID, solicitar admin para Davidson<br><span class="n">NÃO →</span> criar: Viviane Utilidades · Loja de Variedades · São Desidério-BA</div>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Foto de perfil e capa configuradas</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Informações completas (endereço, telefone, horário)</label>
+  </div>
+  <div class="id-field">
+    <label>ID</label>
+    <input type="text" placeholder="ID da Página" id="id-page">
+  </div>
+</div>
+
+<!-- 2. BM -->
+<div class="section" id="sec2">
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <h2>Gerenciador de Negócios</h2>
+    <span class="section-status status-pending" id="st2">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> BM existe ou foi criado (vivianeutilidades@gmail.com)</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Verificação do BM iniciada</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Davidson adicionado como administrador</label>
+  </div>
+  <div class="id-field">
+    <label>ID</label>
+    <input type="text" placeholder="ID do Business Manager" id="id-bm">
+  </div>
+</div>
+
+<!-- 3. INSTAGRAM -->
+<div class="section" id="sec3">
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <h2>Instagram @viviane.utilidades</h2>
+    <span class="section-status status-pending" id="st3">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Conta é Business (ou convertida agora)</label>
+    <div class="dec"><span class="n">Se pessoal →</span> Configurações > Conta > Mudar para profissional > Empresa</div>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Vinculado à Página do Facebook</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Adicionado ao Business Manager</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Credenciais anotadas (review do perfil)</label>
+  </div>
+  <div class="id-field">
+    <label>ID</label>
+    <input type="text" placeholder="ID numérico do Instagram" id="id-ig">
+  </div>
+</div>
+
+<!-- 4. CONTA DE ANÚNCIOS -->
+<div class="section" id="sec4">
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <h2>Conta de Anúncios</h2>
+    <span class="section-status status-pending" id="st4">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Conta criada (BRL, fuso Brasília)</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Nome: Viviane Utilidades — Meta Ads</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Davidson como administrador/anunciante</label>
+  </div>
+  <div class="id-field">
+    <label>ID</label>
+    <input type="text" placeholder="ID da Conta de Anúncios" id="id-ad">
+  </div>
+</div>
+
+<!-- 5. CARTÃO -->
+<div class="section" id="sec5">
+  <div class="section-head">
+    <div class="section-num">5</div>
+    <h2>Forma de Pagamento</h2>
+    <span class="section-status status-pending" id="st5">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Cartão DA CLIENTE adicionado na conta</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Limite comporta R$ 900-1.200/mês</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Cartão testado com sucesso</label>
+  </div>
+  <div class="note-field">
+    <textarea placeholder="Observações sobre o cartão..."></textarea>
+  </div>
+</div>
+
+<!-- 6. WHATSAPP -->
+<div class="section" id="sec6">
+  <div class="section-head">
+    <div class="section-num">6</div>
+    <h2>WhatsApp Business</h2>
+    <span class="section-status status-pending" id="st6">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Número é WhatsApp Business</label>
+    <div class="dec"><span class="n">Se pessoal →</span> tutorial de migração no grupo (backup antes)</div>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Perfil comercial preenchido (nome, endereço, descrição, horário)</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Catálogo ativo com produtos principais</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Mensagem automática de ausência configurada</label>
+  </div>
+  <div class="id-field">
+    <label>Nº</label>
+    <input type="text" placeholder="Número do WhatsApp" id="id-wpp">
+  </div>
+  <div class="id-field" style="margin-top:8px">
+    <label>Atende</label>
+    <input type="text" placeholder="Quem atende + horário" id="id-atende">
+  </div>
+</div>
+
+<!-- 7. PIXEL -->
+<div class="section" id="sec7">
+  <div class="section-head">
+    <div class="section-num">7</div>
+    <h2>Pixel</h2>
+    <span class="section-status status-pending" id="st7">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Tem site? Se sim, instalar pixel</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Pixel criado (mesmo sem site)</label>
+  </div>
+  <div class="id-field">
+    <label>ID</label>
+    <input type="text" placeholder="ID do Pixel" id="id-pixel">
+  </div>
+</div>
+
+<!-- 8. DAVIDSON ADMIN -->
+<div class="section" id="sec8">
+  <div class="section-head">
+    <div class="section-num">8</div>
+    <h2>Davidson como Administrador</h2>
+    <span class="section-status status-pending" id="st8">Pendente</span>
+  </div>
+  <div class="checks">
+    <label class="chk"><input type="checkbox" onchange="upd()"> Admin na Página do Facebook</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Admin no Business Manager</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Admin/anunciante na Conta de Anúncios</label>
+    <label class="chk"><input type="checkbox" onchange="upd()"> Acesso ao Instagram via BM</label>
+  </div>
+</div>
+
+<!-- TABELA RESUMO -->
+<div class="summary">
+  <h3>Resumo de IDs — registrar no CLAUDE.md</h3>
+  <table>
+    <thead><tr><th>Recurso</th><th>ID</th></tr></thead>
+    <tbody>
+      <tr><td>Página do Facebook</td><td class="id-val" id="sum-page">—</td></tr>
+      <tr><td>Business Manager</td><td class="id-val" id="sum-bm">—</td></tr>
+      <tr><td>Conta de Anúncios</td><td class="id-val" id="sum-ad">—</td></tr>
+      <tr><td>Instagram</td><td class="id-val" id="sum-ig">—</td></tr>
+      <tr><td>Pixel</td><td class="id-val" id="sum-pixel">—</td></tr>
+      <tr><td>WhatsApp</td><td class="id-val" id="sum-wpp">—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PENDENTES -->
+<div class="pendentes">
+  <h3>Itens Pendentes</h3>
+  <div id="pendList">
+    <div class="pend-row">
+      <input type="text" placeholder="O que falta">
+      <input type="text" placeholder="Quem resolve">
+      <input type="text" placeholder="Prazo">
+    </div>
+    <div class="pend-row">
+      <input type="text" placeholder="O que falta">
+      <input type="text" placeholder="Quem resolve">
+      <input type="text" placeholder="Prazo">
+    </div>
+    <div class="pend-row">
+      <input type="text" placeholder="O que falta">
+      <input type="text" placeholder="Quem resolve">
+      <input type="text" placeholder="Prazo">
+    </div>
+  </div>
+</div>
+
+<script>
+function upd(){
+  const all=document.querySelectorAll('.checks input[type=checkbox]');
+  const done=[...all].filter(c=>c.checked).length;
+  document.getElementById('countDone').textContent=done;
+  document.getElementById('countTotal').textContent=all.length;
+  const pct=all.length?Math.round(done/all.length*100):0;
+  document.getElementById('pct').textContent=pct;
+  document.getElementById('barFill').style.width=pct+'%';
+
+  document.querySelectorAll('.checks input[type=checkbox]').forEach(cb=>{
+    cb.closest('.chk').classList.toggle('checked',cb.checked);
+  });
+
+  for(let i=1;i<=8;i++){
+    const sec=document.getElementById('sec'+i);
+    const cbs=sec.querySelectorAll('.checks input[type=checkbox]');
+    const secDone=[...cbs].every(c=>c.checked)&&cbs.length>0;
+    sec.classList.toggle('done',secDone);
+    const st=document.getElementById('st'+i);
+    if(secDone){st.textContent='Concluído';st.className='section-status status-ok'}
+    else{st.textContent='Pendente';st.className='section-status status-pending'}
+  }
+
+  const ids={page:'id-page',bm:'id-bm',ad:'id-ad',ig:'id-ig',pixel:'id-pixel',wpp:'id-wpp'};
+  for(const[k,id]of Object.entries(ids)){
+    const v=document.getElementById(id).value.trim();
+    document.getElementById('sum-'+k).textContent=v||'—';
+    document.getElementById('sum-'+k).classList.toggle('pending',!v);
+  }
+}
+
+document.querySelectorAll('.id-field input, .note-field textarea').forEach(el=>{
+  el.addEventListener('input',upd);
+});
+
+upd();
+</script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Completo &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --laranja: #FF5C00;
+    --preto: #0A0A0A;
+    --cinza-escuro: #1A1A1A;
+    --cinza-medio: #2A2A2A;
+    --cinza-claro: #888;
+    --cinza-border: rgba(255,255,255,0.08);
+    --branco: #FFFFFF;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media print {
+    @page { margin: 15mm 14mm; }
+    body { background: #fff !important; color: #111 !important; padding: 0 !important; font-size: 12px !important; max-width: 100% !important; }
+    .no-print { display: none !important; }
+    .header { border-bottom-color: #ddd !important; }
+    .header-tag { color: #FF5C00 !important; }
+    .header h1 { color: #111 !important; }
+    .header h1 em { color: #FF5C00 !important; }
+    .header p { color: #555 !important; }
+    .header-line { background: #FF5C00 !important; }
+    .header > div[style*="font-family"] { color: #111 !important; }
+    .header > div[style*="font-family"] em { color: #FF5C00 !important; }
+    .section-tag { color: #FF5C00 !important; }
+    .section h2 { color: #111 !important; }
+    .section h2 em { color: #FF5C00 !important; }
+    .field-label { color: #555 !important; }
+    .field-input, .field-textarea { background: #f5f5f5 !important; color: #111 !important; border-color: #ccc !important; }
+    .field-input::placeholder, .field-textarea::placeholder { color: #aaa !important; }
+    .divider { background: linear-gradient(90deg, #FF5C00, rgba(255,92,0,0.1)) !important; }
+    .obj-table th { background: #eee !important; color: #333 !important; }
+    .obj-table td { color: #111 !important; border-bottom-color: #ddd !important; }
+    .obj-table input { background: #f5f5f5 !important; color: #111 !important; border-color: transparent !important; }
+    .obj-table input::placeholder { color: #bbb !important; }
+    .obj-table td:first-child { color: #FF5C00 !important; }
+    .scale-label { color: #333 !important; }
+    .scale-track { background: #e0e0e0 !important; }
+    .scale-fill { background: #FF5C00 !important; }
+    .scale-input { background: #f5f5f5 !important; color: #111 !important; border-color: #ccc !important; }
+    .level-option { background: #f9f9f9 !important; border-color: #ddd !important; }
+    .level-option .lo-label { color: #111 !important; }
+    .level-option .lo-desc { color: #666 !important; }
+    .level-option input[type="radio"] { accent-color: #FF5C00; }
+    div[style*="border-top"] p, div[style*="border-top"] em { color: #333 !important; }
+    div[style*="border-top"] em { color: #FF5C00 !important; }
+    .back-btn { display: none !important; }
+  }
+
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--cinza-border);
+    color: var(--cinza-claro);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--sans);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .back-btn:hover { color: var(--branco); border-color: rgba(255,92,0,0.3); }
+  .back-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+  .header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--cinza-border); text-align: center; }
+  .header-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--laranja); margin-bottom: 12px; }
+  .header h1 { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
+  .header h1 em { font-style: italic; color: var(--laranja); }
+  .header-line { width: 60px; height: 2px; background: var(--laranja); margin: 16px auto; }
+  .header p { font-size: 0.88rem; color: var(--cinza-claro); font-weight: 300; max-width: 560px; margin: 0 auto; }
+
+  .section { margin-bottom: 40px; }
+  .section-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--laranja); margin-bottom: 10px; }
+  .section h2 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 20px; }
+  .section h2 em { font-style: italic; color: var(--laranja); }
+
+  .field { margin-bottom: 16px; }
+  .field-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cinza-claro); margin-bottom: 6px; }
+  .field-input {
+    width: 100%; background: var(--cinza-escuro); border: 1px solid var(--cinza-border);
+    padding: 14px 16px; font-family: var(--sans); font-size: 0.9rem; color: var(--branco);
+    font-weight: 300; outline: none; transition: border-color 0.2s;
+  }
+  .field-input:focus { border-color: var(--laranja); }
+  .field-input::placeholder { color: rgba(255,255,255,0.25); font-style: italic; }
+  .field-textarea {
+    width: 100%; background: var(--cinza-escuro); border: 1px solid var(--cinza-border);
+    padding: 14px 16px; font-family: var(--sans); font-size: 0.9rem; color: var(--branco);
+    font-weight: 300; outline: none; resize: vertical; min-height: 80px; transition: border-color 0.2s;
+  }
+  .field-textarea:focus { border-color: var(--laranja); }
+  .field-textarea::placeholder { color: rgba(255,255,255,0.25); font-style: italic; }
+
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .field-grid { grid-template-columns: 1fr; } body { padding: 32px 16px; } }
+
+  .obj-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .obj-table th { background: var(--cinza-medio); padding: 10px 14px; text-align: left; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cinza-claro); }
+  .obj-table td { padding: 4px; border-bottom: 1px solid var(--cinza-border); }
+  .obj-table td:first-child { width: 36px; text-align: center; color: var(--laranja); font-weight: 600; padding: 10px; font-size: 0.85rem; }
+  .obj-table input {
+    width: 100%; background: transparent; border: 1px solid transparent;
+    padding: 10px; font-family: var(--sans); font-size: 0.85rem; color: var(--branco); font-weight: 300; outline: none;
+  }
+  .obj-table input:focus { border-color: var(--laranja); background: var(--cinza-escuro); }
+  .obj-table input::placeholder { color: rgba(255,255,255,0.2); font-style: italic; }
+
+  .scale-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .scale-label { width: 180px; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-shrink: 0; }
+  .scale-track { flex: 1; height: 6px; background: var(--cinza-medio); position: relative; cursor: pointer; }
+  .scale-fill { height: 100%; background: var(--laranja); transition: width 0.1s; }
+  .scale-input {
+    width: 56px; background: var(--cinza-escuro); border: 1px solid var(--cinza-border);
+    padding: 6px 8px; font-family: var(--sans); font-size: 0.82rem; color: var(--branco); text-align: center; outline: none;
+  }
+  .scale-input:focus { border-color: var(--laranja); }
+
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, var(--laranja), rgba(255,92,0,0.05)); margin: 40px 0; }
+
+  .btn-bar { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .btn {
+    display: inline-block; padding: 14px 36px; font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-primary { background: var(--laranja); color: var(--preto); }
+  .btn-outline { background: transparent; color: var(--laranja); border: 1px solid var(--laranja); }
+
+  .level-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .level-option {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    background: var(--cinza-escuro); border: 1px solid var(--cinza-border); cursor: pointer; transition: border-color 0.2s;
+  }
+  .level-option:hover { border-color: rgba(255,92,0,0.3); }
+  .level-option input[type="radio"] { accent-color: var(--laranja); width: 16px; height: 16px; }
+  .level-option .lo-label { font-size: 0.85rem; font-weight: 500; color: var(--branco); }
+  .level-option .lo-desc { font-size: 0.8rem; color: var(--cinza-claro); font-weight: 300; margin-left: auto; }
+</style>
+</head>
+<body>
+
+<a href="../index.html" class="back-btn no-print">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  Central
+</a>
+
+<div class="header">
+  <div style="font-family:var(--serif); font-size:1.1rem; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:var(--branco); margin-bottom:16px;">ADS <em style="font-style:italic; color:var(--laranja);">Company</em></div>
+  <div class="header-tag">A.C 40 &mdash; Briefing Completo</div>
+  <h1>Viviane <em>Utilidades</em></h1>
+  <div class="header-line"></div>
+  <p>Briefing estrat&eacute;gico com 12 se&ccedil;&otilde;es &mdash; vis&atilde;o geral, p&uacute;blico, oferta, obje&ccedil;&otilde;es, concorrentes, &acirc;ngulos, promessas, provas, mecanismo, n&iacute;vel de consci&ecirc;ncia, tom e restri&ccedil;&otilde;es.</p>
+</div>
+
+<!-- 1. VISAO GERAL -->
+<div class="section">
+  <div class="section-tag">01 &mdash; Vis&atilde;o Geral</div>
+  <h2>Sobre o <em>projeto</em></h2>
+  <div class="field"><div class="field-label">Nome do projeto</div><input class="field-input" type="text" value="Viviane Utilidades Moda's &mdash; Ana Neri Messias da Mata dos Anjos (Empres&aacute;ria Individual)"></div>
+  <div class="field"><div class="field-label">O que &eacute;</div><input class="field-input" type="text" value="Loja de roupas, utilidades e presentes com 15 anos de mercado e 2 lojas f&iacute;sicas em S&atilde;o Desid&eacute;rio-BA"></div>
+  <div class="field"><div class="field-label">Resultado que entrega</div><input class="field-input" type="text" value="Moda acess&iacute;vel para toda a fam&iacute;lia com atendimento personalizado &mdash; a cliente &eacute; reconhecida pelo nome, n&atilde;o como n&uacute;mero"></div>
+  <div class="field"><div class="field-label">Formato</div><input class="field-input" type="text" value="Varejo f&iacute;sico (2 lojas) + atendimento via WhatsApp (77) 99925-4343 + Instagram @viviane.utilidades (11K)"></div>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">CNPJ</div><input class="field-input" type="text" value="11.496.487/0001-61 &mdash; Situa&ccedil;&atilde;o Ativa"></div>
+    <div class="field"><div class="field-label">Funda&ccedil;&atilde;o</div><input class="field-input" type="text" value="09/12/2009 &mdash; 15 anos de mercado"></div>
+  </div>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">Vendas/dia</div><input class="field-input" type="text" value="35 a 40 vendas/dia &mdash; ticket m&eacute;dio real R$ 94-120"></div>
+    <div class="field"><div class="field-label">Meta de faturamento</div><input class="field-input" type="text" value="R$ 110.000/m&ecirc;s (ambas as lojas)"></div>
+  </div>
+  <div class="field"><div class="field-label">Equipe</div><textarea class="field-textarea" style="min-height:100px;">Ana Neri (m&atilde;e) &mdash; decisora, assina contrato e decis&otilde;es financeiras, controle do caixa
+Viviane (filha) &mdash; porta-voz da marca para v&iacute;deos e conte&uacute;do, gest&atilde;o do Instagram
+Niele &mdash; equipe operacional, apoio na execu&ccedil;&atilde;o de estrat&eacute;gias de p&oacute;s-venda</textarea></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2. PUBLICO -->
+<div class="section">
+  <div class="section-tag">02 &mdash; P&uacute;blico-Alvo</div>
+  <h2>Quem &eacute; o <em>cliente ideal</em></h2>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">Cliente ideal</div><input class="field-input" type="text" value="Mulheres de 25 a 50 anos, fam&iacute;lias de S&atilde;o Desid&eacute;rio e regi&atilde;o (incluindo zona rural), classe C/D"></div>
+    <div class="field"><div class="field-label">Profiss&atilde;o / perfil</div><input class="field-input" type="text" value="M&atilde;es, trabalhadoras rurais e urbanas, homens que buscam marcas (Maresia), m&atilde;es comprando para filhos"></div>
+  </div>
+  <div class="field"><div class="field-label">Dor principal</div><textarea class="field-textarea">N&atilde;o encontra variedade local e &eacute; tratada como n&uacute;mero nas lojas de rede. Entra na loja grande, ningu&eacute;m cumprimenta, ningu&eacute;m lembra o tamanho dela. A compra resolve, mas n&atilde;o conecta. Quando n&atilde;o acha na cidade, precisa ir a Barreiras &mdash; gasto de tempo e deslocamento.</textarea></div>
+  <div class="field"><div class="field-label">Desejo mais forte</div><textarea class="field-textarea">Ter &ldquo;a minha loja&rdquo; &mdash; uma loja de confian&ccedil;a perto de casa, com novidade toda semana, pre&ccedil;o justo e atendimento que sabe o nome dela. Quer ser reconhecida como pessoa, n&atilde;o como n&uacute;mero.</textarea></div>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">Situa&ccedil;&atilde;o atual</div><textarea class="field-textarea">Compra em redes sem conex&atilde;o pessoal ou vai a Barreiras para encontrar variedade. N&atilde;o sabe que a Viviane tem tanta novidade. Descobre pe&ccedil;a nova s&oacute; quando passa na frente da loja.</textarea></div>
+    <div class="field"><div class="field-label">Situa&ccedil;&atilde;o desejada</div><textarea class="field-textarea">Recebe novidade no WhatsApp antes de todo mundo. V&ecirc; a Viviane no feed com pe&ccedil;a nova toda semana. Compra perto de casa com atendimento que a rede nunca deu. Tem &ldquo;a minha loja&rdquo; onde &eacute; nome, n&atilde;o n&uacute;mero.</textarea></div>
+  </div>
+  <div class="field"><div class="field-label">Comportamento de compra</div><textarea class="field-textarea">Valorizam pre&ccedil;o + qualidade. Compram no credi&aacute;rio (maioria das vendas &eacute; a prazo). Preferem atendimento presencial ou por WhatsApp com &aacute;udio (proximidade). Instagram e WhatsApp s&atilde;o os canais digitais. Clientes rurais n&atilde;o gostam de mensagens autom&aacute;ticas. Sazonalidade: Dia das Crian&ccedil;as, Natal, festas locais.</textarea></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3. OFERTA -->
+<div class="section">
+  <div class="section-tag">03 &mdash; Oferta</div>
+  <h2>O que voc&ecirc; <em>vende</em></h2>
+  <div class="field"><div class="field-label">Nome da oferta</div><input class="field-input" type="text" value="Viviane Utilidades &mdash; Moda e presentes para toda a fam&iacute;lia"></div>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">Pre&ccedil;o</div><input class="field-input" type="text" value="Ticket m&eacute;dio unit&aacute;rio R$ 94-120 &mdash; credi&aacute;rio dispon&iacute;vel"></div>
+    <div class="field"><div class="field-label">Garantia</div><input class="field-input" type="text" value="Troca presencial na loja"></div>
+  </div>
+  <div class="field"><div class="field-label">O que est&aacute; incluso (produtos)</div><textarea class="field-textarea" style="min-height:100px;">Roupas femininas (short alfaiataria, blusas, vestidos) &mdash; maior volume
+Roupas masculinas de marca (Maresia, bermudas)
+Infantil &mdash; conjuntos de marcas
+Saias moda evang&eacute;lica
+Pe&ccedil;as jeans
+Bon&eacute;s e acess&oacute;rios
+Cestas de presente (loja conjugada)</textarea></div>
+  <div class="field"><div class="field-label">B&ocirc;nus diferencial</div><input class="field-input" type="text" value="Atendimento personalizado &mdash; sabe o nome, lembra o tamanho, guarda pe&ccedil;a, faz p&oacute;s-venda ativo (liga 3 dias depois)"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 4. OBJECOES -->
+<div class="section">
+  <div class="section-tag">04 &mdash; Obje&ccedil;&otilde;es</div>
+  <h2>Por que <em>n&atilde;o</em> comprariam</h2>
+  <table class="obj-table">
+    <thead><tr><th>#</th><th>Obje&ccedil;&atilde;o</th><th>Resposta</th><th>Prova</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><input type="text" value="N&atilde;o conhe&ccedil;o essa loja"></td><td><input type="text" value="15 anos em S&atilde;o Desid&eacute;rio, 2 lojas, 11K seguidores"></td><td><input type="text" value="Hist&oacute;ria de 15 anos &eacute; a prova viva"></td></tr>
+      <tr><td>2</td><td><input type="text" value="Loja de interior n&atilde;o tem variedade"></td><td><input type="text" value="Novidade toda semana, marcas como Maresia"></td><td><input type="text" value="Fotos e stories di&aacute;rios de pe&ccedil;as novas"></td></tr>
+      <tr><td>3</td><td><input type="text" value="Prefiro comprar em Barreiras"></td><td><input type="text" value="Mesmo produto, mais perto, atendimento que rede n&atilde;o d&aacute;"></td><td><input type="text" value="Depoimentos de clientes fi&eacute;is"></td></tr>
+      <tr><td>4</td><td><input type="text" value="&Eacute; caro?"></td><td><input type="text" value="Ticket m&eacute;dio R$ 94-120, credi&aacute;rio dispon&iacute;vel"></td><td><input type="text" value="Pre&ccedil;os vis&iacute;veis nos criativos"></td></tr>
+      <tr><td>5</td><td><input type="text" value="S&oacute; tem roupa de mulher?"></td><td><input type="text" value="Masculino, infantil, bon&eacute;s, presentes"></td><td><input type="text" value="Carross&eacute;is mostrando todas as categorias"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- 5. CONCORRENTES -->
+<div class="section">
+  <div class="section-tag">05 &mdash; Concorrentes</div>
+  <h2>Quem mais <em>resolve</em> esse problema</h2>
+  <table class="obj-table">
+    <thead><tr><th>#</th><th>Concorrente</th><th>O que faz bem</th><th>O que falta</th><th>Nosso diferencial</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><input type="text" value="Mega Top 20 (13K seg. &mdash; ALTA)"></td><td><input type="text" value="Volume de produtos, pre&ccedil;o agressivo"></td><td><input type="text" value="Zero atendimento personalizado"></td><td><input type="text" value="Viviane conhece a cliente pelo nome"></td></tr>
+      <tr><td>2</td><td><input type="text" value="Lojas Oxig&ecirc;nio (rede &mdash; ALTA)"></td><td><input type="text" value="Estrutura de rede, lojas padronizadas"></td><td><input type="text" value="Zero conex&atilde;o local, atendimento gen&eacute;rico"></td><td><input type="text" value="15 anos na cidade, proximidade real"></td></tr>
+      <tr><td>3</td><td><input type="text" value="Loja Closet (20K seg. &mdash; M&Eacute;DIA)"></td><td><input type="text" value="Presen&ccedil;a digital forte"></td><td><input type="text" value="Sem loja f&iacute;sica consolidada"></td><td><input type="text" value="2 lojas + 15 anos de hist&oacute;ria"></td></tr>
+      <tr><td>4</td><td><input type="text" value="LuXus (27K seg. &mdash; M&Eacute;DIA)"></td><td><input type="text" value="Base de seguidores grande"></td><td><input type="text" value="Posicionamento premium, p&uacute;blico diferente"></td><td><input type="text" value="Pre&ccedil;o acess&iacute;vel + fam&iacute;lia inteira"></td></tr>
+    </tbody>
+  </table>
+  <div class="field"><div class="field-label">Insight competitivo</div><textarea class="field-textarea">Nenhum com&eacute;rcio local de S&atilde;o Desid&eacute;rio investe em tr&aacute;fego pago. Zero. A Viviane ser&aacute; a primeira loja da cidade a aparecer profissionalmente no feed. Oceano azul digital &mdash; quem chega primeiro, define o jogo.</textarea></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 6. ANGULOS -->
+<div class="section">
+  <div class="section-tag">06 &mdash; &Acirc;ngulos de Campanha</div>
+  <h2>Formas de <em>abordar</em> o p&uacute;blico</h2>
+  <div class="field"><div class="field-label">&Acirc;ngulo de Dor</div><input class="field-input" type="text" value="Voc&ecirc; entra na loja da rede e ningu&eacute;m sabe seu nome. Na Viviane, a gente lembra at&eacute; o tamanho."></div>
+  <div class="field"><div class="field-label">&Acirc;ngulo de Desejo</div><input class="field-input" type="text" value="Imagina ter uma loja perto de casa que te avisa quando chega novidade e guarda pe&ccedil;a pra voc&ecirc;."></div>
+  <div class="field"><div class="field-label">&Acirc;ngulo de Prova</div><input class="field-input" type="text" value="15 anos vestindo S&atilde;o Desid&eacute;rio. 35 a 40 vendas por dia. 11 mil seguidores. +22% de crescimento em set/2026."></div>
+  <div class="field"><div class="field-label">&Acirc;ngulo de Urg&ecirc;ncia</div><input class="field-input" type="text" value="S&atilde;o Desid&eacute;rio cresce r&aacute;pido &mdash; quem se posiciona primeiro no digital define o jogo. As redes de fora j&aacute; est&atilde;o chegando."></div>
+  <div class="field"><div class="field-label">&Acirc;ngulo de Curiosidade</div><input class="field-input" type="text" value="A primeira loja de S&atilde;o Desid&eacute;rio a aparecer profissionalmente no seu feed &mdash; e que j&aacute; te conhece h&aacute; 15 anos."></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 7. PROMESSAS -->
+<div class="section">
+  <div class="section-tag">07 &mdash; Promessas</div>
+  <h2>O que voc&ecirc; <em>promete</em></h2>
+  <div class="field"><div class="field-label">Promessa central</div><textarea class="field-textarea">A loja que conhece voc&ecirc; pelo nome h&aacute; 15 anos &mdash; novidade toda semana, confian&ccedil;a de sempre. Moda para toda a fam&iacute;lia com atendimento de vizinha, n&atilde;o de rob&ocirc;.</textarea></div>
+  <div class="field"><div class="field-label">Promessa 1 &mdash; Tradi&ccedil;&atilde;o que se Renova</div><input class="field-input" type="text" value="15 anos de hist&oacute;ria com vitrine nova toda semana. S&atilde;o Desid&eacute;rio merece loja boa &mdash; e a Viviane entrega."></div>
+  <div class="field"><div class="field-label">Promessa 2 &mdash; Para Toda a Fam&iacute;lia</div><input class="field-input" type="text" value="M&atilde;e, pai e filhos saem com sacola cheia. N&atilde;o &eacute; loja s&oacute; de mulher &mdash; &eacute; da fam&iacute;lia inteira."></div>
+  <div class="field"><div class="field-label">Promessa 3 &mdash; Proximidade Real</div><input class="field-input" type="text" value="Atendimento que sabe o nome, lembra o tamanho, manda &aacute;udio no WhatsApp. Vizinha, n&atilde;o vendedora."></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 8. PROVAS -->
+<div class="section">
+  <div class="section-tag">08 &mdash; Provas</div>
+  <h2>Por que devem <em>acreditar</em></h2>
+  <div class="field"><div class="field-label">Depoimentos de clientes</div><textarea class="field-textarea">A coletar via WhatsApp &mdash; prioridade nas primeiras semanas de campanha. A estrat&eacute;gia de p&oacute;s-venda (ligar 3 dias depois) j&aacute; teve retorno positivo in&eacute;dito da clientela &mdash; base para coletar depoimentos reais.</textarea></div>
+  <div class="field"><div class="field-label">Resultados num&eacute;ricos</div><input class="field-input" type="text" value="15 anos no mercado &bull; 2 lojas &bull; 35-40 vendas/dia &bull; +22% faturamento set/2026 vs set/2025 &bull; 11K seguidores &bull; R$ 50K+ faturamento mensal"></div>
+  <div class="field"><div class="field-label">Credenciais</div><input class="field-input" type="text" value="15 anos ininterruptos de opera&ccedil;&atilde;o &mdash; maior loja de utilidades de S&atilde;o Desid&eacute;rio. Refer&ecirc;ncia local."></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 9. MECANISMO -->
+<div class="section">
+  <div class="section-tag">09 &mdash; Mecanismo &Uacute;nico</div>
+  <h2>O que faz <em>funcionar</em></h2>
+  <div class="field"><div class="field-label">Nome do mecanismo</div><input class="field-input" type="text" value="Atendimento de vizinha &mdash; o m&eacute;todo que transforma cliente em fam&iacute;lia"></div>
+  <div class="field"><div class="field-label">Por que funciona</div><textarea class="field-textarea">Em cidade do interior, a rela&ccedil;&atilde;o pessoal &eacute; o que fideliza. Enquanto redes tratam como n&uacute;mero, a Viviane trata pelo nome, guarda a pe&ccedil;a que a cliente queria, liga pra saber se gostou. N&atilde;o &eacute; estrat&eacute;gia de marketing &mdash; &eacute; a cultura da loja h&aacute; 15 anos. A campanha apenas amplifica o que j&aacute; acontece dentro daquela loja todos os dias.</textarea></div>
+  <div class="field"><div class="field-label">Diferencial competitivo</div><input class="field-input" type="text" value="Nenhum concorrente local combina tradi&ccedil;&atilde;o (15 anos) + renova&ccedil;&atilde;o (novidade semanal) + proximidade humana + presen&ccedil;a digital profissional"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 10. NIVEL CONSCIENCIA -->
+<div class="section">
+  <div class="section-tag">10 &mdash; N&iacute;vel de Consci&ecirc;ncia (Schwartz)</div>
+  <h2>Onde o p&uacute;blico <em>est&aacute;</em></h2>
+  <p style="font-size:0.88rem; color:var(--cinza-claro); font-weight:300; margin-bottom:16px;">N&iacute;vel predominante do p&uacute;blico da Viviane Utilidades:</p>
+  <div class="level-options">
+    <label class="level-option"><input type="radio" name="nivel" value="inconsciente"><span class="lo-label">Inconsciente</span><span class="lo-desc">N&atilde;o sabe que tem o problema</span></label>
+    <label class="level-option"><input type="radio" name="nivel" value="problema" checked><span class="lo-label">Consciente do Problema</span><span class="lo-desc">Sabe que quer roupa/presente, n&atilde;o pensa na Viviane</span></label>
+    <label class="level-option"><input type="radio" name="nivel" value="solucao"><span class="lo-label">Consciente da Solu&ccedil;&atilde;o</span><span class="lo-desc">Sabe que existe loja boa, n&atilde;o conhece a Viviane digital</span></label>
+    <label class="level-option"><input type="radio" name="nivel" value="produto"><span class="lo-label">Consciente do Produto</span><span class="lo-desc">J&aacute; compra na Viviane, pode comprar mais</span></label>
+    <label class="level-option"><input type="radio" name="nivel" value="mais"><span class="lo-label">Mais Consciente</span><span class="lo-desc">F&atilde;s da loja, indicam para amigos</span></label>
+  </div>
+  <div class="field"><div class="field-label">Observa&ccedil;&atilde;o</div><textarea class="field-textarea">O p&uacute;blico se distribui entre Consciente do Problema e Consciente da Solu&ccedil;&atilde;o. A maioria sabe que precisa de roupas/presentes mas n&atilde;o pensa na Viviane como op&ccedil;&atilde;o digital. A base fidelizada (j&aacute; Consciente do Produto) precisa de conte&uacute;do de renova&ccedil;&atilde;o &mdash; novidade semanal para manter a relev&acirc;ncia. 100% da capta&ccedil;&atilde;o atual &eacute; boca a boca + fluxo f&iacute;sico. Zero investimento digital estruturado em 15 anos.</textarea></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 11. TOM -->
+<div class="section">
+  <div class="section-tag">11 &mdash; Tom de Comunica&ccedil;&atilde;o</div>
+  <h2>Como a marca <em>fala</em></h2>
+  <div class="scale-row"><span class="scale-label">Formal &harr; Casual</span><div class="scale-track" data-scale="1"><div class="scale-fill" style="width:80%"></div></div><input class="scale-input" type="number" min="0" max="100" value="80" data-scale-input="1"></div>
+  <div class="scale-row"><span class="scale-label">S&eacute;rio &harr; Divertido</span><div class="scale-track" data-scale="2"><div class="scale-fill" style="width:65%"></div></div><input class="scale-input" type="number" min="0" max="100" value="65" data-scale-input="2"></div>
+  <div class="scale-row"><span class="scale-label">T&eacute;cnico &harr; Acess&iacute;vel</span><div class="scale-track" data-scale="3"><div class="scale-fill" style="width:95%"></div></div><input class="scale-input" type="number" min="0" max="100" value="95" data-scale-input="3"></div>
+  <div class="scale-row"><span class="scale-label">Autorit&aacute;rio &harr; Amig&aacute;vel</span><div class="scale-track" data-scale="4"><div class="scale-fill" style="width:90%"></div></div><input class="scale-input" type="number" min="0" max="100" value="90" data-scale-input="4"></div>
+  <div class="field" style="margin-top:16px;"><div class="field-label">Persona da marca</div><input class="field-input" type="text" value="Vizinha animada que encontra na feira &mdash; acolhedora, entusiasmada, real. &Eacute; a Viviane falando, n&atilde;o uma marca corporativa."></div>
+  <div class="field"><div class="field-label">Regras de linguagem</div><textarea class="field-textarea">Linguagem de resultado (Steve Jobs): &ldquo;gente chamando no WhatsApp&rdquo;, &ldquo;movimento na loja&rdquo;, &ldquo;produto voando&rdquo; &mdash; nunca jarg&atilde;o de marketing (CTR, CPM, impress&otilde;es).
+Tom pr&oacute;ximo, acolhedor, de interior &mdash; respeitar a cultura local.
+Nunca usar mensagens autom&aacute;ticas &mdash; clientes rurais achavam estranho.
+WhatsApp com &aacute;udio para gerar proximidade.
+Refer&ecirc;ncias visuais: marca lil&aacute;s/roxa (#9B7DB8), tipografia limpa, fotos reais de produtos.</textarea></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 12. RESTRICOES -->
+<div class="section">
+  <div class="section-tag">12 &mdash; Restri&ccedil;&otilde;es e Contexto</div>
+  <h2>Limites e <em>prazos</em></h2>
+  <div class="field-grid">
+    <div class="field"><div class="field-label">Per&iacute;odo do contrato</div><input class="field-input" type="text" value="90 dias &mdash; 17/09 a 16/12/2026 (renova&ccedil;&atilde;o autom&aacute;tica)"></div>
+    <div class="field"><div class="field-label">Investimento</div><input class="field-input" type="text" value="R$ 1.200/m&ecirc;s servi&ccedil;o + R$ 20-30/dia m&iacute;dia (cart&atilde;o da loja direto ao Meta)"></div>
+  </div>
+  <div class="field"><div class="field-label">Canais priorit&aacute;rios</div><input class="field-input" type="text" value="Meta Ads (Instagram + Facebook) &bull; WhatsApp Business &bull; Instagram org&acirc;nico &bull; Google Meu Neg&oacute;cio (overdelivery)"></div>
+  <div class="field"><div class="field-label">Restri&ccedil;&otilde;es e regras</div><textarea class="field-textarea" style="min-height:120px;">Campanha cont&iacute;nua &mdash; uma vez ligada, n&atilde;o desliga.
+Aumento de budget SOMENTE com autoriza&ccedil;&atilde;o da equipe da loja.
+Produ&ccedil;&atilde;o de conte&uacute;do &eacute; responsabilidade da equipe da loja (fotos, v&iacute;deos, bastidores). ADS Company entrega calend&aacute;rio, roteiros, legendas e dire&ccedil;&atilde;o.
+WhatsApp: 8h &agrave;s 18h, seg a s&aacute;b, sem pausa para almo&ccedil;o. Tempo m&aacute;ximo de resposta: 5 minutos. Zero sil&ecirc;ncio.
+N&atilde;o contratado: Google Ads, agente de IA.
+Problema t&eacute;cnico ativo: erro ao vincular WhatsApp Business ao @viviane.utilidades (funciona no perfil pessoal, no da loja n&atilde;o).</textarea></div>
+  <div class="field"><div class="field-label">&Acirc;ncora de renova&ccedil;&atilde;o</div><input class="field-input" type="text" value="5 vendas extras por dia j&aacute; pagam o investimento (servi&ccedil;o + m&iacute;dia). Esse &eacute; o argumento de renova&ccedil;&atilde;o."></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ACTIONS -->
+<div style="text-align:center; padding:32px 0;" class="no-print">
+  <p style="font-size:0.95rem; color:rgba(255,255,255,0.7); font-weight:400; margin-bottom:20px;">Briefing completo. Salve como PDF ou copie como texto.</p>
+  <div class="btn-bar">
+    <button class="btn btn-primary" onclick="window.print()">Salvar como PDF</button>
+    <button class="btn btn-outline" onclick="copyAsText()">Copiar como Texto</button>
+  </div>
+  <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:16px; font-weight:300;">No di&aacute;logo de impress&atilde;o, selecione &ldquo;Salvar como PDF&rdquo; como destino.</p>
+</div>
+
+<div style="text-align:center; padding:24px 0; border-top:1px solid var(--cinza-border);">
+  <p style="font-family:var(--serif); font-size:0.95rem;">ADS Company &mdash; <em style="font-style:italic; color:var(--laranja);">Assessoria de Marketing e Performance</em></p>
+  <p style="font-size:0.75rem; color:var(--cinza-claro); margin-top:4px;">A.C 40 &mdash; Briefing Completo &mdash; Viviane Utilidades &mdash; Setembro 2026</p>
+</div>
+
+<script>
+  document.querySelectorAll('.scale-track').forEach(track => {
+    const id = track.dataset.scale;
+    const input = document.querySelector(`[data-scale-input="${id}"]`);
+    const fill = track.querySelector('.scale-fill');
+
+    track.addEventListener('click', e => {
+      const rect = track.getBoundingClientRect();
+      const pct = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+      const val = Math.max(0, Math.min(100, pct));
+      fill.style.width = val + '%';
+      input.value = val;
+    });
+
+    input.addEventListener('input', () => {
+      const val = Math.max(0, Math.min(100, parseInt(input.value) || 0));
+      fill.style.width = val + '%';
+    });
+  });
+
+  function copyAsText() {
+    let text = 'BRIEFING COMPLETO — VIVIANE UTILIDADES\n';
+    text += '=======================================\n\n';
+
+    document.querySelectorAll('.section').forEach(section => {
+      const tag = section.querySelector('.section-tag');
+      if (tag) text += tag.textContent.toUpperCase() + '\n';
+
+      section.querySelectorAll('.field').forEach(field => {
+        const label = field.querySelector('.field-label');
+        const input = field.querySelector('.field-input, .field-textarea');
+        if (label && input) {
+          text += label.textContent + ': ' + (input.value || '[a preencher]') + '\n';
+        }
+      });
+
+      section.querySelectorAll('.obj-table tbody tr').forEach(row => {
+        const cells = row.querySelectorAll('input');
+        if (cells.length > 0) {
+          const num = row.querySelector('td:first-child');
+          const vals = Array.from(cells).map(c => c.value || '').filter(v => v);
+          if (vals.length > 0) text += (num ? num.textContent + '. ' : '') + vals.join(' | ') + '\n';
+        }
+      });
+
+      const radios = section.querySelectorAll('input[type="radio"]:checked');
+      radios.forEach(r => {
+        const label = r.closest('.level-option').querySelector('.lo-label');
+        if (label) text += 'Nivel predominante: ' + label.textContent + '\n';
+      });
+
+      const scales = section.querySelectorAll('.scale-input');
+      if (scales.length > 0) {
+        scales.forEach(s => {
+          const row = s.closest('.scale-row');
+          const label = row.querySelector('.scale-label');
+          if (label) text += label.textContent + ': ' + s.value + '/100\n';
+        });
+      }
+
+      text += '\n';
+    });
+
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.btn-outline');
+      const orig = btn.textContent;
+      btn.textContent = 'Copiado!';
+      btn.style.borderColor = '#22C55E';
+      btn.style.color = '#22C55E';
+      setTimeout(() => { btn.textContent = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

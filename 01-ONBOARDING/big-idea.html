@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Idea — Viviane Utilidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --preto: #060606;
+    --bg2: #0A0A0A;
+    --bg3: #0E0E0E;
+    --card: #111111;
+    --card2: #0C0C0C;
+    --border: rgba(255,255,255,0.06);
+    --branco: #F5F5F5;
+    --texto: #A0A0A0;
+    --texto2: #666;
+    --texto3: #333;
+    --laranja: #FF5C00;
+    --laranja2: #FF7A33;
+    --laranja3: rgba(255,92,0,0.12);
+    --purple: #9B7DB8;
+    --purple2: #B89DD6;
+    --purple3: rgba(155,125,184,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: var(--sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 32px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(155,125,184,0.10) 0%, transparent 70%),
+                linear-gradient(180deg, #040404 0%, #060606 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(155,125,184,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(255,92,0,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 40px;
+    font-family: var(--sans);
+  }
+  .hero-big-idea {
+    font-family: var(--serif);
+    font-size: clamp(44px, 8vw, 100px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+  .hero-big-idea em {
+    font-style: italic;
+    color: var(--purple);
+  }
+  .hero-tagline {
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-weight: 300;
+    color: var(--texto);
+    max-width: 660px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+    font-family: var(--sans);
+  }
+  .hero-tagline strong { color: var(--branco); font-weight: 500; }
+  .hero-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, var(--purple) 0%, transparent 100%);
+    margin: 0 auto;
+  }
+
+  /* ── LAYOUT ───────────────────────────────────────────── */
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .sec-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--laranja);
+    margin-bottom: 16px;
+    font-family: var(--sans);
+  }
+  .sec-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .sec-title em { font-style: italic; color: var(--purple); }
+  .sec-body {
+    font-size: 16px;
+    color: var(--texto);
+    font-weight: 300;
+    max-width: 700px;
+    line-height: 1.8;
+    font-family: var(--sans);
+  }
+  .sec-body p + p { margin-top: 20px; }
+  .sec-body strong { color: var(--branco); font-weight: 500; }
+
+  /* ── QUOTE BLOCK ──────────────────────────────────────── */
+  .quote-block {
+    margin: 48px 0;
+    padding: 40px 48px;
+    background: var(--card);
+    border-left: 3px solid var(--purple);
+    position: relative;
+  }
+  .quote-block::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 120px;
+    color: var(--purple3);
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .quote-text {
+    font-family: var(--serif);
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--branco);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+  }
+  .quote-author {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    font-family: var(--sans);
+  }
+
+  /* ── INSIGHT CARDS ──────────────────────────────────────── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 48px 0;
+  }
+  .insight-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .insight-card:hover { border-color: rgba(155,125,184,0.3); }
+  .insight-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--laranja));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .insight-card:hover::after { opacity: 1; }
+  .insight-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--purple3);
+    font-family: var(--sans);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 10px;
+    font-family: var(--sans);
+  }
+  .insight-quote {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--branco);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .insight-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--texto);
+    line-height: 1.7;
+    font-family: var(--sans);
+  }
+  .insight-desc strong { color: var(--branco); font-weight: 500; }
+
+  /* ── INIMIGO ──────────────────────────────────────────── */
+  .inimigo-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 48px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .inimigo-box::before {
+    content: 'INIMIGO';
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.06);
+    font-family: var(--sans);
+  }
+  .inimigo-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .inimigo-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .inimigo-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .inimigo-nome {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto3);
+    margin-bottom: 6px;
+    font-family: var(--sans);
+  }
+  .inimigo-desc {
+    font-size: 15px;
+    color: var(--texto);
+    font-weight: 300;
+    line-height: 1.6;
+    font-family: var(--sans);
+  }
+  .inimigo-desc strong { color: var(--branco); font-weight: 500; }
+
+  /* ── ANTES / DEPOIS ───────────────────────────────────── */
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin: 56px 0;
+    align-items: start;
+  }
+  .transform-col {
+    padding: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .transform-col.antes { border-right: none; border-radius: 8px 0 0 8px; }
+  .transform-col.depois { border-left: none; border-color: rgba(155,125,184,0.25); border-radius: 0 8px 8px 0; background: rgba(155,125,184,0.04); }
+  .transform-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: 22px;
+    color: var(--purple);
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+  .transform-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: var(--sans);
+  }
+  .transform-col.antes .transform-col-label { color: var(--texto3); }
+  .transform-col.depois .transform-col-label { color: var(--purple); }
+  .transform-item {
+    font-size: 14px;
+    color: var(--texto);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+    font-family: var(--sans);
+  }
+  .transform-item:last-child { border-bottom: none; }
+  .transform-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .antes .dot { background: var(--texto3); }
+  .depois .dot { background: var(--purple); }
+
+  /* ── PILARES ──────────────────────────────────────────── */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin: 56px 0;
+  }
+  .pilar {
+    background: var(--card);
+    padding: 40px 32px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .pilar:hover { border-color: rgba(155,125,184,0.25); }
+  .pilar-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--purple3);
+    font-family: var(--sans);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .pilar-titulo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .pilar-frase {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--purple);
+    margin-bottom: 16px;
+    font-style: italic;
+    font-family: var(--serif);
+  }
+  .pilar-desc {
+    font-size: 13px;
+    color: var(--texto2);
+    line-height: 1.6;
+    font-weight: 300;
+    font-family: var(--sans);
+    margin-bottom: 16px;
+  }
+  .pilar-exemplo {
+    background: var(--bg3);
+    border-left: 2px solid var(--purple);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--texto);
+    font-style: italic;
+    line-height: 1.5;
+    font-family: var(--sans);
+  }
+
+  /* ── VOZ ──────────────────────────────────────────────── */
+  .voz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 48px 0;
+  }
+  .voz-card {
+    padding: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .voz-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: var(--sans);
+  }
+  .voz-card.sim .voz-card-label { color: var(--purple); }
+  .voz-card.nao .voz-card-label { color: var(--texto3); }
+  .voz-exemplo {
+    font-size: 14px;
+    color: var(--texto);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-style: italic;
+    font-weight: 300;
+    font-family: var(--sans);
+  }
+  .voz-exemplo:last-child { border-bottom: none; }
+
+  /* ── HEADLINE BANK ────────────────────────────────────── */
+  .headline-item {
+    padding: 24px 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin-bottom: 2px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .headline-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--purple);
+    width: 24px;
+    flex-shrink: 0;
+    font-family: var(--sans);
+  }
+  .headline-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--branco);
+    font-weight: 400;
+    line-height: 1.4;
+    flex: 1;
+  }
+  .headline-uso {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto3);
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+
+  /* ── APLICACOES ───────────────────────────────────────── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin: 48px 0;
+  }
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+  .app-plataforma {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 12px;
+    font-family: var(--sans);
+  }
+  .app-titulo {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .app-desc {
+    font-size: 13px;
+    color: var(--texto2);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-family: var(--sans);
+  }
+  .app-exemplo {
+    background: var(--bg3);
+    border-left: 2px solid var(--purple);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--texto);
+    font-style: italic;
+    line-height: 1.5;
+    font-family: var(--sans);
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  .footer {
+    padding: 60px 32px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--texto3);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .footer-logo em { color: var(--laranja); font-style: italic; }
+  .footer-sub { font-size: 12px; color: var(--texto3); font-family: var(--sans); }
+
+  /* ── RESPONSIVO ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero { padding: 60px 20px; }
+    .wrap { padding: 0 20px; }
+    .section { padding: 60px 0; }
+    .insight-grid { grid-template-columns: 1fr; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-col.antes { border-radius: 8px 8px 0 0; border-right: 1px solid var(--border); border-bottom: none; }
+    .transform-col.depois { border-radius: 0 0 8px 8px; border-left: 1px solid rgba(155,125,184,0.25); border-top: none; }
+    .transform-divider {
+      width: 100%;
+      height: 40px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-top: none;
+      border-bottom: none;
+    }
+    .voz-grid { grid-template-columns: 1fr; }
+    .app-grid { grid-template-columns: 1fr; }
+    .quote-block { padding: 28px 24px; }
+    .inimigo-box { padding: 28px 24px; }
+    .headline-item { flex-wrap: wrap; gap: 8px; padding: 20px 24px; }
+    .headline-uso { width: 100%; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 48px 16px; }
+    .wrap { padding: 0 16px; }
+    .section { padding: 48px 0; }
+    .hero-big-idea { font-size: clamp(32px, 10vw, 48px); }
+    .sec-title { font-size: clamp(24px, 6vw, 32px); }
+    .quote-block { padding: 20px 16px; }
+    .inimigo-box { padding: 20px 16px; }
+    .pilar { padding: 28px 20px; }
+    .headline-item { padding: 16px; }
+    .headline-text { font-size: 15px; }
+  }
+
+  /* ── BACK BUTTON ──────────────────────────────────────── */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    color: var(--texto);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--sans);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .back-btn:hover { color: var(--branco); border-color: rgba(155,125,184,0.3); }
+  .back-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+  /* ── COMPARE (jeito antigo × novo) ─────────────────────── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 56px 0;
+  }
+  .compare-col {
+    padding: 36px 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .compare-col.errado { border-right: none; }
+  .compare-col.certo { border-left: none; border-color: rgba(155,125,184,0.25); background: rgba(155,125,184,0.04); }
+  .compare-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-family: var(--sans);
+  }
+  .compare-col.errado .compare-col-label { color: var(--texto3); }
+  .compare-col.certo .compare-col-label { color: var(--purple); }
+  .compare-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--sans);
+  }
+  .compare-item:last-child { border-bottom: none; }
+  .compare-item-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .compare-col.errado .compare-item-title { color: var(--texto3); }
+  .compare-col.certo .compare-item-title { color: var(--purple); }
+  .compare-item-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--texto);
+    line-height: 1.6;
+  }
+  .compare-item-text strong { color: var(--branco); font-weight: 500; }
+
+  /* ── PRINT ────────────────────────────────────────────── */
+  @media print {
+    @page { margin: 15mm; }
+    body { background: #fff; color: #111; }
+    .hero { background: #fff; min-height: auto; padding: 40px 0; }
+    .hero-big-idea, .sec-title { color: #111; }
+    .hero-big-idea em, .sec-title em { color: #9B7DB8; }
+    .sec-label, .pilar-frase, .app-plataforma, .hero-eyebrow, .quote-author { color: #9B7DB8; }
+    .hero-tagline, .sec-body, .pilar-desc, .app-desc { color: #444; }
+    .card, .pilar, .voz-card, .app-card, .headline-item, .inimigo-box { background: #f9f9f9; border-color: #ddd; }
+    .quote-block { background: #f5f5f5; border-left-color: #9B7DB8; }
+    .quote-text { color: #111; }
+    .hero-divider, .transform-divider { display: none; }
+    .footer { border-top-color: #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+<a href="../index.html" class="back-btn">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  Central
+</a>
+
+<!-- ══════════════════════════════════════════════
+     HERO — A BIG IDEA
+═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">Viviane Utilidades &mdash; Big Idea da Campanha</div>
+
+  <h1 class="hero-big-idea">
+    A loja que<br>
+    <em>conhece você</em><br>
+    pelo nome<br>
+    há 15 anos.
+  </h1>
+
+  <p class="hero-tagline">
+    São Desidério tem uma loja que <strong>sabe o que você gosta, recebe novidade toda semana</strong>
+    e atende como vizinha &mdash; não como robô.
+    <strong>Novidade toda semana, confiança de sempre.</strong>
+  </p>
+
+  <div class="hero-divider"></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     1. A TESE CENTRAL
+═══════════════════════════════════════════════ -->
+<div class="wrap">
+<section class="section">
+  <div class="sec-label">01 &mdash; A Tese Central</div>
+  <h2 class="sec-title">O insight que move<br><em>tudo</em></h2>
+
+  <div class="sec-body">
+    <p>O comércio do interior baiano vive entre dois extremos. De um lado, as <strong>redes de fora</strong> &mdash; Havan, Lojas Avenida, Oxigênio &mdash; que chegam com preço agressivo e volume, mas não sabem o nome de ninguém. Do outro, as <strong>lojas pequenas de bairro</strong> que conhecem todo mundo, mas não têm presença digital, não renovam vitrine e vivem do boca a boca.</p>
+    <p>Nenhuma dessas duas realidades entrega o que a família de São Desidério realmente quer: <strong>ser reconhecida como pessoa, não como número</strong> &mdash; e ao mesmo tempo encontrar novidade, variedade e preço justo perto de casa.</p>
+    <p>A Viviane Utilidades é a única loja da cidade que ocupa esse espaço. 15 anos de história, duas lojas, 35 a 40 vendas por dia, uma clientela que entra e ouve "oi, fulana, chegou aquela blusa que você procurava". Isso não é marketing. É a realidade. <strong>A campanha apenas amplifica o que já acontece dentro daquela loja todos os dias.</strong></p>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-num">01</div>
+      <div class="insight-label">Insight de Dor</div>
+      <div class="insight-quote">"Ela compra na rede porque é perto. Mas nunca se sentiu vista lá."</div>
+      <div class="insight-desc">A cliente de São Desidério entra na loja de rede, escolhe sozinha, paga no caixa e vai embora. Ninguém perguntou o que ela procurava. Ninguém lembrou do tamanho dela. <strong>A compra resolveu, mas não conectou.</strong></div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-num">02</div>
+      <div class="insight-label">Insight de Mercado</div>
+      <div class="insight-quote">"São Desidério é oceano azul digital. Nenhum concorrente local anuncia."</div>
+      <div class="insight-desc">Nenhum comércio local de São Desidério investe em tráfego pago. Zero. A Viviane será a <strong>primeira loja da cidade a aparecer no feed das pessoas</strong> de forma profissional. Quem chega primeiro, define o jogo.</div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p class="quote-text">O ângulo não é preço. Não é moda. É pertencimento. "Essa é a minha loja. Ela me conhece, me entende, e toda semana tem algo novo pra mim."</p>
+    <span class="quote-author">A tensão que a Viviane resolve</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     2. O INIMIGO
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">02 &mdash; O Inimigo</div>
+  <h2 class="sec-title">Contra o que<br><em>estamos lutando</em></h2>
+
+  <div class="sec-body">
+    <p>Toda Big Idea precisa de um inimigo claro. O inimigo não é um concorrente &mdash; é a <strong>situação que a cliente quer escapar.</strong> São três:</p>
+  </div>
+
+  <div class="inimigo-box">
+    <div class="inimigo-item">
+      <div class="inimigo-icon">🏪</div>
+      <div>
+        <div class="inimigo-nome">A Loja de Rede sem Alma</div>
+        <div class="inimigo-desc">Entra na loja, ninguém cumprimenta. Pede ajuda, mandam procurar na arara. Paga, ninguém agradece. <strong>A compra acontece, mas a conexão não.</strong> A cliente sai com a sacola cheia e a sensação vazia. Preço bom, experiência fria. E no dia que a outra loja tiver o mesmo preço, ela troca sem pensar &mdash; porque nunca teve motivo para ficar.</div>
+      </div>
+    </div>
+    <div class="inimigo-item">
+      <div class="inimigo-icon">📱</div>
+      <div>
+        <div class="inimigo-nome">O Feed Genérico e Distante</div>
+        <div class="inimigo-desc">Lojas com milhares de seguidores postando fotos de estúdio com modelos que não se parecem com ninguém de São Desidério. Legendas genéricas, promoções de capital, frete que não chega. <strong>A cliente vê, deseja, mas sabe que aquilo não é pra ela.</strong> O Instagram cheio de lojas que falam bonito, mas nenhuma que fale com ela.</div>
+      </div>
+    </div>
+    <div class="inimigo-item">
+      <div class="inimigo-icon">🕰️</div>
+      <div>
+        <div class="inimigo-nome">A Loja que Parou no Tempo</div>
+        <div class="inimigo-desc">Conhecida na cidade, mas a vitrine é a mesma há meses. Não tem Instagram. Não manda novidade no WhatsApp. A cliente quer algo novo, mas não sabe se a loja tem. <strong>A tradição virou monotonia.</strong> A confiança existe, mas a relevância se perdeu. E aos poucos, a cliente para de ir &mdash; não por bronca, mas por falta de motivo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     3. O JEITO ANTIGO × O JEITO NOVO
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">03 &mdash; Compara&ccedil;&atilde;o</div>
+  <h2 class="sec-title">O jeito antigo<br>&times; <em>o jeito novo</em></h2>
+
+  <div class="sec-body">
+    <p>S&atilde;o Desid&eacute;rio cresceu, o com&eacute;rcio tamb&eacute;m &mdash; mas a maioria das lojas continua operando no modo antigo. A Viviane escolheu um caminho diferente. <strong>N&atilde;o &eacute; sobre ser digital ou tradicional. &Eacute; sobre usar o digital para ser mais humana.</strong></p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-col errado">
+      <div class="compare-col-label">Jeito Antigo</div>
+      <div class="compare-item">
+        <div class="compare-item-title">Capta&ccedil;&atilde;o</div>
+        <div class="compare-item-text">Espera o cliente passar na porta. Vitrine est&aacute;tica, nenhum investimento em visibilidade digital.</div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">Comunica&ccedil;&atilde;o</div>
+        <div class="compare-item-text">N&atilde;o posta novidade. N&atilde;o manda mensagem. <strong>O cliente s&oacute; sabe o que tem se for l&aacute;.</strong></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">Atendimento</div>
+        <div class="compare-item-text">Gen&eacute;rico. N&atilde;o lembra o nome, n&atilde;o sabe o que a cliente procurava na &uacute;ltima visita.</div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">P&oacute;s-venda</div>
+        <div class="compare-item-text">Zero. Vendeu, acabou. S&oacute; v&ecirc; a cliente de novo se ela voltar por conta pr&oacute;pria.</div>
+      </div>
+    </div>
+    <div class="compare-col certo">
+      <div class="compare-col-label">Jeito Viviane</div>
+      <div class="compare-item">
+        <div class="compare-item-title">Capta&ccedil;&atilde;o</div>
+        <div class="compare-item-text">Aparece no feed antes que a cliente precise ir &agrave; loja. <strong>Primeira loja da cidade a anunciar profissionalmente.</strong></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">Comunica&ccedil;&atilde;o</div>
+        <div class="compare-item-text">Novidade toda semana no WhatsApp e no Instagram. A cliente sabe o que chegou <strong>antes de sair de casa.</strong></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">Atendimento</div>
+        <div class="compare-item-text">Pessoal. Sabe o nome, lembra o tamanho, guarda a pe&ccedil;a que a cliente queria. <strong>&Eacute; vizinha, n&atilde;o vendedora.</strong></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-item-title">P&oacute;s-venda</div>
+        <div class="compare-item-text">Liga 3 dias depois: &ldquo;Gostou da blusa?&rdquo; Abre porta para pr&oacute;xima compra. <strong>Fideliza pela rela&ccedil;&atilde;o, n&atilde;o pelo pre&ccedil;o.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     4. A TRANSFORMAÇÃO
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">04 &mdash; A Transforma&ccedil;&atilde;o</div>
+  <h2 class="sec-title">De onde a cliente está<br>para <em>onde ela quer chegar</em></h2>
+
+  <div class="sec-body">
+    <p>A campanha não vende roupa. <strong>Vende a sensação de ter uma loja que é sua.</strong> Que sabe o que você gosta, que te avisa quando chega novidade, que te recebe pelo nome. É essa transformação que deve aparecer em cada anúncio, cada post, cada mensagem no WhatsApp.</p>
+  </div>
+
+  <div class="transform-grid">
+    <div class="transform-col antes">
+      <div class="transform-col-label">Antes da Campanha</div>
+      <div class="transform-item"><span class="dot"></span>Compra na rede sem ser reconhecida</div>
+      <div class="transform-item"><span class="dot"></span>Descobre novidade só quando passa na frente da loja</div>
+      <div class="transform-item"><span class="dot"></span>Não sabe o que a Viviane tem de novo</div>
+      <div class="transform-item"><span class="dot"></span>Acha que "loja local" é sinônimo de pouca variedade</div>
+      <div class="transform-item"><span class="dot"></span>Vai a Barreiras para comprar o que tem em São Desidério</div>
+      <div class="transform-item"><span class="dot"></span>Não tem relação com nenhuma loja &mdash; compra onde calhar</div>
+    </div>
+    <div class="transform-divider">&rarr;</div>
+    <div class="transform-col depois">
+      <div class="transform-col-label">Depois da Campanha</div>
+      <div class="transform-item"><span class="dot"></span>Entra na Viviane e ouve "oi, chegou o que você queria"</div>
+      <div class="transform-item"><span class="dot"></span>Recebe novidade no WhatsApp antes de todo mundo</div>
+      <div class="transform-item"><span class="dot"></span>Vê a Viviane no feed com peça nova toda semana</div>
+      <div class="transform-item"><span class="dot"></span>Descobre que a Viviane tem mais variedade do que imaginava</div>
+      <div class="transform-item"><span class="dot"></span>Compra perto de casa, com atendimento que a rede não dá</div>
+      <div class="transform-item"><span class="dot"></span>Tem "a minha loja" &mdash; onde ela é nome, não número</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     5. AS TRÊS PROMESSAS
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">05 &mdash; As Tr&ecirc;s Promessas</div>
+  <h2 class="sec-title">As tr&ecirc;s promessas que<br><em>sustentam tudo</em></h2>
+
+  <div class="sec-body">
+    <p>Toda comunica&ccedil;&atilde;o da Viviane &mdash; seja um an&uacute;ncio de 6 segundos ou um stories de bastidores &mdash; deve se apoiar em pelo menos uma dessas tr&ecirc;s promessas. S&atilde;o elas que transformam o que a loja j&aacute; faz em <strong>mensagens que a cliente sente na pele.</strong></p>
+  </div>
+
+  <div class="pilares-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+    <div class="pilar">
+      <div class="pilar-num">01</div>
+      <div class="pilar-titulo">Tradi&ccedil;&atilde;o que se Renova</div>
+      <div class="pilar-frase">&ldquo;15 anos na cidade &mdash; e toda semana com pe&ccedil;a nova&rdquo;</div>
+      <div class="pilar-desc">15 anos n&atilde;o &eacute; velhice &mdash; &eacute; prova de que funciona. A comunica&ccedil;&atilde;o usa a tradi&ccedil;&atilde;o como credencial e a novidade como gancho. S&atilde;o Desid&eacute;rio merece loja boa &mdash; e a Viviane entrega h&aacute; 15 anos. N&atilde;o precisa ir a Barreiras: aqui tem. O orgulho local &eacute; inseparável da tradi&ccedil;&atilde;o.</div>
+      <div class="pilar-exemplo">&ldquo;Tem loja que abre e fecha em meses. A Viviane t&aacute; aqui h&aacute; 15 anos &mdash; e ontem chegou cole&ccedil;&atilde;o nova. Vem ver.&rdquo;</div>
+    </div>
+
+    <div class="pilar">
+      <div class="pilar-num">02</div>
+      <div class="pilar-titulo">Para Toda a Fam&iacute;lia</div>
+      <div class="pilar-frase">&ldquo;M&atilde;e, pai e filhos saem com sacola cheia&rdquo;</div>
+      <div class="pilar-desc">N&atilde;o &eacute; loja s&oacute; de mulher, nem s&oacute; de homem. &Eacute; da fam&iacute;lia inteira. M&atilde;e compra blusa, pai leva Maresia, filho ganha conjunto. Cestas de presente para quem quer agradar. Esse posicionamento amplia o p&uacute;blico de cada an&uacute;ncio.</div>
+      <div class="pilar-exemplo">&ldquo;M&atilde;e escolhe o vestido, pai leva a bermuda, e as crian&ccedil;as saem com roupa nova. Na Viviane, a fam&iacute;lia inteira encontra.&rdquo;</div>
+    </div>
+
+    <div class="pilar">
+      <div class="pilar-num">03</div>
+      <div class="pilar-titulo">Proximidade Real</div>
+      <div class="pilar-frase">&ldquo;Atendimento que sabe o seu nome&rdquo;</div>
+      <div class="pilar-desc">A Viviane no v&iacute;deo mostrando produto, &aacute;udio no WhatsApp, atendimento que sabe o nome da cliente. Isso n&atilde;o &eacute; estrat&eacute;gia de marketing &mdash; &eacute; a realidade da loja. A comunica&ccedil;&atilde;o apenas amplifica o que j&aacute; acontece naturalmente no balc&atilde;o todos os dias.</div>
+      <div class="pilar-exemplo">&ldquo;Chega no WhatsApp, manda um oi &mdash; a gente te responde como vizinho, n&atilde;o como rob&ocirc;. (77) 99925-4343&rdquo;</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     6. A VOZ DA CAMPANHA
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">06 &mdash; A Voz da Campanha</div>
+  <h2 class="sec-title">Como a Viviane<br><em>fala com o mundo</em></h2>
+
+  <div class="sec-body">
+    <p>A voz da Viviane é a da <strong>vizinha que te encontra na feira</strong> e diz "menina, chegou vestido lindo lá na loja, vem ver!" &mdash; com entusiasmo genuíno, sem forçar, sem parecer propaganda. Acolhedora, animada, real. É a Viviane falando, não uma marca corporativa.</p>
+    <p>A copy nunca usa jargão de marketing, nunca fala em "engajamento", nunca pressiona com "últimas unidades" artificial. Fala em <strong>novidade, família, confiança, nome do cliente, São Desidério.</strong></p>
+  </div>
+
+  <div class="voz-grid">
+    <div class="voz-card sim">
+      <div class="voz-card-label">Fala assim</div>
+      <div class="voz-exemplo">"Chegou novidade na Viviane! Vem ver."</div>
+      <div class="voz-exemplo">"15 anos vestindo São Desidério — e toda semana com peça nova."</div>
+      <div class="voz-exemplo">"Manda um oi no WhatsApp, a gente te ajuda a escolher."</div>
+      <div class="voz-exemplo">"Não precisa ir a Barreiras. Aqui tem."</div>
+      <div class="voz-exemplo">"Trouxe a coleção que você pediu. Passa aqui antes que acabe!"</div>
+      <div class="voz-exemplo">"Sua loja de confiança — pra toda a família."</div>
+    </div>
+    <div class="voz-card nao">
+      <div class="voz-card-label">Nunca fala assim</div>
+      <div class="voz-exemplo">"Promoção imperdível! Últimas unidades! Corra!"</div>
+      <div class="voz-exemplo">"Aproveite nosso super sale com up to 70% off."</div>
+      <div class="voz-exemplo">"Somos referência em moda fast fashion no oeste baiano."</div>
+      <div class="voz-exemplo">"Curta, compartilhe e marque 3 amigas!"</div>
+      <div class="voz-exemplo">"Nosso portfólio premium com curadoria exclusiva."</div>
+      <div class="voz-exemplo">"A Viviane Utilidades, líder de mercado, anuncia..."</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     7. BANCO DE HEADLINES
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">07 &mdash; Banco de Headlines</div>
+  <h2 class="sec-title">Frases que abrem<br><em>qualquer porta</em></h2>
+
+  <div class="sec-body">
+    <p>Headlines derivadas diretamente da Big Idea. Cada uma ataca um ângulo diferente dos quatro pilares &mdash; mas todas falam em <strong>benefício que a cliente sente, jamais em jargão.</strong> Use como ponto de partida para anúncios, posts, legendas e roteiros.</p>
+  </div>
+
+  <div style="margin-top: 40px;">
+
+    <div class="headline-item">
+      <div class="headline-num">01</div>
+      <div class="headline-text">A loja que conhece você pelo nome há 15 anos.</div>
+      <div class="headline-uso">Big Idea Principal</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">02</div>
+      <div class="headline-text">Novidade toda semana, confiança de sempre.</div>
+      <div class="headline-uso">Tagline</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">03</div>
+      <div class="headline-text">Tem loja que abre e fecha em meses. A Viviane tá aqui há 15 anos — e ontem chegou coleção nova.</div>
+      <div class="headline-uso">Anúncio &mdash; Tradição</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">04</div>
+      <div class="headline-text">Mãe escolhe o vestido, pai leva a bermuda, e as crianças saem com roupa nova.</div>
+      <div class="headline-uso">Anúncio &mdash; Família</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">05</div>
+      <div class="headline-text">Não precisa ir a Barreiras. Aqui em São Desidério tem.</div>
+      <div class="headline-uso">Anúncio &mdash; Orgulho Local</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">06</div>
+      <div class="headline-text">Chama no WhatsApp. A gente te atende como vizinho, não como robô.</div>
+      <div class="headline-uso">Anúncio &mdash; Proximidade</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">07</div>
+      <div class="headline-text">Você entra, a Viviane já sabe o seu tamanho. Isso é atendimento.</div>
+      <div class="headline-uso">Reels &mdash; Instagram</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">08</div>
+      <div class="headline-text">15 anos vestindo São Desidério. E toda semana com peça nova.</div>
+      <div class="headline-uso">Stories &mdash; Instagram</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">09</div>
+      <div class="headline-text">Dia das Crianças na Viviane é pra família inteira.</div>
+      <div class="headline-uso">Campanha Sazonal</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">10</div>
+      <div class="headline-text">São Desidério merece loja boa. A Viviane entrega há 15 anos.</div>
+      <div class="headline-uso">Branding &mdash; Slogan</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">11</div>
+      <div class="headline-text">Chegou peça nova e a gente separou pra você. Vem ver!</div>
+      <div class="headline-uso">WhatsApp &mdash; Status</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">12</div>
+      <div class="headline-text">Na Viviane, você encontra o que precisa — e descobre o que nem sabia que queria.</div>
+      <div class="headline-uso">Página de Vendas</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">13</div>
+      <div class="headline-text">Sua loja de confiança, agora no seu feed. Segue @viviane.utilidades.</div>
+      <div class="headline-uso">Instagram &mdash; Bio</div>
+    </div>
+
+    <div class="headline-item">
+      <div class="headline-num">14</div>
+      <div class="headline-text">O presente certo tá aqui, e a Viviane te ajuda a escolher.</div>
+      <div class="headline-uso">Campanha &mdash; Presentes</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     8. APLICAÇÕES POR CANAL
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">08 &mdash; Aplica&ccedil;&otilde;es por Canal</div>
+  <h2 class="sec-title">A Big Idea em<br><em>cada plataforma</em></h2>
+
+  <div class="sec-body">
+    <p>A mesma ideia central &mdash; <em>A loja que conhece você pelo nome há 15 anos.</em> &mdash; se adapta ao formato e ao momento de cada plataforma. O espírito é sempre o mesmo: proximidade, novidade, confiança.</p>
+  </div>
+
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-plataforma">Instagram &mdash; Reels</div>
+      <div class="app-titulo">Chegou novidade na Viviane</div>
+      <div class="app-desc">A Viviane mostrando o produto na mão, na loja, com energia. Primeiros 3 segundos: o produto em close ou ela falando direto com a câmera. CTA no final: "Chama no WhatsApp." Bastidores, novidades, provador &mdash; tudo real, nada de estúdio.</div>
+      <div class="app-exemplo">"Olha o que chegou! Short alfaiataria, a peça que mais sai. Vem ver antes que acabe — chama no WhatsApp."</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">Instagram &mdash; Carrossel</div>
+      <div class="app-titulo">Opções pra toda a família</div>
+      <div class="app-desc">Slide 1: pergunta que conecta ("Procurando presente?"). Slides 2-5: produtos por categoria ou faixa de preço. Slide final: CTA WhatsApp. Ideal para datas sazonais e lançamento de coleção.</div>
+      <div class="app-exemplo">"Slide 1: Dia das Crianças chegando. Slide 5: Na Viviane, o presente certo tá aqui."</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">Instagram &mdash; Stories</div>
+      <div class="app-titulo">Dia a dia da loja</div>
+      <div class="app-desc">Bastidores reais: chegada de mercadoria, arrumação de vitrine, cliente experimentando, enquete ("qual você prefere?"). Mínimo 3-5 stories por dia. Frequência é mais importante que perfeição &mdash; o celular da loja é o estúdio.</div>
+      <div class="app-exemplo">"Acabou de chegar! Qual cor vocês preferem? 💜 Lilás ou 🤍 Branco? Vota aí!"</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">Meta Ads &mdash; Criativo</div>
+      <div class="app-titulo">São Desidério, vem ver isso</div>
+      <div class="app-desc">Vídeo curto (Viviane mostrando produto) ou foto carrossel. Hook nos primeiros 2 segundos. Copy com benefício direto: novidade, família, confiança. CTA sempre para conversa no WhatsApp. Segmentação: São Desidério + região, 25-50 anos.</div>
+      <div class="app-exemplo">"15 anos em São Desidério — e toda semana com peça nova. Chama no WhatsApp e a gente te ajuda a escolher."</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">WhatsApp &mdash; Atendimento</div>
+      <div class="app-titulo">A gente te atende como vizinho</div>
+      <div class="app-desc">Áudio primeiro, texto complementa. Personalizado, nunca robótico. Saber o nome da cliente, lembrar do que ela procurava, sugerir peça nova. Regra de zero silêncio: máximo 5 minutos para responder no horário comercial.</div>
+      <div class="app-exemplo">"Oi, Maria! Lembra aquele vestido que você perguntou? Chegou! Guardei um pra você. Quer que eu mande foto?"</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">WhatsApp &mdash; Status</div>
+      <div class="app-titulo">Novidade antes de todo mundo</div>
+      <div class="app-desc">Espelho do stories do Instagram. Postar novidades diariamente. Produto em close, preço quando couber, CTA simples ("chama aqui"). O status do WhatsApp é o canal com maior taxa de visualização do público-alvo de São Desidério.</div>
+      <div class="app-exemplo">"Chegou peça nova e a gente separou pra você. Chama aqui que eu mando as opções!"</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">WhatsApp &mdash; Pós-Venda</div>
+      <div class="app-titulo">Gostou da peça?</div>
+      <div class="app-desc">Contato 3-5 dias depois da compra. Mensagem curta, em áudio de preferência. Reforça a conexão pessoal e abre porta para a próxima compra. Estratégia que Ana já aplicou com sucesso &mdash; retorno positivo inédito da clientela.</div>
+      <div class="app-exemplo">"Oi, Joana! Passando pra saber se você gostou daquela blusa. Qualquer coisa, estamos aqui!"</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-plataforma">Google Meu Negócio</div>
+      <div class="app-titulo">A loja que São Desidério confia</div>
+      <div class="app-desc">Perfil atualizado com fotos reais da loja, horário de funcionamento, link para WhatsApp. Posts semanais com novidades. Incentivo para clientes deixarem avaliação. Canal gratuito e de alta confiança para buscas locais.</div>
+      <div class="app-exemplo">"Viviane Utilidades — 15 anos vestindo São Desidério. Moda, presentes e utilidades pra toda a família."</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     9. A REGRA DE OURO
+═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="sec-label">09 &mdash; A Regra de Ouro</div>
+  <h2 class="sec-title">O filtro de<br><em>toda decisão criativa</em></h2>
+
+  <div class="quote-block">
+    <p class="quote-text">Antes de publicar qualquer coisa, pergunte: isso parece a Viviane falando com a cliente &mdash; ou parece uma marca falando com um número?</p>
+    <span class="quote-author">Teste da Big Idea &mdash; Viviane Utilidades</span>
+  </div>
+
+  <div class="sec-body">
+    <p>Se a resposta for "parece marca", reescreva até parecer a Viviane. <strong>A Viviane não tem "portfólio de moda". A Viviane tem "vestido lindo que acabou de chegar".</strong> A Viviane não faz "ação promocional com desconto progressivo". A Viviane faz "promoção especial que guardei pra te mostrar".</p>
+    <p>Jargão de marketing é o que o produto <em>tem e faz</em>. Proximidade é o que a cliente <em>sente e vive.</em></p>
+    <p><strong>Venda sempre a relação &mdash; jamais a propaganda.</strong></p>
+    <p style="margin-top: 32px; padding: 24px; background: var(--card); border: 1px solid var(--border); font-size: 14px; line-height: 1.8;">
+      <strong style="color: var(--purple);">Na prática:</strong> Quando a Viviane gravar um Reels mostrando novidade, ela não diz "confira nosso novo drop de coleção outono-inverno". Ela diz: <strong>"Olha o que chegou! Essa blusa tá um amor. Vem ver antes que acabe."</strong><br><br>
+      A variedade é a razão pela qual a loja funciona. A relação é a razão pela qual a cliente volta. Comunique a segunda. A primeira aparece naturalmente nas fotos, nos carrosséis, nas vitrines.
+    </p>
+  </div>
+
+</section>
+
+</div><!-- /wrap -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">ADS <em>Company</em> &mdash; Assessoria de Marketing e Performance</div>
+  <div class="footer-sub">Big Idea &mdash; Viviane Utilidades &mdash; A.C 40 &mdash; Setembro 2026</div>
+</footer>
+
+</body>
+</html>

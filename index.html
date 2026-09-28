@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Documentos &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --laranja: #FF5C00;
+    --laranja-hover: #FF7A33;
+    --preto: #060606;
+    --cinza-escuro: #111;
+    --cinza-card: #141414;
+    --cinza-card-hover: #1A1A1A;
+    --cinza-medio: #2A2A2A;
+    --cinza-claro: #888;
+    --cinza-border: rgba(255,255,255,0.06);
+    --branco: #F5F5F5;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .top-bar {
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--cinza-border);
+    padding: 14px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .top-bar-left { display: flex; align-items: center; gap: 14px; }
+  .top-bar-name {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .top-bar-name em { font-style: italic; color: var(--laranja); }
+  .top-bar-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--laranja);
+    background: rgba(255,92,0,0.08);
+    border: 1px solid rgba(255,92,0,0.15);
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .hero {
+    padding: 100px 32px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0A0705 0%, var(--preto) 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,92,0,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--laranja);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: var(--branco);
+  }
+  .hero h1 em { font-style: italic; color: var(--laranja); }
+  .hero-line { width: 60px; height: 2px; background: var(--laranja); margin: 24px auto; }
+  .hero p {
+    font-size: 1rem;
+    color: var(--cinza-claro);
+    font-weight: 300;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .info-strip {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 0 32px;
+    margin-top: 48px;
+  }
+  .info-item { text-align: center; }
+  .info-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cinza-claro);
+    margin-bottom: 4px;
+  }
+  .info-value { font-size: 0.95rem; font-weight: 500; color: var(--branco); }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  .section { padding: 72px 0 48px; }
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .section-tag {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--laranja);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--branco);
+  }
+  .section-title em { font-style: italic; color: var(--laranja); }
+
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 700px) { .doc-grid { grid-template-columns: 1fr; } }
+
+  .doc-card {
+    background: var(--cinza-card);
+    border: 1px solid var(--cinza-border);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--branco);
+    cursor: pointer;
+  }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--laranja);
+    transition: height 0.35s ease;
+  }
+  .doc-card:hover {
+    background: var(--cinza-card-hover);
+    border-color: rgba(255,92,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .doc-card:hover::before { height: 100%; }
+
+  .doc-card-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,92,0,0.08);
+    border: 1px solid rgba(255,92,0,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .doc-card-tag {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--laranja);
+  }
+  .doc-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .doc-card h3 em { font-style: italic; color: var(--laranja); }
+  .doc-card p {
+    font-size: 0.82rem;
+    color: var(--cinza-claro);
+    font-weight: 300;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .doc-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--cinza-border);
+    margin-top: auto;
+  }
+  .doc-card-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+  .status-ready { background: rgba(34,197,94,0.1); color: #22C55E; border: 1px solid rgba(34,197,94,0.2); }
+  .status-pending { background: rgba(255,203,5,0.1); color: #FFCB05; border: 1px solid rgba(255,203,5,0.2); }
+  .status-progress { background: rgba(59,139,255,0.1); color: #3B8BFF; border: 1px solid rgba(59,139,255,0.2); }
+
+  .doc-card-arrow {
+    width: 32px;
+    height: 32px;
+    background: rgba(255,92,0,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .doc-card:hover .doc-card-arrow { background: var(--laranja); }
+  .doc-card-arrow svg { width: 14px; height: 14px; stroke: var(--laranja); stroke-width: 2; fill: none; transition: stroke 0.3s; }
+  .doc-card:hover .doc-card-arrow svg { stroke: #fff; }
+
+  .doc-card-full { grid-column: 1 / -1; }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,92,0,0.15), transparent);
+    margin: 0;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 48px 32px 32px;
+    border-top: 1px solid var(--cinza-border);
+    margin-top: 48px;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+  .footer-brand em { font-style: italic; color: var(--laranja); }
+  .footer-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+
+  @media (max-width: 600px) {
+    .top-bar { padding: 12px 16px; }
+    .top-bar-name { display: none; }
+    .hero { padding: 64px 20px 48px; }
+    .info-strip { gap: 24px; }
+    .container { padding: 0 16px; }
+    .section { padding: 48px 0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <span class="top-bar-name">ADS <em>Company</em></span>
+  </div>
+  <span class="top-bar-badge">Central de Documentos</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">A.C 40 &mdash; Assessoria de Marketing &amp; Tr&aacute;fego Pago</div>
+  <h1>Viviane <em>Utilidades</em></h1>
+  <div class="hero-line"></div>
+  <p>Central de documentos estrat&eacute;gicos do projeto &mdash; briefing, pesquisa, big idea, campanhas e relat&oacute;rios. Tudo em um s&oacute; lugar.</p>
+
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="info-label">Cliente</div>
+      <div class="info-value">Ana Neri</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Regi&atilde;o</div>
+      <div class="info-value">S&atilde;o Desid&eacute;rio &mdash; BA</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Respons&aacute;vel</div>
+      <div class="info-value">Davidson Pereira</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">In&iacute;cio</div>
+      <div class="info-value">Setembro 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DOCUMENTOS -->
+<div class="container">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">Documentos do Projeto</div>
+      <div class="section-title">Acesse cada <em>entrega</em></div>
+    </div>
+
+    <div class="doc-grid">
+
+      <!-- CARD 1: BRIEFING -->
+      <a href="01-ONBOARDING/briefing.html" class="doc-card">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="doc-card-tag">Estrat&eacute;gia</div>
+        <h3>Briefing <em>Completo</em></h3>
+        <p>12 se&ccedil;&otilde;es: vis&atilde;o geral, p&uacute;blico-alvo, oferta, obje&ccedil;&otilde;es, concorrentes, &acirc;ngulos, promessas, provas, mecanismo, n&iacute;vel de consci&ecirc;ncia, tom e restri&ccedil;&otilde;es.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 2: PESQUISA DE MERCADO -->
+      <a href="01-ONBOARDING/pesquisa-mercado.html" class="doc-card">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="doc-card-tag">Estrat&eacute;gia</div>
+        <h3>Pesquisa de <em>Mercado</em></h3>
+        <p>An&aacute;lise de 9 concorrentes locais e 2 refer&ecirc;ncias nacionais, com n&iacute;vel de amea&ccedil;a e conclus&otilde;es estrat&eacute;gicas.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 3: BIG IDEA -->
+      <a href="01-ONBOARDING/big-idea.html" class="doc-card doc-card-full">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="doc-card-tag">Estrat&eacute;gia</div>
+        <h3>Big Idea &mdash; <em>A loja que conhece voc&ecirc; pelo nome h&aacute; 15 anos</em></h3>
+        <p>Conceito central da campanha com 10 se&ccedil;&otilde;es: insight, inimigo, transforma&ccedil;&atilde;o, pilares, voz da marca, banco de headlines, aplica&ccedil;&otilde;es por canal e regra de ouro.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 4: APRESENTAÇÃO KICKOFF -->
+      <a href="01-ONBOARDING/apresentacao-kickoff.html" class="doc-card">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="doc-card-tag">Kickoff</div>
+        <h3>Apresenta&ccedil;&atilde;o de <em>Kickoff</em></h3>
+        <p>Slides interativos da reuni&atilde;o inaugural: quem somos, cronograma 90 dias, escopo, m&eacute;tricas e pr&oacute;ximos passos.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 5: CHECKLIST DE ACESSOS -->
+      <a href="01-ONBOARDING/checklist-acessos-kickoff.html" class="doc-card">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="doc-card-tag">Kickoff</div>
+        <h3>Checklist de <em>Acessos</em></h3>
+        <p>Checklist interativo com todos os acessos necess&aacute;rios: Meta Business, p&aacute;gina, pixel, Instagram, WhatsApp e dom&iacute;nio.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 6: SCRIPT DE CONDUÇÃO -->
+      <a href="01-ONBOARDING/script-conducao-kickoff.html" class="doc-card">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="doc-card-tag">Kickoff</div>
+        <h3>Script de <em>Condu&ccedil;&atilde;o</em></h3>
+        <p>Roteiro completo da reuni&atilde;o de kickoff com tempos, perguntas, transi&ccedil;&otilde;es e anota&ccedil;&otilde;es por bloco.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-ready">Conclu&iacute;do</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 7: PLANEJAMENTO DE CONTEUDO -->
+      <a href="#" class="doc-card" style="opacity:0.5; pointer-events:none; cursor:default;">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="doc-card-tag">Conte&uacute;do</div>
+        <h3>Calend&aacute;rio de <em>Conte&uacute;do</em></h3>
+        <p>Linha editorial, calend&aacute;rio semanal, temas, formatos, roteiros e melhores hor&aacute;rios para Instagram e WhatsApp.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-pending">Pendente</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 5: CAMPANHAS DE TRAFEGO -->
+      <a href="#" class="doc-card" style="opacity:0.5; pointer-events:none; cursor:default;">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="doc-card-tag">Tr&aacute;fego Pago</div>
+        <h3>Campanhas <em>Meta Ads</em></h3>
+        <p>Estrutura de campanhas, p&uacute;blicos, criativos, copies e estrat&eacute;gia de lances para S&atilde;o Desid&eacute;rio e regi&atilde;o.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-pending">Pendente</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+      <!-- CARD 6: RELATORIOS -->
+      <a href="#" class="doc-card" style="opacity:0.5; pointer-events:none; cursor:default;">
+        <div class="doc-card-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--laranja)"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <div class="doc-card-tag">Performance</div>
+        <h3>Relat&oacute;rios e <em>M&eacute;tricas</em></h3>
+        <p>Dashboard de acompanhamento, relat&oacute;rios semanais e an&aacute;lise de performance das campanhas.</p>
+        <div class="doc-card-footer">
+          <span class="doc-card-status status-pending">Pendente</span>
+          <div class="doc-card-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">ADS <em>Company</em> &mdash; Assessoria de Marketing e Performance</div>
+  <div class="footer-sub">Central de Documentos &mdash; Viviane Utilidades &mdash; A.C 40 &mdash; Setembro 2026</div>
+</div>
+
+</body>
+</html>

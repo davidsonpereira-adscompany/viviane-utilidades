@@ -1,0 +1,15 @@
+# Arquivos internos do projeto
+CLAUDE.md
+sync-projecao.py
+PROJECAO-METAS-VIVIANE.xlsx
+
+# Markdown internos (não são entregas)
+01-ONBOARDING/checklist-acessos-meta.md
+01-ONBOARDING/script-conducao-kickoff.md
+01-ONBOARDING/mensagem-boas-vindas-grupo.md
+
+# Sistema
+.DS_Store
+*.swp
+*.swo
+*~
