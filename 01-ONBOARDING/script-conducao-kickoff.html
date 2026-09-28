@@ -101,12 +101,42 @@ header p{font-size:14px;color:var(--dim);margin-top:12px}
   .section{page-break-inside:avoid}
   .back-btn{display:none}
 }
+
+/* === LOCK SCREEN === */
+.lock-screen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;padding:24px}
+.lock-screen.hidden{display:none}
+.lock-box{background:#0E0E0E;border:1px solid var(--border);border-radius:16px;padding:40px 36px;max-width:380px;width:100%;text-align:center}
+.lock-box .lock-icon{font-size:40px;margin-bottom:16px}
+.lock-box h2{font-size:20px;font-weight:700;margin-bottom:6px}
+.lock-box p{font-size:13px;color:var(--dim);margin-bottom:24px}
+.lock-box input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:var(--txt);font-family:'Inter',sans-serif;font-size:15px;text-align:center;outline:none;transition:border-color .2s;letter-spacing:2px}
+.lock-box input:focus{border-color:var(--o)}
+.lock-box input.shake{animation:shake .4s ease}
+.lock-box button{margin-top:16px;width:100%;padding:12px;border:none;border-radius:10px;background:var(--o);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s}
+.lock-box button:hover{background:#FF7A33}
+.lock-error{font-size:12px;color:#EF4444;margin-top:10px;min-height:18px}
+.page-content.locked{filter:blur(20px);pointer-events:none;user-select:none}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .back-btn{position:fixed;top:12px;right:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--dim);font-size:11px;font-weight:500;font-family:'Inter',sans-serif;letter-spacing:.04em;text-decoration:none;transition:all .2s}
 .back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
 .back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
 </style>
 </head>
 <body>
+
+<!-- LOCK SCREEN -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-box">
+    <div class="lock-icon">&#128274;</div>
+    <h2>Acesso Restrito</h2>
+    <p>Este documento é de uso interno da ADS Company. Digite a senha para acessar.</p>
+    <input type="password" id="lockPass" placeholder="Senha" autocomplete="off">
+    <button onclick="tryUnlock()">Entrar</button>
+    <div class="lock-error" id="lockError"></div>
+  </div>
+</div>
+
+<div class="page-content locked" id="pageContent">
 <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Central</a>
 <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
 
@@ -427,6 +457,36 @@ header p{font-size:14px;color:var(--dim);margin-top:12px}
   <label><input type="checkbox"> Iniciar cliente oculto (@viviane.utilidades)</label>
   <label><input type="checkbox"> Disparar alerta: "Kickoff concluído, X acessos pendentes"</label>
 </div>
+
+</div><!-- /page-content -->
+
+<script>
+const LOCK_KEY='viviane-script-auth';
+const HASH='43b2ea4e';
+function simpleHash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}return Math.abs(h).toString(16).slice(0,10)}
+function tryUnlock(){
+  const inp=document.getElementById('lockPass');
+  const err=document.getElementById('lockError');
+  if(simpleHash(inp.value)===HASH){
+    document.getElementById('lockScreen').classList.add('hidden');
+    document.getElementById('pageContent').classList.remove('locked');
+    try{sessionStorage.setItem(LOCK_KEY,'1')}catch(e){}
+    err.textContent='';
+  }else{
+    err.textContent='Senha incorreta';
+    inp.classList.add('shake');
+    inp.value='';
+    setTimeout(()=>inp.classList.remove('shake'),400);
+  }
+}
+document.getElementById('lockPass').addEventListener('keydown',e=>{if(e.key==='Enter')tryUnlock()});
+(function checkSession(){
+  try{if(sessionStorage.getItem(LOCK_KEY)==='1'){
+    document.getElementById('lockScreen').classList.add('hidden');
+    document.getElementById('pageContent').classList.remove('locked');
+  }}catch(e){}
+})();
+</script>
 
 <script>
 const STORAGE_KEY='viviane-chk-script';
