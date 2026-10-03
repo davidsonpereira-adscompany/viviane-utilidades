@@ -13,3 +13,13 @@ PROJECAO-METAS-VIVIANE.xlsx
 *.swp
 *.swo
 *~
+
+# Masters de imagem ficam locais/Drive — o site usa só as versões web
+04-TRAFEGO-PAGO/fotos-cliente-out2026/
+04-TRAFEGO-PAGO/carrosseis/*/slide-*.jpg
+04-TRAFEGO-PAGO/carrosseis/*/4x5/
+04-TRAFEGO-PAGO/criativos/*.png
+04-TRAFEGO-PAGO/criativos/4x5/
+04-TRAFEGO-PAGO/criativos/9x16/
+02-CONTEUDO/instagram-kit/grid-*.png
+02-CONTEUDO/instagram-kit/foto-perfil.png

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roteiros de Vídeo &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#111;--card2:#141414;--border:rgba(255,255,255,0.06);--txt:#F5F5F5;--dim:#888;--green:#34D399;--yellow:#FBBF24;--red:#EF4444;--purple:#9B7DB8;--blue:#3B82F6;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(6,6,6,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;overflow-x:auto}
+.top-nav a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:all .2s}
+.top-nav a:hover{color:var(--txt);background:rgba(255,255,255,.04)}
+.top-nav a.active{color:var(--o);background:rgba(255,92,0,.08)}
+.back-btn{position:fixed;top:56px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;color:var(--dim);font-size:11px;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s}
+.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
+.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
+.hero{padding:100px 32px 56px;text-align:center;background:linear-gradient(180deg,rgba(155,125,184,.08) 0%,transparent 60%)}
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(30px,5vw,50px);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hero h1 span{color:var(--o)}
+.hero p{font-size:16px;color:var(--dim);max-width:640px;margin:0 auto 28px}
+.hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+.hero-meta strong{color:var(--txt);font-weight:600}
+.container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+.section{margin-top:64px;scroll-margin-top:80px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.section h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.2;margin-bottom:8px}
+.section h2 span{color:var(--o)}
+.section-desc{color:var(--dim);font-size:14px;margin-bottom:28px;max-width:720px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.card p{font-size:13px;color:var(--dim)}
+.card .ic{font-size:24px;margin-bottom:8px}
+.tip{background:rgba(255,92,0,.04);border-left:3px solid var(--o);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13px;color:rgba(245,245,245,.78);margin:14px 0;line-height:1.7}
+.tip strong{color:var(--txt)}
+.tip-green{border-left-color:var(--green);background:rgba(52,211,153,.04)}
+.tip-purple{border-left-color:var(--purple);background:rgba(155,125,184,.05)}
+.rot{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:18px}
+.rot-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+.rot-num{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:16px;font-weight:800;flex-shrink:0}
+.rot-num.ad{background:rgba(255,92,0,.12);color:var(--o)}
+.rot-num.st{background:rgba(155,125,184,.15);color:var(--purple)}
+.rot-num.re{background:rgba(59,130,246,.12);color:var(--blue)}
+.rot-num.wa{background:rgba(52,211,153,.12);color:var(--green)}
+.rot-head h3{font-size:18px;font-weight:700;line-height:1.3}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px}
+.b-ad{background:rgba(255,92,0,.1);color:var(--o)}
+.b-st{background:rgba(155,125,184,.15);color:var(--purple)}
+.b-re{background:rgba(59,130,246,.12);color:var(--blue)}
+.b-wa{background:rgba(52,211,153,.12);color:var(--green)}
+.b-t{background:rgba(255,255,255,.05);color:var(--dim)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.blk{background:rgba(255,255,255,.025);border-radius:10px;padding:14px 16px}
+.blk h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.blk p,.blk li{font-size:13px;color:rgba(245,245,245,.8)}
+.blk ul{list-style:none}
+.blk li{padding:3px 0;display:flex;gap:8px}
+.blk li::before{content:'•';color:var(--o);flex-shrink:0}
+.fala{background:rgba(155,125,184,.07);border:1px solid rgba(155,125,184,.2);border-radius:12px;padding:18px 20px;margin-top:14px;position:relative;font-size:15px;line-height:1.75;color:rgba(245,245,245,.92);white-space:pre-line}
+.fala::before{content:'O QUE FALAR';position:absolute;top:-9px;left:14px;font-size:9px;font-weight:700;letter-spacing:.15em;color:var(--purple);background:var(--card);padding:0 8px}
+.fala .t{display:inline-block;font-size:11px;font-weight:700;color:var(--purple);margin-right:6px;font-family:monospace}
+.copy-btn{margin-top:10px;background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--dim);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:7px;cursor:pointer}
+.copy-btn:hover{border-color:var(--o);color:var(--o)}
+.note{font-size:12px;color:var(--dim);margin-top:10px}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+thead th{text-align:left;padding:12px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border)}
+tbody td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.steps{counter-reset:step}
+.step{counter-increment:step;padding:12px 0 12px 42px;position:relative;font-size:14px;color:rgba(245,245,245,.82);border-bottom:1px solid rgba(255,255,255,.03)}
+.step:last-child{border-bottom:none}
+.step::before{content:counter(step);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:8px;background:rgba(255,92,0,.1);color:var(--o);display:grid;place-items:center;font-size:12px;font-weight:800}
+.step strong{color:var(--txt)}
+@media(max-width:768px){.hero{padding:80px 20px 40px}.container{padding:0 16px 60px}.rot{padding:18px}}
+@media print{.top-nav,.back-btn,.copy-btn{display:none}.rot{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="#antes" class="active">Antes de gravar</a>
+  <a href="#anuncios">Para anúncio</a>
+  <a href="#stories">Para stories</a>
+  <a href="#reels">Vídeos curtos</a>
+  <a href="#status">Status</a>
+  <a href="#sessao">Sessão de 30 min</a>
+</nav>
+<a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
+
+<section class="hero">
+  <div class="hero-badge">Roteiros de Vídeo — Outubro 2026</div>
+  <h1>O que falar na frente da câmera, <span>palavra por palavra</span></h1>
+  <p>13 roteiros prontos para a Viviane (e a Ana) gravarem com o celular da loja. Cada um diz o que mostrar, o que falar e quanto tempo. Nada de decorar: lê uma vez, grava do seu jeito.</p>
+  <div class="hero-meta">
+    <span><strong>Quem grava:</strong> Viviane (porta-voz) · Ana (vídeo dos 15 anos)</span>
+    <span><strong>Onde:</strong> na loja, perto da porta ou da janela</span>
+    <span><strong>Com o quê:</strong> o celular, na vertical</span>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ANTES DE GRAVAR -->
+<section class="section" id="antes">
+  <div class="section-label">Regras simples</div>
+  <h2>Antes de apertar <span>gravar</span></h2>
+  <p class="section-desc">O natural vende mais que o ensaiado. O que importa é luz, som e os primeiros 3 segundos.</p>
+  <div class="cards">
+    <div class="card"><div class="ic">📱</div><h3>Celular na vertical</h3><p>De pé, nunca deitado. É assim que aparece nos stories, nos vídeos curtos e nos anúncios.</p></div>
+    <div class="card"><div class="ic">☀️</div><h3>Luz na frente, não atrás</h3><p>Ficar de frente para a porta ou janela. Se a luz vier de trás, o rosto fica escuro. Nunca contra a vitrine.</p></div>
+    <div class="card"><div class="ic">👀</div><h3>Olhar para a câmera</h3><p>A bolinha da câmera, não a tela. É o que faz parecer que você está falando com a pessoa.</p></div>
+    <div class="card"><div class="ic">⏱️</div><h3>Os 3 primeiros segundos</h3><p>Começar já mostrando o produto ou já falando. Nada de "oi gente, tudo bem, então..." — a pessoa passa o dedo.</p></div>
+    <div class="card"><div class="ic">🔇</div><h3>Som da loja é ok</h3><p>Barulho de rua leve não atrapalha. Só evitar música alta e ventilador perto do celular.</p></div>
+    <div class="card"><div class="ic">✋</div><h3>Produto na mão</h3><p>Segurar, girar, mostrar o tecido, a etiqueta. A pessoa "sente" a peça através da sua mão.</p></div>
+  </div>
+  <div class="tip tip-purple"><strong>Como a Viviane fala (e como não fala):</strong> fala "olha o que chegou, essa estampa tá um amor" — nunca "confira nossa nova coleção". Fala "chama no WhatsApp que eu separo" — nunca "entre em contato através dos nossos canais". É a vizinha que encontrou você na feira, não uma marca.</div>
+</section>
+
+<!-- PARA ANÚNCIO -->
+<section class="section" id="anuncios">
+  <div class="section-label">4 roteiros</div>
+  <h2>Vídeos para <span>anúncio pago</span></h2>
+  <p class="section-desc">São os que vão rodar para quem não conhece a loja. Precisam dizer o nome da loja e a cidade, e terminar pedindo para chamar no WhatsApp. Davidson coloca a legenda e o número por cima.</p>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num ad">1</div><div><h3>"Olha o que chegou" — vestidos longos</h3><div class="badges"><span class="badge b-ad">Anúncio</span><span class="badge b-t">20 segundos</span><span class="badge b-t">Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Começa com um vestido já na mão, perto da câmera</li><li>Mostra 3 vestidos: um floral, um liso, um estampado</li><li>No último, mostra o tecido de perto</li></ul></div>
+      <div class="blk"><h4>Onde</h4><ul><li>Na frente da arara dos vestidos</li><li>Luz da porta no rosto</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Olha o que chegou na Viviane!
+<span class="t">3-12s</span>Vestido longo, tecido leve, estampa linda — esse aqui é o que mais tá saindo. Tem esse floral, tem esse liso, tem esse estampado.
+<span class="t">12-17s</span>Tudo aqui em São Desidério, 15 anos de loja. Não precisa ir a Barreiras.
+<span class="t">17-20s</span>Chama no WhatsApp que eu separo o seu!</div>
+    <button class="copy-btn" onclick="cp(`Olha o que chegou na Viviane! Vestido longo, tecido leve, estampa linda — esse aqui é o que mais tá saindo. Tem esse floral, tem esse liso, tem esse estampado. Tudo aqui em São Desidério, 15 anos de loja. Não precisa ir a Barreiras. Chama no WhatsApp que eu separo o seu!`,this)">Copiar fala</button>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num ad">2</div><div><h3>"Pra ele também tem" — linha masculina</h3><div class="badges"><span class="badge b-ad">Anúncio</span><span class="badge b-t">20 segundos</span><span class="badge b-t">Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Polo na mão (mostrar a etiqueta da marca)</li><li>Camisa Maresia</li><li>Boné — colocar na cabeça se quiser, fica divertido</li><li>Bermuda</li></ul></div>
+      <div class="blk"><h4>Onde</h4><ul><li>Na parte masculina da loja</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Pra ele também tem, viu?
+<span class="t">3-13s</span>Polo Fico, camisa Maresia, bermuda, boné New Era — marca boa, aqui na Viviane. A mulher vem comprar pra ela e já leva pro marido e pro filho.
+<span class="t">13-17s</span>Tem tamanho P, M, G e GG. Sem precisar ir a Barreiras.
+<span class="t">17-20s</span>Chama no WhatsApp e pergunta o tamanho!</div>
+    <button class="copy-btn" onclick="cp(`Pra ele também tem, viu? Polo Fico, camisa Maresia, bermuda, boné New Era — marca boa, aqui na Viviane. A mulher vem comprar pra ela e já leva pro marido e pro filho. Tem tamanho P, M, G e GG. Sem precisar ir a Barreiras. Chama no WhatsApp e pergunta o tamanho!`,this)">Copiar fala</button>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num ad">3</div><div><h3>"O presente certo tá aqui" — Dia das Crianças</h3><div class="badges"><span class="badge b-ad">Anúncio</span><span class="badge b-t">20 segundos</span><span class="badge b-t">Viviane</span><span class="badge b-t">gravar quando tiver o produto infantil separado</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>3 opções de presente: uma barata, uma média, uma caprichada</li><li>Falar o preço de cada uma</li><li>Se tiver embalagem de presente, mostrar</li></ul></div>
+      <div class="blk"><h4>Onde</h4><ul><li>Na parte infantil, com as peças já separadas na mão ou numa mesa</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Dia das Crianças é dia 12 — já escolheu o presente?
+<span class="t">3-13s</span>Separei três opções pra te ajudar: esse conjunto aqui, [preço]; esse, [preço]; e esse mais caprichado, [preço]. Tem pra todo bolso.
+<span class="t">13-17s</span>Me chama no WhatsApp, me fala a idade e se é menino ou menina, que eu te mando as opções certinhas.
+<span class="t">17-20s</span>E deixo separado pra você buscar. Viviane, São Desidério!</div>
+    <button class="copy-btn" onclick="cp(`Dia das Crianças é dia 12 — já escolheu o presente? Separei três opções pra te ajudar: esse conjunto aqui, [preço]; esse, [preço]; e esse mais caprichado, [preço]. Tem pra todo bolso. Me chama no WhatsApp, me fala a idade e se é menino ou menina, que eu te mando as opções certinhas. E deixo separado pra você buscar. Viviane, São Desidério!`,this)">Copiar fala</button>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num ad">4</div><div><h3>"15 anos" — a Ana e a Viviane na loja</h3><div class="badges"><span class="badge b-ad">Anúncio</span><span class="badge b-t">25 segundos</span><span class="badge b-t">Ana + Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>As duas lado a lado, na frente da loja ou do balcão</li><li>A Ana fala a primeira parte, a Viviane a segunda</li><li>No final, as duas olham pra câmera</li></ul></div>
+      <div class="blk"><h4>Onde</h4><ul><li>Na porta da loja, de dia, com a fachada atrás</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">Ana, 0-10s</span>Eu sou a Ana. Abri a Viviane em 2009, aqui em São Desidério. Faz 15 anos que a gente veste as famílias dessa cidade — e eu conheço a maioria dos clientes pelo nome.
+<span class="t">Viviane, 10-20s</span>E agora a gente tá no WhatsApp também. Chegou peça nova, a gente te avisa. Quer ver uma coisa, a gente manda foto. Quer que separe, a gente separa.
+<span class="t">As duas, 20-25s</span>Chama a gente. Viviane Utilidades, São Desidério.</div>
+    <button class="copy-btn" onclick="cp(`ANA: Eu sou a Ana. Abri a Viviane em 2009, aqui em São Desidério. Faz 15 anos que a gente veste as famílias dessa cidade — e eu conheço a maioria dos clientes pelo nome.\nVIVIANE: E agora a gente tá no WhatsApp também. Chegou peça nova, a gente te avisa. Quer ver uma coisa, a gente manda foto. Quer que separe, a gente separa.\nAS DUAS: Chama a gente. Viviane Utilidades, São Desidério.`,this)">Copiar fala</button>
+    <div class="note">Esse é o vídeo mais importante do mês. Pode gravar 3 vezes e escolher a melhor. Não precisa ser perfeito — precisa ser verdadeiro.</div>
+  </div>
+</section>
+
+<!-- PARA STORIES -->
+<section class="section" id="stories">
+  <div class="section-label">5 roteiros</div>
+  <h2>Stories do <span>dia a dia</span></h2>
+  <p class="section-desc">Somem em 24 horas, então não precisam de produção. 10 a 15 segundos cada. O objetivo é a loja aparecer todo dia na tela da cliente.</p>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num st">5</div><div><h3>"Qual você prefere?" — enquete</h3><div class="badges"><span class="badge b-st">Story</span><span class="badge b-t">10 segundos</span><span class="badge b-t">todo dia</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Duas peças parecidas lado a lado (dois vestidos, duas polos)</li><li>Depois de gravar, colocar o adesivo de <strong>Enquete</strong> com as duas opções</li></ul></div>
+      <div class="blk"><h4>Por que funciona</h4><ul><li>A pessoa toca na enquete, o Instagram entende que ela gosta do perfil e mostra mais</li><li>Quem votou é a primeira a receber "chegou a sua escolha"</li></ul></div>
+    </div>
+    <div class="fala">Me ajuda aqui: esse ou esse? Vota aí que eu quero saber qual vocês preferem!</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num st">6</div><div><h3>"Chegou mercadoria" — bastidores</h3><div class="badges"><span class="badge b-st">Story</span><span class="badge b-t">15 segundos</span><span class="badge b-t">quando chegar caixa</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>A caixa ou sacola fechada</li><li>Abrindo e tirando a primeira peça</li><li>A peça na mão, de perto</li></ul></div>
+      <div class="blk"><h4>Dica</h4><ul><li>Gravar em 2 stories: o primeiro "adivinha o que chegou", o segundo mostrando. A pessoa espera o segundo.</li></ul></div>
+    </div>
+    <div class="fala">Gente, chegou caixa nova hoje! Deixa eu abrir aqui com vocês... olha isso. Essa estampa tá um amor. Vou colocar na arara agora — quem quiser ver, chama no WhatsApp.</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num st">7</div><div><h3>"Separei pra você" — produto com preço</h3><div class="badges"><span class="badge b-st">Story</span><span class="badge b-t">10 segundos</span><span class="badge b-t">2 a 3 por dia</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Uma peça só, na mão, girando</li><li>Escrever o preço por cima com o texto do story</li><li>Colocar o adesivo de <strong>Link</strong> para o WhatsApp</li></ul></div>
+      <div class="blk"><h4>Dica</h4><ul><li>Preço sempre. Story sem preço gera pergunta; story com preço gera compra.</li></ul></div>
+    </div>
+    <div class="fala">Esse aqui é [nome da peça], [preço]. Tem no P, M e G. Quer que eu separe? Chama aqui embaixo.</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num st">8</div><div><h3>"Cliente na loja" — prova de que é real</h3><div class="badges"><span class="badge b-st">Story</span><span class="badge b-t">10 segundos</span><span class="badge b-t">sempre que der</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Cliente com a sacola, sorrindo (pedir permissão antes: "posso te colocar no story?")</li><li>Ou só a sacola e a mão, se ela não quiser aparecer</li><li>Ou o print do "amei, obrigada" no WhatsApp (tapando o número)</li></ul></div>
+      <div class="blk"><h4>Por que funciona</h4><ul><li>Quem está em dúvida vê outra pessoa comprando e decide</li><li>Guardar todos no destaque "Clientes"</li></ul></div>
+    </div>
+    <div class="fala">Olha quem passou aqui hoje! Levou [a peça] — vai arrasar. Obrigada, [nome]!</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num st">9</div><div><h3>Contagem regressiva do Dia das Crianças</h3><div class="badges"><span class="badge b-st">Story</span><span class="badge b-t">10 segundos</span><span class="badge b-t">05 a 11/10</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Produto infantil na mão</li><li>Adesivo de <strong>Contagem regressiva</strong>: é o relógio que conta os dias até uma data. Colocar 12/10. A pessoa pode tocar e ativar o lembrete.</li></ul></div>
+      <div class="blk"><h4>Dica</h4><ul><li>Repostar o mesmo story todo dia — o relógio atualiza sozinho</li></ul></div>
+    </div>
+    <div class="fala">Faltam [X] dias pro Dia das Crianças! Ainda não escolheu? Chama que eu te ajudo — tem presente pra todo bolso aqui.</div>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="section" id="reels">
+  <div class="section-label">3 roteiros</div>
+  <h2>Vídeos curtos <span>(Reels)</span></h2>
+  <p class="section-desc">São os vídeos que ficam no perfil e que o Instagram mostra para quem não segue a loja. 20 a 30 segundos. 2 por semana já mudam o jogo.</p>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num re">10</div><div><h3>"3 vestidos, 3 ocasiões"</h3><div class="badges"><span class="badge b-re">Reels</span><span class="badge b-t">25 segundos</span><span class="badge b-t">Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Vestido 1 — "pra ir na missa / no culto"</li><li>Vestido 2 — "pra festa, aniversário"</li><li>Vestido 3 — "pro dia a dia, pra ficar fresquinha"</li><li>Cada vestido: 6-7 segundos, na mão ou no manequim</li></ul></div>
+      <div class="blk"><h4>Dica</h4><ul><li>Pode cortar em 3 trechos e juntar no próprio Instagram</li><li>Escrever por cima: "1 — Igreja", "2 — Festa", "3 — Dia a dia"</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Três vestidos, três ocasiões. Vem comigo.
+<span class="t">3-10s</span>Pra igreja: esse aqui, comprido, mais fechadinho, elegante.
+<span class="t">10-17s</span>Pra festa: esse, com a estampa mais viva — chama atenção.
+<span class="t">17-23s</span>Pro dia a dia: esse, leve, fresquinho, pra enfrentar o calor.
+<span class="t">23-25s</span>Qual é o seu? Chama no WhatsApp.</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num re">11</div><div><h3>"Monta o look dele"</h3><div class="badges"><span class="badge b-re">Reels</span><span class="badge b-t">20 segundos</span><span class="badge b-t">Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Uma mesa ou balcão vazio</li><li>Vai colocando peça por peça: polo, bermuda, boné</li><li>No final, o look completo montado</li></ul></div>
+      <div class="blk"><h4>Dica</h4><ul><li>Falar o preço total no final: "look completo por R$ X"</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Vou montar um look pra ele em 20 segundos.
+<span class="t">3-15s</span>Polo Fico... bermuda... e o boné New Era pra fechar.
+<span class="t">15-20s</span>Look completo por [preço]. Chama no WhatsApp e leva pro seu.</div>
+  </div>
+
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num re">12</div><div><h3>"Tour de 20 segundos pela loja"</h3><div class="badges"><span class="badge b-re">Reels</span><span class="badge b-t">20 segundos</span><span class="badge b-t">Viviane</span></div></div></div>
+    <div class="grid2">
+      <div class="blk"><h4>O que mostrar</h4><ul><li>Entrar pela porta com o celular na mão, andando</li><li>Passar pelos vestidos, pelo masculino, pelo infantil, pelos presentes</li><li>Terminar no balcão, olhando pra câmera</li></ul></div>
+      <div class="blk"><h4>Por que funciona</h4><ul><li>Muita gente da região nunca entrou. Vê o tamanho da loja e pensa "não sabia que tinha tanta coisa"</li><li>Esse vídeo também vai no destaque "Como chegar"</li></ul></div>
+    </div>
+    <div class="fala"><span class="t">0-3s</span>Nunca veio na Viviane? Vem comigo.
+<span class="t">3-16s</span>Aqui é o feminino — vestido, blusa, saia. Aqui o masculino — polo, Maresia, boné. Aqui o infantil. E aqui a parte de presentes e utilidades.
+<span class="t">16-20s</span>Rua Principal, Sítio do Rio Grande. De segunda a sábado, 8h às 18h. Te espero!</div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section class="section" id="status">
+  <div class="section-label">1 roteiro</div>
+  <h2>Status do <span>WhatsApp</span></h2>
+  <p class="section-desc">O Status é o story do WhatsApp. Em São Desidério, muita gente olha o Status antes de abrir o Instagram. Não precisa gravar nada novo: é o mesmo story, postado nos dois lugares.</p>
+  <div class="rot">
+    <div class="rot-head"><div class="rot-num wa">13</div><div><h3>Espelho do story, com texto padrão</h3><div class="badges"><span class="badge b-wa">Status</span><span class="badge b-t">todo dia</span><span class="badge b-t">manhã e fim de tarde</span></div></div></div>
+    <div class="steps">
+      <div class="step"><strong>Gravar o story no Instagram</strong> (roteiro 7, por exemplo) e salvar no celular antes de postar: o ícone de seta para baixo.</div>
+      <div class="step"><strong>Abrir o WhatsApp → Status → câmera → escolher o vídeo salvo.</strong></div>
+      <div class="step"><strong>Escrever a legenda</strong> (copiar abaixo e trocar a peça e o preço).</div>
+      <div class="step"><strong>Postar.</strong> Quem tem o número da loja salvo vê. É por isso que o cadastro no balcão importa.</div>
+    </div>
+    <div class="fala">Chegou [peça] 💜 [preço]. Tem no P, M e G. Quer que eu separe? Me chama aqui!</div>
+    <button class="copy-btn" onclick="cp(`Chegou [peça] 💜 [preço]. Tem no P, M e G. Quer que eu separe? Me chama aqui!`,this)">Copiar legenda</button>
+  </div>
+</section>
+
+<!-- SESSÃO DE 30 MIN -->
+<section class="section" id="sessao">
+  <div class="section-label">Plano prático</div>
+  <h2>A sessão de <span>30 minutos</span> da segunda-feira</h2>
+  <p class="section-desc">Uma vez por semana, antes de abrir a loja, a Viviane grava tudo de uma vez. Sobra material para a semana inteira.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Minutos</th><th>O que gravar</th><th>Roteiro</th><th>Vai para</th></tr></thead>
+      <tbody>
+        <tr><td>0-5</td><td>Separar as peças: 3 vestidos, 1 polo, 1 bermuda, 1 boné, 3 infantis</td><td>—</td><td>—</td></tr>
+        <tr><td>5-10</td><td>Vídeo dos vestidos (gravar 2 vezes, escolher a melhor)</td><td>1</td><td>Anúncio + Reels</td></tr>
+        <tr><td>10-14</td><td>Vídeo do masculino</td><td>2</td><td>Anúncio + Reels</td></tr>
+        <tr><td>14-18</td><td>Vídeo do Dia das Crianças (semana de 05/10)</td><td>3</td><td>Anúncio</td></tr>
+        <tr><td>18-24</td><td>5 stories "separei pra você" — uma peça cada, com preço</td><td>7</td><td>1 por dia + Status</td></tr>
+        <tr><td>24-27</td><td>2 enquetes "qual você prefere?"</td><td>5</td><td>Terça e quinta</td></tr>
+        <tr><td>27-30</td><td>Mandar tudo no grupo do WhatsApp para o Davidson</td><td>—</td><td>Davidson corta, legenda e sobe nos anúncios</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip tip-green" style="margin-top:16px"><strong>Na primeira segunda (05/10), somar mais 5 minutos:</strong> o vídeo dos 15 anos com a Ana (roteiro 4). É gravado uma vez e usado o mês inteiro.</div>
+  <div class="tip"><strong>O que o Davidson faz com os vídeos:</strong> corta o começo e o fim, coloca a legenda escrita por cima (para quem assiste sem som), coloca o número do WhatsApp no final e sobe nos anúncios. A Viviane só grava e manda.</div>
+</section>
+
+</div>
+
+<div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px">
+  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
+  <div>Roteiros de Vídeo — Viviane Utilidades — Outubro 2026</div>
+</div>
+
+<script>
+function cp(t,b){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copiado!';setTimeout(()=>b.textContent=o,1500)})}
+const links=document.querySelectorAll('.top-nav a');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const l=document.querySelector('.top-nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('active')}}),{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('.section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

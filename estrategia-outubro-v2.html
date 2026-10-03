@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia de Outubro v2 &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#111;--card2:#141414;--border:rgba(255,255,255,0.06);--txt:#F5F5F5;--dim:#888;--green:#34D399;--yellow:#FBBF24;--red:#EF4444;--purple:#9B7DB8;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(6,6,6,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;overflow-x:auto}
+.top-nav a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:all .2s}
+.top-nav a:hover{color:var(--txt);background:rgba(255,255,255,.04)}
+.top-nav a.active{color:var(--o);background:rgba(255,92,0,.08)}
+.back-btn{position:fixed;top:56px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;color:var(--dim);font-size:11px;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s}
+.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
+.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
+.hero{padding:100px 32px 60px;text-align:center;background:linear-gradient(180deg,rgba(255,92,0,.06) 0%,transparent 60%)}
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.15;margin-bottom:16px}
+.hero h1 span{color:var(--o)}
+.hero p{font-size:16px;color:var(--dim);max-width:660px;margin:0 auto 32px}
+.hero-meta{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+.hero-meta strong{color:var(--txt);font-weight:600}
+.container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+.section{margin-top:64px;scroll-margin-top:80px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.section h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.2;margin-bottom:8px}
+.section h2 span{color:var(--o)}
+.section-desc{color:var(--dim);font-size:14px;margin-bottom:32px;max-width:720px}
+.tip{background:rgba(255,92,0,.04);border-left:3px solid var(--o);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13px;color:rgba(245,245,245,.78);margin:12px 0;line-height:1.7}
+.tip strong{color:var(--txt)}
+.tip-green{border-left-color:var(--green);background:rgba(52,211,153,.04)}
+.tip-yellow{border-left-color:var(--yellow);background:rgba(251,191,36,.04)}
+.tip-purple{border-left-color:var(--purple);background:rgba(155,125,184,.05)}
+.tip-red{border-left-color:var(--red);background:rgba(239,68,68,.05)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.card-icon{font-size:26px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:var(--dim)}
+.card ul{list-style:none;margin-top:12px}
+.card ul li{font-size:13px;color:var(--dim);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;gap:8px}
+.card ul li::before{content:'→';color:var(--o);font-weight:700;flex-shrink:0}
+.card ul li:last-child{border-bottom:none}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:rgba(255,92,0,.2)}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-dot{position:absolute;left:-32px;top:6px;width:22px;height:22px;border-radius:50%;background:var(--bg);border:2px solid var(--o);display:grid;place-items:center}
+.tl-dot.active{background:var(--o)}
+.tl-date{font-size:12px;font-weight:700;color:var(--o);letter-spacing:.04em}
+.tl-title{font-weight:700;font-size:16px}
+.tl-desc{font-size:14px;color:var(--dim)}
+.phase{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px}
+.phase-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.phase-num{width:48px;height:48px;border-radius:12px;background:rgba(255,92,0,.1);display:grid;place-items:center;font-size:18px;font-weight:800;color:var(--o);flex-shrink:0}
+.phase-meta{flex:1;min-width:200px}
+.phase-meta h3{font-size:20px;font-weight:700;line-height:1.3}
+.phase-meta h3 span{color:var(--o)}
+.phase-badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:6px}
+.badge-orange{background:rgba(255,92,0,.08);color:var(--o)}
+.badge-green{background:rgba(52,211,153,.08);color:var(--green)}
+.badge-yellow{background:rgba(251,191,36,.08);color:var(--yellow)}
+.badge-purple{background:rgba(155,125,184,.1);color:var(--purple)}
+.phase-body h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);margin:24px 0 10px}
+.phase-body h4:first-child{margin-top:0}
+.phase-body ul{list-style:none}
+.phase-body ul li{font-size:14px;color:rgba(245,245,245,.8);padding:5px 0;display:flex;gap:8px}
+.phase-body ul li::before{content:'•';color:var(--o);font-weight:700;flex-shrink:0}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+thead th{text-align:left;padding:14px 16px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border)}
+tbody td{padding:12px 16px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.total-row td{font-weight:700;color:var(--o);background:rgba(255,92,0,.04)}
+.script-block{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+.script-block h4{font-size:13px;font-weight:700;color:var(--o);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.script-context{font-size:13px;color:var(--dim);margin-bottom:12px}
+.script-msg{background:rgba(255,255,255,.03);border-radius:10px;padding:16px;font-size:14px;line-height:1.7;color:rgba(245,245,245,.85);margin-bottom:8px;border-left:3px solid var(--green);white-space:pre-line}
+.script-msg.ad{border-left-color:var(--purple)}
+.script-note{font-size:12px;color:var(--dim)}
+.copy-btn{margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--dim);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:7px;cursor:pointer}
+.copy-btn:hover{border-color:var(--o);color:var(--o)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.metric-value{font-size:28px;font-weight:800;color:var(--o)}
+.metric-label{font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.discuss-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.04);align-items:flex-start}
+.discuss-item:last-child{border-bottom:none}
+.discuss-num{width:28px;height:28px;border-radius:8px;background:rgba(251,191,36,.1);color:var(--yellow);display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
+.discuss-text{font-size:14px;color:rgba(245,245,245,.8)}
+.discuss-text strong{color:var(--txt)}
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px}
+.week-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:center;padding:8px 4px}
+.day-cell{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 6px;min-height:70px;font-size:11px;text-align:center}
+.day-cell .day-num{font-weight:700;font-size:14px;margin-bottom:4px}
+.day-cell .day-tag{font-size:9px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding:2px 6px;border-radius:4px;display:inline-block;margin-top:2px}
+.day-cell.p0{border-color:rgba(136,136,136,.3)} .day-cell.p0 .day-tag{background:rgba(136,136,136,.15);color:#bbb}
+.day-cell.p1{border-color:rgba(155,125,184,.4)} .day-cell.p1 .day-tag{background:rgba(155,125,184,.15);color:var(--purple)}
+.day-cell.p2{border-color:rgba(255,92,0,.3)} .day-cell.p2 .day-tag{background:rgba(255,92,0,.12);color:var(--o)}
+.day-cell.p3{border-color:rgba(251,191,36,.3)} .day-cell.p3 .day-tag{background:rgba(251,191,36,.12);color:var(--yellow)}
+.day-cell.p4{border-color:rgba(52,211,153,.3)} .day-cell.p4 .day-tag{background:rgba(52,211,153,.12);color:var(--green)}
+.day-cell.highlight{background:rgba(255,92,0,.08)}
+.day-cell.empty{background:transparent;border-color:transparent}
+.day-cell.today{box-shadow:0 0 0 1px var(--o)}
+.steps{counter-reset:step}
+.step{counter-increment:step;padding:12px 0 12px 42px;position:relative;font-size:14px;color:rgba(245,245,245,.82);border-bottom:1px solid rgba(255,255,255,.03)}
+.step:last-child{border-bottom:none}
+.step::before{content:counter(step);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:8px;background:rgba(255,92,0,.1);color:var(--o);display:grid;place-items:center;font-size:12px;font-weight:800}
+.step strong{color:var(--txt)}
+.adset{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:14px;border-left:4px solid var(--purple)}
+.adset h4{font-size:16px;font-weight:700;margin-bottom:6px}
+.adset .row{display:grid;grid-template-columns:140px 1fr;gap:8px 16px;font-size:13px;margin-top:10px}
+.adset .row span:nth-child(odd){color:var(--o);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+.adset .row span:nth-child(even){color:rgba(245,245,245,.82)}
+@media(max-width:600px){.adset .row{grid-template-columns:1fr}}
+.chk{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.chk label{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:rgba(245,245,245,.85);cursor:pointer}
+.chk label:last-child{border-bottom:none}
+.chk input{accent-color:var(--o);width:18px;height:18px;margin-top:3px;flex-shrink:0}
+.chk label.done{color:var(--dim);text-decoration:line-through}
+.chk .who{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);white-space:nowrap}
+@media(max-width:768px){.hero{padding:80px 20px 40px}.container{padding:0 16px 60px}.phase{padding:20px}.day-cell{padding:4px 2px;min-height:56px}.day-cell .day-num{font-size:12px}.day-cell .day-tag{font-size:8px;padding:1px 4px}}
+@media print{.top-nav,.back-btn,.copy-btn{display:none}.phase,.card,.script-block,.adset{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="#mudou" class="active">O que mudou</a>
+  <a href="#frentes">Frentes</a>
+  <a href="#fotos">Material</a>
+  <a href="#calendario">Calendário</a>
+  <a href="#anuncios">Anúncios</a>
+  <a href="#fases">Fases</a>
+  <a href="#instagram">Instagram</a>
+  <a href="#balcao">Cadastro no balcão</a>
+  <a href="#whatsapp">WhatsApp</a>
+  <a href="#investimento">Investimento</a>
+  <a href="#metas">Metas</a>
+  <a href="#pedidos">Pedidos</a>
+</nav>
+<a href="index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
+
+<section class="hero">
+  <div class="hero-badge">Plano de Ação — Outubro 2026 · Versão 2 (revisada em 03/10)</div>
+  <h1>Outubro começa <span>segunda-feira</span>, com o que a loja já tem</h1>
+  <p>Versão revisada depois da conversa com a Ana: sem lista de transmissão por enquanto, anúncios no ar na segunda (05/10) com as 36 fotos que a Viviane mandou, e o Dia das Crianças entra como anúncio específico assim que chegarem as fotos dos produtos infantis.</p>
+  <div class="hero-meta">
+    <span><strong>Cliente:</strong> Ana Neri e Viviane</span>
+    <span><strong>Anúncios no ar:</strong> segunda, 05/10</span>
+    <span><strong>Dia das Crianças:</strong> segunda, 12/10</span>
+    <span><strong>Investimento:</strong> R$ 20-30/dia</span>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- O QUE MUDOU -->
+<section class="section" id="mudou">
+  <div class="section-label">Resposta aos áudios de 02/10</div>
+  <h2>O que mudou da versão 1 <span>para esta</span></h2>
+  <p class="section-desc">A Ana levantou três pontos. Os três estão certos. Esta versão resolve cada um sem perder o mês.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📵</div>
+      <h3>1. Lista de transmissão sai de outubro</h3>
+      <p>A Ana tentou e não conseguiu criar. Normal: o WhatsApp só entrega a mensagem para quem tem o número da loja salvo, e a tela muda de versão para versão. Não vale travar o mês por isso.</p>
+      <ul>
+        <li>Em outubro: nada de lista. Zero tarefa nova para a Ana.</li>
+        <li>Em novembro: Davidson faz uma chamada de vídeo de 20 minutos com a Viviane e monta a lista junto, passo a passo, para o Natal.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧾</div>
+      <h3>2. O sistema só guarda quem comprou a prazo</h3>
+      <p>Quem pagou à vista, no Pix ou no cartão não fica com nome e telefone registrado. Então não dá para puxar "quem comprou presente no ano passado". Tudo bem — a solução é para frente, não para trás.</p>
+      <ul>
+        <li>Novo hábito simples no caixa: pedir o WhatsApp de quem compra (ver seção "Cadastro no balcão").</li>
+        <li>Em 30 dias, a loja tem a lista que hoje não existe. Pronta para o Natal.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⏱️</div>
+      <h3>3. "Já se foram 15 dias" — os anúncios entram segunda</h3>
+      <p>A Ana tem razão: o relógio do contrato está correndo. Por isso a campanha não espera mais nada. Entra segunda-feira (05/10) com o material que já existe: as 36 fotos.</p>
+      <ul>
+        <li>Nada de "específico demais": a campanha principal é de moda, para toda a família.</li>
+        <li>O Dia das Crianças vira um anúncio a mais dentro dela — só depende de 6 a 8 fotos de produto infantil.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip tip-purple"><strong>Em resumo, para a Ana:</strong> "Entendi os três pontos. Lista de transmissão fica para novembro, eu monto com a Viviane numa chamada. Os anúncios entram segunda com as fotos que vocês mandaram. Se der para mandar umas fotos do infantil até segunda, eu coloco o Dia das Crianças no ar também. Se não der, a campanha de moda já começa a trazer gente."</div>
+</section>
+
+<!-- FRENTES -->
+<section class="section" id="frentes">
+  <div class="section-label">Como a venda acontece</div>
+  <h2>As <span>4 frentes</span> de outubro</h2>
+  <p class="section-desc">Menos frentes do que na versão 1 — e todas com material pronto ou roteiro pronto. Tudo termina no mesmo lugar: uma conversa no WhatsApp (77) 99925-4343.</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">📣</div><h3>1. Anúncios pagos no Instagram e Facebook</h3><p>A Viviane aparece para quem ainda não conhece a loja, em São Desidério e num raio de 30 km. Quando a pessoa toca, abre o WhatsApp. É o que traz gente nova. Entra segunda.</p></div>
+    <div class="card"><div class="card-icon">📱</div><h3>2. Instagram (sem pagar)</h3><p>Stories todo dia, 1 post por dia, 2-3 vídeos curtos por semana. O perfil foi revisado (ver "Review do Instagram" na Central) e os roteiros do que falar estão prontos ("Roteiros de Vídeo").</p></div>
+    <div class="card"><div class="card-icon">🟢</div><h3>3. Status do WhatsApp</h3><p>A mesma foto ou vídeo do story, postada no Status, todo dia. Em São Desidério, muita gente vê o Status antes de abrir o Instagram. Não precisa de lista: quem tem o número salvo já vê.</p></div>
+    <div class="card"><div class="card-icon">💬</div><h3>4. Atendimento no WhatsApp</h3><p>Quando a pessoa chama, como responder para virar venda. Resposta em até 5 minutos, pergunta antes de mandar catálogo, no máximo 3 opções por vez. Mensagens prontas mais abaixo.</p></div>
+  </div>
+</section>
+
+<!-- MATERIAL -->
+<section class="section" id="fotos">
+  <div class="section-label">Material recebido em 02/10</div>
+  <h2>36 fotos — e o que dá para fazer <span>com elas</span></h2>
+  <p class="section-desc">A Viviane mandou 36 fotos boas: fundo limpo, manequim, luz uniforme. Dá para montar os anúncios sem nova sessão de fotos. Só tem uma coisa faltando.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>O que veio</th><th>Quantas</th><th>Vai virar</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vestidos longos femininos</strong> (florais, estampados, lisos)</td><td>22</td><td>Carro-chefe da campanha. 2 sequências de 10 imagens + anúncios de imagem única.</td></tr>
+        <tr><td><strong>Masculino</strong> (polos Fico, camisas Maresia, regatas, calça, jeans)</td><td>11</td><td>Sequência "Pra ele também tem" + anúncio de imagem única.</td></tr>
+        <tr><td><strong>Bonés</strong> (Nike, New Era)</td><td>2</td><td>Entram na sequência masculina e no anúncio "família".</td></tr>
+        <tr><td><strong>Bermudas</strong> (várias cores)</td><td>1</td><td>Entra na sequência "toda a família".</td></tr>
+        <tr style="background:rgba(239,68,68,.05)"><td><strong>Infantil</strong></td><td style="color:var(--red);font-weight:700">0</td><td>É o que falta para o anúncio de Dia das Crianças. Pedido: 6 a 8 fotos até segunda de manhã.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip tip-yellow" style="margin-top:16px"><strong>Decisão:</strong> a campanha estreia segunda com <strong>moda para toda a família</strong> (vestidos como destaque). O anúncio de <strong>Dia das Crianças</strong> entra no mesmo dia em que chegarem as fotos infantis — Davidson monta em menos de 1 hora. Sábado, 10/10, é o dia de maior compra de presente: o ideal é o anúncio infantil estar no ar até quarta (07/10).</div>
+  <div class="tip tip-green"><strong>Como tirar as fotos do infantil (igual às que já vieram):</strong> conjunto no cabide ou dobrado sobre fundo claro, perto da janela, celular na vertical, uma peça por foto. Se tiver preço, melhor ainda. Mandar no grupo.</div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section class="section" id="calendario">
+  <div class="section-label">Mês inteiro</div>
+  <h2>Calendário <span>revisado</span></h2>
+  <p class="section-desc">"Parcial" = dia em que Davidson manda os números no grupo. Dia das Crianças cai na segunda, 12/10; o sábado anterior (10/10) é o pico de compra.</p>
+  <div class="week-grid">
+    <div class="week-header">Seg</div><div class="week-header">Ter</div><div class="week-header">Qua</div><div class="week-header">Qui</div><div class="week-header">Sex</div><div class="week-header">Sáb</div><div class="week-header">Dom</div>
+    <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+    <div class="day-cell p0 today"><div class="day-num">03</div><div class="day-tag">Preparação</div></div>
+    <div class="day-cell p0"><div class="day-num">04</div><div class="day-tag">Preparação</div></div>
+    <div class="day-cell p2 highlight"><div class="day-num">05</div><div class="day-tag">Anúncios no ar</div></div>
+    <div class="day-cell p2"><div class="day-num">06</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell p2"><div class="day-num">07</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p2"><div class="day-num">08</div><div class="day-tag">Campanha</div></div>
+    <div class="day-cell p2"><div class="day-num">09</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p2 highlight"><div class="day-num">10</div><div class="day-tag">Pico</div></div>
+    <div class="day-cell p2"><div class="day-num">11</div><div class="day-tag">Véspera</div></div>
+    <div class="day-cell p2 highlight"><div class="day-num">12</div><div class="day-tag">Crianças</div></div>
+    <div class="day-cell p3"><div class="day-num">13</div><div class="day-tag">Recupera</div></div>
+    <div class="day-cell p3"><div class="day-num">14</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p3"><div class="day-num">15</div><div class="day-tag">Recupera</div></div>
+    <div class="day-cell p3"><div class="day-num">16</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p3"><div class="day-num">17</div><div class="day-tag">Relatório 1</div></div>
+    <div class="day-cell p3"><div class="day-num">18</div><div class="day-tag">Transição</div></div>
+    <div class="day-cell p3"><div class="day-num">19</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">20</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">21</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">22</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">23</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">24</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">25</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">26</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">27</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">28</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">29</div><div class="day-tag">Dia a dia</div></div>
+    <div class="day-cell p4"><div class="day-num">30</div><div class="day-tag">Parcial</div></div>
+    <div class="day-cell p4"><div class="day-num">31</div><div class="day-tag">Balanço</div></div>
+  </div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:12px">
+    <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:rgba(136,136,136,.4)"></span> Preparação (fim de semana)</span>
+    <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:rgba(255,92,0,.4)"></span> Campanha de estreia + Dia das Crianças</span>
+    <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:rgba(251,191,36,.4)"></span> Recuperação</span>
+    <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:3px;background:rgba(52,211,153,.4)"></span> Campanha do dia a dia</span>
+  </div>
+</section>
+
+<!-- ANÚNCIOS -->
+<section class="section" id="anuncios">
+  <div class="section-label">Como os anúncios vão ficar</div>
+  <h2>Uma campanha, <span>três grupos de anúncio</span></h2>
+  <p class="section-desc">Pense em uma campanha como uma pasta. Dentro dela, três grupos — cada um fala com um público e mostra um tipo de produto. O dinheiro do dia é dividido automaticamente entre os três, indo mais para o que estiver trazendo mais conversas.</p>
+
+  <div class="adset">
+    <h4>Grupo A — Vestidos longos (o destaque)</h4>
+    <div class="row">
+      <span>Quem vê</span><span>Mulheres de 25 a 50 anos, São Desidério e 30 km ao redor</span>
+      <span>O que vê</span><span>Sequência de 10 vestidos (desliza pro lado) · imagem única "Olha o que chegou" · vídeo da Viviane mostrando 3 vestidos (roteiro 1)</span>
+      <span>Quando toca</span><span>Abre o WhatsApp com a mensagem pronta: "Oi! Vi o vestido no anúncio e quero saber mais"</span>
+    </div>
+  </div>
+  <div class="adset">
+    <h4>Grupo B — Linha masculina</h4>
+    <div class="row">
+      <span>Quem vê</span><span>Homens e mulheres de 25 a 55 anos (a mulher compra para o marido e para o filho), mesma região</span>
+      <span>O que vê</span><span>Sequência "Pra ele também tem" (polos, Maresia, bonés, bermudas) · imagem única · vídeo "Monta o look dele" (roteiro 2)</span>
+      <span>Quando toca</span><span>Abre o WhatsApp: "Oi! Vi as polos no anúncio, tem tamanho G?"</span>
+    </div>
+  </div>
+  <div class="adset" style="border-left-color:var(--o)">
+    <h4>Grupo C — Dia das Crianças (entra quando chegarem as fotos)</h4>
+    <div class="row">
+      <span>Quem vê</span><span>Pais e mães de 25 a 45 anos, mesma região. Roda de 06 a 12/10.</span>
+      <span>O que vê</span><span>Sequência com 6-8 presentes por faixa de preço · imagem única "O presente certo tá aqui" · vídeo da Viviane (roteiro 3)</span>
+      <span>Quando toca</span><span>Abre o WhatsApp: "Oi! Quero ver presente de Dia das Crianças"</span>
+    </div>
+  </div>
+  <div class="adset" style="border-left-color:var(--green)">
+    <h4>Anúncio extra — "A loja que te conhece pelo nome" (confiança)</h4>
+    <div class="row">
+      <span>Quem vê</span><span>Todo mundo da região, 25 a 55 anos. Roda o mês inteiro em volume baixo.</span>
+      <span>O que vê</span><span>Imagem única com a frase da campanha e o selo "Desde 2009" · vídeo da Ana com a Viviane na loja (roteiro 4)</span>
+      <span>Para quê</span><span>Quem viu o vestido e ficou na dúvida vê este e lembra: "é a Viviane, 15 anos aqui". É o empurrão da confiança.</span>
+    </div>
+  </div>
+
+  <div class="tip"><strong>O que é "o anúncio aprender":</strong> nos primeiros 2-3 dias o Instagram testa para quem mostrar. É normal começar fraco. Do 3º ou 4º dia em diante o resultado melhora, porque o sistema já entendeu quem responde. Por isso a campanha nunca é desligada — cada vez que desliga, o aprendizado volta ao zero.</div>
+
+  <h3 style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);margin:32px 0 12px">Textos dos anúncios (prontos)</h3>
+
+  <div class="script-block">
+    <h4>Grupo A — Vestidos</h4>
+    <div class="script-context">Texto que aparece acima da imagem. Curto, na voz da Viviane.</div>
+    <div class="script-msg ad">Olha o que chegou na Viviane 💜
+Vestido longo novo, estampa linda, tecido leve pro calor de São Desidério.
+15 anos vestindo a cidade — e toda semana com peça nova.
+Chama no WhatsApp que a gente separa o seu 👇</div>
+    <div class="script-note"><strong>Título</strong> (embaixo da imagem): Vestidos longos novos — chama no WhatsApp · <strong>Botão:</strong> Enviar mensagem</div>
+    <button class="copy-btn" onclick="cp(`Olha o que chegou na Viviane 💜\nVestido longo novo, estampa linda, tecido leve pro calor de São Desidério.\n15 anos vestindo a cidade — e toda semana com peça nova.\nChama no WhatsApp que a gente separa o seu 👇`,this)">Copiar</button>
+  </div>
+  <div class="script-block">
+    <h4>Grupo B — Masculino</h4>
+    <div class="script-msg ad">Pra ele também tem 👕
+Polo Fico, camisa Maresia, bermuda e boné — tudo na Viviane, em São Desidério.
+Marca boa sem precisar ir a Barreiras.
+Chama no WhatsApp e pergunta o tamanho 👇</div>
+    <div class="script-note"><strong>Título:</strong> Linha masculina — polos, Maresia e bonés · <strong>Botão:</strong> Enviar mensagem</div>
+    <button class="copy-btn" onclick="cp(`Pra ele também tem 👕\nPolo Fico, camisa Maresia, bermuda e boné — tudo na Viviane, em São Desidério.\nMarca boa sem precisar ir a Barreiras.\nChama no WhatsApp e pergunta o tamanho 👇`,this)">Copiar</button>
+  </div>
+  <div class="script-block">
+    <h4>Grupo C — Dia das Crianças</h4>
+    <div class="script-msg ad">Dia das Crianças é dia 12 — já escolheu o presente? 🎁
+Na Viviane tem conjunto, roupa e presente pra todo bolso.
+A gente te ajuda a escolher pelo WhatsApp e separa pra você buscar.
+15 anos em São Desidério. Chama aqui 👇</div>
+    <div class="script-note"><strong>Título:</strong> O presente certo tá aqui — e a Viviane te ajuda a escolher · <strong>Botão:</strong> Enviar mensagem</div>
+    <button class="copy-btn" onclick="cp(`Dia das Crianças é dia 12 — já escolheu o presente? 🎁\nNa Viviane tem conjunto, roupa e presente pra todo bolso.\nA gente te ajuda a escolher pelo WhatsApp e separa pra você buscar.\n15 anos em São Desidério. Chama aqui 👇`,this)">Copiar</button>
+  </div>
+  <div class="script-block">
+    <h4>Anúncio de confiança — 15 anos</h4>
+    <div class="script-msg ad">Tem loja que abre e fecha em meses.
+A Viviane tá em São Desidério há 15 anos — e ontem chegou peça nova.
+Aqui você entra e a gente já sabe o seu tamanho. Isso é atendimento.
+Chama no WhatsApp, a gente te atende como vizinho 👇</div>
+    <div class="script-note"><strong>Título:</strong> A loja que te conhece pelo nome há 15 anos · <strong>Botão:</strong> Enviar mensagem</div>
+    <button class="copy-btn" onclick="cp(`Tem loja que abre e fecha em meses.\nA Viviane tá em São Desidério há 15 anos — e ontem chegou peça nova.\nAqui você entra e a gente já sabe o seu tamanho. Isso é atendimento.\nChama no WhatsApp, a gente te atende como vizinho 👇`,this)">Copiar</button>
+  </div>
+  <div class="tip tip-purple"><strong>As imagens prontas</strong> (sequências e anúncios de imagem única) estão na página "Criativos de Outubro" da Central, para a Ana e a Viviane aprovarem antes de subir.</div>
+</section>
+
+<!-- FASES -->
+<section class="section" id="fases">
+  <div class="section-label">Semana a semana</div>
+  <h2>As <span>4 fases</span> de outubro</h2>
+
+  <div class="phase">
+    <div class="phase-header"><div class="phase-num">00</div><div class="phase-meta"><h3>03 e 04/10 · <span>fim de semana de preparação</span></h3><div class="phase-badges"><span class="badge badge-purple">Sem anúncio</span><span class="badge badge-green">Custo zero</span></div></div></div>
+    <div class="phase-body">
+      <h4>ADS Company</h4>
+      <ul><li>Montar os anúncios com as 36 fotos (sequências, imagens únicas, textos)</li><li>Entregar o review do Instagram e os roteiros de vídeo na Central</li><li>Deixar a campanha pronta no Gerenciador para ligar segunda cedo</li></ul>
+      <h4>Loja</h4>
+      <ul><li>Aplicar o review do Instagram: nome, bio, link do WhatsApp corrigido (15 minutos no celular)</li><li>Tirar 6-8 fotos de produtos infantis e mandar no grupo</li><li>Se der: gravar os vídeos dos roteiros 1 e 4 (20 segundos cada)</li></ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header"><div class="phase-num">01</div><div class="phase-meta"><h3>05 → 12/10 · <span>estreia + Dia das Crianças</span></h3><div class="phase-badges"><span class="badge badge-orange">Anúncios pagos</span><span class="badge badge-orange">R$ 25/dia</span><span class="badge badge-purple">Instagram</span></div></div></div>
+    <div class="phase-body">
+      <h4>Anúncios</h4>
+      <ul><li><strong>Segunda, 05/10:</strong> grupos A (vestidos) e B (masculino) + anúncio de confiança entram no ar</li><li><strong>Assim que chegarem as fotos infantis:</strong> grupo C (Dia das Crianças) entra — meta: até quarta, 07/10</li><li><strong>Quarta a sábado (07-10/10):</strong> se o resultado estiver bom, subir para R$ 30/dia (só com o "sim" da Ana)</li><li><strong>Domingo e segunda (11-12/10):</strong> texto do grupo C muda para "Amanhã é Dia das Crianças — ainda dá tempo, a gente separa pra você"</li></ul>
+      <h4>Instagram e Status (loja)</h4>
+      <ul><li>Stories: 3-5 por dia — vestido na mão com preço, enquete "qual você prefere?", chegada de mercadoria</li><li>Feed: 1 post por dia — as mesmas fotos dos anúncios servem</li><li>Vídeos curtos: 2 na semana (roteiros 10 e 11)</li><li>Contagem regressiva do Dia das Crianças nos stories (o adesivo de relógio que conta os dias até 12/10)</li><li>Status do WhatsApp: a mesma foto do story, todo dia</li></ul>
+      <h4>Atendimento</h4>
+      <ul><li>Responder em até 5 minutos — chega gente nova que não conhece a loja</li><li>Perguntar antes de mandar foto: "é pra você ou presente? qual tamanho?"</li><li>Anotar na planilha quantas vendas vieram "do anúncio" (a pessoa diz "vi no Instagram")</li></ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header"><div class="phase-num">02</div><div class="phase-meta"><h3>13 → 19/10 · <span>recuperação</span></h3><div class="phase-badges"><span class="badge badge-yellow">Recuperação</span><span class="badge badge-orange">R$ 20/dia</span></div></div></div>
+    <div class="phase-body">
+      <h4>Anúncios</h4>
+      <ul><li><strong>O que é recuperação:</strong> mostrar o anúncio de novo só para quem viu, tocou ou mandou mensagem na semana anterior e não comprou. O Instagram sabe quem são essas pessoas.</li><li>Texto: "Ainda tá aqui o vestido que você olhou. Chama que a gente separa."</li><li>Se sobrou infantil: "Resto de Dia das Crianças com desconto" — vale para anúncio, story e Status</li><li>Grupo C é desligado em 13/10; A e B continuam</li></ul>
+      <h4>Loja</h4>
+      <ul><li>Mandar mensagem para quem conversou e não fechou (mensagem 6 abaixo)</li><li>Post de agradecimento pelo Dia das Crianças + repostar clientes (com autorização)</li><li>Começar a mostrar outras categorias: utilidades, presentes, acessórios</li></ul>
+      <h4>ADS Company</h4>
+      <ul><li><strong>17/10: Relatório nº 1</strong> — quanto foi investido, quantas conversas chegaram, custo por conversa, vendas rastreadas, o que mais funcionou</li></ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header"><div class="phase-num">03</div><div class="phase-meta"><h3>20 → 31/10 · <span>campanha do dia a dia</span></h3><div class="phase-badges"><span class="badge badge-green">Contínua</span><span class="badge badge-orange">R$ 20/dia</span></div></div></div>
+    <div class="phase-body">
+      <h4>Anúncios</h4>
+      <ul><li>A campanha continua ligada com os anúncios que mais trouxeram conversa (o relatório mostra quais)</li><li>Entra o que chegou de novo na loja: a Viviane manda a foto no grupo, Davidson atualiza o anúncio</li><li>Público: região, 25-55 anos, tirando quem já comprou (para não gastar mostrando para cliente)</li></ul>
+      <h4>Loja</h4>
+      <ul><li>Ritmo normal: 3-5 stories/dia, 3-4 posts/semana, 2 vídeos/semana</li><li>Cadastro no balcão todo dia (ver seção abaixo) — é o que prepara o Natal</li><li>Última semana: enquete nos stories "o que você quer ver na Viviane em novembro?"</li></ul>
+      <h4>ADS Company</h4>
+      <ul><li>Balanço de outubro em 31/10 · planejamento de novembro (Black Friday do interior + preparação do Natal)</li><li>Chamada de 20 min com a Viviane para montar a lista de transmissão com os contatos novos</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="section" id="instagram">
+  <div class="section-label">Conteúdo sem pagar</div>
+  <h2>Instagram e Status: <span>o que postar</span></h2>
+  <p class="section-desc">Dois documentos novos na Central cuidam disso em detalhe. Aqui, só o essencial.</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🔍</div><h3>Review do Instagram</h3><p>Nome, bio nova (3 opções, cabe nos 150 caracteres), link do WhatsApp corrigido (estava sem o 55), destaques reorganizados, 3 posts fixados, ritmo de publicação. Com checklist de 15 minutos.</p><ul><li><a href="02-CONTEUDO/review-instagram.html" style="color:var(--o)">Abrir o review</a></li></ul></div>
+    <div class="card"><div class="card-icon">🎬</div><h3>Roteiros de vídeo</h3><p>13 roteiros prontos: 4 para anúncio, 5 para stories, 3 para vídeos curtos e 1 para o Status. Cada um com o que dizer, o que mostrar, quanto tempo. Sessão de 30 minutos na segunda de manhã resolve a semana.</p><ul><li><a href="02-CONTEUDO/roteiros-outubro.html" style="color:var(--o)">Abrir os roteiros</a></li></ul></div>
+  </div>
+</section>
+
+<!-- CADASTRO NO BALCÃO -->
+<section class="section" id="balcao">
+  <div class="section-label">O hábito que substitui o sistema</div>
+  <h2>Cadastro no balcão: <span>30 segundos por venda</span></h2>
+  <p class="section-desc">O sistema não guarda quem compra à vista. Então a lista de clientes vai ser construída no caixa, uma venda de cada vez. Em um mês, a Viviane tem a lista que hoje não existe — e em novembro ela vira lista de transmissão para o Natal.</p>
+  <div class="steps">
+    <div class="step"><strong>Na hora de fechar a venda, perguntar:</strong> "Me passa seu WhatsApp? Quando chegar novidade eu te aviso primeiro." Quase ninguém diz não — e quem compra a prazo já deixa o número de qualquer jeito.</div>
+    <div class="step"><strong>Anotar em um lugar só:</strong> um caderno no caixa ou a planilha "Clientes" que Davidson coloca no Drive. Nome, WhatsApp e o que comprou (vestido, infantil, masculino). Três colunas, nada mais.</div>
+    <div class="step"><strong>Salvar o número no celular da loja</strong> com o nome e a letra da categoria: "Maria — V" (vestido), "João — M" (masculino), "Ana — I" (infantil). Isso é o que faz a lista de transmissão funcionar depois.</div>
+    <div class="step"><strong>Pedir para a cliente salvar o número da loja:</strong> "Salva aí o nosso: Viviane Utilidades. Senão o WhatsApp não entrega as novidades." Pode colocar um cartãozinho no balcão com o número.</div>
+    <div class="step"><strong>Toda sexta, mandar a foto da página do caderno no grupo</strong> (ou Davidson pega da planilha). Em novembro, a lista de transmissão é montada a partir disso — numa chamada de 20 minutos, juntos.</div>
+  </div>
+  <div class="tip tip-green"><strong>Por que isso vale ouro:</strong> 35-40 vendas por dia × 25 dias = até 900 contatos em um mês. Para o Natal, a Viviane fala com 900 pessoas de uma vez, de graça, sem anúncio. Nenhum concorrente de São Desidério tem isso.</div>
+</section>
+
+<!-- WHATSAPP -->
+<section class="section" id="whatsapp">
+  <div class="section-label">Mensagens prontas</div>
+  <h2>Atendimento no <span>WhatsApp</span></h2>
+  <p class="section-desc">Para copiar e colar. Trocar [nome] pelo nome da pessoa. Nesta versão não há mensagens de lista — só atendimento de quem chama.</p>
+
+  <div class="script-block"><h4>1. Primeiro contato (veio do anúncio)</h4><div class="script-context">A pessoa tocou no anúncio e a mensagem automática chegou ("Oi! Vi o vestido no anúncio..."). Responder em até 5 minutos.</div><div class="script-msg">Oi, [nome]! Tudo bem? 😊 Que bom que você viu a gente!
+Esse vestido chegou essa semana. Me conta: é pra você mesma ou é presente? E qual seu tamanho? Assim eu já te mando as opções certinhas 💜</div><div class="script-note">Perguntar antes de mandar foto. Quem pergunta atende; quem joga catálogo afasta.</div></div>
+
+  <div class="script-block"><h4>2. Mandando as opções</h4><div class="script-msg">Separei essas pra você:
+✅ [Peça 1] — R$ XX
+✅ [Peça 2] — R$ XX
+✅ [Peça 3] — R$ XX
+Qual te chamou mais? Se quiser, mostro mais nessa mesma faixa de preço 😊</div><div class="script-note">Máximo 3 por vez, sempre com foto. Mais que isso confunde.</div></div>
+
+  <div class="script-block"><h4>3. Pergunta de entrega e pagamento</h4><div class="script-msg">A gente tá na Rua Principal, Sítio do Rio Grande — de segunda a sábado, das 8h às 18h.
+Se preferir, [entrega em São Desidério / combinamos a entrega].
+Pagamento: Pix, cartão ou na loja. Quer que eu separe pra você?</div><div class="script-note">Ajustar a parte de entrega conforme a loja confirmar (ver "Pedidos").</div></div>
+
+  <div class="script-block"><h4>4. Fechamento</h4><div class="script-msg">Ótima escolha, [nome]! 🎉 Vou separar pra você.
+Prefere buscar na loja ou quer que a gente entregue? Me manda o tamanho certinho pra eu já deixar separado 💜</div></div>
+
+  <div class="script-block"><h4>5. Não respondeu (no dia seguinte)</h4><div class="script-msg">Oi, [nome]! Tudo certo por aí?
+Só passando pra avisar que [a peça] ainda tá aqui separada 😊 Se quiser ver outras opções ou tirar alguma dúvida, é só falar!</div><div class="script-note">Uma vez só. Se não responder, não insistir — ela volta quando quiser.</div></div>
+
+  <div class="script-block"><h4>6. Recuperação (13 a 15/10) — conversou e não comprou</h4><div class="script-msg">Oi, [nome]! Lembra [da peça] que você perguntou? Ainda temos 😊
+Se quiser, separo pra você — e se preferir, a gente combina a entrega. Me avisa! 💜</div></div>
+
+  <div class="script-block"><h4>7. Pós-venda (3 dias depois)</h4><div class="script-msg">Oi, [nome]! Passando pra saber se gostou [da peça] 😊
+Qualquer troca ou dúvida, é só chamar. E se alguém perguntar onde comprou, já sabe: Viviane Utilidades 💜</div><div class="script-note">A Ana já faz isso — e já viu o retorno. Manter.</div></div>
+
+  <div class="script-block"><h4>8. Pedindo o WhatsApp na loja (cadastro no balcão)</h4><div class="script-msg">Me passa seu WhatsApp? Quando chegar novidade eu te aviso primeiro 😊
+Ah, e salva o nosso aí: Viviane Utilidades — senão o WhatsApp não entrega.</div><div class="script-note">Dito no caixa, ao vivo. É a frase que constrói a lista para o Natal.</div></div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="section" id="investimento">
+  <div class="section-label">Investimento</div>
+  <h2>Quanto vai para os <span>anúncios</span></h2>
+  <p class="section-desc">Pago direto ao Instagram/Facebook pelo cartão da loja. Não faz parte da mensalidade.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Fase</th><th>Período</th><th>Dias</th><th>Por dia</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>00 — Preparação</td><td>03 → 04/10</td><td>2</td><td>R$ 0</td><td>R$ 0</td></tr>
+      <tr><td>01 — Estreia + Dia das Crianças</td><td>05 → 12/10</td><td>8</td><td>R$ 25</td><td>R$ 200</td></tr>
+      <tr><td>02 — Recuperação</td><td>13 → 19/10</td><td>7</td><td>R$ 20</td><td>R$ 140</td></tr>
+      <tr><td>03 — Dia a dia</td><td>20 → 31/10</td><td>12</td><td>R$ 20</td><td>R$ 240</td></tr>
+      <tr class="total-row"><td colspan="3">TOTAL OUTUBRO</td><td>—</td><td>R$ 580</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip tip-yellow" style="margin-top:16px"><strong>Semana de pico (07 a 10/10):</strong> se as conversas estiverem chegando bem, a sugestão é subir para R$ 30/dia nesses 4 dias (+ R$ 20 no total). Só acontece com o "sim" da Ana no grupo — nunca sem avisar.</div>
+</section>
+
+<!-- METAS -->
+<section class="section" id="metas">
+  <div class="section-label">O que esperar</div>
+  <h2>Metas de <span>outubro</span></h2>
+  <p class="section-desc">Davidson manda os números no grupo segunda, quarta e sexta a partir de 07/10.</p>
+  <div class="metrics">
+    <div class="metric"><div class="metric-value">8-15</div><div class="metric-label">Conversas por dia vindas do anúncio</div></div>
+    <div class="metric"><div class="metric-value">R$ 2-3</div><div class="metric-label">Custo por conversa</div></div>
+    <div class="metric"><div class="metric-value">+5</div><div class="metric-label">Vendas extras por dia</div></div>
+    <div class="metric"><div class="metric-value">300+</div><div class="metric-label">Contatos novos no caderno</div></div>
+  </div>
+  <div class="tip tip-green" style="margin-top:16px"><strong>A conta que importa:</strong> 5 vendas extras por dia, com o ticket médio da loja, pagam o serviço e os anúncios — e sobra. É esse número que o relatório de 17/10 vai mostrar.</div>
+</section>
+
+<!-- PEDIDOS -->
+<section class="section" id="pedidos">
+  <div class="section-label">Para a campanha entrar segunda</div>
+  <h2>O que precisamos <span>da loja</span></h2>
+  <p class="section-desc">Marque conforme for fazendo. O progresso fica salvo neste navegador.</p>
+  <div class="chk" id="chk">
+    <label><input type="checkbox"> 6 a 8 fotos de produtos infantis (conjuntos, roupas, presentes) — até segunda de manhã <span class="who">Viviane</span></label>
+    <label><input type="checkbox"> Confirmar: a loja entrega em São Desidério? Cobra? Até que distância? <span class="who">Ana</span></label>
+    <label><input type="checkbox"> Confirmar formas de pagamento no WhatsApp (Pix, cartão, link?) <span class="who">Ana</span></label>
+    <label><input type="checkbox"> Aplicar o review do Instagram (nome, bio, link) — 15 minutos <span class="who">Viviane</span></label>
+    <label><input type="checkbox"> Gravar os vídeos dos roteiros 1 (vestidos) e 4 (15 anos) — 20 segundos cada <span class="who">Viviane + Ana</span></label>
+    <label><input type="checkbox"> Confirmar o cartão na conta de anúncios (limite para ~R$ 600 no mês) <span class="who">Ana</span></label>
+    <label><input type="checkbox"> Aprovar os criativos na página "Criativos de Outubro" <span class="who">Ana + Viviane</span></label>
+    <label><input type="checkbox"> Começar o cadastro no balcão na segunda (caderno ou planilha) <span class="who">Loja</span></label>
+    <label><input type="checkbox"> Montar a campanha no Gerenciador e ligar segunda às 8h <span class="who">ADS</span></label>
+    <label><input type="checkbox"> Colocar a planilha "Clientes" no Drive <span class="who">ADS</span></label>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-top:24px">
+    <div class="section-label">Para alinhar com a Ana e a Viviane</div>
+    <div class="discuss-item"><div class="discuss-num">1</div><div class="discuss-text"><strong>Dia das Crianças com ou sem fotos infantis?</strong> Se não der para fotografar, a campanha de moda segue sozinha e o anúncio infantil fica de fora — sem prejuízo para o mês.</div></div>
+    <div class="discuss-item"><div class="discuss-num">2</div><div class="discuss-text"><strong>Quem grava os vídeos?</strong> Viviane é a porta-voz. A Ana entra no vídeo dos 15 anos. 30 minutos na segunda de manhã resolvem a semana inteira.</div></div>
+    <div class="discuss-item"><div class="discuss-num">3</div><div class="discuss-text"><strong>Subir para R$ 30/dia na semana do pico?</strong> Decisão da Ana, com os números na mão na quarta (07/10).</div></div>
+    <div class="discuss-item"><div class="discuss-num">4</div><div class="discuss-text"><strong>Caderno ou planilha para o cadastro no balcão?</strong> O que for mais fácil para quem está no caixa. O importante é começar segunda.</div></div>
+    <div class="discuss-item"><div class="discuss-num">5</div><div class="discuss-text"><strong>Lista de transmissão em novembro:</strong> marcar a chamada de 20 minutos com a Viviane na primeira semana de novembro.</div></div>
+  </div>
+</section>
+
+</div>
+
+<div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px">
+  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
+  <div>Estratégia de Outubro — Versão 2 — Viviane Utilidades</div>
+  <div style="margin-top:4px">Revisada em 03/10/2026 após retorno da cliente · <a href="estrategia-outubro.html" style="color:var(--dim)">ver versão 1</a></div>
+</div>
+
+<script>
+function cp(t,b){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copiado!';setTimeout(()=>b.textContent=o,1500)})}
+const KEY='viviane-chk-estrategia-v2';
+const boxes=[...document.querySelectorAll('#chk input[type=checkbox]')];
+function upd(){boxes.forEach(c=>c.parentElement.classList.toggle('done',c.checked));try{localStorage.setItem(KEY,JSON.stringify(boxes.map(c=>c.checked)))}catch(e){}}
+try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');s.forEach((v,i)=>{if(boxes[i])boxes[i].checked=v})}catch(e){}
+boxes.forEach(c=>c.addEventListener('change',upd));upd();
+const links=document.querySelectorAll('.top-nav a');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const l=document.querySelector('.top-nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('active')}}),{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('.section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

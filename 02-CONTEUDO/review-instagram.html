@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review do Instagram &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#111;--card2:#141414;--border:rgba(255,255,255,0.06);--txt:#F5F5F5;--dim:#888;--green:#34D399;--yellow:#FBBF24;--red:#EF4444;--purple:#9B7DB8;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(6,6,6,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;overflow-x:auto}
+.top-nav a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:all .2s}
+.top-nav a:hover{color:var(--txt);background:rgba(255,255,255,.04)}
+.top-nav a.active{color:var(--o);background:rgba(255,92,0,.08)}
+.back-btn{position:fixed;top:56px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;color:var(--dim);font-size:11px;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s}
+.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
+.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
+.hero{padding:100px 32px 56px;text-align:center;background:linear-gradient(180deg,rgba(155,125,184,.08) 0%,transparent 60%)}
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(30px,5vw,50px);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hero h1 span{color:var(--o)}
+.hero p{font-size:16px;color:var(--dim);max-width:640px;margin:0 auto 28px}
+.hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+.hero-meta strong{color:var(--txt);font-weight:600}
+.container{max-width:960px;margin:0 auto;padding:0 24px 80px}
+.section{margin-top:64px;scroll-margin-top:80px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.section h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.2;margin-bottom:8px}
+.section h2 span{color:var(--o)}
+.section-desc{color:var(--dim);font-size:14px;margin-bottom:28px;max-width:720px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:var(--dim)}
+.card ul{list-style:none;margin-top:10px}
+.card ul li{font-size:13px;color:var(--dim);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;gap:8px}
+.card ul li:last-child{border-bottom:none}
+.card.good{border-color:rgba(52,211,153,.25)} .card.good ul li::before{content:'✓';color:var(--green);font-weight:700}
+.card.bad{border-color:rgba(239,68,68,.25)} .card.bad ul li::before{content:'!';color:var(--red);font-weight:700}
+.card.warn{border-color:rgba(251,191,36,.25)} .card.warn ul li::before{content:'→';color:var(--yellow);font-weight:700}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.compare{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.box-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.box.now .box-label{color:var(--red)} .box.new .box-label{color:var(--green)}
+.box.new{border-color:rgba(52,211,153,.25)}
+.ig{background:#000;border:1px solid #262626;border-radius:16px;padding:18px;font-size:14px;line-height:1.5;color:#fafafa;max-width:360px;margin:0 auto}
+.ig .ig-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.ig .ig-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#9B7DB8,#C4A8E0);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:22px;color:#fff;flex-shrink:0}
+.ig .ig-stats{display:flex;gap:14px;font-size:13px}
+.ig .ig-stats b{display:block;font-size:15px}
+.ig .ig-name{font-weight:700;margin-top:8px}
+.ig .ig-cat{color:#a8a8a8;font-size:12px}
+.ig .ig-bio{white-space:pre-line;margin-top:4px}
+.ig .ig-link{color:#e0f1ff;margin-top:4px;font-size:13px}
+.ig .ig-link.broken{color:#ff6b6b;text-decoration:line-through}
+.count{font-size:12px;color:var(--dim);margin-top:10px;text-align:center}
+.count b{color:var(--green)}
+.tip{background:rgba(255,92,0,.04);border-left:3px solid var(--o);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13px;color:rgba(245,245,245,.78);margin:14px 0;line-height:1.7}
+.tip strong{color:var(--txt)}
+.tip-green{border-left-color:var(--green);background:rgba(52,211,153,.04)}
+.tip-yellow{border-left-color:var(--yellow);background:rgba(251,191,36,.04)}
+.tip-red{border-left-color:var(--red);background:rgba(239,68,68,.05)}
+.tip-purple{border-left-color:var(--purple);background:rgba(155,125,184,.05)}
+.steps{counter-reset:step}
+.step{counter-increment:step;padding:12px 0 12px 42px;position:relative;font-size:14px;color:rgba(245,245,245,.82);border-bottom:1px solid rgba(255,255,255,.03)}
+.step:last-child{border-bottom:none}
+.step::before{content:counter(step);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:8px;background:rgba(255,92,0,.1);color:var(--o);display:grid;place-items:center;font-size:12px;font-weight:800}
+.step strong{color:var(--txt)}
+.opt{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+@media(max-width:600px){.opt{grid-template-columns:1fr}}
+.opt .bio-text{white-space:pre-line;font-size:15px;line-height:1.6;background:rgba(255,255,255,.03);border-radius:10px;padding:14px 16px}
+.opt .meta{font-size:12px;color:var(--dim);min-width:120px}
+.opt .meta b{display:block;font-size:20px;color:var(--txt)}
+.opt.rec{border-color:rgba(255,92,0,.35)}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:6px;margin-bottom:8px}
+.badge-o{background:rgba(255,92,0,.1);color:var(--o)}
+.badge-g{background:rgba(52,211,153,.1);color:var(--green)}
+.badge-p{background:rgba(155,125,184,.12);color:var(--purple)}
+.copy-btn{margin-top:10px;background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--dim);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border-radius:7px;cursor:pointer}
+.copy-btn:hover{border-color:var(--o);color:var(--o)}
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px;margin-top:8px}
+.hl{text-align:center}
+.hl .c{width:72px;height:72px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-size:26px;border:2px solid rgba(255,255,255,.15);background:linear-gradient(135deg,#9B7DB8,#6D5490)}
+.hl .c.old{background:#1c1c1c;border-style:dashed}
+.hl .n{font-size:11px;color:var(--dim)}
+.hl .n b{color:var(--txt);display:block;font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+thead th{text-align:left;padding:12px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border)}
+tbody td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.chk{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.chk label{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:rgba(245,245,245,.85);cursor:pointer}
+.chk label:last-child{border-bottom:none}
+.chk input{accent-color:var(--o);width:18px;height:18px;margin-top:3px;flex-shrink:0}
+.chk label.done{color:var(--dim);text-decoration:line-through}
+.chk .who{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);white-space:nowrap}
+.progress{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin:12px 0 18px;overflow:hidden}
+.progress div{height:100%;background:var(--o);width:0;transition:width .3s}
+@media(max-width:768px){.hero{padding:80px 20px 40px}.container{padding:0 16px 60px}}
+@media print{.top-nav,.back-btn,.copy-btn{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="#resumo" class="active">Resumo</a>
+  <a href="#nome">Nome</a>
+  <a href="#bio">Bio</a>
+  <a href="#link">Link e WhatsApp</a>
+  <a href="#foto">Foto</a>
+  <a href="#destaques">Destaques</a>
+  <a href="#fixados">Posts fixados</a>
+  <a href="#ritmo">Ritmo</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#duvidas">Dúvidas</a>
+</nav>
+<a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
+
+<section class="hero">
+  <div class="hero-badge">Review do Perfil — Outubro 2026</div>
+  <h1>O Instagram da Viviane, <span>arrumado para vender</span></h1>
+  <p>Analisamos o perfil @viviane.utilidades como uma cliente nova veria. Aqui está o que já funciona, o que precisa mudar e exatamente como mudar — passo a passo.</p>
+  <div class="hero-meta">
+    <span><strong>Perfil:</strong> @viviane.utilidades</span>
+    <span><strong>Seguidores:</strong> 11 mil</span>
+    <span><strong>Seguindo:</strong> 612</span>
+    <span><strong>Análise:</strong> 03/10/2026</span>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- RESUMO -->
+<section class="section" id="resumo">
+  <div class="section-label">Diagnóstico rápido</div>
+  <h2>Onde o perfil <span>está hoje</span></h2>
+  <p class="section-desc">11 mil seguidores é uma base muito boa para uma loja de cidade do interior. O problema não é audiência — é que quem chega no perfil não entende em 3 segundos o que a loja vende, onde fica e como comprar.</p>
+  <div class="cards">
+    <div class="card good">
+      <h3>O que já está bom</h3>
+      <ul>
+        <li>11 mil seguidores reais, da região</li>
+        <li>Já usa vídeos de produto (vestidos, saias, botas, cintos)</li>
+        <li>Já tem destaques organizados por tipo de produto</li>
+        <li>Já tem o lilás como cor da marca</li>
+        <li>Link do WhatsApp na bio (precisa de correção)</li>
+      </ul>
+    </div>
+    <div class="card bad">
+      <h3>O que está atrapalhando</h3>
+      <ul>
+        <li>O nome do perfil é "Moda &amp; Utilidades" — não tem "Viviane" nem a cidade</li>
+        <li>A bio diz "Sítio Grande | BA" — quem é de fora não sabe onde é</li>
+        <li>A bio não diz que tem 15 anos, nem que atende pelo WhatsApp</li>
+        <li>O link do WhatsApp está sem o código do Brasil (55) — pode abrir errado</li>
+        <li>Não aparece masculino, infantil nem presentes na bio</li>
+      </ul>
+    </div>
+    <div class="card warn">
+      <h3>O que vamos fazer</h3>
+      <ul>
+        <li>Trocar nome e bio (5 minutos)</li>
+        <li>Corrigir o link do WhatsApp (2 minutos)</li>
+        <li>Reorganizar os destaques com capas lilás</li>
+        <li>Fixar 3 posts no topo do perfil</li>
+        <li>Ritmo de stories, posts e vídeos para outubro</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NOME -->
+<section class="section" id="nome">
+  <div class="section-label">1 — Nome do perfil</div>
+  <h2>Quem procura "loja em São Desidério" <span>precisa achar a Viviane</span></h2>
+  <p class="section-desc">O Instagram tem dois campos: o <strong>@</strong> (viviane.utilidades — não mexer) e o <strong>Nome</strong>, que aparece em negrito e é usado na busca. Hoje o Nome é só "Moda &amp; Utilidades". Quando alguém pesquisa "Viviane" ou "São Desidério", a loja não aparece.</p>
+  <div class="compare">
+    <div class="box now">
+      <div class="box-label">Hoje</div>
+      <div style="font-size:18px;font-weight:700">Moda &amp; Utilidades</div>
+      <p style="font-size:13px;color:var(--dim);margin-top:6px">Sem o nome da loja, sem a cidade.</p>
+    </div>
+    <div class="box new">
+      <div class="box-label">Novo</div>
+      <div style="font-size:18px;font-weight:700">Viviane Utilidades | São Desidério</div>
+      <p style="font-size:13px;color:var(--dim);margin-top:6px">Aparece na busca por "Viviane" e por "São Desidério". 34 caracteres (o limite é 64).</p>
+      <button class="copy-btn" onclick="cp('Viviane Utilidades | São Desidério',this)">Copiar</button>
+    </div>
+  </div>
+  <div class="tip"><strong>Como mudar:</strong> abrir o Instagram → Perfil → <em>Editar perfil</em> → campo <em>Nome</em> → apagar e colar o novo → <em>Concluir</em>. O Instagram só permite mudar o nome 2 vezes a cada 14 dias, então colar com cuidado.</div>
+</section>
+
+<!-- BIO -->
+<section class="section" id="bio">
+  <div class="section-label">2 — Biografia</div>
+  <h2>Em 150 caracteres, a loja precisa <span>se apresentar sozinha</span></h2>
+  <p class="section-desc">A bio é o texto embaixo do nome. O Instagram deixa no máximo 150 caracteres. Quem chega pelo anúncio lê a bio em 3 segundos e decide se chama no WhatsApp ou vai embora. Hoje ela fala de "estilo, conforto e identidade" — bonito, mas não diz o que importa: o que vende, há quanto tempo, onde fica, como comprar.</p>
+
+  <div class="compare">
+    <div class="box now">
+      <div class="box-label">Hoje</div>
+      <div class="ig">
+        <div class="ig-head"><div class="ig-avatar">V</div><div class="ig-stats"><div><b>—</b>posts</div><div><b>11 mil</b>seguidores</div><div><b>612</b>seguindo</div></div></div>
+        <div class="ig-name">Moda &amp; Utilidades</div>
+        <div class="ig-cat">Loja de moda e acessórios</div>
+        <div class="ig-bio">💜 Moda &amp; acessórios • Sítio Grande | BA • Estilo, conforto e identidade • @vivianeutilidadesloja</div>
+        <div class="ig-link broken">wa.me/77999254343</div>
+      </div>
+      <div class="count">Fala de "identidade", não fala de 15 anos, família, presentes nem WhatsApp.</div>
+    </div>
+    <div class="box new">
+      <div class="box-label">Novo (opção recomendada)</div>
+      <div class="ig">
+        <div class="ig-head"><div class="ig-avatar">V</div><div class="ig-stats"><div><b>—</b>posts</div><div><b>11 mil</b>seguidores</div><div><b>612</b>seguindo</div></div></div>
+        <div class="ig-name">Viviane Utilidades | São Desidério</div>
+        <div class="ig-cat">Loja de roupas</div>
+        <div class="ig-bio">💜 A loja que te conhece pelo nome há 15 anos
+👗 Moda pra toda a família
+🎁 Presentes e utilidades
+📍 São Desidério-BA · WhatsApp 👇</div>
+        <div class="ig-link">wa.me/5577999254343</div>
+      </div>
+      <div class="count"><b>127 caracteres</b> — cabe com folga nos 150.</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);margin:32px 0 12px">As 3 opções de bio — escolher uma</h3>
+
+  <div class="opt rec">
+    <div>
+      <span class="badge badge-o">Opção A — Recomendada</span>
+      <div class="bio-text">💜 A loja que te conhece pelo nome há 15 anos
+👗 Moda pra toda a família
+🎁 Presentes e utilidades
+📍 São Desidério-BA · WhatsApp 👇</div>
+      <button class="copy-btn" onclick="cp('💜 A loja que te conhece pelo nome há 15 anos\n👗 Moda pra toda a família\n🎁 Presentes e utilidades\n📍 São Desidério-BA · WhatsApp 👇',this)">Copiar bio A</button>
+    </div>
+    <div class="meta"><b>127</b>caracteres<br><br>Usa a frase principal da campanha. Diz tudo: tradição, família, presentes, cidade, WhatsApp.</div>
+  </div>
+
+  <div class="opt">
+    <div>
+      <span class="badge badge-p">Opção B — Direta</span>
+      <div class="bio-text">💜 15 anos vestindo São Desidério
+👗 Moda feminina, masculina e infantil
+🎁 Presentes e utilidades
+📍 Sítio do Rio Grande · WhatsApp 👇</div>
+      <button class="copy-btn" onclick="cp('💜 15 anos vestindo São Desidério\n👗 Moda feminina, masculina e infantil\n🎁 Presentes e utilidades\n📍 Sítio do Rio Grande · WhatsApp 👇',this)">Copiar bio B</button>
+    </div>
+    <div class="meta"><b>130</b>caracteres<br><br>Lista as três linhas de roupa. Boa se a loja quiser reforçar o masculino e o infantil.</div>
+  </div>
+
+  <div class="opt">
+    <div>
+      <span class="badge badge-p">Opção C — Com chamada</span>
+      <div class="bio-text">💜 A loja que conhece você pelo nome há 15 anos
+👗 Moda pra família inteira · 🎁 Presentes
+📍 São Desidério-BA
+👇 Chama no WhatsApp</div>
+      <button class="copy-btn" onclick="cp('💜 A loja que conhece você pelo nome há 15 anos\n👗 Moda pra família inteira · 🎁 Presentes\n📍 São Desidério-BA\n👇 Chama no WhatsApp',this)">Copiar bio C</button>
+    </div>
+    <div class="meta"><b>126</b>caracteres<br><br>Termina com o pedido direto: "chama no WhatsApp". Boa para quem chega pelo anúncio.</div>
+  </div>
+
+  <div class="tip tip-yellow"><strong>Sobre o "@vivianeutilidadesloja" que está na bio hoje:</strong> marcar outro perfil na bio manda a pessoa para fora do @viviane.utilidades e gasta caracteres preciosos. Se for o perfil da segunda loja, o ideal é concentrar tudo em um perfil só (ver "Dúvidas" no fim da página).</div>
+  <div class="tip"><strong>Como mudar:</strong> Perfil → <em>Editar perfil</em> → campo <em>Bio</em> → apagar tudo → colar a opção escolhida (as quebras de linha vêm junto) → <em>Concluir</em>. Os emojis funcionam normalmente no celular.</div>
+</section>
+
+<!-- LINK -->
+<section class="section" id="link">
+  <div class="section-label">3 — Link e botão do WhatsApp</div>
+  <h2>O caminho até o WhatsApp <span>precisa funcionar no primeiro toque</span></h2>
+  <p class="section-desc">Todo anúncio e todo post vai mandar a pessoa para o WhatsApp. Se o link falhar, a venda morre ali.</p>
+
+  <div class="tip tip-red"><strong>Problema encontrado:</strong> o link da bio hoje é <code>wa.me/77999254343</code>. Faltou o <strong>55</strong> (código do Brasil). Em muitos celulares esse link abre uma tela em branco ou um número errado. Correção: <code>wa.me/5577999254343</code>.</div>
+
+  <div class="compare">
+    <div class="box now">
+      <div class="box-label">Hoje</div>
+      <div style="font-family:monospace;font-size:14px;color:var(--red)">wa.me/77999254343</div>
+      <p style="font-size:13px;color:var(--dim);margin-top:6px">Sem o 55. Pode não abrir.</p>
+    </div>
+    <div class="box new">
+      <div class="box-label">Novo (com mensagem pronta)</div>
+      <div style="font-family:monospace;font-size:13px;color:var(--green);word-break:break-all">https://wa.me/5577999254343?text=Oi!%20Vim%20pelo%20Instagram%20%F0%9F%98%8A</div>
+      <p style="font-size:13px;color:var(--dim);margin-top:6px">Abre a conversa já com "Oi! Vim pelo Instagram 😊" escrito. A pessoa só aperta enviar — e a loja já sabe de onde ela veio.</p>
+      <button class="copy-btn" onclick="cp('https://wa.me/5577999254343?text=Oi!%20Vim%20pelo%20Instagram%20%F0%9F%98%8A',this)">Copiar link</button>
+    </div>
+  </div>
+
+  <div class="steps" style="margin-top:20px">
+    <div class="step"><strong>Trocar o link da bio:</strong> Perfil → <em>Editar perfil</em> → <em>Links</em> → tocar no link antigo → apagar → colar o novo → título do link: "Chama no WhatsApp" → <em>Concluir</em>.</div>
+    <div class="step"><strong>Ativar o botão "WhatsApp" do perfil:</strong> <em>Editar perfil</em> → <em>Opções de contato</em> → <em>WhatsApp</em> → informar o número (77) 99925-4343 e confirmar o código. Aparece um botão verde "WhatsApp" direto no perfil, ao lado de "Seguir".</div>
+    <div class="step"><strong>Colocar o endereço no perfil:</strong> <em>Opções de contato</em> → <em>Endereço</em> → Rua Principal, S/N, Sítio do Rio Grande, São Desidério-BA. Aparece embaixo da bio com o mapa.</div>
+  </div>
+  <div class="tip tip-yellow"><strong>Se o botão do WhatsApp der erro</strong> ("Não foi possível conectar ao Instagram"), é o mesmo problema que a Ana já encontrou. Davidson está resolvendo pelo Gerenciador. Enquanto isso, o link corrigido da bio já resolve.</div>
+</section>
+
+<!-- FOTO -->
+<section class="section" id="foto">
+  <div class="section-label">4 — Foto do perfil</div>
+  <h2>Pequena, redonda e <span>precisa ser lida de longe</span></h2>
+  <p class="section-desc">A foto do perfil aparece do tamanho de uma moeda — nos stories, nos comentários, no anúncio. Precisa ser reconhecida de relance.</p>
+  <div class="cards">
+    <div class="card"><h3>Regra 1 — Fundo lilás, letra branca</h3><p>O lilás já é a cor da Viviane (está na capa do Facebook). A foto do perfil deve ser o nome "Viviane" em branco sobre o fundo lilás, sem detalhes pequenos.</p></div>
+    <div class="card"><h3>Regra 2 — Só o essencial</h3><p>Nada de endereço, telefone ou frase na foto. Só a marca. O que for pequeno demais some quando a foto encolhe.</p></div>
+    <div class="card"><h3>Regra 3 — Igual em todo lugar</h3><p>A mesma foto no Instagram, no Facebook, no WhatsApp Business e no Google. A pessoa reconhece a loja pelo lilás.</p></div>
+  </div>
+  <div class="box" style="margin-top:16px;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center">
+    <img src="instagram-kit/foto-perfil.jpg" alt="Foto de perfil nova" style="width:160px;height:160px;border-radius:50%;border:3px solid rgba(155,125,184,.5)">
+    <div>
+      <div class="box-label" style="color:var(--green)">Pronta — foto de perfil nova</div>
+      <p style="font-size:13px;color:var(--dim)">1080 × 1080, fundo lilás de cetim, "Viviane" em branco. Legível mesmo no tamanho de moeda. A Viviane recebe o arquivo no grupo e troca em 1 minuto: Perfil → <em>Editar perfil</em> → <em>Editar foto</em>.</p>
+      <a href="instagram-kit/foto-perfil-1080.png" download style="display:inline-block;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--o);text-decoration:none;border:1px solid rgba(255,92,0,.4);padding:6px 12px;border-radius:7px">Baixar PNG</a>
+    </div>
+  </div>
+  <style>@media(max-width:600px){.box[style*="grid-template-columns:160px"]{grid-template-columns:1fr!important;text-align:center}.box[style*="grid-template-columns:160px"] img{margin:0 auto}}</style>
+</section>
+
+<!-- DESTAQUES -->
+<section class="section" id="destaques">
+  <div class="section-label">5 — Destaques</div>
+  <h2>Os destaques são a <span>vitrine permanente</span> do perfil</h2>
+  <p class="section-desc">Destaques são aqueles círculos abaixo da bio onde os stories ficam guardados para sempre. Hoje já existem (Clientes, Cestas, Masculino, Cintos, Rasteirinhas, Looks). A ideia é reorganizar: nomes mais claros, ordem que vende e capas todas iguais em lilás.</p>
+
+  <div class="box" style="margin-bottom:16px">
+    <div class="box-label" style="color:var(--dim)">Ordem nova — da esquerda para a direita</div>
+    <div class="hl-grid">
+      <div class="hl"><div class="c">✨</div><div class="n"><b>Novidades</b>1º da fila</div></div>
+      <div class="hl"><div class="c">👗</div><div class="n"><b>Vestidos</b>carro-chefe</div></div>
+      <div class="hl"><div class="c">👕</div><div class="n"><b>Masculino</b>já existe</div></div>
+      <div class="hl"><div class="c">🧒</div><div class="n"><b>Infantil</b>novo</div></div>
+      <div class="hl"><div class="c">🎁</div><div class="n"><b>Presentes</b>era "Cestas"</div></div>
+      <div class="hl"><div class="c">👜</div><div class="n"><b>Acessórios</b>cintos + rasteirinhas</div></div>
+      <div class="hl"><div class="c">💜</div><div class="n"><b>Clientes</b>já existe</div></div>
+      <div class="hl"><div class="c">📍</div><div class="n"><b>Como chegar</b>novo</div></div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Destaque</th><th>O que vai dentro</th><th>Por que importa</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Novidades</strong></td><td>Os stories de "chegou peça nova" da semana. Trocar toda semana — tirar o antigo, colocar o novo.</td><td>É o primeiro círculo que a pessoa vê. Mostra que a loja está viva.</td></tr>
+        <tr><td><strong>Vestidos</strong></td><td>Os vestidos longos no manequim, com preço. Os 36 que a Viviane mandou já rendem isso.</td><td>É o produto que mais aparece e mais chama atenção da cliente.</td></tr>
+        <tr><td><strong>Masculino</strong></td><td>Polos, camisas Maresia, bermudas, bonés — com preço.</td><td>Mostra que não é loja só de mulher. Puxa o marido e o filho.</td></tr>
+        <tr><td><strong>Infantil</strong></td><td>Conjuntos e roupas de criança. Para o Dia das Crianças, colocar as opções de presente aqui.</td><td>Hoje não existe — e é a data do mês.</td></tr>
+        <tr><td><strong>Presentes</strong></td><td>O que era "Cestas". Cestas, kits, embalagens para presente.</td><td>"Presentes" é a palavra que a pessoa procura. "Cestas" é a palavra da loja.</td></tr>
+        <tr><td><strong>Acessórios</strong></td><td>Juntar "Cintos" e "Rasteirinhas" num só. Bolsas, bijuterias também.</td><td>Menos círculos, mais fácil de navegar.</td></tr>
+        <tr><td><strong>Clientes</strong></td><td>Fotos e vídeos de clientes com as compras, prints de agradecimento (com autorização).</td><td>Prova de que outras pessoas confiam. Quem está em dúvida decide aqui.</td></tr>
+        <tr><td><strong>Como chegar</strong></td><td>Vídeo curto da fachada, endereço, horário (seg-sáb, 8h-18h), número do WhatsApp.</td><td>Quem vem de fora ou pelo anúncio precisa saber onde é.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box" style="margin-top:16px">
+    <div class="box-label" style="color:var(--green)">Prontas — as 8 capas em lilás</div>
+    <div class="hl-grid">
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-01-novidades.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Novidades</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-02-vestidos.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Vestidos</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-03-masculino.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Masculino</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-04-infantil.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Infantil</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-05-presentes.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Presentes</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-06-acessorios.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Acessórios</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-07-clientes.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Clientes</b></div></div>
+      <div class="hl"><img src="instagram-kit/capas-destaques/capa-08-como-chegar.png" alt="" style="width:72px;height:72px;border-radius:50%;border:2px solid rgba(255,255,255,.15)"><div class="n"><b>Como chegar</b></div></div>
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:12px">Arquivos de 1080 × 1080 na pasta <em>02-CONTEUDO/instagram-kit/capas-destaques</em>. Davidson manda os 8 no grupo; para trocar, siga o passo 2 abaixo.</p>
+  </div>
+  <div class="steps" style="margin-top:12px">
+    <div class="step"><strong>Para renomear um destaque:</strong> segurar o dedo no círculo → <em>Editar destaque</em> → mudar o nome → <em>Concluir</em>.</div>
+    <div class="step"><strong>Para trocar a capa:</strong> <em>Editar destaque</em> → <em>Editar capa</em> → ícone de imagem → escolher a capa lilás que a ADS enviou → <em>Concluir</em>.</div>
+    <div class="step"><strong>Para criar um destaque novo (Infantil, Como chegar):</strong> postar o story normalmente → abrir o story → <em>Destacar</em> → <em>Novo</em> → dar o nome → <em>Adicionar</em>.</div>
+    <div class="step"><strong>Para mudar a ordem:</strong> o Instagram coloca na frente o destaque que recebeu story mais recente. Para "Novidades" ficar sempre em primeiro, basta adicionar um story nele toda semana.</div>
+  </div>
+</section>
+
+<!-- FIXADOS -->
+<section class="section" id="fixados">
+  <div class="section-label">6 — Posts fixados</div>
+  <h2>Três posts que ficam <span>sempre no topo</span></h2>
+  <p class="section-desc">O Instagram permite "fixar" até 3 posts no começo do perfil. Eles não descem quando a loja posta coisa nova. É o lugar certo para contar quem é a Viviane para quem acabou de chegar.</p>
+  <div class="cards">
+    <div class="card"><span class="badge badge-p">Fixado 1</span><h3>"15 anos vestindo São Desidério"</h3><p>Foto da fachada ou da Ana com a Viviane na loja. Legenda contando a história em 4 linhas: começou em 2009, duas lojas, atende pelo nome. Termina com "chama no WhatsApp".</p></div>
+    <div class="card"><span class="badge badge-p">Fixado 2</span><h3>"Como comprar pelo WhatsApp"</h3><p>Sequência de 4 imagens: 1) manda um oi, 2) a gente mostra as opções com preço, 3) escolhe e paga (Pix, cartão ou na loja), 4) retira ou recebe em casa. Simples e visual.</p></div>
+    <div class="card"><span class="badge badge-p">Fixado 3</span><h3>"Novidades da semana"</h3><p>Sequência com as peças que chegaram. Trocar toda segunda-feira: desafixar o antigo, fixar o novo. É o post que mais vai gerar mensagem.</p></div>
+  </div>
+  <div class="tip"><strong>Como fixar:</strong> abrir o post → três pontinhos (⋯) no canto superior direito → <em>Fixar no seu perfil</em>. Para tirar, mesmo caminho → <em>Desafixar</em>.</div>
+</section>
+
+<!-- RITMO -->
+<section class="section" id="ritmo">
+  <div class="section-label">7 — Ritmo de publicação</div>
+  <h2>Quanto postar para a loja <span>ficar presente</span> sem virar peso</h2>
+  <p class="section-desc">Regra de ouro: frequência vale mais que perfeição. O celular da loja é o estúdio. A Viviane é a apresentadora.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Onde</th><th>Quanto</th><th>O que postar</th><th>Melhor horário</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stories</strong><br><span style="color:var(--dim);font-size:12px">somem em 24h</span></td><td>3 a 5 por dia</td><td>Peça nova na mão, preço, enquete "qual você prefere?", cliente na loja, bastidores da chegada de mercadoria</td><td>11h-12h e 18h-20h</td></tr>
+        <tr><td><strong>Feed</strong><br><span style="color:var(--dim);font-size:12px">posts que ficam</span></td><td>1 por dia em outubro (depois 3-4 por semana)</td><td>Foto de produto com preço na legenda, sequências de imagens (carrossel), história da loja, cliente feliz</td><td>11h-12h</td></tr>
+        <tr><td><strong>Reels</strong><br><span style="color:var(--dim);font-size:12px">vídeos curtos</span></td><td>2 a 3 por semana</td><td>Viviane mostrando 3 peças em 20 segundos, "qual você escolhe?", chegada de novidade, provador</td><td>18h-20h</td></tr>
+        <tr><td><strong>Status do WhatsApp</strong></td><td>Todo dia</td><td>Espelho dos stories: a mesma foto/vídeo, com preço e "chama aqui"</td><td>Manhã e fim de tarde</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip tip-purple"><strong>Os roteiros do que falar nos vídeos</strong> estão em uma página separada da Central ("Roteiros de Vídeo — Outubro"). Cada roteiro tem o que dizer, quanto tempo, e o que mostrar.</div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" id="checklist">
+  <div class="section-label">8 — Checklist de execução</div>
+  <h2>O que fazer, <span>em ordem</span></h2>
+  <p class="section-desc">Marque conforme for fazendo. O progresso fica salvo neste navegador. Os itens "ADS" são entregas da ADS Company; os itens "LOJA" são para a Viviane fazer no celular.</p>
+  <div class="chk" id="chk">
+    <div class="progress"><div id="bar"></div></div>
+    <label><input type="checkbox"> Trocar o Nome do perfil para "Viviane Utilidades | São Desidério" <span class="who">Loja · 2 min</span></label>
+    <label><input type="checkbox"> Colar a bio escolhida (A, B ou C) <span class="who">Loja · 3 min</span></label>
+    <label><input type="checkbox"> Corrigir o link do WhatsApp (com 55 e mensagem pronta) <span class="who">Loja · 2 min</span></label>
+    <label><input type="checkbox"> Ativar o botão WhatsApp nas opções de contato <span class="who">Loja · 3 min</span></label>
+    <label><input type="checkbox"> Colocar o endereço da loja no perfil <span class="who">Loja · 2 min</span></label>
+    <label><input type="checkbox"> Enviar foto do perfil nova (lilás) no grupo <span class="who">ADS</span></label>
+    <label><input type="checkbox"> Enviar as 8 capas de destaque em lilás no grupo <span class="who">ADS</span></label>
+    <label><input type="checkbox"> Trocar a foto do perfil <span class="who">Loja · 1 min</span></label>
+    <label><input type="checkbox"> Renomear "Cestas" → "Presentes" e juntar "Cintos" + "Rasteirinhas" → "Acessórios" <span class="who">Loja · 5 min</span></label>
+    <label><input type="checkbox"> Trocar as capas dos destaques pelas lilás <span class="who">Loja · 10 min</span></label>
+    <label><input type="checkbox"> Criar destaque "Infantil" com as opções de Dia das Crianças <span class="who">Loja</span></label>
+    <label><input type="checkbox"> Criar destaque "Como chegar" (vídeo da fachada + endereço + horário) <span class="who">Loja</span></label>
+    <label><input type="checkbox"> Criar destaque "Novidades" e colocar 1 story nele toda semana <span class="who">Loja</span></label>
+    <label><input type="checkbox"> Fixar os 3 posts (história, como comprar, novidades) <span class="who">Loja</span></label>
+    <label><input type="checkbox"> Começar o ritmo: 3-5 stories/dia, 1 post/dia, 2-3 vídeos/semana <span class="who">Loja</span></label>
+  </div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="section" id="duvidas">
+  <div class="section-label">Para confirmar com a Viviane</div>
+  <h2>Três <span>perguntas</span> antes de aplicar</h2>
+  <div class="box">
+    <div class="steps">
+      <div class="step"><strong>O @vivianeutilidadesloja é o perfil da segunda loja?</strong> Se for, sugerimos concentrar tudo no @viviane.utilidades (que já tem 11 mil seguidores) e deixar o outro perfil apenas com um post fixado dizendo "Siga @viviane.utilidades". Dois perfis dividem o esforço e a audiência.</div>
+      <div class="step"><strong>Qual das 3 bios?</strong> Nossa recomendação é a A. Mas a escolha é da loja — todas cabem no limite.</div>
+      <div class="step"><strong>Tem foto da fachada e das duas lojas?</strong> Precisamos para o destaque "Como chegar" e para o post fixado da história. Pode ser do celular, na hora de abrir a loja, com luz do dia.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px">
+  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
+  <div>Review do Instagram — Viviane Utilidades — Outubro 2026</div>
+</div>
+
+<script>
+function cp(t,b){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copiado!';setTimeout(()=>b.textContent=o,1500)})}
+const KEY='viviane-chk-ig';
+const boxes=[...document.querySelectorAll('#chk input[type=checkbox]')];
+function upd(){const d=boxes.filter(c=>c.checked).length;document.getElementById('bar').style.width=(d/boxes.length*100)+'%';boxes.forEach(c=>c.parentElement.classList.toggle('done',c.checked));try{localStorage.setItem(KEY,JSON.stringify(boxes.map(c=>c.checked)))}catch(e){}}
+try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');s.forEach((v,i)=>{if(boxes[i])boxes[i].checked=v})}catch(e){}
+boxes.forEach(c=>c.addEventListener('change',upd));upd();
+const links=document.querySelectorAll('.top-nav a');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const l=document.querySelector('.top-nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('active')}}),{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('.section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

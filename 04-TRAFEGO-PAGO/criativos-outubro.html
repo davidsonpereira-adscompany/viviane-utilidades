@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criativos de Outubro &mdash; Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#111;--card2:#141414;--border:rgba(255,255,255,0.06);--txt:#F5F5F5;--dim:#888;--green:#34D399;--yellow:#FBBF24;--red:#EF4444;--purple:#9B7DB8;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(6,6,6,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;overflow-x:auto}
+.top-nav a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:all .2s}
+.top-nav a:hover{color:var(--txt);background:rgba(255,255,255,.04)}
+.top-nav a.active{color:var(--o);background:rgba(255,92,0,.08)}
+.back-btn{position:fixed;top:56px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;color:var(--dim);font-size:11px;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s}
+.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
+.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
+.hero{padding:100px 32px 56px;text-align:center;background:linear-gradient(180deg,rgba(155,125,184,.08) 0%,transparent 60%)}
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(30px,5vw,50px);font-weight:700;line-height:1.15;margin-bottom:14px}
+.hero h1 span{color:var(--o)}
+.hero p{font-size:16px;color:var(--dim);max-width:640px;margin:0 auto 28px}
+.hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+.hero-meta strong{color:var(--txt);font-weight:600}
+.container{max-width:1040px;margin:0 auto;padding:0 24px 80px}
+.section{margin-top:64px;scroll-margin-top:80px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.section h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.2;margin-bottom:8px}
+.section h2 span{color:var(--o)}
+.section-desc{color:var(--dim);font-size:14px;margin-bottom:28px;max-width:720px}
+.tip{background:rgba(255,92,0,.04);border-left:3px solid var(--o);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13px;color:rgba(245,245,245,.78);margin:14px 0;line-height:1.7}
+.tip strong{color:var(--txt)}
+.tip-green{border-left-color:var(--green);background:rgba(52,211,153,.04)}
+.tip-yellow{border-left-color:var(--yellow);background:rgba(251,191,36,.04)}
+.tip-purple{border-left-color:var(--purple);background:rgba(155,125,184,.05)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.card p{font-size:13px;color:var(--dim)}
+.cr{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+@media(max-width:760px){.cr{grid-template-columns:1fr}}
+.cr img{width:100%;border-radius:12px;display:block;border:1px solid rgba(255,255,255,.08)}
+.cr .img-wrap{position:relative}
+.cr .fmt{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.6);color:#fff;padding:4px 8px;border-radius:6px;backdrop-filter:blur(6px)}
+.cr h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px}
+.b-o{background:rgba(255,92,0,.1);color:var(--o)}
+.b-p{background:rgba(155,125,184,.15);color:var(--purple)}
+.b-g{background:rgba(52,211,153,.12);color:var(--green)}
+.b-y{background:rgba(251,191,36,.12);color:var(--yellow)}
+.b-t{background:rgba(255,255,255,.05);color:var(--dim)}
+.blk{background:rgba(255,255,255,.025);border-radius:10px;padding:14px 16px;margin-top:10px}
+.blk h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
+.blk p{font-size:13px;color:rgba(245,245,245,.82);white-space:pre-line}
+.blk .small{font-size:12px;color:var(--dim);white-space:normal;margin-top:6px}
+.approve{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.approve label{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.1)}
+.approve label.ok{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.06)}
+.approve label.adj{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.06)}
+.approve input{accent-color:var(--green)}
+.approve input.adj{accent-color:var(--yellow)}
+.obs{width:100%;margin-top:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;color:var(--txt);font-family:var(--sans);font-size:13px;resize:vertical;min-height:44px}
+.obs:focus{outline:none;border-color:var(--o)}
+.car{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.car h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:12px 0 6px;scroll-snap-type:x mandatory}
+.strip img{height:260px;width:auto;border-radius:10px;flex-shrink:0;scroll-snap-align:start;border:1px solid rgba(255,255,255,.08)}
+.strip .n{position:relative;flex-shrink:0}
+.strip .n span{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;background:rgba(0,0,0,.6);color:#fff;padding:3px 7px;border-radius:6px}
+.strip .n.capa span{background:var(--purple)}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+thead th{text-align:left;padding:12px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border)}
+tbody td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.sum{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.sum .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
+.sum .row:last-child{border-bottom:none}
+.sum .st{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.st.ok{color:var(--green)} .st.adj{color:var(--yellow)} .st.pend{color:var(--dim)}
+@media(max-width:768px){.hero{padding:80px 20px 40px}.container{padding:0 16px 60px}.cr{padding:16px}.strip img{height:200px}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="#como" class="active">Como aprovar</a>
+  <a href="#unicos">Imagem única</a>
+  <a href="#sequencias">Sequências</a>
+  <a href="#formatos">Formatos</a>
+  <a href="#resumo">Resumo</a>
+</nav>
+<a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
+
+<section class="hero">
+  <div class="hero-badge">Criativos — Campanha de Outubro</div>
+  <h1>As peças que vão <span>para o ar</span> na segunda</h1>
+  <p>Feitas com as 36 fotos que a Viviane mandou em 02/10. Nenhum produto foi alterado — só entrou o design por cima, no lilás da marca. Olhe cada uma, marque "Aprovado" ou "Ajustar" e escreva o que quer mudar.</p>
+  <div class="hero-meta">
+    <span><strong>Imagem única:</strong> 5 peças</span>
+    <span><strong>Sequências:</strong> 4 (40 fotos)</span>
+    <span><strong>Dia das Crianças:</strong> aguardando fotos infantis</span>
+  </div>
+</section>
+
+<div class="container">
+
+<section class="section" id="como">
+  <div class="section-label">Antes de olhar</div>
+  <h2>Como <span>aprovar</span></h2>
+  <div class="cards">
+    <div class="card"><h3>1. Olhe no celular</h3><p>É onde a cliente vai ver. Abra esta página no celular e role com calma.</p></div>
+    <div class="card"><h3>2. Confira o produto e o preço</h3><p>A peça está certa? O nome da marca está certo? Se houver preço, está atualizado?</p></div>
+    <div class="card"><h3>3. Marque e escreva</h3><p>"Aprovado" ou "Ajustar" em cada peça. No "Ajustar", escreva o que mudar. Fica salvo neste navegador.</p></div>
+    <div class="card"><h3>4. Avise no grupo</h3><p>Mandou "aprovado" no grupo, Davidson sobe na campanha. Prazo: domingo à noite para entrar segunda cedo.</p></div>
+  </div>
+</section>
+
+<!-- IMAGEM ÚNICA -->
+<section class="section" id="unicos">
+  <div class="section-label">5 peças</div>
+  <h2>Anúncios de <span>imagem única</span></h2>
+  <p class="section-desc">Uma foto, uma frase, um pedido: chama no WhatsApp. Cada uma tem versão para o feed (4:5) e para os stories (9:16).</p>
+
+  <div class="cr" data-k="A">
+    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/A-capa-vestidos.jpg" alt="Olha o que chegou — vestidos longos"></div>
+    <div>
+      <h3>A — "Olha o que chegou!"</h3>
+      <div class="badges"><span class="badge b-p">Grupo A · Vestidos</span><span class="badge b-t">Também é a capa da Sequência 1</span><span class="badge b-t">foto 01</span></div>
+      <div class="blk"><h4>Para quem aparece</h4><p>Mulheres de 25 a 50 anos, São Desidério e 30 km ao redor.</p></div>
+      <div class="blk"><h4>Texto que vai junto</h4><p>Olha o que chegou na Viviane 💜
+Vestido longo novo, estampa linda, tecido leve pro calor de São Desidério.
+15 anos vestindo a cidade — e toda semana com peça nova.
+Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Vestidos longos novos — chama no WhatsApp · <strong>Botão:</strong> Enviar mensagem</div></div>
+      <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+      <textarea class="obs" placeholder="O que mudar? (ex: trocar o vestido pelo azul da foto 12)"></textarea>
+    </div>
+  </div>
+
+  <div class="cr" data-k="B">
+    <div class="img-wrap"><span class="fmt">Feed</span><img src="criativos/web/B-capa-masculino.jpg" alt="Pra ele também tem — linha masculina"></div>
+    <div>
+      <h3>B — "Pra ele também tem"</h3>
+      <div class="badges"><span class="badge b-p">Grupo B · Masculino</span><span class="badge b-t">Também é a capa da Sequência 2</span><span class="badge b-t">foto 14</span></div>
+      <div class="blk"><h4>Para quem aparece</h4><p>Homens e mulheres de 25 a 55 anos (a mulher compra para o marido e o filho), mesma região.</p></div>
+      <div class="blk"><h4>Texto que vai junto</h4><p>Pra ele também tem 👕
+Polo Fico, camisa Maresia, bermuda e boné — tudo na Viviane, em São Desidério.
+Marca boa sem precisar ir a Barreiras.
+Chama no WhatsApp e pergunta o tamanho 👇</p><div class="small"><strong>Título:</strong> Linha masculina — polos, Maresia e bonés · <strong>Botão:</strong> Enviar mensagem</div></div>
+      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> as três polos da foto são da marca Colcci? Se forem, o texto muda para "Polo Colcci, camisa Maresia…". Precisamos da confirmação da loja.</div>
+      <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+      <textarea class="obs" placeholder="O que mudar?"></textarea>
+    </div>
+  </div>
+
+  <div class="cr" data-k="C">
+    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/C-familia.jpg" alt="Na Viviane, a família inteira encontra"></div>
+    <div>
+      <h3>C — "A família inteira encontra"</h3>
+      <div class="badges"><span class="badge b-o">Todos os grupos</span><span class="badge b-t">fotos 03, 29 e 30</span></div>
+      <div class="blk"><h4>Para quem aparece</h4><p>Todo mundo da região, 25 a 55 anos. É o anúncio que mostra que a loja não é só de mulher.</p></div>
+      <div class="blk"><h4>Texto que vai junto</h4><p>Mãe escolhe o vestido, pai leva a polo, e o filho sai de boné novo 💜
+Na Viviane, a família inteira encontra — há 15 anos, aqui em São Desidério.
+Chama no WhatsApp e conta o que você procura 👇</p><div class="small"><strong>Título:</strong> Pra toda a família — Viviane Utilidades · <strong>Botão:</strong> Enviar mensagem</div></div>
+      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> a polo azul aparece com a etiqueta "G 120,00" (veio assim na foto). Esse preço está certo? Se não, trocamos pela foto 26 (polo vermelha, sem preço).</div>
+      <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+      <textarea class="obs" placeholder="O que mudar?"></textarea>
+    </div>
+  </div>
+
+  <div class="cr" data-k="D">
+    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/D-15-anos.jpg" alt="A loja que te conhece pelo nome"></div>
+    <div>
+      <h3>D — "A loja que te conhece pelo nome"</h3>
+      <div class="badges"><span class="badge b-g">Confiança · mês inteiro</span><span class="badge b-t">foto 20</span></div>
+      <div class="blk"><h4>Para quem aparece</h4><p>Todo mundo da região, em volume baixo, o mês inteiro. Quem viu o vestido e ficou na dúvida vê este e lembra: "é a Viviane, 15 anos aqui".</p></div>
+      <div class="blk"><h4>Texto que vai junto</h4><p>Tem loja que abre e fecha em meses.
+A Viviane tá em São Desidério há 15 anos — e ontem chegou peça nova.
+Aqui você entra e a gente já sabe o seu tamanho. Isso é atendimento.
+Chama no WhatsApp, a gente te atende como vizinho 👇</p><div class="small"><strong>Título:</strong> A loja que te conhece pelo nome há 15 anos · <strong>Botão:</strong> Enviar mensagem</div></div>
+      <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+      <textarea class="obs" placeholder="O que mudar?"></textarea>
+    </div>
+  </div>
+
+  <div class="cr" data-k="E">
+    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/E-vestido-novo.jpg" alt="Chegou vestido novo na Viviane"></div>
+    <div>
+      <h3>E — "Chegou vestido novo na Viviane"</h3>
+      <div class="badges"><span class="badge b-p">Grupo A · Vestidos</span><span class="badge b-t">foto 03</span></div>
+      <div class="blk"><h4>Para quem aparece</h4><p>Mesmo público do A. Dois anúncios no mesmo grupo: o Instagram descobre qual chama mais e mostra mais esse.</p></div>
+      <div class="blk"><h4>Texto que vai junto</h4><p>Chegou vestido novo na Viviane 💜
+Floral, leve, lindo — e já tá na arara esperando você.
+Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Novidade da semana — Viviane Utilidades · <strong>Botão:</strong> Enviar mensagem</div></div>
+      <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+      <textarea class="obs" placeholder="O que mudar?"></textarea>
+    </div>
+  </div>
+
+  <div class="tip tip-purple"><strong>Dia das Crianças:</strong> o anúncio infantil (Grupo C da estratégia) é feito no mesmo dia em que chegarem 6 a 8 fotos dos produtos infantis. Mesmo padrão visual, com a frase "O presente certo tá aqui".</div>
+</section>
+
+<!-- SEQUÊNCIAS -->
+<section class="section" id="sequencias">
+  <div class="section-label">4 sequências · 40 fotos</div>
+  <h2>Sequências de imagens <span>(carrossel)</span></h2>
+  <p class="section-desc">A pessoa desliza pro lado e vê uma foto de cada vez. A primeira é a capa com design; as outras são as fotos da loja, sem alteração, ajustadas ao formato do Instagram (fundo desfocado para não cortar o vestido). Deslize para ver cada uma.</p>
+
+  <div class="car" data-k="S1">
+    <h3>Sequência 1 — Vestidos longos (os 10 mais fortes)</h3>
+    <div class="badges"><span class="badge b-p">Grupo A</span><span class="badge b-t">capa A + 10 fotos</span></div>
+    <div class="strip">
+      <div class="n capa"><span>CAPA</span><img src="criativos/web/A-capa-vestidos.jpg" alt=""></div>
+      <div class="n"><span>1</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-01-foto-01.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-02-foto-03.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-03-foto-12.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-04-foto-20.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-05-foto-25.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-06-foto-28.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-07-foto-18.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-08-foto-34.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-09-foto-02.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-10-foto-15.jpg" alt=""></div>
+    </div>
+    <div class="blk"><h4>Texto que vai junto</h4><p>10 vestidos longos que chegaram essa semana na Viviane 💜 Desliza e escolhe o seu — depois chama no WhatsApp que a gente separa.</p></div>
+    <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+    <textarea class="obs" placeholder="Tirar alguma foto? Trocar a ordem? Colocar preço?"></textarea>
+  </div>
+
+  <div class="car" data-k="S2">
+    <h3>Sequência 2 — Linha masculina</h3>
+    <div class="badges"><span class="badge b-p">Grupo B</span><span class="badge b-t">capa B + 10 fotos</span></div>
+    <div class="strip">
+      <div class="n capa"><span>CAPA</span><img src="criativos/web/B-capa-masculino.jpg" alt=""></div>
+      <div class="n"><span>1</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-01-foto-14.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-02-foto-24.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-03-foto-29.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-04-foto-26.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-05-foto-09.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-06-foto-33.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-07-foto-08.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-08-foto-31.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-09-foto-30.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-10-foto-04.jpg" alt=""></div>
+    </div>
+    <div class="blk"><h4>Texto que vai junto</h4><p>Pra ele também tem 👕 Polo, Maresia, jeans, boné Nike e New Era — desliza e vê. Chama no WhatsApp e pergunta o tamanho.</p></div>
+    <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> duas fotos (2 e 3) trazem a etiqueta "G 120,00". Preço certo? Se a loja preferir sem preço, tiramos essas duas.</div>
+    <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+    <textarea class="obs" placeholder="O que mudar?"></textarea>
+  </div>
+
+  <div class="car" data-k="S3">
+    <h3>Sequência 3 — Para toda a família</h3>
+    <div class="badges"><span class="badge b-o">Todos os grupos</span><span class="badge b-t">capa C + 10 fotos</span></div>
+    <div class="strip">
+      <div class="n capa"><span>CAPA</span><img src="criativos/web/C-familia.jpg" alt=""></div>
+      <div class="n"><span>1</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-01-foto-03.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-02-foto-14.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-03-foto-25.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-04-foto-30.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-05-foto-28.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-06-foto-22.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-07-foto-12.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-08-foto-26.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-09-foto-20.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-10-foto-09.jpg" alt=""></div>
+    </div>
+    <div class="blk"><h4>Texto que vai junto</h4><p>Vestido pra ela, polo pra ele, boné pro filho 💜 Na Viviane, a família inteira sai com sacola. 15 anos em São Desidério. Chama no WhatsApp!</p></div>
+    <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+    <textarea class="obs" placeholder="O que mudar?"></textarea>
+  </div>
+
+  <div class="car" data-k="S4">
+    <h3>Sequência 4 — Vestidos estampados (reserva para a 2ª semana)</h3>
+    <div class="badges"><span class="badge b-y">Entra em 13/10</span><span class="badge b-t">10 fotos</span></div>
+    <div class="strip">
+      <div class="n"><span>1</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-01-foto-06.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-02-foto-07.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-03-foto-11.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-04-foto-13.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-05-foto-16.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-06-foto-17.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-07-foto-19.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-08-foto-23.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-09-foto-27.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-10-foto-32.jpg" alt=""></div>
+    </div>
+    <div class="blk"><h4>Para quê</h4><p>Na segunda semana a gente troca a Sequência 1 por esta — anúncio novo, mesmo público. Evita a pessoa ver sempre a mesma coisa. A capa é feita na semana que vem.</p></div>
+    <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
+    <textarea class="obs" placeholder="O que mudar?"></textarea>
+  </div>
+</section>
+
+<!-- FORMATOS -->
+<section class="section" id="formatos">
+  <div class="section-label">Para quem for publicar no Instagram da loja</div>
+  <h2>Os <span>formatos</span> prontos</h2>
+  <p class="section-desc">Além dos anúncios, as mesmas imagens servem para o feed e os stories do @viviane.utilidades. Estão na pasta do Drive em três tamanhos.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Tamanho</th><th>Para onde</th><th>Onde está</th></tr></thead>
+    <tbody>
+      <tr><td><strong>4:5</strong> (1080 × 1350)</td><td>Feed do Instagram e Facebook, sequências</td><td>criativos/4x5 · carrosseis/…/4x5</td></tr>
+      <tr><td><strong>9:16</strong> (1080 × 1920)</td><td>Stories, Status do WhatsApp, Reels (capa)</td><td>criativos/9x16</td></tr>
+      <tr><td><strong>Original</strong></td><td>Arquivo-mestre, para novas versões</td><td>criativos/*.png · fotos-cliente-out2026</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- RESUMO -->
+<section class="section" id="resumo">
+  <div class="section-label">Situação</div>
+  <h2>Resumo da <span>aprovação</span></h2>
+  <div class="sum" id="sum"></div>
+  <div class="tip tip-green" style="margin-top:16px"><strong>Depois de marcar tudo:</strong> mandar no grupo "aprovei os criativos" (ou tirar print desta parte). Davidson sobe na campanha e confirma o horário em que entrou no ar.</div>
+</section>
+
+</div>
+
+<div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px">
+  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
+  <div>Criativos de Outubro — Viviane Utilidades — gerados em 03/10/2026</div>
+</div>
+
+<script>
+const KEY='viviane-criativos-out';
+const NAMES={A:'A — Olha o que chegou!',B:'B — Pra ele também tem',C:'C — A família inteira encontra',D:'D — A loja que te conhece pelo nome',E:'E — Chegou vestido novo',S1:'Sequência 1 — Vestidos',S2:'Sequência 2 — Masculino',S3:'Sequência 3 — Família',S4:'Sequência 4 — Estampados'};
+let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+document.querySelectorAll('[data-k]').forEach(el=>{
+  const k=el.dataset.k, ok=el.querySelector('input[data-s=ok]'), adj=el.querySelector('input[data-s=adj]'), obs=el.querySelector('.obs');
+  const s=state[k]||{};ok.checked=s.st==='ok';adj.checked=s.st==='adj';obs.value=s.obs||'';
+  const save=()=>{state[k]={st:ok.checked?'ok':adj.checked?'adj':'',obs:obs.value};try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){};render()};
+  ok.addEventListener('change',()=>{if(ok.checked)adj.checked=false;save()});
+  adj.addEventListener('change',()=>{if(adj.checked)ok.checked=false;save()});
+  obs.addEventListener('input',save);
+});
+function render(){const el=document.getElementById('sum');el.innerHTML=Object.keys(NAMES).map(k=>{const s=(state[k]||{}).st||'';const cls=s==='ok'?'ok':s==='adj'?'adj':'pend';const t=s==='ok'?'Aprovado':s==='adj'?'Ajustar':'Pendente';return `<div class="row"><span>${NAMES[k]}</span><span class="st ${cls}">${t}</span></div>`}).join('')}
+render();
+const links=document.querySelectorAll('.top-nav a');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const l=document.querySelector('.top-nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('active')}}),{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('.section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
