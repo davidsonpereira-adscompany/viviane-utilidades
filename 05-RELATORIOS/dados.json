@@ -1,0 +1,155 @@
+{
+  "atualizado_em": "2026-10-07T17:40:00-03:00",
+  "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
+  "campanha": {
+    "id": "23859297175620795",
+    "nome": "VIVIANE | Mensagens WhatsApp | Outubro 2026",
+    "inicio": "2026-10-07",
+    "orcamento_dia": 30,
+    "status": "ACTIVE"
+  },
+  "metas": {
+    "faturamento_mes": 110000,
+    "vendas_extras_dia": 5,
+    "custo_conversa_bom": 3,
+    "custo_conversa_atencao": 5,
+    "conversas_dia_meta": 10
+  },
+  "dias": [
+    {
+      "data": "2026-10-07",
+      "investido": 0.02,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 20,
+      "cliques": 0,
+      "vendas": null,
+      "valor_vendido": null
+    }
+  ],
+  "grupos": [
+    {
+      "id": "23859297181030795",
+      "nome": "A | Vestidos",
+      "investido": 0.0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297181800795",
+      "nome": "B | Masculino",
+      "investido": 0.02,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 15,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297183560795",
+      "nome": "C | Família e Confiança",
+      "investido": 0.0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    }
+  ],
+  "anuncios": [
+    {
+      "id": "23859297216290795",
+      "nome": "A1 | Olha o que chegou",
+      "grupo": "A",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297218970795",
+      "nome": "A2 | Chegou vestido novo",
+      "grupo": "A",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 5,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297244970795",
+      "nome": "A3 | Carrossel vestidos longos",
+      "grupo": "A",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297229690795",
+      "nome": "B1 | Pra ele também tem",
+      "grupo": "B",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297490470795",
+      "nome": "B2 | Carrossel linha masculina",
+      "grupo": "B",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297238320795",
+      "nome": "C1 | A família inteira encontra",
+      "grupo": "C",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297239880795",
+      "nome": "C2 | A loja que te conhece pelo nome",
+      "grupo": "C",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297240880795",
+      "nome": "C3 | Carrossel para toda a família",
+      "grupo": "C",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "status": "ACTIVE"
+    }
+  ],
+  "atualizacoes": [
+    "2026-10-07T17:40:00-03:00"
+  ]
+}
