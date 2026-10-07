@@ -42,8 +42,6 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15p
 .cr{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
 @media(max-width:760px){.cr{grid-template-columns:1fr}}
 .cr img{width:100%;border-radius:12px;display:block;border:1px solid rgba(255,255,255,.08)}
-.cr .img-wrap{position:relative}
-.cr .fmt{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.6);color:#fff;padding:4px 8px;border-radius:6px;backdrop-filter:blur(6px)}
 .cr h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
 .badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px}
@@ -56,6 +54,12 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15p
 .blk h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);margin-bottom:8px}
 .blk p{font-size:13px;color:rgba(245,245,245,.82);white-space:pre-line}
 .blk .small{font-size:12px;color:var(--dim);white-space:normal;margin-top:6px}
+.place{display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px}
+.place .row{display:grid;grid-template-columns:150px 110px 1fr;gap:10px;font-size:12px;padding:8px 12px;background:rgba(155,125,184,.07);border:1px solid rgba(155,125,184,.18);border-radius:8px;align-items:center}
+.place .row b{color:var(--txt);font-size:12px}
+.place .row code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--green);word-break:break-all}
+.place .row .f{color:var(--dim)}
+@media(max-width:600px){.place .row{grid-template-columns:1fr}}
 .approve{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
 .approve label{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.1)}
 .approve label.ok{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.06)}
@@ -69,13 +73,17 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15p
 .strip{display:flex;gap:10px;overflow-x:auto;padding:12px 0 6px;scroll-snap-type:x mandatory}
 .strip img{height:260px;width:auto;border-radius:10px;flex-shrink:0;scroll-snap-align:start;border:1px solid rgba(255,255,255,.08)}
 .strip .n{position:relative;flex-shrink:0}
-.strip .n span{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;background:rgba(0,0,0,.6);color:#fff;padding:3px 7px;border-radius:6px}
+.strip .n span{position:absolute;bottom:8px;left:8px;font-size:10px;font-weight:800;background:rgba(0,0,0,.65);color:#fff;padding:3px 7px;border-radius:6px}
 .strip .n.capa span{background:var(--purple)}
 .tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;background:var(--card)}
 thead th{text-align:left;padding:12px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border)}
 tbody td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top}
 tbody tr:last-child td{border-bottom:none}
+tbody td code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--green)}
+.tree{background:#0b0b0b;border:1px solid var(--border);border-radius:12px;padding:18px 20px;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.8;color:rgba(245,245,245,.85);overflow-x:auto;white-space:pre}
+.tree b{color:var(--o)}
+.tree i{color:var(--dim);font-style:normal}
 .sum{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
 .sum .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
 .sum .row:last-child{border-bottom:none}
@@ -89,19 +97,19 @@ tbody tr:last-child td{border-bottom:none}
 <nav class="top-nav">
   <a href="#como" class="active">Como aprovar</a>
   <a href="#unicos">Imagem única</a>
-  <a href="#sequencias">Sequências</a>
-  <a href="#formatos">Formatos</a>
+  <a href="#sequencias">Carrosséis</a>
+  <a href="#arquivos">Onde está salvo</a>
   <a href="#resumo">Resumo</a>
 </nav>
 <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
 
 <section class="hero">
   <div class="hero-badge">Criativos — Campanha de Outubro</div>
-  <h1>As peças que vão <span>para o ar</span> na segunda</h1>
+  <h1>As peças que vão <span>para o ar</span></h1>
   <p>Feitas com as 36 fotos que a Viviane mandou em 02/10. Nenhum produto foi alterado — só entrou o design por cima, no lilás da marca. Olhe cada uma, marque "Aprovado" ou "Ajustar" e escreva o que quer mudar.</p>
   <div class="hero-meta">
-    <span><strong>Imagem única:</strong> 5 peças</span>
-    <span><strong>Sequências:</strong> 4 (40 fotos)</span>
+    <span><strong>Imagem única:</strong> 5 anúncios</span>
+    <span><strong>Carrosséis:</strong> 4 (10 cartões cada)</span>
     <span><strong>Dia das Crianças:</strong> aguardando fotos infantis</span>
   </div>
 </section>
@@ -115,86 +123,122 @@ tbody tr:last-child td{border-bottom:none}
     <div class="card"><h3>1. Olhe no celular</h3><p>É onde a cliente vai ver. Abra esta página no celular e role com calma.</p></div>
     <div class="card"><h3>2. Confira o produto e o preço</h3><p>A peça está certa? O nome da marca está certo? Se houver preço, está atualizado?</p></div>
     <div class="card"><h3>3. Marque e escreva</h3><p>"Aprovado" ou "Ajustar" em cada peça. No "Ajustar", escreva o que mudar. Fica salvo neste navegador.</p></div>
-    <div class="card"><h3>4. Avise no grupo</h3><p>Mandou "aprovado" no grupo, Davidson sobe na campanha. Prazo: domingo à noite para entrar segunda cedo.</p></div>
+    <div class="card"><h3>4. Avise no grupo</h3><p>Mandou "aprovado" no grupo, Davidson sobe na campanha no mesmo dia e confirma a hora em que entrou no ar.</p></div>
   </div>
+  <div class="tip tip-purple"><strong>Dois tipos de anúncio nesta página.</strong> <strong>Imagem única:</strong> uma foto só; a pessoa toca no botão <em>Enviar mensagem</em> e abre o WhatsApp. <strong>Carrossel:</strong> até 10 fotos que a pessoa desliza pro lado; a primeira é a capa com design, e cada cartão também tem o botão <em>Enviar mensagem</em>.</div>
 </section>
 
 <!-- IMAGEM ÚNICA -->
 <section class="section" id="unicos">
-  <div class="section-label">5 peças</div>
+  <div class="section-label">5 anúncios</div>
   <h2>Anúncios de <span>imagem única</span></h2>
-  <p class="section-desc">Uma foto, uma frase, um pedido: chama no WhatsApp. Cada uma tem versão para o feed (4:5) e para os stories (9:16).</p>
+  <p class="section-desc">Uma foto, uma frase, um botão. Em cada anúncio está escrito onde ele aparece (feed ou stories), em que formato e em qual arquivo.</p>
 
   <div class="cr" data-k="A">
-    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/A-capa-vestidos.jpg" alt="Olha o que chegou — vestidos longos"></div>
+    <div><img src="criativos/web/A-vestidos-unico.jpg" alt="Olha o que chegou — vestidos longos"></div>
     <div>
       <h3>A — "Olha o que chegou!"</h3>
-      <div class="badges"><span class="badge b-p">Grupo A · Vestidos</span><span class="badge b-t">Também é a capa da Sequência 1</span><span class="badge b-t">foto 01</span></div>
+      <div class="badges"><span class="badge b-p">Grupo A · Vestidos</span><span class="badge b-t">foto 01</span></div>
+      <div class="blk"><h4>Onde aparece</h4>
+        <div class="place">
+          <div class="row"><b>Feed Instagram + Facebook</b><span class="f">4:5 · 1080×1350</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-A-vestidos/feed-4x5.jpg</code></div>
+          <div class="row"><b>Stories + Reels</b><span class="f">9:16 · 1080×1920</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-A-vestidos/stories-9x16.jpg</code></div>
+        </div>
+        <div class="small">Mesmo criativo nos dois lugares — só muda o recorte. Botão do anúncio: <strong>Enviar mensagem</strong> (abre o WhatsApp).</div>
+      </div>
       <div class="blk"><h4>Para quem aparece</h4><p>Mulheres de 25 a 50 anos, São Desidério e 30 km ao redor.</p></div>
       <div class="blk"><h4>Texto que vai junto</h4><p>Olha o que chegou na Viviane 💜
 Vestido longo novo, estampa linda, tecido leve pro calor de São Desidério.
 15 anos vestindo a cidade — e toda semana com peça nova.
-Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Vestidos longos novos — chama no WhatsApp · <strong>Botão:</strong> Enviar mensagem</div></div>
+Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Vestidos longos novos — chama no WhatsApp</div></div>
       <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
       <textarea class="obs" placeholder="O que mudar? (ex: trocar o vestido pelo azul da foto 12)"></textarea>
     </div>
   </div>
 
   <div class="cr" data-k="B">
-    <div class="img-wrap"><span class="fmt">Feed</span><img src="criativos/web/B-capa-masculino.jpg" alt="Pra ele também tem — linha masculina"></div>
+    <div><img src="criativos/web/B-masculino-unico.jpg" alt="Pra ele também tem — linha masculina"></div>
     <div>
       <h3>B — "Pra ele também tem"</h3>
-      <div class="badges"><span class="badge b-p">Grupo B · Masculino</span><span class="badge b-t">Também é a capa da Sequência 2</span><span class="badge b-t">foto 14</span></div>
+      <div class="badges"><span class="badge b-p">Grupo B · Masculino</span><span class="badge b-t">foto 14</span></div>
+      <div class="blk"><h4>Onde aparece</h4>
+        <div class="place">
+          <div class="row"><b>Feed Instagram + Facebook</b><span class="f">4:5 · 1080×1350</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-B-masculino/feed-4x5.jpg</code></div>
+          <div class="row"><b>Stories + Reels</b><span class="f">9:16 · 1080×1920</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-B-masculino/stories-9x16.jpg</code></div>
+        </div>
+        <div class="small">Mesmo criativo nos dois lugares. Botão: <strong>Enviar mensagem</strong>.</div>
+      </div>
       <div class="blk"><h4>Para quem aparece</h4><p>Homens e mulheres de 25 a 55 anos (a mulher compra para o marido e o filho), mesma região.</p></div>
       <div class="blk"><h4>Texto que vai junto</h4><p>Pra ele também tem 👕
-Polo Fico, camisa Maresia, bermuda e boné — tudo na Viviane, em São Desidério.
+Polo, camisa Maresia, bermuda e boné — tudo na Viviane, em São Desidério.
 Marca boa sem precisar ir a Barreiras.
-Chama no WhatsApp e pergunta o tamanho 👇</p><div class="small"><strong>Título:</strong> Linha masculina — polos, Maresia e bonés · <strong>Botão:</strong> Enviar mensagem</div></div>
-      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> as três polos da foto são da marca Colcci? Se forem, o texto muda para "Polo Colcci, camisa Maresia…". Precisamos da confirmação da loja.</div>
+Chama no WhatsApp e pergunta o tamanho 👇</p><div class="small"><strong>Título:</strong> Linha masculina — polos, Maresia e bonés</div></div>
+      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir com a loja:</strong> as três polos da foto são da marca Colcci? Se forem, o texto pode dizer "Polo Colcci". Por enquanto está só "Polo".</div>
       <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
       <textarea class="obs" placeholder="O que mudar?"></textarea>
     </div>
   </div>
 
   <div class="cr" data-k="C">
-    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/C-familia.jpg" alt="Na Viviane, a família inteira encontra"></div>
+    <div><img src="criativos/web/C-familia.jpg" alt="Na Viviane, a família inteira encontra"></div>
     <div>
       <h3>C — "A família inteira encontra"</h3>
       <div class="badges"><span class="badge b-o">Todos os grupos</span><span class="badge b-t">fotos 03, 29 e 30</span></div>
+      <div class="blk"><h4>Onde aparece</h4>
+        <div class="place">
+          <div class="row"><b>Feed Instagram + Facebook</b><span class="f">4:5 · 1080×1350</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-C-familia/feed-4x5.jpg</code></div>
+          <div class="row"><b>Stories + Reels</b><span class="f">9:16 · 1080×1920</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-C-familia/stories-9x16.jpg</code></div>
+        </div>
+        <div class="small">Mesmo criativo nos dois lugares. Botão: <strong>Enviar mensagem</strong>. Esta imagem também é a capa do Carrossel 3.</div>
+      </div>
       <div class="blk"><h4>Para quem aparece</h4><p>Todo mundo da região, 25 a 55 anos. É o anúncio que mostra que a loja não é só de mulher.</p></div>
       <div class="blk"><h4>Texto que vai junto</h4><p>Mãe escolhe o vestido, pai leva a polo, e o filho sai de boné novo 💜
 Na Viviane, a família inteira encontra — há 15 anos, aqui em São Desidério.
-Chama no WhatsApp e conta o que você procura 👇</p><div class="small"><strong>Título:</strong> Pra toda a família — Viviane Utilidades · <strong>Botão:</strong> Enviar mensagem</div></div>
-      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> a polo azul aparece com a etiqueta "G 120,00" (veio assim na foto). Esse preço está certo? Se não, trocamos pela foto 26 (polo vermelha, sem preço).</div>
+Chama no WhatsApp e conta o que você procura 👇</p><div class="small"><strong>Título:</strong> Pra toda a família — Viviane Utilidades</div></div>
+      <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir com a loja:</strong> a polo azul aparece com a etiqueta "G 120,00" (veio assim na foto). Esse preço está certo? Se não, trocamos pela foto 26 (polo vermelha, sem preço).</div>
       <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
       <textarea class="obs" placeholder="O que mudar?"></textarea>
     </div>
   </div>
 
   <div class="cr" data-k="D">
-    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/D-15-anos.jpg" alt="A loja que te conhece pelo nome"></div>
+    <div><img src="criativos/web/D-15-anos.jpg" alt="A loja que te conhece pelo nome"></div>
     <div>
       <h3>D — "A loja que te conhece pelo nome"</h3>
       <div class="badges"><span class="badge b-g">Confiança · mês inteiro</span><span class="badge b-t">foto 20</span></div>
+      <div class="blk"><h4>Onde aparece</h4>
+        <div class="place">
+          <div class="row"><b>Feed Instagram + Facebook</b><span class="f">4:5 · 1080×1350</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-D-15-anos/feed-4x5.jpg</code></div>
+          <div class="row"><b>Stories + Reels</b><span class="f">9:16 · 1080×1920</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-D-15-anos/stories-9x16.jpg</code></div>
+        </div>
+        <div class="small">Mesmo criativo nos dois lugares. Botão: <strong>Enviar mensagem</strong>.</div>
+      </div>
       <div class="blk"><h4>Para quem aparece</h4><p>Todo mundo da região, em volume baixo, o mês inteiro. Quem viu o vestido e ficou na dúvida vê este e lembra: "é a Viviane, 15 anos aqui".</p></div>
       <div class="blk"><h4>Texto que vai junto</h4><p>Tem loja que abre e fecha em meses.
 A Viviane tá em São Desidério há 15 anos — e ontem chegou peça nova.
 Aqui você entra e a gente já sabe o seu tamanho. Isso é atendimento.
-Chama no WhatsApp, a gente te atende como vizinho 👇</p><div class="small"><strong>Título:</strong> A loja que te conhece pelo nome há 15 anos · <strong>Botão:</strong> Enviar mensagem</div></div>
+Chama no WhatsApp, a gente te atende como vizinho 👇</p><div class="small"><strong>Título:</strong> A loja que te conhece pelo nome há 15 anos</div></div>
       <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
       <textarea class="obs" placeholder="O que mudar?"></textarea>
     </div>
   </div>
 
   <div class="cr" data-k="E">
-    <div class="img-wrap"><span class="fmt">Feed · Stories</span><img src="criativos/web/E-vestido-novo.jpg" alt="Chegou vestido novo na Viviane"></div>
+    <div><img src="criativos/web/E-vestido-novo.jpg" alt="Chegou vestido novo na Viviane"></div>
     <div>
       <h3>E — "Chegou vestido novo na Viviane"</h3>
       <div class="badges"><span class="badge b-p">Grupo A · Vestidos</span><span class="badge b-t">foto 03</span></div>
+      <div class="blk"><h4>Onde aparece</h4>
+        <div class="place">
+          <div class="row"><b>Feed Instagram + Facebook</b><span class="f">4:5 · 1080×1350</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-E-vestido-novo/feed-4x5.jpg</code></div>
+          <div class="row"><b>Stories + Reels</b><span class="f">9:16 · 1080×1920</span><code>PRONTO-PARA-SUBIR/01-ANUNCIO-E-vestido-novo/stories-9x16.jpg</code></div>
+        </div>
+        <div class="small">Mesmo criativo nos dois lugares. Botão: <strong>Enviar mensagem</strong>.</div>
+      </div>
       <div class="blk"><h4>Para quem aparece</h4><p>Mesmo público do A. Dois anúncios no mesmo grupo: o Instagram descobre qual chama mais e mostra mais esse.</p></div>
       <div class="blk"><h4>Texto que vai junto</h4><p>Chegou vestido novo na Viviane 💜
 Floral, leve, lindo — e já tá na arara esperando você.
-Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Novidade da semana — Viviane Utilidades · <strong>Botão:</strong> Enviar mensagem</div></div>
+Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>Título:</strong> Novidade da semana — Viviane Utilidades</div></div>
       <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
       <textarea class="obs" placeholder="O que mudar?"></textarea>
     </div>
@@ -203,79 +247,79 @@ Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>T�
   <div class="tip tip-purple"><strong>Dia das Crianças:</strong> o anúncio infantil (Grupo C da estratégia) é feito no mesmo dia em que chegarem 6 a 8 fotos dos produtos infantis. Mesmo padrão visual, com a frase "O presente certo tá aqui".</div>
 </section>
 
-<!-- SEQUÊNCIAS -->
+<!-- CARROSSÉIS -->
 <section class="section" id="sequencias">
-  <div class="section-label">4 sequências · 40 fotos</div>
-  <h2>Sequências de imagens <span>(carrossel)</span></h2>
-  <p class="section-desc">A pessoa desliza pro lado e vê uma foto de cada vez. A primeira é a capa com design; as outras são as fotos da loja, sem alteração, ajustadas ao formato do Instagram (fundo desfocado para não cortar o vestido). Deslize para ver cada uma.</p>
+  <div class="section-label">4 carrosséis · 10 cartões cada</div>
+  <h2>Carrosséis <span>(a pessoa desliza)</span></h2>
+  <p class="section-desc">O Instagram permite no máximo 10 cartões por carrossel. Cada um aqui tem a capa com design + 9 fotos da loja, sem alteração, ajustadas ao formato 4:5 (fundo desfocado para não cortar o vestido). O carrossel aparece no feed, nos stories e nos Reels — o Instagram adapta sozinho.</p>
 
   <div class="car" data-k="S1">
-    <h3>Sequência 1 — Vestidos longos (os 10 mais fortes)</h3>
-    <div class="badges"><span class="badge b-p">Grupo A</span><span class="badge b-t">capa A + 10 fotos</span></div>
+    <h3>Carrossel 1 — Vestidos longos</h3>
+    <div class="badges"><span class="badge b-p">Grupo A</span><span class="badge b-t">capa + 9 fotos = 10 cartões</span><span class="badge b-t">4:5 · 1080×1350</span></div>
     <div class="strip">
-      <div class="n capa"><span>CAPA</span><img src="criativos/web/A-capa-vestidos.jpg" alt=""></div>
-      <div class="n"><span>1</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-01-foto-01.jpg" alt=""></div>
-      <div class="n"><span>2</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-02-foto-03.jpg" alt=""></div>
-      <div class="n"><span>3</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-03-foto-12.jpg" alt=""></div>
-      <div class="n"><span>4</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-04-foto-20.jpg" alt=""></div>
-      <div class="n"><span>5</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-05-foto-25.jpg" alt=""></div>
-      <div class="n"><span>6</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-06-foto-28.jpg" alt=""></div>
-      <div class="n"><span>7</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-07-foto-18.jpg" alt=""></div>
-      <div class="n"><span>8</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-08-foto-34.jpg" alt=""></div>
-      <div class="n"><span>9</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-09-foto-02.jpg" alt=""></div>
-      <div class="n"><span>10</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-10-foto-15.jpg" alt=""></div>
+      <div class="n capa"><span>1 · CAPA</span><img src="criativos/web/A-capa-vestidos.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-01-foto-01.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-02-foto-03.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-03-foto-12.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-04-foto-20.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-05-foto-25.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-06-foto-28.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-07-foto-18.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-08-foto-34.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-01-vestidos-longos/web/slide-09-foto-02.jpg" alt=""></div>
     </div>
-    <div class="blk"><h4>Texto que vai junto</h4><p>10 vestidos longos que chegaram essa semana na Viviane 💜 Desliza e escolhe o seu — depois chama no WhatsApp que a gente separa.</p></div>
+    <div class="blk"><h4>Onde aparece · arquivos</h4><div class="place"><div class="row"><b>Feed, Stories e Reels</b><span class="f">10 cartões 4:5</span><code>PRONTO-PARA-SUBIR/02-CARROSSEL-1-vestidos/cartao-01-capa.jpg … cartao-10-foto-02.jpg</code></div></div><div class="small">A capa diz "Desliza pra ver" porque aqui tem foto do lado para deslizar. Botão em cada cartão: <strong>Enviar mensagem</strong>.</div></div>
+    <div class="blk"><h4>Texto que vai junto</h4><p>9 vestidos longos que chegaram essa semana na Viviane 💜 Desliza e escolhe o seu — depois chama no WhatsApp que a gente separa.</p></div>
     <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
     <textarea class="obs" placeholder="Tirar alguma foto? Trocar a ordem? Colocar preço?"></textarea>
   </div>
 
   <div class="car" data-k="S2">
-    <h3>Sequência 2 — Linha masculina</h3>
-    <div class="badges"><span class="badge b-p">Grupo B</span><span class="badge b-t">capa B + 10 fotos</span></div>
+    <h3>Carrossel 2 — Linha masculina</h3>
+    <div class="badges"><span class="badge b-p">Grupo B</span><span class="badge b-t">capa + 9 fotos = 10 cartões</span><span class="badge b-t">4:5 · 1080×1350</span></div>
     <div class="strip">
-      <div class="n capa"><span>CAPA</span><img src="criativos/web/B-capa-masculino.jpg" alt=""></div>
-      <div class="n"><span>1</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-01-foto-14.jpg" alt=""></div>
-      <div class="n"><span>2</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-02-foto-24.jpg" alt=""></div>
-      <div class="n"><span>3</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-03-foto-29.jpg" alt=""></div>
-      <div class="n"><span>4</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-04-foto-26.jpg" alt=""></div>
-      <div class="n"><span>5</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-05-foto-09.jpg" alt=""></div>
-      <div class="n"><span>6</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-06-foto-33.jpg" alt=""></div>
-      <div class="n"><span>7</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-07-foto-08.jpg" alt=""></div>
-      <div class="n"><span>8</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-08-foto-31.jpg" alt=""></div>
-      <div class="n"><span>9</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-09-foto-30.jpg" alt=""></div>
-      <div class="n"><span>10</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-10-foto-04.jpg" alt=""></div>
+      <div class="n capa"><span>1 · CAPA</span><img src="criativos/web/B-capa-masculino.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-01-foto-14.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-02-foto-24.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-03-foto-29.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-04-foto-26.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-05-foto-09.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-06-foto-33.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-07-foto-08.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-08-foto-31.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-02-linha-masculina/web/slide-09-foto-30.jpg" alt=""></div>
     </div>
-    <div class="blk"><h4>Texto que vai junto</h4><p>Pra ele também tem 👕 Polo, Maresia, jeans, boné Nike e New Era — desliza e vê. Chama no WhatsApp e pergunta o tamanho.</p></div>
-    <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir:</strong> duas fotos (2 e 3) trazem a etiqueta "G 120,00". Preço certo? Se a loja preferir sem preço, tiramos essas duas.</div>
+    <div class="blk"><h4>Onde aparece · arquivos</h4><div class="place"><div class="row"><b>Feed, Stories e Reels</b><span class="f">10 cartões 4:5</span><code>PRONTO-PARA-SUBIR/02-CARROSSEL-2-masculino/cartao-01-capa.jpg … cartao-10-foto-30.jpg</code></div></div><div class="small">Botão em cada cartão: <strong>Enviar mensagem</strong>.</div></div>
+    <div class="blk"><h4>Texto que vai junto</h4><p>Pra ele também tem 👕 Polo, Maresia, jeans e boné New Era — desliza e vê. Chama no WhatsApp e pergunta o tamanho.</p></div>
+    <div class="tip tip-yellow" style="margin:10px 0 0"><strong>Conferir com a loja:</strong> os cartões 3 e 4 trazem a etiqueta "G 120,00". Preço certo? Se a loja preferir sem preço, tiramos esses dois.</div>
     <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
     <textarea class="obs" placeholder="O que mudar?"></textarea>
   </div>
 
   <div class="car" data-k="S3">
-    <h3>Sequência 3 — Para toda a família</h3>
-    <div class="badges"><span class="badge b-o">Todos os grupos</span><span class="badge b-t">capa C + 10 fotos</span></div>
+    <h3>Carrossel 3 — Para toda a família</h3>
+    <div class="badges"><span class="badge b-o">Todos os grupos</span><span class="badge b-t">capa + 9 fotos = 10 cartões</span><span class="badge b-t">4:5 · 1080×1350</span></div>
     <div class="strip">
-      <div class="n capa"><span>CAPA</span><img src="criativos/web/C-familia.jpg" alt=""></div>
-      <div class="n"><span>1</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-01-foto-03.jpg" alt=""></div>
-      <div class="n"><span>2</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-02-foto-14.jpg" alt=""></div>
-      <div class="n"><span>3</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-03-foto-25.jpg" alt=""></div>
-      <div class="n"><span>4</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-04-foto-30.jpg" alt=""></div>
-      <div class="n"><span>5</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-05-foto-28.jpg" alt=""></div>
-      <div class="n"><span>6</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-06-foto-22.jpg" alt=""></div>
-      <div class="n"><span>7</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-07-foto-12.jpg" alt=""></div>
-      <div class="n"><span>8</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-08-foto-26.jpg" alt=""></div>
-      <div class="n"><span>9</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-09-foto-20.jpg" alt=""></div>
-      <div class="n"><span>10</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-10-foto-09.jpg" alt=""></div>
+      <div class="n capa"><span>1 · CAPA</span><img src="criativos/web/C-familia.jpg" alt=""></div>
+      <div class="n"><span>2</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-01-foto-03.jpg" alt=""></div>
+      <div class="n"><span>3</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-02-foto-14.jpg" alt=""></div>
+      <div class="n"><span>4</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-03-foto-25.jpg" alt=""></div>
+      <div class="n"><span>5</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-04-foto-30.jpg" alt=""></div>
+      <div class="n"><span>6</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-05-foto-28.jpg" alt=""></div>
+      <div class="n"><span>7</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-06-foto-22.jpg" alt=""></div>
+      <div class="n"><span>8</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-07-foto-12.jpg" alt=""></div>
+      <div class="n"><span>9</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-08-foto-26.jpg" alt=""></div>
+      <div class="n"><span>10</span><img src="carrosseis/carrossel-03-toda-familia/web/slide-09-foto-20.jpg" alt=""></div>
     </div>
+    <div class="blk"><h4>Onde aparece · arquivos</h4><div class="place"><div class="row"><b>Feed, Stories e Reels</b><span class="f">10 cartões 4:5</span><code>PRONTO-PARA-SUBIR/02-CARROSSEL-3-familia/cartao-01-capa.jpg … cartao-10-foto-20.jpg</code></div></div><div class="small">Botão em cada cartão: <strong>Enviar mensagem</strong>.</div></div>
     <div class="blk"><h4>Texto que vai junto</h4><p>Vestido pra ela, polo pra ele, boné pro filho 💜 Na Viviane, a família inteira sai com sacola. 15 anos em São Desidério. Chama no WhatsApp!</p></div>
     <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
     <textarea class="obs" placeholder="O que mudar?"></textarea>
   </div>
 
   <div class="car" data-k="S4">
-    <h3>Sequência 4 — Vestidos estampados (reserva para a 2ª semana)</h3>
-    <div class="badges"><span class="badge b-y">Entra em 13/10</span><span class="badge b-t">10 fotos</span></div>
+    <h3>Carrossel 4 — Vestidos estampados (reserva para a 2ª semana)</h3>
+    <div class="badges"><span class="badge b-y">Entra na semana seguinte</span><span class="badge b-t">10 fotos (a capa é feita na troca)</span><span class="badge b-t">4:5 · 1080×1350</span></div>
     <div class="strip">
       <div class="n"><span>1</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-01-foto-06.jpg" alt=""></div>
       <div class="n"><span>2</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-02-foto-07.jpg" alt=""></div>
@@ -288,25 +332,42 @@ Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>T�
       <div class="n"><span>9</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-09-foto-27.jpg" alt=""></div>
       <div class="n"><span>10</span><img src="carrosseis/carrossel-04-vestidos-estampados-2/web/slide-10-foto-32.jpg" alt=""></div>
     </div>
-    <div class="blk"><h4>Para quê</h4><p>Na segunda semana a gente troca a Sequência 1 por esta — anúncio novo, mesmo público. Evita a pessoa ver sempre a mesma coisa. A capa é feita na semana que vem.</p></div>
+    <div class="blk"><h4>Onde aparece · arquivos</h4><div class="place"><div class="row"><b>Feed, Stories e Reels</b><span class="f">10 cartões 4:5</span><code>PRONTO-PARA-SUBIR/02-CARROSSEL-4-estampados-semana2/cartao-01-foto-06.jpg … cartao-10-foto-32.jpg</code></div></div></div>
+    <div class="blk"><h4>Para quê</h4><p>Na segunda semana a gente troca o Carrossel 1 por este — anúncio novo, mesmo público. Evita a pessoa ver sempre a mesma coisa. Na troca, a capa com design substitui o cartão 10.</p></div>
     <div class="approve"><label class="ok"><input type="checkbox" data-s="ok"> Aprovado</label><label class="adj"><input type="checkbox" class="adj" data-s="adj"> Ajustar</label></div>
     <textarea class="obs" placeholder="O que mudar?"></textarea>
   </div>
 </section>
 
-<!-- FORMATOS -->
-<section class="section" id="formatos">
-  <div class="section-label">Para quem for publicar no Instagram da loja</div>
-  <h2>Os <span>formatos</span> prontos</h2>
-  <p class="section-desc">Além dos anúncios, as mesmas imagens servem para o feed e os stories do @viviane.utilidades. Estão na pasta do Drive em três tamanhos.</p>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>Tamanho</th><th>Para onde</th><th>Onde está</th></tr></thead>
+<!-- ONDE ESTÁ SALVO -->
+<section class="section" id="arquivos">
+  <div class="section-label">Para subir na biblioteca do Gerenciador</div>
+  <h2>Onde está <span>salvo</span></h2>
+  <p class="section-desc">Tudo que vai para o ar está em uma pasta só, uma subpasta por anúncio, já no tamanho certo. Basta arrastar o conteúdo de cada subpasta para a biblioteca de mídia.</p>
+  <div class="tree"><b>VIVIANE MODA E UTILIDADES/04-TRAFEGO-PAGO/PRONTO-PARA-SUBIR/</b>
+├── 01-ANUNCIO-A-vestidos/            <i>feed-4x5.jpg · stories-9x16.jpg</i>
+├── 01-ANUNCIO-B-masculino/           <i>feed-4x5.jpg · stories-9x16.jpg</i>
+├── 01-ANUNCIO-C-familia/             <i>feed-4x5.jpg · stories-9x16.jpg</i>
+├── 01-ANUNCIO-D-15-anos/             <i>feed-4x5.jpg · stories-9x16.jpg</i>
+├── 01-ANUNCIO-E-vestido-novo/        <i>feed-4x5.jpg · stories-9x16.jpg</i>
+├── 02-CARROSSEL-1-vestidos/          <i>cartao-01-capa.jpg … cartao-10 (10 arquivos 4:5)</i>
+├── 02-CARROSSEL-2-masculino/         <i>cartao-01-capa.jpg … cartao-10 (10 arquivos 4:5)</i>
+├── 02-CARROSSEL-3-familia/           <i>cartao-01-capa.jpg … cartao-10 (10 arquivos 4:5)</i>
+└── 02-CARROSSEL-4-estampados-semana2/ <i>cartao-01 … cartao-10 (10 arquivos 4:5)</i>
+
+<b>Masters e fontes</b> (não precisam subir):
+04-TRAFEGO-PAGO/criativos/              <i>PNG originais do design + pastas 4x5 e 9x16</i>
+04-TRAFEGO-PAGO/carrosseis/             <i>fotos por carrossel, originais e 4x5</i>
+04-TRAFEGO-PAGO/fotos-cliente-out2026/  <i>as 36 fotos como vieram (foto-01 … foto-36)</i></div>
+  <div class="tbl-wrap" style="margin-top:16px"><table>
+    <thead><tr><th>Tipo</th><th>Posicionamento</th><th>Formato do arquivo</th><th>Botão</th></tr></thead>
     <tbody>
-      <tr><td><strong>4:5</strong> (1080 × 1350)</td><td>Feed do Instagram e Facebook, sequências</td><td>criativos/4x5 · carrosseis/…/4x5</td></tr>
-      <tr><td><strong>9:16</strong> (1080 × 1920)</td><td>Stories, Status do WhatsApp, Reels (capa)</td><td>criativos/9x16</td></tr>
-      <tr><td><strong>Original</strong></td><td>Arquivo-mestre, para novas versões</td><td>criativos/*.png · fotos-cliente-out2026</td></tr>
+      <tr><td>Imagem única (A–E)</td><td>Feed Instagram + Facebook</td><td>4:5 · 1080×1350 · JPG</td><td>Enviar mensagem → WhatsApp</td></tr>
+      <tr><td>Imagem única (A–E)</td><td>Stories + Reels</td><td>9:16 · 1080×1920 · JPG</td><td>Enviar mensagem → WhatsApp</td></tr>
+      <tr><td>Carrossel (1–4)</td><td>Feed, Stories e Reels (o Instagram adapta)</td><td>10 cartões 4:5 · 1080×1350 · JPG</td><td>Enviar mensagem em cada cartão</td></tr>
     </tbody>
   </table></div>
+  <div class="tip"><strong>Diferença entre as capas e os anúncios A e B:</strong> a capa do carrossel diz "Desliza pra ver" (tem foto do lado). O anúncio de imagem única é outra versão da mesma arte, com o botão "Toque em Enviar mensagem" — porque ali não tem nada para deslizar.</div>
 </section>
 
 <!-- RESUMO -->
@@ -321,12 +382,12 @@ Chama no WhatsApp que a gente separa o seu 👇</p><div class="small"><strong>T�
 
 <div style="text-align:center;padding:48px 24px 32px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:64px">
   <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
-  <div>Criativos de Outubro — Viviane Utilidades — gerados em 03/10/2026</div>
+  <div>Criativos de Outubro — Viviane Utilidades — revisados em 07/10/2026</div>
 </div>
 
 <script>
 const KEY='viviane-criativos-out';
-const NAMES={A:'A — Olha o que chegou!',B:'B — Pra ele também tem',C:'C — A família inteira encontra',D:'D — A loja que te conhece pelo nome',E:'E — Chegou vestido novo',S1:'Sequência 1 — Vestidos',S2:'Sequência 2 — Masculino',S3:'Sequência 3 — Família',S4:'Sequência 4 — Estampados'};
+const NAMES={A:'A — Olha o que chegou!',B:'B — Pra ele também tem',C:'C — A família inteira encontra',D:'D — A loja que te conhece pelo nome',E:'E — Chegou vestido novo',S1:'Carrossel 1 — Vestidos',S2:'Carrossel 2 — Masculino',S3:'Carrossel 3 — Família',S4:'Carrossel 4 — Estampados'};
 let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
 document.querySelectorAll('[data-k]').forEach(el=>{
   const k=el.dataset.k, ok=el.querySelector('input[data-s=ok]'), adj=el.querySelector('input[data-s=adj]'), obs=el.querySelector('.obs');
