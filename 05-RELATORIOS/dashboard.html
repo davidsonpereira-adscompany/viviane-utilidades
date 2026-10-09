@@ -3,221 +3,464 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel de Resultados &mdash; Viviane Utilidades | ADS Company</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<title>Relatório de Campanhas — Viviane Utilidades | ADS Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--o:#FF5C00;--bg:#060606;--card:#111;--card2:#141414;--border:rgba(255,255,255,0.06);--txt:#F5F5F5;--dim:#888;--green:#34D399;--yellow:#FBBF24;--red:#EF4444;--purple:#9B7DB8;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.back-btn{position:fixed;top:14px;left:12px;z-index:200;display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(6,6,6,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;color:var(--dim);font-size:11px;font-weight:500;letter-spacing:.04em;text-decoration:none}
-.back-btn:hover{color:var(--txt);border-color:rgba(255,92,0,.3)}
-.back-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
-.hero{padding:72px 32px 36px;text-align:center;background:linear-gradient(180deg,rgba(255,92,0,.06),transparent 70%)}
-.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:16px}
-.hero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);font-weight:700;line-height:1.15;margin-bottom:10px}
-.hero h1 span{color:var(--o)}
-.hero p{color:var(--dim);font-size:14px}
-.upd{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--dim);background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 14px}
-.upd .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.2)}
-.upd .dot.off{background:var(--yellow);box-shadow:0 0 0 3px rgba(251,191,36,.2)}
-.container{max-width:1040px;margin:0 auto;padding:0 24px 80px}
-.section{margin-top:44px}
-.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:6px}
-.section h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.2;margin-bottom:6px}
-.section h2 span{color:var(--o)}
-.section-desc{color:var(--dim);font-size:13px;margin-bottom:18px;max-width:720px}
-.termo{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
-.termo .face{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-size:30px}
-.termo.verde .face{background:rgba(52,211,153,.12)} .termo.amarelo .face{background:rgba(251,191,36,.12)} .termo.vermelho .face{background:rgba(239,68,68,.12)} .termo.cinza .face{background:rgba(255,255,255,.06)}
-.termo h3{font-size:18px;font-weight:700}
-.termo p{font-size:13px;color:var(--dim)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
-.kpi .l{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
-.kpi .v{font-size:28px;font-weight:800;color:var(--txt);margin:4px 0 2px;line-height:1.1}
-.kpi .v.o{color:var(--o)} .kpi .v.g{color:var(--green)} .kpi .v.p{color:var(--purple)}
-.kpi .s{font-size:12px;color:var(--dim)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:760px){.grid2{grid-template-columns:1fr}}
-.box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
-.box h3{font-size:14px;font-weight:700;margin-bottom:4px}
-.box .m{font-size:12px;color:var(--dim);margin-bottom:12px}
-.chart-wrap{position:relative;height:280px}
-.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;background:var(--card)}
-thead th{text-align:left;padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--o);background:var(--card2);border-bottom:1px solid var(--border);white-space:nowrap}
-tbody td{padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03);white-space:nowrap}
-tbody tr:last-child td{border-bottom:none}
-td.n,th.n{text-align:right}
-.pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
-.pill.on{background:rgba(52,211,153,.12);color:var(--green)} .pill.off{background:rgba(255,255,255,.06);color:var(--dim)} .pill.warn{background:rgba(239,68,68,.12);color:var(--red)}
-.bar{height:10px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden;margin:10px 0 6px}
-.bar div{height:100%;background:linear-gradient(90deg,var(--o),#FF8A4C);border-radius:5px;width:0;transition:width .6s}
-.tip{background:rgba(255,92,0,.04);border-left:3px solid var(--o);border-radius:0 10px 10px 0;padding:12px 16px;font-size:13px;color:rgba(245,245,245,.78);margin-top:14px;line-height:1.7}
-.tip strong{color:var(--txt)}
-.tip-purple{border-left-color:var(--purple);background:rgba(155,125,184,.05)}
-.empty{text-align:center;color:var(--dim);font-size:13px;padding:28px}
-.glos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.glos div{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--dim)}
-.glos div b{color:var(--txt);display:block;margin-bottom:2px}
-@media(max-width:600px){.hero{padding:64px 16px 28px}.container{padding:0 14px 60px}.termo{grid-template-columns:1fr}.kpi .v{font-size:24px}}
+  :root {
+    --laranja: #FF5C00;
+    --laranja-suave: rgba(255,92,0,0.08);
+    --fundo: #F7F5F2;
+    --card: #FFFFFF;
+    --borda: rgba(20,10,0,0.09);
+    --texto: #1C1917;
+    --cinza: #6B6560;
+    --verde: #1E9E57;
+    --vermelho: #D64533;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--fundo); color: var(--texto); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  .topo { padding: 12px 28px; border-bottom: 1px solid var(--borda); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
+  .topo-nome { font-family: var(--serif); font-size: .95rem; letter-spacing: .15em; text-transform: uppercase; }
+  .topo-nome em { font-style: italic; color: var(--laranja); }
+
+  .filtro { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .filtro button { font-family: var(--sans); font-size: .72rem; font-weight: 600; padding: 6px 13px; border-radius: 18px; border: 1px solid var(--borda); background: var(--card); color: var(--cinza); cursor: pointer; }
+  .filtro button:hover { border-color: var(--laranja); color: var(--laranja); }
+  .filtro button.ativo { background: var(--laranja); border-color: var(--laranja); color: #fff; }
+  .filtro input[type=date] { font-family: var(--sans); font-size: .72rem; padding: 5px 8px; border-radius: 8px; border: 1px solid var(--borda); background: var(--card); color: var(--texto); }
+
+  .hero { text-align: center; padding: 44px 24px 22px; }
+  .hero-tag { font-size: .62rem; font-weight: 600; letter-spacing: .4em; text-transform: uppercase; color: var(--laranja); margin-bottom: 12px; }
+  .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.5rem); }
+  .hero h1 em { font-style: italic; color: var(--laranja); }
+  .hero p { color: var(--cinza); font-size: .85rem; margin-top: 8px; }
+  .hero .periodo-atual { display: inline-block; margin-top: 10px; font-size: .72rem; font-weight: 600; letter-spacing: .12em; color: var(--laranja); background: var(--laranja-suave); border: 1px solid rgba(255,92,0,.25); padding: 4px 16px; border-radius: 16px; }
+
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 24px 70px; }
+
+  .grupo { margin-top: 28px; }
+  .grupo-titulo { font-size: .68rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--cinza); margin-bottom: 12px; }
+  .grupo-titulo em { color: var(--laranja); font-style: normal; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 12px; }
+  .kpi { background: var(--card); border: 1px solid var(--borda); border-radius: 12px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(20,10,0,0.04); }
+  .kpi.destaque-kpi { border-color: rgba(255,92,0,.4); background: linear-gradient(180deg, rgba(255,92,0,.05), var(--card)); }
+  .kpi .rotulo { font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cinza); min-height: 26px; }
+  .kpi .valor { font-family: var(--serif); font-size: 1.7rem; margin-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kpi .valor.laranja { color: var(--laranja); }
+  .delta { display: inline-block; font-size: .68rem; font-weight: 600; margin-top: 4px; padding: 1px 8px; border-radius: 10px; font-variant-numeric: tabular-nums; }
+  .delta.bom { color: var(--verde); background: rgba(30,158,87,.09); }
+  .delta.ruim { color: var(--vermelho); background: rgba(214,69,51,.08); }
+  .delta.neutro { color: var(--cinza); background: rgba(0,0,0,.045); }
+
+  .secao { margin-top: 46px; }
+  .secao-titulo { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .secao-titulo .num { font-family: var(--serif); font-style: italic; color: var(--laranja); font-size: 1.1rem; }
+  .secao-titulo h2 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; }
+  .secao-sub { font-size: .78rem; color: var(--cinza); margin: 0 0 14px 34px; max-width: 720px; }
+
+  .painel { background: var(--card); border: 1px solid var(--borda); border-radius: 12px; padding: 22px; box-shadow: 0 1px 3px rgba(20,10,0,0.04); }
+
+  .funil-linha { margin-bottom: 14px; }
+  .funil-info { display: flex; justify-content: space-between; font-size: .8rem; margin-bottom: 5px; }
+  .funil-info .nome { color: var(--cinza); }
+  .funil-info .dado { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .funil-info .dado span { color: var(--cinza); font-weight: 400; }
+  .funil-barra { height: 16px; border-radius: 8px; background: rgba(0,0,0,0.06); overflow: hidden; }
+  .funil-barra > div { height: 100%; border-radius: 8px; min-width: 3px; }
+
+  .destaques { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .destaque { background: var(--card); border: 1px solid var(--borda); border-radius: 12px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(20,10,0,0.04); }
+  .destaque .rotulo { font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cinza); }
+  .destaque .valor { font-family: var(--serif); font-size: 1.2rem; margin-top: 4px; color: var(--laranja); }
+  .destaque .sub { font-size: .75rem; color: var(--cinza); }
+
+  .meta-linha { display: flex; justify-content: space-between; font-size: .8rem; color: var(--cinza); margin-bottom: 6px; }
+  .meta-linha strong { color: var(--texto); }
+  .meta-barra { height: 14px; border-radius: 7px; background: rgba(0,0,0,0.07); overflow: hidden; }
+  .meta-barra > div { height: 100%; border-radius: 7px; background: linear-gradient(90deg, var(--laranja), #FF8A47); }
+
+  .tabela-scroll { max-height: 430px; overflow: auto; border: 1px solid var(--borda); border-radius: 12px; background: var(--card); box-shadow: 0 1px 3px rgba(20,10,0,0.04); }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .82rem; min-width: 640px; }
+  thead th { position: sticky; top: 0; z-index: 5; background: #FBFAF8; text-align: left; font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cinza); padding: 11px 14px; border-bottom: 2px solid var(--borda); box-shadow: 0 2px 4px rgba(20,10,0,0.05); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--borda); font-variant-numeric: tabular-nums; background: var(--card); }
+  tbody tr:nth-child(even) td { background: #FBFAF8; }
+  td.num, th.num { text-align: right; }
+  td.forte { color: var(--laranja); font-weight: 700; }
+  .status { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--verde); margin-right: 8px; }
+  .status.pausada { background: #BBB; }
+
+  .leitura { border-left: 3px solid var(--laranja); background: var(--laranja-suave); border-radius: 0 10px 10px 0; padding: 18px 22px; font-size: .92rem; }
+  .leitura strong { color: var(--laranja); }
+
+  .rodape { text-align: center; padding: 26px; border-top: 1px solid var(--borda); color: var(--cinza); font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; }
+  canvas { max-width: 100%; }
+  .legenda { display: flex; flex-wrap: wrap; gap: 18px; font-size: .73rem; color: var(--cinza); margin-bottom: 14px; }
+  .nota { font-size: .7rem; color: #8A847E; margin-top: 10px; }
 </style>
 </head>
 <body>
-<a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Central</a>
 
-<section class="hero">
-  <div class="hero-badge">Painel de Resultados — Campanha de Outubro</div>
-  <h1>Quanto a Viviane investiu e <span>quanta gente chamou</span></h1>
-  <p>Números do Gerenciador de Anúncios, em linguagem de loja. Atualiza sozinho todo dia às 7h da manhã.</p>
-  <div class="upd" id="upd"><span class="dot"></span><span>carregando…</span></div>
-</section>
+<div class="topo">
+  <div style="display:flex;align-items:center;gap:14px"><a href="../index.html" style="font-size:.7rem;color:var(--cinza);text-decoration:none;letter-spacing:.08em">&larr; Central</a><div class="topo-nome">ADS <em>Company</em></div></div>
+  <div class="filtro" id="filtro">
+    <button data-dias="7">7 dias</button>
+    <button data-dias="14">14 dias</button>
+    <button data-dias="30" class="ativo">30 dias</button>
+    <button data-dias="mes">Este mês</button>
+    <button data-dias="tudo">Tudo</button>
+    <input type="date" id="data-ini"> <span style="color:var(--cinza);font-size:.72rem">até</span> <input type="date" id="data-fim">
+    <button id="aplicar">Aplicar</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Relatório de Campanhas</div>
+  <h1 id="titulo-cliente">—</h1>
+  <p id="atualizado-em">—</p>
+  <div class="periodo-atual" id="periodo-atual">—</div>
+</div>
 
 <div class="container">
 
-<section class="section" id="termo-sec">
-  <div class="termo cinza" id="termo"><div class="face">⏳</div><div><h3>Aguardando os primeiros números</h3><p>A campanha entrou no ar em 07/10 às 17h. O primeiro dia completo aparece aqui na manhã de 08/10.</p></div></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Desde o início da campanha</div>
-  <h2>Os números que <span>importam</span></h2>
-  <div class="kpis" id="kpis"></div>
-  <div class="kpis" id="kpis2" style="margin-top:12px"></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Dia a dia</div>
-  <h2>Conversas e investimento <span>por dia</span></h2>
-  <div class="box"><h3>Barras = pessoas que chamaram no WhatsApp · Linha = quanto foi investido (R$)</h3><div class="m">Passe o dedo ou o mouse sobre as barras para ver o número exato.</div><div class="chart-wrap"><canvas id="chart"></canvas></div></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Meta do mês</div>
-  <h2>Caminho até <span>R$ 110 mil</span></h2>
-  <div class="box" id="meta-box"></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Por grupo de anúncio</div>
-  <h2>Quem está <span>trazendo mais gente</span></h2>
-  <p class="section-desc">O dinheiro do dia é dividido automaticamente entre os três grupos — vai mais para quem traz conversa mais barata.</p>
-  <div class="tbl-wrap"><table><thead><tr><th>Grupo</th><th>Situação</th><th class="n">Investido</th><th class="n">Conversas</th><th class="n">Custo por conversa</th><th class="n">Pessoas alcançadas</th><th class="n">Toques no anúncio</th></tr></thead><tbody id="tb-grupos"></tbody></table></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Por anúncio</div>
-  <h2>Qual peça <span>chama mais</span></h2>
-  <div class="tbl-wrap"><table><thead><tr><th>Anúncio</th><th>Situação</th><th class="n">Investido</th><th class="n">Conversas</th><th class="n">Custo por conversa</th><th class="n">Pessoas alcançadas</th></tr></thead><tbody id="tb-anuncios"></tbody></table></div>
-</section>
-
-<section class="section">
-  <div class="section-label">Histórico</div>
-  <h2>Dia a dia, <span>em números</span></h2>
-  <div class="tbl-wrap"><table><thead><tr><th>Data</th><th class="n">Investido</th><th class="n">Conversas</th><th class="n">Custo por conversa</th><th class="n">Alcance</th><th class="n">Toques</th><th class="n">Vendas (loja)</th><th class="n">Valor vendido</th></tr></thead><tbody id="tb-dias"></tbody></table></div>
-  <div class="tip tip-purple"><strong>Vendas e valor vendido</strong> vêm da planilha que a Ana preenche todo dia (células amarelas). Enquanto a planilha não é preenchida, a coluna fica com "—".</div>
-</section>
-
-<section class="section">
-  <div class="section-label">Como ler este painel</div>
-  <h2>O que cada número <span>quer dizer</span></h2>
-  <div class="glos">
-    <div><b>Investido</b>Quanto o Instagram/Facebook cobrou no cartão da loja. Teto: R$ 30 por dia.</div>
-    <div><b>Conversas</b>Pessoas que tocaram no anúncio e abriram conversa no WhatsApp da loja. É o resultado que a campanha busca.</div>
-    <div><b>Custo por conversa</b>Investido ÷ conversas. Até R$ 3 é ótimo; até R$ 5 é aceitável; acima disso, ajustamos.</div>
-    <div><b>Pessoas alcançadas</b>Quantas contas diferentes viram o anúncio pelo menos uma vez.</div>
-    <div><b>Toques no anúncio</b>Quantas vezes alguém tocou no anúncio (nem todo toque vira conversa).</div>
-    <div><b>Vendas (loja)</b>O que a Ana registra na planilha: quantas vendas vieram do WhatsApp e quanto renderam.</div>
+  <div class="grupo">
+    <div class="grupo-titulo"><em>Investimento</em> × Resultado</div>
+    <div class="kpis" id="kpis-resultado"></div>
   </div>
-  <div class="tip"><strong>Os números de ontem podem mudar um pouco até 48 h</strong> — o Meta termina de contar com atraso. O painel sempre reconta os últimos dias na atualização das 7h.</div>
-</section>
+  <div class="grupo">
+    <div class="grupo-titulo">Alcance e entrega</div>
+    <div class="kpis" id="kpis-alcance"></div>
+  </div>
+  <div class="grupo">
+    <div class="grupo-titulo">Cliques e engajamento</div>
+    <div class="kpis" id="kpis-engajamento"></div>
+  </div>
+  <p class="nota" id="nota-comparativo"></p>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">01</span><h2>Placar de metas</h2></div>
+    <p class="secao-sub" id="placar-sub"></p>
+    <div class="painel" id="placar"></div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">02</span><h2>Do anúncio à conversa</h2></div>
+    <p class="secao-sub">O caminho do público até o WhatsApp no período selecionado.</p>
+    <div class="painel" id="funil"></div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">03</span><h2>Evolução diária</h2></div>
+    <div class="painel">
+      <div class="legenda">
+        <span><span style="display:inline-block;width:10px;height:10px;background:var(--laranja);border-radius:2px;margin-right:6px"></span>Conversas no WhatsApp</span>
+        <span><span style="display:inline-block;width:14px;height:2px;background:#333;vertical-align:middle;margin-right:6px"></span>Investido (R$)</span>
+        <span id="leg-anterior" style="display:none"><span style="display:inline-block;width:14px;border-top:2px dashed #B5AFA9;vertical-align:middle;margin-right:6px"></span>Conversas no período anterior</span>
+      </div>
+      <canvas id="grafico-diario" style="width:100%;height:270px"></canvas>
+    </div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">04</span><h2>Destaques do período</h2></div>
+    <div class="destaques" id="destaques"></div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">05</span><h2>Campanhas</h2></div>
+    <p class="secao-sub">Investimento, conversas geradas, custo por conversa e alcance de cada campanha no período selecionado.</p>
+    <div class="tabela-scroll" style="max-height:none">
+      <table>
+        <thead><tr><th>Campanha</th><th class="num">Investido</th><th class="num">Conversas</th><th class="num">Custo por conversa</th><th class="num">Alcance</th></tr></thead>
+        <tbody id="tabela-campanhas"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">06</span><h2>Detalhamento dia a dia</h2></div>
+    <p class="secao-sub">Pessoas alcançadas, impressões, CPM (custo por mil impressões), valor investido, conversas iniciadas no WhatsApp e custo por conversa — um dia por linha, dentro do período selecionado. O dia com mais conversas aparece em laranja.</p>
+    <div class="tabela-scroll">
+      <table>
+        <thead><tr><th>Data</th><th class="num">Alcance</th><th class="num">Impressões</th><th class="num">CPM</th><th class="num">Investido</th><th class="num">Conversas</th><th class="num">Custo por conversa</th></tr></thead>
+        <tbody id="tabela-diaria"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo"><span class="num">07</span><h2>Leitura do gestor</h2></div>
+    <div class="leitura" id="leitura"></div>
+  </div>
 
 </div>
 
-<div style="text-align:center;padding:40px 24px 28px;font-size:12px;color:var(--dim);border-top:1px solid var(--border);margin-top:48px">
-  <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--txt);margin-bottom:4px">ADS Company</div>
-  <div>Painel de Resultados — Viviane Utilidades — conta de anúncios V.V - CONTA 01</div>
-</div>
+<div class="rodape">ADS Company · Viviane Utilidades · Relatório atualizado automaticamente todos os dias às 7h · adscompany.pro</div>
 
 <script>
-const brl=v=>(v==null||isNaN(v))?'—':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-const num=v=>(v==null||isNaN(v))?'—':Number(v).toLocaleString('pt-BR');
-const dmy=s=>{const [y,m,d]=s.split('-');return `${d}/${m}`};
-const dow=s=>['dom','seg','ter','qua','qui','sex','sáb'][new Date(s+'T12:00:00').getDay()];
-const cpc=(inv,c)=>c>0?inv/c:null;
-const pill=st=>{const s=(st||'').toUpperCase();if(s==='ACTIVE')return '<span class="pill on">Ativo</span>';if(['WITH_ISSUES','DISAPPROVED','PENDING_BILLING_INFO'].includes(s))return '<span class="pill warn">Atenção</span>';if(s==='PENDING_REVIEW'||s==='IN_PROCESS')return '<span class="pill off">Em análise</span>';return '<span class="pill off">Pausado</span>'};
-
-fetch('dados.json?v='+Date.now()).then(r=>r.json()).then(D=>{
-  const dias=(D.dias||[]).slice().sort((a,b)=>a.data.localeCompare(b.data));
-  const inv=dias.reduce((s,d)=>s+(+d.investido||0),0), conv=dias.reduce((s,d)=>s+(+d.conversas||0),0);
-  const alc=Math.max(0,...(D.grupos||[]).map(g=>+g.alcance||0), dias.reduce((s,d)=>s+(+d.alcance||0),0)*0);
-  const alcTot=(D.grupos||[]).reduce((s,g)=>s+(+g.alcance||0),0);
-  const toques=dias.reduce((s,d)=>s+(+d.cliques||0),0);
-  const vendas=dias.reduce((s,d)=>s+(+d.vendas||0),0), valor=dias.reduce((s,d)=>s+(+d.valor_vendido||0),0);
-  const temVendas=dias.some(d=>d.vendas!=null);
-  const diasComGasto=dias.filter(d=>+d.investido>0);
-  const ontem=dias.length?dias[dias.length-1]:null;
-
-  // atualização
-  const u=document.getElementById('upd'); const dt=D.atualizado_em?new Date(D.atualizado_em):null;
-  const horas=dt?(Date.now()-dt.getTime())/36e5:999;
-  u.innerHTML=`<span class="dot ${horas>30?'off':''}"></span><span>Atualizado em ${dt?dt.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'—'} · campanha ${(D.campanha||{}).status==='ACTIVE'?'ativa':'pausada'} · R$ ${(D.campanha||{}).orcamento_dia||30}/dia</span>`;
-
-  // termômetro: últimos 3 dias com gasto
-  const ult=diasComGasto.slice(-3); const uInv=ult.reduce((s,d)=>s+ +d.investido,0), uConv=ult.reduce((s,d)=>s+ +d.conversas,0);
-  const t=document.getElementById('termo'); const M=D.metas||{};
-  if(ult.length){
-    const c=cpc(uInv,uConv);
-    let cls='vermelho',face='🔴',h='Custo por conversa alto — vamos ajustar',p=`Nos últimos ${ult.length} dia(s): ${uConv} conversas por ${brl(uInv)} (${brl(c)} cada). Davidson revisa os anúncios e o público.`;
-    if(uConv===0){cls='amarelo';face='🟡';h='Ainda sem conversas nos últimos dias';p=`Investido ${brl(uInv)} e nenhuma conversa ainda. Nos 2-3 primeiros dias é normal: o Instagram está aprendendo para quem mostrar.`}
-    else if(c<=(M.custo_conversa_bom||3)){cls='verde';face='🟢';h='Tudo certo — conversa barata chegando';p=`Nos últimos ${ult.length} dia(s): ${uConv} conversas por ${brl(uInv)} — ${brl(c)} cada. Dentro da meta (até ${brl(M.custo_conversa_bom||3)}).`}
-    else if(c<=(M.custo_conversa_atencao||5)){cls='amarelo';face='🟡';h='Funcionando, mas dá para melhorar';p=`Nos últimos ${ult.length} dia(s): ${uConv} conversas por ${brl(uInv)} — ${brl(c)} cada. Aceitável; Davidson acompanha de perto.`}
-    t.className='termo '+cls; t.innerHTML=`<div class="face">${face}</div><div><h3>${h}</h3><p>${p}</p></div>`;
+// ================== DADOS — carregados de dados.json (atualizado pela rotina diária das 7h) ==================
+function mapear(J) {
+  const dt = J.atualizado_em ? new Date(J.atualizado_em) : null;
+  const atualizado = dt ? dt.toLocaleDateString("pt-BR") + " às " + String(dt.getHours()).padStart(2, "0") + "h" + String(dt.getMinutes()).padStart(2, "0") : "—";
+  const ativas = {};
+  (J.grupos || []).forEach(g => { ativas[g.nome] = (g.status || "ACTIVE") === "ACTIVE"; });
+  const dias = (J.dias || []).map(d => ({
+    data: d.data,
+    investido: +d.investido || 0, conversas: +d.conversas || 0, cliques: +d.cliques || 0,
+    alcance: +d.alcance || 0, impressoes: +d.impressoes || 0, engajamentos: +d.engajamentos || 0,
+    vendas: +d.vendas || 0, valor_vendido: +d.valor_vendido || 0,
+    campanhas: d.campanhas || {}
+  }));
+  return {
+    cliente: "VIVIANE UTILIDADES",
+    atualizado_em: atualizado,
+    metas: { faturamento_mes: (J.metas || {}).faturamento_mes || 110000, vendas_extras_dia: (J.metas || {}).vendas_extras_dia || 5, ancora: "5 vendas extras por dia pagam o serviço" },
+    campanhas_ativas: ativas,
+    leitura: J.leitura || "<strong>Campanha no ar desde 07/10 às 17h.</strong> Nos primeiros dias o Instagram ainda está aprendendo para quem mostrar os anúncios — os números começam a estabilizar a partir do terceiro dia. A leitura do gestor é atualizada a cada manhã junto com os dados.",
+    dias
+  };
+}
+fetch("dados.json?v=" + Date.now()).then(r => r.json()).then(J => {
+  window.DADOS = mapear(J);
+  if (!window.DADOS.dias.length) {
+    document.getElementById("titulo-cliente").innerHTML = "Resultados de <em>Viviane Utilidades</em>";
+    document.getElementById("atualizado-em").textContent = "Os primeiros números aparecem na manhã seguinte ao início da campanha.";
+    return;
   }
+  iniciar();
+}).catch(() => { document.getElementById("atualizado-em").textContent = "Não foi possível carregar os dados agora. Tente de novo em alguns minutos."; });
+// =========================================================================================================
 
-  // KPIs
-  const k=document.getElementById('kpis');
-  k.innerHTML=`
-    <div class="kpi"><div class="l">Investido</div><div class="v o">${brl(inv)}</div><div class="s">${diasComGasto.length} dia(s) com anúncio no ar</div></div>
-    <div class="kpi"><div class="l">Conversas no WhatsApp</div><div class="v g">${num(conv)}</div><div class="s">pessoas que chamaram pelo anúncio</div></div>
-    <div class="kpi"><div class="l">Custo por conversa</div><div class="v">${brl(cpc(inv,conv))}</div><div class="s">meta: até ${brl(M.custo_conversa_bom||3)}</div></div>
-    <div class="kpi"><div class="l">Pessoas alcançadas</div><div class="v p">${num(alcTot)}</div><div class="s">contas que viram o anúncio</div></div>`;
-  const k2=document.getElementById('kpis2');
-  k2.innerHTML=`
-    <div class="kpi"><div class="l">Ontem — investido</div><div class="v">${ontem?brl(ontem.investido):'—'}</div><div class="s">${ontem?dow(ontem.data)+' '+dmy(ontem.data):''}</div></div>
-    <div class="kpi"><div class="l">Ontem — conversas</div><div class="v g">${ontem?num(ontem.conversas):'—'}</div><div class="s">${ontem?brl(cpc(+ontem.investido,+ontem.conversas))+' cada':''}</div></div>
-    <div class="kpi"><div class="l">Vendas registradas</div><div class="v">${temVendas?num(vendas):'—'}</div><div class="s">${temVendas?'na planilha da loja':'aguardando planilha'}</div></div>
-    <div class="kpi"><div class="l">Valor vendido</div><div class="v o">${temVendas?brl(valor):'—'}</div><div class="s">${temVendas&&vendas>0?'ticket médio '+brl(valor/vendas):'preenchido pela Ana'}</div></div>`;
+function iniciar() {
+const D = window.DADOS;
+const DIAS = D.dias.slice().sort((a, b) => a.data.localeCompare(b.data));
+const moeda = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const inteiro = v => Math.round(v).toLocaleString("pt-BR");
+const dataBR = iso => iso.slice(8, 10) + "/" + iso.slice(5, 7);
+const dataBRcompleta = iso => iso.slice(8, 10) + "/" + iso.slice(5, 7) + "/" + iso.slice(0, 4);
 
-  // meta do mês
-  const mb=document.getElementById('meta-box'); const metaF=M.faturamento_mes||110000;
-  if(temVendas&&valor>0){const pct=Math.min(100,valor/metaF*100);mb.innerHTML=`<h3>${brl(valor)} vendidos pelo WhatsApp em outubro</h3><div class="m">Meta da loja no mês: ${brl(metaF)} (todas as vendas). As vendas do WhatsApp são a parte nova.</div><div class="bar"><div style="width:${pct.toFixed(1)}%"></div></div><div class="m">${pct.toFixed(1)}% da meta do mês só com o que veio do digital.</div>`}
-  else{mb.innerHTML=`<h3>Meta da loja: ${brl(metaF)} no mês</h3><div class="m">A barra começa a andar quando a planilha de vendas for preenchida. Âncora do projeto: <strong style="color:var(--txt)">5 vendas extras por dia</strong> pagam o serviço e os anúncios.</div><div class="bar"><div style="width:0%"></div></div><div class="m">Conversas até agora: ${num(conv)} · se 1 em cada 3 virar venda, são ~${num(Math.round(conv/3))} vendas vindas do anúncio.</div>`}
+document.getElementById("titulo-cliente").innerHTML = "Resultados de <em>" + D.cliente + "</em>";
+document.getElementById("atualizado-em").textContent = "Atualizado automaticamente em " + D.atualizado_em;
+document.getElementById("leitura").innerHTML = D.leitura;
 
-  // grupos
-  const tg=document.getElementById('tb-grupos');
-  tg.innerHTML=(D.grupos||[]).length?(D.grupos||[]).map(g=>`<tr><td><strong>${g.nome}</strong></td><td>${pill(g.status)}</td><td class="n">${brl(g.investido)}</td><td class="n">${num(g.conversas)}</td><td class="n">${brl(cpc(+g.investido,+g.conversas))}</td><td class="n">${num(g.alcance)}</td><td class="n">${num(g.cliques)}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">Sem dados ainda.</td></tr>';
+function agregar(lista) {
+  const a = { investido: 0, conversas: 0, cliques: 0, alcance: 0, impressoes: 0, engajamentos: 0, vendas: 0, valor_vendido: 0 };
+  lista.forEach(d => { for (const k in a) a[k] += d[k] || 0; });
+  a.custo_conversa = a.conversas ? a.investido / a.conversas : 0;
+  a.cpm = a.impressoes ? a.investido / a.impressoes * 1000 : 0;
+  a.frequencia = a.alcance ? a.impressoes / a.alcance : 0;
+  a.ctr = a.impressoes ? a.cliques / a.impressoes * 100 : 0;
+  a.cpc = a.cliques ? a.investido / a.cliques : 0;
+  a.retorno = a.investido ? a.valor_vendido / a.investido : 0;
+  return a;
+}
 
-  // anúncios
-  const ta=document.getElementById('tb-anuncios');
-  const ads=(D.anuncios||[]).slice().sort((a,b)=>(+b.conversas||0)-(+a.conversas||0)||(+b.investido||0)-(+a.investido||0));
-  ta.innerHTML=ads.length?ads.map(a=>`<tr><td><strong>${a.nome}</strong></td><td>${pill(a.status)}</td><td class="n">${brl(a.investido)}</td><td class="n">${num(a.conversas)}</td><td class="n">${brl(cpc(+a.investido,+a.conversas))}</td><td class="n">${num(a.alcance)}</td></tr>`).join(''):'<tr><td colspan="6" class="empty">Os anúncios aparecem aqui depois da primeira atualização das 7h.</td></tr>';
+function deltaChip(atual, anterior, invertido) {
+  if (anterior === null || anterior === undefined || !isFinite(anterior) || anterior === 0)
+    return '<span class="delta neutro">— sem comparativo</span>';
+  const varPct = (atual - anterior) / Math.abs(anterior) * 100;
+  if (!isFinite(varPct)) return '<span class="delta neutro">—</span>';
+  const subiu = varPct >= 0;
+  const bom = invertido === null ? null : (invertido ? !subiu : subiu);
+  const cls = bom === null ? "neutro" : (bom ? "bom" : "ruim");
+  return `<span class="delta ${cls}">${subiu ? "▲" : "▼"} ${Math.abs(varPct).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%</span>`;
+}
 
-  // dias
-  const td=document.getElementById('tb-dias');
-  td.innerHTML=dias.length?dias.slice().reverse().map(d=>`<tr><td><strong>${dmy(d.data)}</strong> <span style="color:var(--dim)">${dow(d.data)}</span></td><td class="n">${brl(d.investido)}</td><td class="n">${num(d.conversas)}</td><td class="n">${brl(cpc(+d.investido,+d.conversas))}</td><td class="n">${num(d.alcance)}</td><td class="n">${num(d.cliques)}</td><td class="n">${d.vendas==null?'—':num(d.vendas)}</td><td class="n">${d.valor_vendido==null?'—':brl(d.valor_vendido)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">O primeiro dia completo aparece na manhã de 08/10.</td></tr>';
+function render(ini, fim) {
+  const sel = DIAS.filter(d => d.data >= ini && d.data <= fim);
+  if (!sel.length) return;
+  const n = sel.length;
+  const idx0 = DIAS.findIndex(d => d.data === sel[0].data);
+  const prevLista = idx0 >= n ? DIAS.slice(idx0 - n, idx0) : (idx0 > 0 ? DIAS.slice(0, idx0) : []);
+  const A = agregar(sel), P = prevLista.length ? agregar(prevLista) : null;
 
-  // gráfico
-  const ctx=document.getElementById('chart');
-  if(dias.length){
-    new Chart(ctx,{data:{labels:dias.map(d=>dmy(d.data)),datasets:[
-      {type:'bar',label:'Conversas',data:dias.map(d=>+d.conversas||0),backgroundColor:'rgba(52,211,153,.55)',borderColor:'#34D399',borderWidth:1,borderRadius:6,yAxisID:'y'},
-      {type:'line',label:'Investido (R$)',data:dias.map(d=>+d.investido||0),borderColor:'#FF5C00',backgroundColor:'rgba(255,92,0,.15)',tension:.35,pointRadius:3,yAxisID:'y1',fill:true}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#bbb',font:{family:'Inter'}}},tooltip:{callbacks:{label:c=>c.dataset.type==='line'?' Investido: '+brl(c.raw):' Conversas: '+c.raw}}},
-      scales:{x:{ticks:{color:'#888'},grid:{color:'rgba(255,255,255,.04)'}},y:{position:'left',beginAtZero:true,ticks:{color:'#34D399',precision:0},grid:{color:'rgba(255,255,255,.04)'}},y1:{position:'right',beginAtZero:true,ticks:{color:'#FF5C00',callback:v=>'R$ '+v},grid:{drawOnChartArea:false}}}}});
-  } else { ctx.parentElement.innerHTML='<div class="empty">O gráfico começa a desenhar a partir do primeiro dia completo.</div>'; }
-}).catch(()=>{document.getElementById('upd').innerHTML='<span class="dot off"></span><span>Não foi possível carregar os dados agora.</span>'});
+  document.getElementById("periodo-atual").textContent = dataBRcompleta(sel[0].data) + "  —  " + dataBRcompleta(sel[n - 1].data) + "  ·  " + n + (n > 1 ? " dias" : " dia");
+  document.getElementById("nota-comparativo").textContent = prevLista.length
+    ? `As variações comparam com os ${prevLista.length} dias anteriores (${dataBRcompleta(prevLista[0].data)} a ${dataBRcompleta(prevLista[prevLista.length - 1].data)}). Verde = melhora para o seu negócio.`
+    : "Ainda não há período anterior registrado para comparação.";
+
+  const g = (id, arr) => document.getElementById(id).innerHTML = arr.join("");
+  const kpi = (rotulo, valor, delta, opts = {}) =>
+    `<div class="kpi ${opts.destaque ? "destaque-kpi" : ""}"><div class="rotulo">${rotulo}</div><div class="valor ${opts.laranja ? "laranja" : ""}">${valor}</div>${delta}</div>`;
+
+  g("kpis-resultado", [
+    kpi("Valor investido", moeda(A.investido), deltaChip(A.investido, P && P.investido, null), { destaque: 1 }),
+    kpi("Conversas iniciadas", inteiro(A.conversas), deltaChip(A.conversas, P && P.conversas, false), { destaque: 1, laranja: 1 }),
+    kpi("Custo por conversa", moeda(A.custo_conversa), deltaChip(A.custo_conversa, P && P.custo_conversa, true), { destaque: 1 }),
+    kpi("Vendas registradas", inteiro(A.vendas), deltaChip(A.vendas, P && P.vendas, false), { destaque: 1 }),
+    kpi("Retorno por real investido", A.retorno.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "x", deltaChip(A.retorno, P && P.retorno, false), { destaque: 1, laranja: 1 })
+  ]);
+  g("kpis-alcance", [
+    kpi("Pessoas alcançadas", inteiro(A.alcance), deltaChip(A.alcance, P && P.alcance, false)),
+    kpi("Impressões", inteiro(A.impressoes), deltaChip(A.impressoes, P && P.impressoes, false)),
+    kpi("Frequência", A.frequencia.toLocaleString("pt-BR", { maximumFractionDigits: 1 }), deltaChip(A.frequencia, P && P.frequencia, null)),
+    kpi("CPM", moeda(A.cpm), deltaChip(A.cpm, P && P.cpm, true))
+  ]);
+  g("kpis-engajamento", [
+    kpi("Cliques", inteiro(A.cliques), deltaChip(A.cliques, P && P.cliques, false)),
+    kpi("CTR", A.ctr.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%", deltaChip(A.ctr, P && P.ctr, false)),
+    kpi("Custo por clique", moeda(A.cpc), deltaChip(A.cpc, P && P.cpc, true)),
+    kpi("Engajamentos", inteiro(A.engajamentos), deltaChip(A.engajamentos, P && P.engajamentos, false))
+  ]);
+
+  // Placar de metas: sempre sobre o MÊS da última data selecionada
+  const mesRef = sel[n - 1].data.slice(0, 7);
+  const doMes = DIAS.filter(d => d.data.slice(0, 7) === mesRef);
+  const AM = agregar(doMes);
+  const diasComVenda = doMes.filter(d => d.vendas > 0).length || 1;
+  const mediaVendasDia = AM.vendas / diasComVenda;
+  document.getElementById("placar-sub").textContent = "Acompanhamento do mês " + mesRef.slice(5, 7) + "/" + mesRef.slice(0, 4) + " (independente do filtro acima). Âncora do projeto: " + D.metas.ancora + ".";
+  const barra = (nome, atual, meta, fmt) => {
+    const pct = Math.min(100, Math.round(atual / meta * 100));
+    return `<div style="margin-bottom:18px"><div class="meta-linha"><span>${nome}</span><span><strong>${fmt(atual)}</strong> / ${fmt(meta)} · ${pct}%</span></div><div class="meta-barra"><div style="width:${pct}%"></div></div></div>`;
+  };
+  g("placar", [
+    barra("Meta de faturamento do mês (valor vendido registrado)", AM.valor_vendido, D.metas.faturamento_mes, v => "R$ " + inteiro(v)),
+    barra("Vendas por dia atribuídas às campanhas", mediaVendasDia, D.metas.vendas_extras_dia, v => v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }))
+  ]);
+
+  // Funil
+  const funil = [
+    { nome: "Pessoas alcançadas", valor: A.alcance, cor: "rgba(28,25,23,0.18)" },
+    { nome: "Cliques no anúncio", valor: A.cliques, cor: "rgba(255,138,71,0.8)" },
+    { nome: "Conversas no WhatsApp", valor: A.conversas, cor: "#FF5C00" }
+  ];
+  g("funil", funil.map((f, i) => {
+    const pct = funil[0].valor ? f.valor / funil[0].valor * 100 : 0;
+    const taxa = i === 0 ? "100%" : (funil[i - 1].valor ? (f.valor / funil[i - 1].valor * 100).toFixed(1).replace(".", ",") + "% da etapa anterior" : "—");
+    return `<div class="funil-linha"><div class="funil-info"><span class="nome">${f.nome}</span><span class="dado">${inteiro(f.valor)} <span>· ${taxa}</span></span></div><div class="funil-barra"><div style="width:${Math.max(pct, 1.2)}%;background:${f.cor}"></div></div></div>`;
+  }));
+
+  // Destaques calculados
+  const diaMaisConversas = sel.reduce((m, d) => d.conversas > m.conversas ? d : m, sel[0]);
+  const diaMaiorAlcance = sel.reduce((m, d) => d.alcance > m.alcance ? d : m, sel[0]);
+  const porCampanha = {};
+  sel.forEach(d => { for (const nome in (d.campanhas || {})) {
+    porCampanha[nome] = porCampanha[nome] || { investido: 0, conversas: 0, alcance: 0 };
+    porCampanha[nome].investido += d.campanhas[nome].investido;
+    porCampanha[nome].conversas += d.campanhas[nome].conversas;
+    porCampanha[nome].alcance += d.campanhas[nome].alcance;
+  }});
+  let melhor = null;
+  for (const nome in porCampanha) {
+    const c = porCampanha[nome];
+    if (c.conversas > 0) { const custo = c.investido / c.conversas; if (!melhor || custo < melhor.custo) melhor = { nome, custo }; }
+  }
+  g("destaques", [
+    `<div class="destaque"><div class="rotulo">Dia com mais conversas</div><div class="valor">${dataBR(diaMaisConversas.data)} — ${diaMaisConversas.conversas} conversas</div></div>`,
+    `<div class="destaque"><div class="rotulo">Dia de maior alcance</div><div class="valor">${dataBR(diaMaiorAlcance.data)} — ${inteiro(diaMaiorAlcance.alcance)} pessoas</div></div>`,
+    melhor ? `<div class="destaque"><div class="rotulo">Campanha mais eficiente</div><div class="valor">${melhor.nome.split("—")[0].trim()}</div><div class="sub">${moeda(melhor.custo)} por conversa</div></div>` : "",
+    `<div class="destaque"><div class="rotulo">Média de conversas por dia</div><div class="valor">${(A.conversas / n).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}</div></div>`
+  ]);
+
+  // Tabela de campanhas
+  g("tabela-campanhas", Object.keys(porCampanha).map(nome => {
+    const c = porCampanha[nome];
+    const ativa = D.campanhas_ativas[nome] !== false;
+    return `<tr><td><span class="status ${ativa ? "" : "pausada"}"></span>${nome}</td><td class="num">${moeda(c.investido)}</td><td class="num">${inteiro(c.conversas)}</td><td class="num">${c.conversas ? moeda(c.investido / c.conversas) : "—"}</td><td class="num">${inteiro(c.alcance)}</td></tr>`;
+  }));
+
+  // Tabela dia a dia
+  const maxConv = Math.max(...sel.map(d => d.conversas));
+  g("tabela-diaria", sel.map(d =>
+    `<tr><td>${dataBRcompleta(d.data)}</td><td class="num">${inteiro(d.alcance)}</td><td class="num">${inteiro(d.impressoes)}</td><td class="num">${moeda(d.impressoes ? d.investido / d.impressoes * 1000 : 0)}</td><td class="num">${moeda(d.investido)}</td><td class="num ${d.conversas === maxConv ? "forte" : ""}">${d.conversas}</td><td class="num">${d.conversas ? moeda(d.investido / d.conversas) : "—"}</td></tr>`));
+
+  desenharGrafico(sel, prevLista);
+}
+
+function desenharGrafico(sel, prev) {
+  const cv = document.getElementById("grafico-diario");
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth, H = 270;
+  cv.width = W * dpr; cv.height = H * dpr;
+  const ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  const conv = sel.map(d => d.conversas), inv = sel.map(d => d.investido);
+  const prevConv = prev.length === sel.length ? prev.map(d => d.conversas) : [];
+  document.getElementById("leg-anterior").style.display = prevConv.length ? "inline" : "none";
+  const padL = 36, padR = 52, padT = 12, padB = 28;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const maxConv = Math.max(...conv, ...(prevConv.length ? prevConv : [0]), 1) * 1.25;
+  const maxInv = Math.max(...inv, 1) * 1.25;
+  const n = sel.length, passo = plotW / n;
+  ctx.font = "10px Inter, sans-serif";
+  ctx.strokeStyle = "rgba(0,0,0,0.07)"; ctx.fillStyle = "#8A847E"; ctx.textAlign = "right";
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + plotH - plotH * i / 4;
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+    ctx.fillText(Math.round(maxConv * i / 4), padL - 6, y + 3);
+  }
+  ctx.textAlign = "left";
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + plotH - plotH * i / 4;
+    ctx.fillText("R$" + Math.round(maxInv * i / 4), W - padR + 6, y + 3);
+  }
+  ctx.fillStyle = "rgba(255,92,0,0.88)";
+  const larg = Math.max(4, Math.min(26, passo * 0.55));
+  conv.forEach((v, i) => {
+    const h = plotH * v / maxConv;
+    ctx.beginPath(); ctx.roundRect(padL + passo * i + (passo - larg) / 2, padT + plotH - h, larg, h, 3); ctx.fill();
+  });
+  if (prevConv.length) {
+    ctx.strokeStyle = "#B5AFA9"; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]); ctx.beginPath();
+    prevConv.forEach((v, i) => {
+      const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxConv;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  ctx.strokeStyle = "#333"; ctx.lineWidth = 1.6; ctx.beginPath();
+  inv.forEach((v, i) => {
+    const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxInv;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  ctx.fillStyle = "#333";
+  inv.forEach((v, i) => {
+    const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxInv;
+    ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fill();
+  });
+  ctx.fillStyle = "#8A847E"; ctx.textAlign = "center";
+  const salto = Math.ceil(n / 14);
+  sel.forEach((d, i) => { if (i % salto === 0) ctx.fillText(dataBR(d.data), padL + passo * i + passo / 2, H - 8); });
+}
+
+// ===== filtro de período =====
+const ULTIMA = DIAS[DIAS.length - 1].data, PRIMEIRA = DIAS[0].data;
+function aplicarPreset(p) {
+  let ini;
+  const fim = ULTIMA;
+  if (p === "tudo") ini = PRIMEIRA;
+  else if (p === "mes") ini = fim.slice(0, 8) + "01";
+  else {
+    const f = new Date(fim + "T12:00:00"); f.setDate(f.getDate() - (parseInt(p) - 1));
+    ini = f.toISOString().slice(0, 10);
+    if (ini < PRIMEIRA) ini = PRIMEIRA;
+  }
+  document.getElementById("data-ini").value = ini;
+  document.getElementById("data-fim").value = fim;
+  render(ini, fim);
+}
+document.querySelectorAll("#filtro button[data-dias]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#filtro button").forEach(x => x.classList.remove("ativo"));
+  b.classList.add("ativo");
+  aplicarPreset(b.dataset.dias);
+}));
+document.getElementById("aplicar").addEventListener("click", () => {
+  const i = document.getElementById("data-ini").value, f = document.getElementById("data-fim").value;
+  if (i && f && i <= f) {
+    document.querySelectorAll("#filtro button").forEach(x => x.classList.remove("ativo"));
+    render(i, f);
+  }
+});
+document.getElementById("data-ini").min = PRIMEIRA; document.getElementById("data-ini").max = ULTIMA;
+document.getElementById("data-fim").min = PRIMEIRA; document.getElementById("data-fim").max = ULTIMA;
+window.addEventListener("resize", () => render(document.getElementById("data-ini").value, document.getElementById("data-fim").value));
+aplicarPreset("30");
+
+}
 </script>
 </body>
 </html>
