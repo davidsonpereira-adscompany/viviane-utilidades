@@ -1,0 +1,52 @@
+name: Enviar parcial no WhatsApp
+
+on:
+  push:
+    branches: [main]
+    paths: ["05-RELATORIOS/parciais/*.md"]
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Data da parcial (AAAA-MM-DD); vazio = hoje"
+        required: false
+        default: ""
+      somente_copia:
+        description: "true = envia só para o Davidson (teste)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parcial
+  cancel-in-progress: false
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    env:
+      EVOLUTION_APIKEY: ${{ secrets.EVOLUTION_APIKEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Conferir segredo
+        if: env.EVOLUTION_APIKEY == ''
+        run: echo "EVOLUTION_APIKEY ainda não cadastrado — nada a fazer."
+      - name: Enviar
+        if: env.EVOLUTION_APIKEY != ''
+        run: |
+          EXTRA=""
+          if [ "${{ github.event.inputs.somente_copia }}" = "true" ]; then EXTRA="--somente-copia"; fi
+          python3 05-RELATORIOS/enviar_parcial.py ${{ github.event.inputs.data }} $EXTRA
+      - name: Registrar envio
+        if: env.EVOLUTION_APIKEY != ''
+        run: |
+          git config user.name "ADS Company"
+          git config user.email "contato@adscompany.pro"
+          git add 05-RELATORIOS/parciais/.enviadas
+          if git diff --cached --quiet; then echo "sem registro novo"; exit 0; fi
+          git commit -m "chore: parcial enviada no WhatsApp"
+          git pull --rebase origin main
+          git push origin main
