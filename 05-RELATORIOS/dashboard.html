@@ -111,6 +111,24 @@
   th .info { border-color: rgba(107,101,96,.5); color: var(--cinza); }
   th .info:hover, th .info.aberto { background: var(--cinza); color: #fff; border-color: var(--cinza); }
   .secao-titulo .info { margin-left: 8px; }
+  .nw { white-space: nowrap; }
+  /* ===== funil ===== */
+  .funil-wrap { display: grid; grid-template-columns: minmax(180px, 34%) 1fr; gap: 10px 36px; align-items: stretch; }
+  .funil-img { width: 100%; height: auto; display: block; align-self: center; }
+  .funil-etapas { display: grid; grid-template-rows: repeat(3, 1fr); }
+  .funil-etapa { display: flex; flex-direction: column; justify-content: center; padding: 10px 0 10px 18px; border-left: 3px solid var(--cor); }
+  .funil-etapa + .funil-etapa { border-top: 1px solid var(--borda); }
+  .funil-etapa .nome { font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cinza); }
+  .funil-etapa .valor { font-family: var(--serif); font-size: 1.75rem; line-height: 1.2; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .funil-etapa .taxa { font-size: .76rem; color: var(--cinza); }
+  .funil-etapa .taxa b { color: var(--texto); font-weight: 600; }
+  @media (max-width: 640px) { .funil-wrap { grid-template-columns: 1fr; } .funil-img { max-width: 220px; margin: 0 auto; } .funil-etapa { padding-left: 14px; } }
+  /* ===== gráfico ===== */
+  .grafico-wrap { position: relative; }
+  .tip { position: absolute; display: none; pointer-events: none; background: #1C1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 9px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 40; min-width: 170px; white-space: nowrap; }
+  .tip b { color: #FFB080; font-weight: 600; }
+  .tip .t-data { font-weight: 600; margin-bottom: 2px; text-transform: capitalize; }
+  .tip .t-prev { color: #B5AFA9; border-top: 1px solid rgba(255,255,255,.15); margin-top: 5px; padding-top: 5px; }
   .ajuda-nota { font-size: .72rem; color: var(--cinza); margin-top: 6px; }
 
 </style>
@@ -170,11 +188,12 @@
     <div class="secao-titulo"><span class="num">03</span><h2>Evolução diária</h2></div>
     <div class="painel">
       <div class="legenda">
-        <span><span style="display:inline-block;width:10px;height:10px;background:var(--laranja);border-radius:2px;margin-right:6px"></span>Conversas no WhatsApp</span>
-        <span><span style="display:inline-block;width:14px;height:2px;background:#333;vertical-align:middle;margin-right:6px"></span>Investido (R$)</span>
+        <span><span style="display:inline-block;width:14px;height:3px;background:var(--laranja);border-radius:2px;vertical-align:middle;margin-right:6px"></span>Conversas no WhatsApp</span>
+        <span><span style="display:inline-block;width:14px;height:2px;background:#2B2724;vertical-align:middle;margin-right:6px"></span>Investido (R$)</span>
         <span id="leg-anterior" style="display:none"><span style="display:inline-block;width:14px;border-top:2px dashed #B5AFA9;vertical-align:middle;margin-right:6px"></span>Conversas no período anterior</span>
       </div>
-      <canvas id="grafico-diario" style="width:100%;height:270px"></canvas>
+      <div class="grafico-wrap"><canvas id="grafico-diario" style="width:100%;height:290px"></canvas><div class="tip" id="grafico-tip"></div></div>
+      <p class="nota">Passe o mouse (ou toque) em cada ponto para ver o dia. A linha tracejada mostra os mesmos dias do período anterior, alinhados dia a dia.</p>
     </div>
   </div>
 
@@ -279,7 +298,7 @@ const AJUDA = {
   "Data": "Um dia por linha. Os números de ontem podem mudar um pouco até 48 h — o Meta termina de contar com atraso.",
   "Placar de metas": "Como o mês está indo contra as metas combinadas. Independe do filtro de período lá em cima.",
   "Do anúncio à conversa": "O caminho das pessoas: quem viu → quem tocou → quem chamou no WhatsApp. Cada etapa mostra quanto passou da anterior.",
-  "Evolução diária": "Barras = conversas por dia. Linha = quanto foi investido em cada dia. A linha tracejada, quando aparece, é o período anterior.",
+  "Evolução diária": "Linha laranja = conversas por dia (passe o mouse nos pontos para ver o dia). Linha escura = quanto foi investido em cada dia. A linha tracejada cinza, quando aparece, mostra os mesmos dias do período anterior, para comparar.",
   "Destaques do período": "Os pontos altos do período selecionado, calculados automaticamente.",
   "Campanhas": "Desempenho de cada grupo de anúncios no período. O dinheiro do dia é dividido entre eles automaticamente, indo mais para quem traz conversa mais barata.",
   "Detalhamento dia a dia": "Os mesmos números, abertos por dia. O dia com mais conversas aparece em laranja.",
@@ -292,6 +311,12 @@ const AJUDA = {
 function info(chave) {
   const t = AJUDA[chave]; if (!t) return "";
   return '&nbsp;<span class="info" tabindex="0" role="button" aria-label="O que é ' + chave + '?" onclick="abrirInfo(event,this)">i<span class="balao">' + t + '</span></span>';
+}
+function comInfo(txt, chave) {
+  const t = String(txt).trim(), ic = info(chave || t);
+  if (!ic) return t;
+  const i = t.lastIndexOf(" ");
+  return i < 0 ? '<span class="nw">' + t + ic + '</span>' : t.slice(0, i) + ' <span class="nw">' + t.slice(i + 1) + ic + '</span>';
 }
 function abrirInfo(e, el) {
   e.stopPropagation();
@@ -357,7 +382,7 @@ function render(ini, fim) {
 
   const g = (id, arr) => document.getElementById(id).innerHTML = arr.join("");
   const kpi = (rotulo, valor, delta, opts = {}) =>
-    `<div class="kpi ${opts.destaque ? "destaque-kpi" : ""}"><div class="rotulo">${rotulo}${info(rotulo)}</div><div class="valor ${opts.laranja ? "laranja" : ""}">${valor}</div>${delta}</div>`;
+    `<div class="kpi ${opts.destaque ? "destaque-kpi" : ""}"><div class="rotulo">${comInfo(rotulo)}</div><div class="valor ${opts.laranja ? "laranja" : ""}">${valor}</div>${delta}</div>`;
 
   g("kpis-resultado", [
     kpi("Valor investido", moeda(A.investido), deltaChip(A.investido, P && P.investido, null), { destaque: 1 }),
@@ -388,7 +413,7 @@ function render(ini, fim) {
   document.getElementById("placar-sub").textContent = "Acompanhamento do mês " + mesRef.slice(5, 7) + "/" + mesRef.slice(0, 4) + " (independente do filtro acima). Âncora do projeto: " + D.metas.ancora + ".";
   const barra = (nome, atual, meta, fmt) => {
     const pct = Math.min(100, Math.round(atual / meta * 100));
-    return `<div style="margin-bottom:18px"><div class="meta-linha"><span>${nome}${info(nome)}</span><span><strong>${fmt(atual)}</strong> / ${fmt(meta)} · ${pct}%</span></div><div class="meta-barra"><div style="width:${pct}%"></div></div></div>`;
+    return `<div style="margin-bottom:18px"><div class="meta-linha"><span>${comInfo(nome)}</span><span><strong>${fmt(atual)}</strong> / ${fmt(meta)} · ${pct}%</span></div><div class="meta-barra"><div style="width:${pct}%"></div></div></div>`;
   };
   g("placar", [
     barra("Meta de faturamento do mês (valor vendido registrado)", AM.valor_vendido, D.metas.faturamento_mes, v => "R$ " + inteiro(v)),
@@ -397,15 +422,21 @@ function render(ini, fim) {
 
   // Funil
   const funil = [
-    { nome: "Pessoas alcançadas", valor: A.alcance, cor: "rgba(28,25,23,0.18)" },
-    { nome: "Cliques no anúncio", valor: A.cliques, cor: "rgba(255,138,71,0.8)" },
+    { nome: "Pessoas alcançadas", valor: A.alcance, cor: "#CFC8C2" },
+    { nome: "Cliques no anúncio", valor: A.cliques, cor: "#FFB080" },
     { nome: "Conversas no WhatsApp", valor: A.conversas, cor: "#FF5C00" }
   ];
-  g("funil", funil.map((f, i) => {
-    const pct = funil[0].valor ? f.valor / funil[0].valor * 100 : 0;
-    const taxa = i === 0 ? "100%" : (funil[i - 1].valor ? (f.valor / funil[i - 1].valor * 100).toFixed(1).replace(".", ",") + "% da etapa anterior" : "—");
-    return `<div class="funil-linha"><div class="funil-info"><span class="nome">${f.nome}${info(f.nome)}</span><span class="dado">${inteiro(f.valor)} <span>· ${taxa}</span></span></div><div class="funil-barra"><div style="width:${Math.max(pct, 1.2)}%;background:${f.cor}"></div></div></div>`;
-  }));
+  const pctTxt = (a, b) => b ? (a / b * 100).toFixed(1).replace(".", ",") + "%" : "—";
+  g("funil", [
+    '<div class="funil-wrap"><img class="funil-img" src="img/funil.png" alt="" onerror="this.style.display=\'none\'"><div class="funil-etapas">',
+    ...funil.map((f, i) => {
+      const taxa = i === 0
+        ? "Todo mundo que viu o anúncio no período"
+        : "<b>" + pctTxt(f.valor, funil[i - 1].valor) + "</b> da etapa anterior" + (i === 2 ? " · <b>" + pctTxt(f.valor, funil[0].valor) + "</b> de quem foi alcançado" : "");
+      return `<div class="funil-etapa" style="--cor:${f.cor}"><div class="nome">${comInfo(f.nome)}</div><div class="valor">${inteiro(f.valor)}</div><div class="taxa">${taxa}</div></div>`;
+    }),
+    '</div></div>'
+  ]);
 
   // Destaques calculados
   const diaMaisConversas = sel.reduce((m, d) => d.conversas > m.conversas ? d : m, sel[0]);
@@ -423,10 +454,10 @@ function render(ini, fim) {
     if (c.conversas > 0) { const custo = c.investido / c.conversas; if (!melhor || custo < melhor.custo) melhor = { nome, custo }; }
   }
   g("destaques", [
-    `<div class="destaque"><div class="rotulo">Dia com mais conversas${info("Dia com mais conversas")}</div><div class="valor">${dataBR(diaMaisConversas.data)} — ${diaMaisConversas.conversas} conversas</div></div>`,
-    `<div class="destaque"><div class="rotulo">Dia de maior alcance${info("Dia de maior alcance")}</div><div class="valor">${dataBR(diaMaiorAlcance.data)} — ${inteiro(diaMaiorAlcance.alcance)} pessoas</div></div>`,
-    melhor ? `<div class="destaque"><div class="rotulo">Campanha mais eficiente${info("Campanha mais eficiente")}</div><div class="valor">${melhor.nome.split("—")[0].trim()}</div><div class="sub">${moeda(melhor.custo)} por conversa</div></div>` : "",
-    `<div class="destaque"><div class="rotulo">Média de conversas por dia${info("Média de conversas por dia")}</div><div class="valor">${(A.conversas / n).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}</div></div>`
+    `<div class="destaque"><div class="rotulo">${comInfo("Dia com mais conversas")}</div><div class="valor">${dataBR(diaMaisConversas.data)} — ${diaMaisConversas.conversas} conversas</div></div>`,
+    `<div class="destaque"><div class="rotulo">${comInfo("Dia de maior alcance")}</div><div class="valor">${dataBR(diaMaiorAlcance.data)} — ${inteiro(diaMaiorAlcance.alcance)} pessoas</div></div>`,
+    melhor ? `<div class="destaque"><div class="rotulo">${comInfo("Campanha mais eficiente")}</div><div class="valor">${melhor.nome.split("—")[0].trim()}</div><div class="sub">${moeda(melhor.custo)} por conversa</div></div>` : "",
+    `<div class="destaque"><div class="rotulo">${comInfo("Média de conversas por dia")}</div><div class="valor">${(A.conversas / n).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}</div></div>`
   ]);
 
   // Tabela de campanhas
@@ -445,62 +476,98 @@ function render(ini, fim) {
   if (location.hash === "#demo") { const f = document.querySelector(".kpi .info"); if (f) f.classList.add("aberto"); }
 }
 
+let GRAF = null;
+const diaSemana = iso => ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"][new Date(iso + "T12:00:00").getDay()];
 function desenharGrafico(sel, prev) {
   const cv = document.getElementById("grafico-diario");
   const dpr = window.devicePixelRatio || 1;
-  const W = cv.clientWidth, H = 270;
+  const W = cv.clientWidth, H = 290;
   cv.width = W * dpr; cv.height = H * dpr;
   const ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, W, H);
+  const n = sel.length;
   const conv = sel.map(d => d.conversas), inv = sel.map(d => d.investido);
-  const prevConv = prev.length === sel.length ? prev.map(d => d.conversas) : [];
-  document.getElementById("leg-anterior").style.display = prevConv.length ? "inline" : "none";
-  const padL = 36, padR = 52, padT = 12, padB = 28;
+  // período anterior alinhado dia a dia pelo fim (o dia i do período atual compara com o dia i do anterior)
+  const off = n - prev.length;
+  const prevConv = conv.map((_, i) => i - off >= 0 ? prev[i - off].conversas : null);
+  const temPrev = prev.length > 0;
+  document.getElementById("leg-anterior").style.display = temPrev ? "inline" : "none";
+  const padL = 38, padR = 58, padT = 18, padB = 30;
   const plotW = W - padL - padR, plotH = H - padT - padB;
-  const maxConv = Math.max(...conv, ...(prevConv.length ? prevConv : [0]), 1) * 1.25;
-  const maxInv = Math.max(...inv, 1) * 1.25;
-  const n = sel.length, passo = plotW / n;
-  ctx.font = "10px Inter, sans-serif";
-  ctx.strokeStyle = "rgba(0,0,0,0.07)"; ctx.fillStyle = "#8A847E"; ctx.textAlign = "right";
+  const maxConv = Math.max(...conv, ...prevConv.filter(v => v !== null), 1) * 1.2;
+  const maxInv = Math.max(...inv, 1) * 1.2;
+  const passo = plotW / n;
+  const X = i => padL + passo * i + passo / 2;
+  const Yc = v => padT + plotH - plotH * v / maxConv;
+  const Yi = v => padT + plotH - plotH * v / maxInv;
+  ctx.font = "10px Inter, sans-serif"; ctx.textBaseline = "middle";
   for (let i = 0; i <= 4; i++) {
     const y = padT + plotH - plotH * i / 4;
+    ctx.strokeStyle = i === 0 ? "rgba(0,0,0,0.18)" : "rgba(0,0,0,0.06)"; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
-    ctx.fillText(Math.round(maxConv * i / 4), padL - 6, y + 3);
+    ctx.fillStyle = "#8A847E"; ctx.textAlign = "right"; ctx.fillText(Math.round(maxConv * i / 4), padL - 8, y);
+    ctx.textAlign = "left"; ctx.fillText("R$" + Math.round(maxInv * i / 4), W - padR + 8, y);
   }
-  ctx.textAlign = "left";
-  for (let i = 0; i <= 4; i++) {
-    const y = padT + plotH - plotH * i / 4;
-    ctx.fillText("R$" + Math.round(maxInv * i / 4), W - padR + 6, y + 3);
-  }
-  ctx.fillStyle = "rgba(255,92,0,0.88)";
-  const larg = Math.max(4, Math.min(26, passo * 0.55));
-  conv.forEach((v, i) => {
-    const h = plotH * v / maxConv;
-    ctx.beginPath(); ctx.roundRect(padL + passo * i + (passo - larg) / 2, padT + plotH - h, larg, h, 3); ctx.fill();
-  });
-  if (prevConv.length) {
-    ctx.strokeStyle = "#B5AFA9"; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]); ctx.beginPath();
-    prevConv.forEach((v, i) => {
-      const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxConv;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    });
+  // área + linha de conversas
+  const grad = ctx.createLinearGradient(0, padT, 0, padT + plotH);
+  grad.addColorStop(0, "rgba(255,92,0,0.26)"); grad.addColorStop(1, "rgba(255,92,0,0.02)");
+  ctx.beginPath(); ctx.moveTo(X(0), padT + plotH);
+  conv.forEach((v, i) => ctx.lineTo(X(i), Yc(v)));
+  ctx.lineTo(X(n - 1), padT + plotH); ctx.closePath(); ctx.fillStyle = grad; ctx.fill();
+  ctx.strokeStyle = "#FF5C00"; ctx.lineWidth = 2.4; ctx.lineJoin = "round"; ctx.beginPath();
+  conv.forEach((v, i) => i ? ctx.lineTo(X(i), Yc(v)) : ctx.moveTo(X(i), Yc(v))); ctx.stroke();
+  // período anterior
+  if (temPrev) {
+    ctx.strokeStyle = "#B5AFA9"; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]); ctx.beginPath(); let comecou = false;
+    prevConv.forEach((v, i) => { if (v === null) return; comecou ? ctx.lineTo(X(i), Yc(v)) : ctx.moveTo(X(i), Yc(v)); comecou = true; });
     ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = "#B5AFA9"; prevConv.forEach((v, i) => { if (v === null) return; ctx.beginPath(); ctx.arc(X(i), Yc(v), 2.6, 0, 7); ctx.fill(); });
   }
-  ctx.strokeStyle = "#333"; ctx.lineWidth = 1.6; ctx.beginPath();
-  inv.forEach((v, i) => {
-    const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxInv;
-    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  });
-  ctx.stroke();
-  ctx.fillStyle = "#333";
-  inv.forEach((v, i) => {
-    const x = padL + passo * i + passo / 2, y = padT + plotH - plotH * v / maxInv;
-    ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fill();
-  });
-  ctx.fillStyle = "#8A847E"; ctx.textAlign = "center";
-  const salto = Math.ceil(n / 14);
-  sel.forEach((d, i) => { if (i % salto === 0) ctx.fillText(dataBR(d.data), padL + passo * i + passo / 2, H - 8); });
+  // investido
+  ctx.strokeStyle = "#2B2724"; ctx.lineWidth = 1.4; ctx.beginPath();
+  inv.forEach((v, i) => i ? ctx.lineTo(X(i), Yi(v)) : ctx.moveTo(X(i), Yi(v))); ctx.stroke();
+  ctx.fillStyle = "#2B2724"; inv.forEach((v, i) => { ctx.beginPath(); ctx.arc(X(i), Yi(v), 2.2, 0, 7); ctx.fill(); });
+  // pontos de conversas por cima
+  conv.forEach((v, i) => { ctx.beginPath(); ctx.arc(X(i), Yc(v), 4.5, 0, 7); ctx.fillStyle = "#fff"; ctx.fill(); ctx.lineWidth = 2.2; ctx.strokeStyle = "#FF5C00"; ctx.stroke(); });
+  // eixo x
+  ctx.fillStyle = "#8A847E"; ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  const salto = Math.max(1, Math.ceil(n / Math.max(4, Math.floor(plotW / 54))));
+  sel.forEach((d, i) => { if (i % salto === 0 || i === n - 1) ctx.fillText(dataBR(d.data), X(i), H - 9); });
+  GRAF = { sel, prev, off, X, Yc, passo, padL, padR, padT, plotH, W, H, n };
 }
+// balão ao passar o mouse / tocar nos pontos
+(function () {
+  const cv = document.getElementById("grafico-diario"), tip = document.getElementById("grafico-tip");
+  let marcado = -1;
+  function sair() { tip.style.display = "none"; if (marcado !== -1) { marcado = -1; if (GRAF) desenharGrafico(GRAF.sel, GRAF.prev); } }
+  function mover(e) {
+    if (!GRAF) return;
+    const r = cv.getBoundingClientRect(), x = e.clientX - r.left;
+    if (x < GRAF.padL - 12 || x > GRAF.W - GRAF.padR + 12) { sair(); return; }
+    const i = Math.max(0, Math.min(GRAF.n - 1, Math.floor((x - GRAF.padL) / GRAF.passo)));
+    const d = GRAF.sel[i], p = i - GRAF.off >= 0 ? GRAF.prev[i - GRAF.off] : null;
+    const plural = v => v === 1 ? " conversa" : " conversas";
+    tip.innerHTML = `<div class="t-data">${diaSemana(d.data)}, ${dataBRcompleta(d.data)}</div>`
+      + `<div><b>${d.conversas}</b>${plural(d.conversas)} no WhatsApp</div>`
+      + `<div>${moeda(d.investido)} investidos</div>`
+      + `<div>${d.conversas ? moeda(d.investido / d.conversas) + " por conversa" : "nenhuma conversa no dia"}</div>`
+      + (p ? `<div class="t-prev">Período anterior (${dataBR(p.data)}): ${p.conversas}${plural(p.conversas)}</div>` : "");
+    tip.style.display = "block";
+    const px = GRAF.X(i), tw = tip.offsetWidth, th = tip.offsetHeight;
+    tip.style.left = Math.max(0, Math.min(GRAF.W - tw, px - tw / 2)) + "px";
+    const yAlvo = GRAF.Yc(d.conversas) - th - 16;
+    tip.style.top = (yAlvo < 0 ? GRAF.Yc(d.conversas) + 16 : yAlvo) + "px";
+    if (marcado !== i) {
+      marcado = i; desenharGrafico(GRAF.sel, GRAF.prev);
+      const ctx = cv.getContext("2d");
+      ctx.strokeStyle = "rgba(255,92,0,.4)"; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(px, GRAF.padT); ctx.lineTo(px, GRAF.padT + GRAF.plotH); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(px, GRAF.Yc(d.conversas), 6.5, 0, 7); ctx.fillStyle = "#FF5C00"; ctx.fill();
+    }
+  }
+  cv.addEventListener("pointermove", mover); cv.addEventListener("pointerdown", mover); cv.addEventListener("pointerleave", sair);
+  window.demoHover = i => { if (!GRAF) return; const r = cv.getBoundingClientRect(); mover({ clientX: r.left + GRAF.X(Math.min(i, GRAF.n - 1)) }); };
+})();
 
 // ===== filtro de período =====
 const ULTIMA = DIAS[DIAS.length - 1].data, PRIMEIRA = DIAS[0].data;
@@ -535,10 +602,14 @@ document.getElementById("data-fim").min = PRIMEIRA; document.getElementById("dat
 window.addEventListener("resize", () => render(document.getElementById("data-ini").value, document.getElementById("data-fim").value));
 aplicarPreset("30");
   // "i" nos cabeçalhos de tabela, títulos de seção e grupos de KPIs
-  document.querySelectorAll("thead th").forEach(th => { const t = th.textContent.trim(); if (AJUDA[t] && !th.querySelector(".info")) th.insertAdjacentHTML("beforeend", info(t)); });
-  document.querySelectorAll(".secao-titulo h2").forEach(h => { const t = h.textContent.trim(); if (AJUDA[t] && !h.querySelector(".info")) h.insertAdjacentHTML("beforeend", info(t)); });
-  document.querySelectorAll(".grupo-titulo").forEach(g => { const t = g.textContent.replace(/\s+/g, " ").trim(); if (AJUDA[t] && !g.querySelector(".info")) g.insertAdjacentHTML("beforeend", info(t)); });
-  if (location.hash === "#demo") { const f = document.querySelector(".kpi .info"); if (f) f.classList.add("aberto"); const g = document.querySelector(".secao-titulo .info"); if (g) g.classList.add("aberto"); }
+  document.querySelectorAll("thead th").forEach(th => { const t = th.textContent.trim(); if (AJUDA[t] && !th.querySelector(".info")) th.innerHTML = comInfo(t); });
+  document.querySelectorAll(".secao-titulo h2").forEach(h => { const t = h.textContent.trim(); if (AJUDA[t] && !h.querySelector(".info")) h.innerHTML = comInfo(t); });
+  document.querySelectorAll(".grupo-titulo").forEach(g => {
+    const t = g.textContent.replace(/\s+/g, " ").trim(); if (!AJUDA[t] || g.querySelector(".info")) return;
+    const m = g.innerHTML.trim().match(/^([\s\S]*?)(\S+)$/);
+    if (m && !/[<>]/.test(m[2])) g.innerHTML = m[1] + '<span class="nw">' + m[2] + info(t) + '</span>'; else g.insertAdjacentHTML("beforeend", info(t));
+  });
+  if (location.hash === "#demo") { aplicarPreset("4"); const f = document.querySelector(".kpi .info"); if (f) f.classList.add("aberto"); const g = document.querySelector(".secao-titulo .info"); if (g) g.classList.add("aberto"); if (window.demoHover) window.demoHover(2); }
 
 
 }
