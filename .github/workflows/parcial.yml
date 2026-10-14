@@ -45,6 +45,7 @@ jobs:
         run: |
           git config user.name "ADS Company"
           git config user.email "contato@adscompany.pro"
+          [ -f 05-RELATORIOS/parciais/.enviadas ] || { echo "sem registro (teste ou nada enviado)"; exit 0; }
           git add 05-RELATORIOS/parciais/.enviadas
           if git diff --cached --quiet; then echo "sem registro novo"; exit 0; fi
           git commit -m "chore: parcial enviada no WhatsApp"
