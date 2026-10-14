@@ -1,0 +1,14 @@
+{
+  "controle": {
+    "id": "1G_B4pV_v3bvldzAHqbBO_xAI2UP26_zTsDVns-vK5Kw",
+    "aba": "CONTROLE DIÁRIO",
+    "linha_inicio": 5,
+    "linha_fim": 75,
+    "colunas": { "data": "A", "investido": "C", "conversas": "D", "vendas": "F", "valor_vendido": "G" }
+  },
+  "projecao": {
+    "id": "1jlxXLo_8CEtwYRXAY5_RMqds16mV4FUHYlgWF5d_Yb4",
+    "abas_por_mes": { "2026-10": "OUT 2026", "2026-11": "NOV 2026", "2026-12": "DEZ 2026" },
+    "celulas": { "dias_trabalhados": "B6", "vendas_acumuladas": "B7", "numero_vendas": "B8" }
+  }
+}

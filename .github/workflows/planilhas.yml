@@ -1,0 +1,42 @@
+name: Sincronizar planilhas da cliente
+
+on:
+  push:
+    branches: [main]
+    paths: ["05-RELATORIOS/dados.json"]
+  schedule:
+    - cron: "15 10-23 * * *"   # a cada hora, das 07h15 às 20h15 (Brasília)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: planilhas
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    env:
+      MATON_API_KEY: ${{ secrets.MATON_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Conferir segredo
+        if: env.MATON_API_KEY == ''
+        run: echo "MATON_API_KEY ainda não cadastrado em Settings > Secrets — nada a fazer." && exit 0
+      - name: Painel -> Controle Diário (colunas azuis) e Controle -> painel + Projeção
+        if: env.MATON_API_KEY != ''
+        run: python3 05-RELATORIOS/sync_planilhas.py tudo
+      - name: Publicar vendas.json se mudou
+        if: env.MATON_API_KEY != ''
+        run: |
+          git config user.name "ADS Company"
+          git config user.email "contato@adscompany.pro"
+          git add 05-RELATORIOS/vendas.json
+          if git diff --cached --quiet; then echo "sem mudança"; exit 0; fi
+          git commit -m "chore: vendas da planilha → painel"
+          git pull --rebase origin main
+          git push origin main

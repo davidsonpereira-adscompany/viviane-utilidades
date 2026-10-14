@@ -256,7 +256,13 @@ function mapear(J) {
     dias
   };
 }
-fetch("dados.json?v=" + Date.now()).then(r => r.json()).then(J => {
+Promise.all([
+  fetch("dados.json?v=" + Date.now()).then(r => r.json()),
+  fetch("vendas.json?v=" + Date.now()).then(r => r.ok ? r.json() : { vendas: [] }).catch(() => ({ vendas: [] }))
+]).then(([J, V]) => {
+  // vendas registradas pela loja na planilha (sincronizadas pelo GitHub Actions) entram por data
+  const porData = {}; (V.vendas || []).forEach(v => { porData[v.data] = v; });
+  (J.dias || []).forEach(d => { const v = porData[d.data]; if (v) { d.vendas = v.vendas; d.valor_vendido = v.valor_vendido; } });
   window.DADOS = mapear(J);
   if (!window.DADOS.dias.length) {
     document.getElementById("titulo-cliente").innerHTML = "Resultados de <em>Viviane Utilidades</em>";
