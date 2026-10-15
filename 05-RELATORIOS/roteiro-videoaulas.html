@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roteiro das videoaulas — Painel e Planilhas · Viviane Utilidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF5C00;--bg:#060606;--card:#111;--border:rgba(255,255,255,.08);--txt:#F5F5F5;--dim:#9A9A9A;--green:#34D399;--yellow:#FBBF24;--blue:#60A5FA;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--fs:19px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:var(--fs);line-height:1.7;-webkit-font-smoothing:antialiased}
+.top{position:sticky;top:0;z-index:100;background:rgba(6,6,6,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top a,.top button{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);background:none;border:1px solid transparent;border-radius:8px;padding:7px 12px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.top a:hover,.top button:hover{color:var(--txt);background:rgba(255,255,255,.05)}
+.top a.active{color:var(--o);background:rgba(255,92,0,.1)}
+.top .sep{flex:1}
+.top button.on{color:var(--o);border-color:rgba(255,92,0,.4)}
+.top .vel{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim)}
+.top input[type=range]{width:110px;accent-color:var(--o)}
+.hero{padding:70px 24px 30px;text-align:center}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);background:rgba(255,92,0,.1);padding:6px 16px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin-bottom:10px}
+.hero h1 span{color:var(--o)}
+.hero p{color:var(--dim);font-size:15px;max-width:720px;margin:0 auto}
+.como{max-width:900px;margin:24px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.como div{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--dim)}
+.como b{color:var(--txt);display:block;margin-bottom:4px;font-size:13px}
+.container{max-width:900px;margin:0 auto;padding:20px 24px 50vh}
+.aula{margin-top:60px;scroll-margin-top:70px}
+.aula-cab{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:10px}
+.aula-cab .lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o)}
+.aula-cab h2{font-family:var(--serif);font-size:clamp(26px,3.6vw,36px);line-height:1.2;margin:6px 0}
+.aula-cab p{color:var(--dim);font-size:14px}
+.bloco{margin-top:34px;scroll-margin-top:70px;padding-top:8px}
+.bloco h3{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.bloco h3 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--o);color:#fff;font-size:12px}
+.bloco h3 .t{margin-left:auto;font-weight:500;color:var(--dim);letter-spacing:0;text-transform:none;font-size:12px}
+.tela{background:#0E1A2B;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:10px 16px;font-size:14px;color:#BFD6F5;margin-bottom:10px}
+.tela b{color:#fff}
+.acao{background:#1A1508;border-left:3px solid var(--yellow);border-radius:0 10px 10px 0;padding:10px 16px;font-size:14px;color:#F3DFA2;margin-bottom:10px}
+.acao b{color:#fff}
+.fala{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:10px}
+.fala p{margin-bottom:12px}
+.fala p:last-child{margin-bottom:0}
+.fala em{color:var(--o);font-style:normal;font-weight:600}
+.dica{font-size:13px;color:var(--dim);padding:6px 16px;border-left:3px solid rgba(255,255,255,.15)}
+.check{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:14px}
+.check li{margin:6px 0 6px 18px;color:var(--dim)}
+.check li b{color:var(--txt)}
+body.tele{--fs:27px}
+body.tele .top{opacity:.35}body.tele .top:hover{opacity:1}
+body.tele .hero,body.tele .como,body.tele .dica,body.tele .check{display:none}
+body.tele .container{max-width:1100px}
+body.tele .tela,body.tele .acao{font-size:18px}
+body.tele .fala{padding:26px 30px;line-height:1.75}
+.lock-screen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+.lock-screen.hidden{display:none}
+.lock-box{background:#0E0E0E;border:1px solid var(--border);border-radius:16px;padding:40px 36px;max-width:380px;width:100%;text-align:center}
+.lock-box h2{font-size:20px;margin:12px 0 6px}
+.lock-box p{font-size:13px;color:var(--dim);margin-bottom:22px}
+.lock-box input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--txt);font:15px var(--sans);text-align:center;letter-spacing:2px;outline:none}
+.lock-box input:focus{border-color:var(--o)}
+.lock-box button{margin-top:14px;width:100%;padding:12px;border:none;border-radius:10px;background:var(--o);color:#fff;font:700 14px var(--sans);cursor:pointer}
+.lock-error{font-size:12px;color:#EF4444;margin-top:10px;min-height:18px}
+.page.locked{filter:blur(20px);pointer-events:none;user-select:none}
+@media (max-width:640px){.top{padding:8px 12px}.top .vel{display:none}.hero{padding-top:60px}}
+</style>
+</head>
+<body>
+<div class="lock-screen" id="lockScreen"><div class="lock-box"><div style="font-size:38px">&#128274;</div><h2>Roteiro das videoaulas</h2><p>Uso interno da ADS Company. Digite a senha para acessar.</p><input type="password" id="lockPass" placeholder="Senha" autocomplete="off"><button onclick="tryUnlock()">Entrar</button><div class="lock-error" id="lockError"></div></div></div>
+
+<div class="page locked" id="pageContent">
+<div class="top">
+  <a href="../index.html">&larr; Central</a>
+  <a href="#aula1" class="nav">Aula 1 · Painel</a>
+  <a href="#aula2" class="nav">Aula 2 · Planilhas</a>
+  <span class="sep"></span>
+  <button onclick="fonte(-2)">A&minus;</button><button onclick="fonte(2)">A+</button>
+  <button id="btnTele" onclick="toggleTele()">Modo teleprompter</button>
+  <button id="btnRol" onclick="toggleRolar()">&#9654; Rolar</button>
+  <span class="vel">vel. <input type="range" id="vel" min="1" max="10" value="4"></span>
+</div>
+
+<div class="hero">
+  <div class="badge">Viviane Utilidades · gravação no Meet</div>
+  <h1>Roteiro das <span>videoaulas</span></h1>
+  <p>Duas aulas curtas para a Viviane e a Ana: como ler o Painel de Resultados e como usar as duas planilhas. Texto pronto para ler, com o que mostrar na tela a cada passo.</p>
+</div>
+<div class="como">
+  <div><b>Antes de gravar</b>Abra o painel ao vivo e as duas planilhas em abas separadas. Deixe este roteiro numa segunda janela (ou no celular).</div>
+  <div><b>Como ler</b>Azul = o que está na tela · Amarelo = o que fazer com o mouse · Caixa escura = a fala. Leia natural, não precisa decorar.</div>
+  <div><b>Teleprompter</b>Botão "Modo teleprompter" aumenta a letra e esconde o resto. "Rolar" rola sozinho; barra de espaço pausa; setas ↑↓ ajustam a velocidade.</div>
+  <div><b>Duração</b>Aula 1: 9 a 11 min · Aula 2: 8 a 10 min. Se errar, pare um segundo e repita a frase; corta depois.</div>
+</div>
+
+<div class="container">
+
+<!-- ===================== AULA 1 ===================== -->
+<section class="aula" id="aula1">
+<div class="aula-cab"><div class="lbl">Videoaula 1 · 9 a 11 minutos</div><h2>Como ler o Painel de Resultados</h2><p>Objetivo: a Viviane e a Ana abrirem o painel sozinhas, entenderem cada número em linguagem de loja e saberem o que fazer com ele.</p></div>
+
+<div class="bloco"><h3><span class="n">1</span>Abertura <span class="t">~40 s</span></h3>
+<div class="tela"><b>Tela:</b> sua câmera ou a Central de Documentos da Viviane aberta.</div>
+<div class="fala">
+<p>Oi, Viviane. Oi, Ana. Esse vídeo é curto e serve para vocês entenderem o <em>Painel de Resultados</em> da loja, que é onde a gente acompanha, todo dia, o que os anúncios estão trazendo.</p>
+<p>A ideia é simples: vocês não precisam entrar no Facebook, no Instagram nem em ferramenta nenhuma. Tudo o que importa aparece numa página só, em português claro, e ela se atualiza sozinha <em>toda manhã por volta das sete horas</em>.</p>
+<p>Vou mostrar de cima para baixo, na ordem em que a página aparece.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">2</span>Onde encontrar o painel <span class="t">~30 s</span></h3>
+<div class="tela"><b>Tela:</b> Central de Documentos da Viviane.</div>
+<div class="acao"><b>Mouse:</b> passe pelos cards e clique em "Painel de Resultados (ao vivo)".</div>
+<div class="fala">
+<p>O painel fica na <em>Central de Documentos</em>, essa página que já está salva no grupo do WhatsApp. É só clicar no card <em>"Painel de Resultados (ao vivo)"</em>. Dá para salvar o link na tela inicial do celular, que ele abre como se fosse um aplicativo.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">3</span>Cabeçalho e filtro de período <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> topo do painel: data de atualização, faixa do período e os botões 7 dias, 14 dias, 30 dias, Este mês, Tudo.</div>
+<div class="acao"><b>Mouse:</b> aponte a frase "Atualizado automaticamente em…"; clique em "7 dias", depois em "Tudo"; mostre as duas datas e o botão Aplicar.</div>
+<div class="fala">
+<p>Logo no topo tem a frase <em>"Atualizado automaticamente em"</em> com a data e a hora. Esse é o carimbo de que os números são de hoje.</p>
+<p>Aqui em cima ficam os botões de período. <em>7 dias</em> mostra a última semana, <em>30 dias</em> o último mês, e <em>Tudo</em> mostra desde o dia em que os anúncios entraram no ar. Se quiser uma data específica, escolhe o começo e o fim aqui e clica em <em>Aplicar</em>.</p>
+<p>Tudo o que está abaixo muda junto com esse período. Então, se um número parecer estranho, primeiro olhe qual período está marcado.</p>
+</div>
+<div class="dica">Dica: deixe em "Tudo" para o resto da gravação, assim todos os números aparecem.</div></div>
+
+<div class="bloco"><h3><span class="n">4</span>O botão "i" e as setas de variação <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> grupo "Investimento × Resultado".</div>
+<div class="acao"><b>Mouse:</b> passe o mouse no "i" ao lado de "Valor investido" e deixe o balão aberto; depois aponte uma seta verde ou vermelha.</div>
+<div class="fala">
+<p>Antes de falar dos números, uma coisa importante: do lado de cada nome tem uma bolinha com a letra <em>i</em>. Passou o mouse, ou tocou no celular, aparece a explicação daquele número em palavras simples. Então vocês nunca ficam na dúvida do que é cada coisa.</p>
+<p>E embaixo de cada número pode aparecer uma seta. <em>Verde</em> quer dizer que melhorou para a loja em relação ao período anterior. <em>Vermelha</em>, que piorou. Quando aparece "sem comparativo", é porque ainda não existe um período anterior do mesmo tamanho para comparar.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">5</span>Investimento × Resultado <span class="t">~1 min 30</span></h3>
+<div class="tela"><b>Tela:</b> os cinco cartões: Valor investido, Conversas iniciadas, Custo por conversa, Vendas registradas, Retorno por real investido.</div>
+<div class="acao"><b>Mouse:</b> aponte cada cartão na ordem em que for falando.</div>
+<div class="fala">
+<p>Essa primeira linha é o essencial. <em>Valor investido</em> é quanto o Instagram e o Facebook cobraram no cartão da loja no período. O combinado é no máximo trinta reais por dia.</p>
+<p><em>Conversas iniciadas</em> é o número mais importante do painel: quantas pessoas tocaram no anúncio e <em>abriram uma conversa no WhatsApp da loja</em>. É isso que a campanha está buscando.</p>
+<p><em>Custo por conversa</em> é a conta: investido dividido por conversas. Quanto custou, em média, cada pessoa que chamou. No começo esse número é mais alto, porque o Instagram ainda está aprendendo para quem mostrar; a tendência é cair.</p>
+<p><em>Vendas registradas</em> e <em>Retorno por real investido</em> dependem de vocês: eles usam as vendas que a Ana lança na planilha, que eu explico na segunda aula. Enquanto a planilha não é preenchida, esses dois ficam em zero. Quando preenche, aparece aqui quanto voltou em venda para cada real investido.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">6</span>Alcance e entrega · Cliques e engajamento <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> as duas linhas seguintes de cartões.</div>
+<div class="acao"><b>Mouse:</b> aponte "Pessoas alcançadas", "Frequência", "Cliques" e "CTR".</div>
+<div class="fala">
+<p>As duas linhas seguintes são o "por trás" do resultado. <em>Pessoas alcançadas</em> é quantas pessoas diferentes viram o anúncio. <em>Frequência</em> é quantas vezes cada uma viu em média. Quando passa de três, a gente troca a arte, porque começa a cansar.</p>
+<p><em>Cliques</em> é quantas vezes alguém tocou no anúncio, e o <em>CTR</em> diz, de cada cem vezes que ele apareceu, em quantas alguém tocou. Isso mostra se a foto e o texto estão chamando atenção.</p>
+<p>Vocês não precisam decorar nada disso. Esses números são para a gente, da ADS Company, saber o que ajustar. Mas estão aqui para ninguém ficar no escuro.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">7</span>01 · Placar de metas <span class="t">~45 s</span></h3>
+<div class="tela"><b>Tela:</b> seção 01, as duas barras.</div>
+<div class="acao"><b>Mouse:</b> aponte a barra de faturamento e a de vendas por dia.</div>
+<div class="fala">
+<p>O <em>Placar de metas</em> olha o mês inteiro, independente do período lá de cima. A primeira barra é o faturamento registrado contra a meta do mês. A segunda é a média de <em>vendas por dia</em> que vieram da campanha, contra a meta de cinco por dia, que é o número que paga o serviço.</p>
+<p>De novo: essas barras só enchem com o que a Ana lançar na planilha. É a parte de vocês no jogo.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">8</span>02 · Do anúncio à conversa <span class="t">~45 s</span></h3>
+<div class="tela"><b>Tela:</b> o funil com as três etapas.</div>
+<div class="acao"><b>Mouse:</b> desça pelo funil: alcançadas, cliques, conversas.</div>
+<div class="fala">
+<p>Esse funil mostra o caminho das pessoas. Em cima, <em>quem viu</em> o anúncio. No meio, <em>quem tocou</em>. Embaixo, <em>quem chamou no WhatsApp</em>. As porcentagens dizem quanto passou de uma etapa para a outra. É normal o funil afinar bastante; o que a gente trabalha é fazer a última parte crescer.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">9</span>03 · Evolução diária <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> o gráfico de linhas.</div>
+<div class="acao"><b>Mouse:</b> passe devagar sobre três ou quatro pontos laranja e deixe o balão aparecer; clique em "7 dias" para mostrar a linha tracejada cinza.</div>
+<div class="fala">
+<p>No gráfico, a <em>linha laranja</em> são as conversas de cada dia e a <em>linha escura</em> é quanto foi investido. Passando o mouse em cada ponto aparece o dia, as conversas, o investido e o custo daquele dia.</p>
+<p>Quando existe um período anterior do mesmo tamanho, aparece uma <em>linha tracejada cinza</em>: são os mesmos dias do período anterior, para comparar se estamos melhorando.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">10</span>04 · Destaques e 05 · Campanhas <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> os quatro cartões de destaques e a tabela de campanhas.</div>
+<div class="acao"><b>Mouse:</b> aponte "Campanha mais eficiente"; na tabela, aponte a bolinha verde e a coluna "Custo por conversa".</div>
+<div class="fala">
+<p>Os <em>Destaques</em> são calculados sozinhos: o dia com mais conversas, o dia de maior alcance, a campanha mais eficiente e a média de conversas por dia.</p>
+<p>Na tabela de <em>Campanhas</em>, cada linha é um grupo de anúncio: um público e um tipo de produto, como vestidos, masculino ou família. A <em>bolinha verde</em> quer dizer que está ligado. O dinheiro do dia é dividido entre eles automaticamente, indo mais para quem traz conversa mais barata. Quando um grupo deixa de valer a pena, a gente pausa e avisa vocês.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">11</span>06 · Detalhamento dia a dia <span class="t">~40 s</span></h3>
+<div class="tela"><b>Tela:</b> a tabela por dia.</div>
+<div class="acao"><b>Mouse:</b> role a tabela; aponte o dia em laranja; passe o mouse no "i" de "Data".</div>
+<div class="fala">
+<p>Aqui são os mesmos números, abertos <em>um dia por linha</em>. O dia com mais conversas aparece em laranja. Um detalhe: os números de ontem podem mudar um pouco até dois dias depois, porque o Facebook termina de contar com atraso. Então não estranhem se um dia subir uma conversa de um dia para o outro.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">12</span>07 · Leitura do gestor e as parciais <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> a caixa laranja "Leitura do gestor".</div>
+<div class="acao"><b>Mouse:</b> aponte a frase em negrito.</div>
+<div class="fala">
+<p>Por último, a <em>Leitura do gestor</em>. É um resumo em duas ou três frases do que os números estão dizendo e qual é o próximo passo. Se vocês só tiverem um minuto, leiam essa caixa.</p>
+<p>E além do painel, <em>toda segunda, quarta e sexta</em> chega no grupo do WhatsApp uma parcial curta com os mesmos números: quanto investimos, quantas pessoas chamaram e o que vamos fazer. Ela sai desse painel, então é sempre o dado mais atual.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">13</span>Encerramento <span class="t">~30 s</span></h3>
+<div class="tela"><b>Tela:</b> volte para o topo do painel ou para a câmera.</div>
+<div class="fala">
+<p>Resumindo: o painel se atualiza sozinho toda manhã, cada número tem a explicação no <em>"i"</em>, e a única parte que depende de vocês é lançar as vendas na planilha, que é o assunto do próximo vídeo. Qualquer dúvida, é só chamar no grupo. Até lá.</p>
+</div></div>
+</section>
+
+<!-- ===================== AULA 2 ===================== -->
+<section class="aula" id="aula2">
+<div class="aula-cab"><div class="lbl">Videoaula 2 · 8 a 10 minutos</div><h2>Como usar as duas planilhas</h2><p>Objetivo: a Ana saber exatamente o que preencher, quando e como; e as duas entenderem o que já chega pronto e como a Projeção de Metas lê isso.</p></div>
+
+<div class="bloco"><h3><span class="n">1</span>Abertura e onde estão <span class="t">~45 s</span></h3>
+<div class="tela"><b>Tela:</b> pasta do Drive "A.C 40 #VIVIANE UTILIDADES BA" › PLANILHAS, mostrando os dois arquivos.</div>
+<div class="acao"><b>Mouse:</b> aponte "Controle Diário e Metas" e "Projeção de Metas".</div>
+<div class="fala">
+<p>Oi de novo. Esse vídeo é sobre as duas planilhas da loja. Elas ficam na pasta do Drive que está no grupo, dentro de <em>PLANILHAS</em>.</p>
+<p>A primeira é o <em>Controle Diário e Metas</em>: é onde a gente registra, dia a dia, o que entrou de anúncio e o que a loja vendeu. A segunda é a <em>Projeção de Metas</em>, que pega esses números e mostra se o mês está no caminho da meta.</p>
+<p>O mais importante desse vídeo: <em>quase tudo é automático</em>. A parte de vocês é uma só, e eu vou mostrar bem direitinho.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">2</span>Controle Diário: as cores <span class="t">~1 min</span></h3>
+<div class="tela"><b>Tela:</b> aba CONTROLE DIÁRIO, linhas 1 a 4 e as primeiras datas.</div>
+<div class="acao"><b>Mouse:</b> aponte a legenda da linha 3 (azul e amarelo) e depois uma célula de cada cor.</div>
+<div class="fala">
+<p>A planilha tem um código de cores. <em>Azul</em> é o que chega sozinho do Gerenciador de Anúncios: ninguém precisa digitar. <em>Amarelo</em> é a parte da loja: é só nessas células que vocês vão escrever. <em>Cinza</em> é conta pronta: a planilha calcula.</p>
+<p>E a planilha está protegida. Se tentar escrever fora do amarelo, ela avisa. Isso é de propósito, para ninguém apagar uma fórmula sem querer.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">3</span>Controle Diário: coluna por coluna <span class="t">~1 min 30</span></h3>
+<div class="tela"><b>Tela:</b> linha 4 (cabeçalhos) e uma linha de dia já preenchida.</div>
+<div class="acao"><b>Mouse:</b> percorra as colunas A até I na ordem.</div>
+<div class="fala">
+<p>Cada linha é um dia, começando em <em>7 de outubro</em>, que foi quando os anúncios entraram no ar, até o fim do contrato.</p>
+<p><em>Data</em> e <em>Dia da semana</em> já vêm prontos. <em>Investido</em> e <em>Conversas iniciadas</em>, em azul, chegam automaticamente todo dia de manhã, os mesmos números do painel. <em>Custo por conversa</em>, em cinza, é a conta entre os dois.</p>
+<p>Agora as amarelas: <em>Vendas do dia</em> é a quantidade de vendas que vieram do WhatsApp, ou de alguém que disse que viu o anúncio. <em>Valor vendido</em> é a soma em reais dessas vendas. <em>Ticket médio</em>, em cinza, a planilha calcula. E <em>Observações</em> é livre: se um dia teve algo diferente, como feriado, chuva, promoção, escreve ali. Isso ajuda muito na leitura.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">4</span>Controle Diário: como e quando preencher <span class="t">~1 min 30</span></h3>
+<div class="tela"><b>Tela:</b> a linha de hoje, com as células F e G em amarelo vazias.</div>
+<div class="acao"><b>Mouse:</b> clique em "Vendas do dia" de hoje, digite um número de exemplo, depois "Valor vendido"; apague em seguida ou diga que é exemplo.</div>
+<div class="fala">
+<p>Na prática, Ana, é isso aqui: no fim do dia, ou no começo da manhã seguinte, você acha a linha da data, escreve a <em>quantidade</em> de vendas que vieram do WhatsApp ou do anúncio, e o <em>valor</em> somado. Só número, sem "R$", sem ponto de milhar. Dois campos por dia, leva menos de um minuto.</p>
+<p>Qual venda entra? A regra é simples: entra a venda de quem <em>chamou no WhatsApp</em> ou <em>falou que viu o anúncio</em>. A venda da cliente de sempre, que entrou na loja sem ter visto nada, não entra. Isso é importante para a gente medir de verdade o que o anúncio está trazendo.</p>
+<p>Dia sem venda do anúncio, coloca <em>zero</em>. Zero também é informação. Célula vazia a gente lê como "ainda não preencheu".</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">5</span>Abas METAS MENSAIS e PAINEL <span class="t">~45 s</span></h3>
+<div class="tela"><b>Tela:</b> aba METAS MENSAIS; depois aba PAINEL com o gráfico.</div>
+<div class="acao"><b>Mouse:</b> aponte a linha de Outubro e a coluna "% da meta"; na aba PAINEL, aponte as barras.</div>
+<div class="fala">
+<p>A aba <em>METAS MENSAIS</em> soma sozinha o que está no Controle, mês a mês: conversas, investido, vendas e valor vendido, contra a meta de faturamento. Não se mexe nela, só se olha.</p>
+<p>E a aba <em>PAINEL</em> é o gráfico: valor vendido de cada mês ao lado da meta. É o mesmo dado, só que visual.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">6</span>O que acontece depois que a Ana preenche <span class="t">~45 s</span></h3>
+<div class="tela"><b>Tela:</b> volte ao Painel de Resultados, cartão "Vendas registradas" e Placar de metas.</div>
+<div class="acao"><b>Mouse:</b> aponte os dois.</div>
+<div class="fala">
+<p>Aqui entra a mágica do processo. Tudo o que vocês lançam na planilha é lido <em>de hora em hora</em>, durante o dia, e aparece no Painel de Resultados: em <em>Vendas registradas</em>, no <em>Retorno por real investido</em> e no <em>Placar de metas</em>. Vocês preenchem num lugar só, e o resto se atualiza sozinho.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">7</span>Projeção de Metas: o que vem pronto <span class="t">~1 min 15</span></h3>
+<div class="tela"><b>Tela:</b> Projeção de Metas, aba OUT 2026, bloco "PREENCHER" (coluna A e B) e bloco "METAS".</div>
+<div class="acao"><b>Mouse:</b> aponte Dias trabalhados, Vendas acumuladas e Nº de vendas; depois Dias de funcionamento, Semanas no mês e as três metas.</div>
+<div class="fala">
+<p>A segunda planilha é a <em>Projeção de Metas</em>. Tem uma aba para cada mês do contrato.</p>
+<p>Três números chegam sozinhos do Controle Diário: <em>Dias trabalhados</em>, que é quantos dias já têm venda lançada; <em>Vendas acumuladas</em>, em reais; e o <em>Número de vendas</em>. Ninguém digita isso.</p>
+<p>O que eu preencho, da parte da ADS Company, são os <em>dias de funcionamento</em> do mês, as <em>semanas</em>, e as três metas: <em>Aceitável</em>, <em>Ideal</em> e <em>Super</em>. Essas metas foram combinadas com vocês e só mudam se a gente combinar de novo.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">8</span>Projeção de Metas: como ler <span class="t">~1 min 15</span></h3>
+<div class="tela"><b>Tela:</b> bloco "CALCULADO" e os três quadros Aceitável / Ideal / Super com Faltam, Faltam por dia, % atingida e Projeção do mês.</div>
+<div class="acao"><b>Mouse:</b> aponte "Meta/dia", depois "Faltam / Dia" e "Projeção do mês" num dos quadros.</div>
+<div class="fala">
+<p>Do lado direito está o que a planilha calcula. <em>Vendas por dia</em> e <em>Nº de vendas por dia</em> é o ritmo atual da loja. <em>Meta por dia</em> é quanto precisa vender por dia para bater cada meta.</p>
+<p>Embaixo, cada quadro responde a mesma pergunta para uma das metas: <em>quanto falta</em>, quanto falta <em>por dia</em> e <em>por semana</em>, <em>quantos por cento</em> já foram, e a <em>Projeção do mês</em>: se continuar nesse ritmo, onde o mês vai terminar.</p>
+<p>Essa projeção é a nossa bússola. Se ela estiver abaixo da meta aceitável no meio do mês, a gente age antes, no anúncio e na loja, em vez de descobrir no dia trinta e um.</p>
+<p>Reparem na frase lá embaixo: <em>cinco vendas extras por dia, vezes o ticket médio, pagam o serviço inteiro</em>. O resto é lucro. Esse é o número que a gente persegue juntos.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">9</span>Encerramento <span class="t">~30 s</span></h3>
+<div class="tela"><b>Tela:</b> câmera, ou os dois arquivos na pasta.</div>
+<div class="fala">
+<p>Então, resumindo o ciclo: o anúncio traz a pessoa para o WhatsApp, o painel mostra isso toda manhã, a Ana lança a venda do dia nas duas células amarelas, e a Projeção diz se o mês está no caminho. Tudo o mais é automático.</p>
+<p>A única rotina que fica com vocês são <em>dois números por dia</em>. Se isso for feito todo dia, a gente consegue provar, com número, o que o anúncio está devolvendo para a loja. Combinado? Qualquer dúvida, chama no grupo. Até mais.</p>
+</div></div>
+
+<div class="bloco"><h3><span class="n">✓</span>Checklist antes de apertar "gravar"</h3>
+<div class="check"><ul>
+<li><b>Painel</b> aberto no período "Tudo", com dados do dia.</li>
+<li><b>Controle Diário</b> aberto na aba CONTROLE DIÁRIO, com uma linha de exemplo para preencher ao vivo (apague depois, ou use um dia já passado sem venda).</li>
+<li><b>Projeção</b> aberta na aba do mês atual, com dias de funcionamento, semanas e metas já preenchidos.</li>
+<li><b>Meet</b> com gravação ligada e compartilhamento da aba do navegador (não da tela inteira, para o roteiro não aparecer).</li>
+<li>Fale o nome das pessoas no começo; depois do vídeo, mande o link no grupo com uma frase: "Viviane, Ana: 10 minutos que explicam o painel e as planilhas."</li>
+</ul></div></div>
+
+</section>
+</div>
+</div>
+
+<script>
+const HASH='43b2ea4e', LOCK_KEY='viviane-roteiro-videoaulas-auth';
+function simpleHash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}return Math.abs(h).toString(16).slice(0,10)}
+function tryUnlock(){const inp=document.getElementById('lockPass'),err=document.getElementById('lockError');
+  if(simpleHash(inp.value)===HASH){document.getElementById('lockScreen').classList.add('hidden');document.getElementById('pageContent').classList.remove('locked');try{sessionStorage.setItem(LOCK_KEY,'1')}catch(e){}}
+  else{err.textContent='Senha incorreta';inp.value='';}}
+document.getElementById('lockPass').addEventListener('keydown',e=>{if(e.key==='Enter')tryUnlock()});
+try{if(sessionStorage.getItem(LOCK_KEY)==='1'){document.getElementById('lockScreen').classList.add('hidden');document.getElementById('pageContent').classList.remove('locked');}}catch(e){}
+// tamanho da letra, teleprompter e rolagem automática
+let fs=19;function fonte(d){fs=Math.max(14,Math.min(40,fs+d));document.documentElement.style.setProperty('--fs',fs+'px');}
+function toggleTele(){document.body.classList.toggle('tele');document.getElementById('btnTele').classList.toggle('on');if(document.body.classList.contains('tele')){fs=27}else{fs=19}document.documentElement.style.setProperty('--fs',fs+'px');}
+let rolando=false,ult=0,acc=0;
+function passo(t){if(!rolando)return;const v=+document.getElementById('vel').value;if(ult){acc+=(t-ult)/1000*v*22;const px=Math.floor(acc);if(px>0){window.scrollBy(0,px);acc-=px;}}ult=t;requestAnimationFrame(passo);}
+function toggleRolar(){rolando=!rolando;ult=0;document.getElementById('btnRol').classList.toggle('on',rolando);document.getElementById('btnRol').innerHTML=rolando?'&#10074;&#10074; Pausar':'&#9654; Rolar';if(rolando)requestAnimationFrame(passo);}
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const v=document.getElementById('vel');
+  if(e.code==='Space'){e.preventDefault();toggleRolar();}
+  if(e.key==='ArrowUp'){e.preventDefault();v.value=Math.min(10,+v.value+1);} if(e.key==='ArrowDown'){e.preventDefault();v.value=Math.max(1,+v.value-1);}});
+// nav ativa
+const navs=[...document.querySelectorAll('.top a.nav')];
+window.addEventListener('scroll',()=>{const y=window.scrollY+120;navs.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));a.classList.toggle('active',s&&s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y)});});
+</script>
+</body>
+</html>
