@@ -102,12 +102,11 @@
   /* ===== balões de ajuda ("i") ===== */
   .info { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgba(255,92,0,.55); color: var(--laranja); font: 700 9px/1 var(--sans); letter-spacing: 0; text-transform: none; vertical-align: middle; margin-left: 1px; cursor: help; position: relative; background: #fff; flex-shrink: 0; }
   .info:hover, .info.aberto { background: var(--laranja); color: #fff; }
-  .info .balao { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); width: 250px; max-width: calc(100vw - 32px); background: #1C1917; color: #fff; font: 400 12.5px/1.5 var(--sans); letter-spacing: 0; text-transform: none; text-align: left; padding: 10px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 60; white-space: normal; cursor: default; }
-  .info .balao::before { content: ""; position: absolute; top: -5px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background: #1C1917; }
-  .info .balao b { color: #FFB080; font-weight: 600; }
-  .info:hover .balao, .info.aberto .balao { display: block; }
-  .info.dir .balao { left: auto; right: -6px; transform: none; } .info.dir .balao::before { left: auto; right: 9px; transform: rotate(45deg); }
-  .info.esq .balao { left: -6px; transform: none; } .info.esq .balao::before { left: 9px; transform: rotate(45deg); }
+  .info .balao { display: none; }
+  #balao-global { position: fixed; display: none; width: 260px; max-width: calc(100vw - 24px); background: #1C1917; color: #fff; font: 400 12.5px/1.5 var(--sans); letter-spacing: 0; text-transform: none; text-align: left; padding: 10px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 999; pointer-events: none; white-space: normal; }
+  #balao-global::before { content: ""; position: absolute; top: -5px; left: var(--seta, 50%); margin-left: -5px; width: 10px; height: 10px; background: #1C1917; transform: rotate(45deg); }
+  #balao-global.acima::before { top: auto; bottom: -5px; }
+  #balao-global b { color: #FFB080; font-weight: 600; }
   th .info { border-color: rgba(107,101,96,.5); color: var(--cinza); }
   th .info:hover, th .info.aberto { background: var(--cinza); color: #fff; border-color: var(--cinza); }
   .secao-titulo .info { margin-left: 8px; }
@@ -324,18 +323,43 @@ function comInfo(txt, chave) {
   const i = t.lastIndexOf(" ");
   return i < 0 ? '<span class="nw">' + t + ic + '</span>' : t.slice(0, i) + ' <span class="nw">' + t.slice(i + 1) + ic + '</span>';
 }
+const BALAO = document.createElement("div"); BALAO.id = "balao-global"; document.body.appendChild(BALAO);
+let infoAberto = null;
+function posicionarBalao(el) {
+  const fonte = el.querySelector(".balao"); if (!fonte) return;
+  BALAO.innerHTML = fonte.innerHTML; BALAO.style.display = "block"; BALAO.classList.remove("acima");
+  const r = el.getBoundingClientRect(), w = BALAO.offsetWidth, h = BALAO.offsetHeight;
+  const vw = window.innerWidth, vh = window.innerHeight, margem = 12;
+  const centro = r.left + r.width / 2;
+  let left = Math.round(Math.max(margem, Math.min(vw - w - margem, centro - w / 2)));
+  let top = Math.round(r.bottom + 10);
+  if (top + h > vh - 8 && r.top - h - 10 > 8) { top = Math.round(r.top - h - 10); BALAO.classList.add("acima"); }
+  BALAO.style.left = left + "px"; BALAO.style.top = top + "px";
+  BALAO.style.setProperty("--seta", Math.max(12, Math.min(w - 12, centro - left)) + "px");
+}
+function esconderBalao() { if (infoAberto) return; BALAO.style.display = "none"; }
 function abrirInfo(e, el) {
   e.stopPropagation();
-  const jaAberto = el.classList.contains("aberto");
+  const jaAberto = infoAberto === el;
   document.querySelectorAll(".info.aberto").forEach(x => x.classList.remove("aberto"));
-  if (jaAberto) return;
-  el.classList.add("aberto");
-  const r = el.getBoundingClientRect();
-  el.classList.toggle("dir", r.left > window.innerWidth - 150);
-  el.classList.toggle("esq", r.left < 140);
+  infoAberto = null;
+  if (jaAberto) { BALAO.style.display = "none"; return; }
+  el.classList.add("aberto"); infoAberto = el; posicionarBalao(el);
 }
-document.addEventListener("click", () => document.querySelectorAll(".info.aberto").forEach(x => x.classList.remove("aberto")));
-document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll(".info.aberto").forEach(x => x.classList.remove("aberto")); });
+function fecharInfo() { document.querySelectorAll(".info.aberto").forEach(x => x.classList.remove("aberto")); infoAberto = null; BALAO.style.display = "none"; }
+document.addEventListener("mouseover", e => { const el = e.target.closest(".info"); if (el && el.querySelector(".balao") && !infoAberto) posicionarBalao(el); });
+document.addEventListener("mouseout", e => { const el = e.target.closest(".info"); if (el && !infoAberto) esconderBalao(); });
+document.addEventListener("focusin", e => { const el = e.target.closest(".info"); if (el && el.querySelector(".balao")) posicionarBalao(el); });
+document.addEventListener("focusout", e => { if (e.target.closest(".info")) esconderBalao(); });
+document.addEventListener("click", fecharInfo);
+document.addEventListener("keydown", e => { if (e.key === "Escape") fecharInfo(); });
+window.addEventListener("scroll", () => { if (infoAberto) posicionarBalao(infoAberto); }, true);
+window.addEventListener("resize", () => { if (infoAberto) posicionarBalao(infoAberto); });
+function demoInfo(chave) {
+  const lista = [...document.querySelectorAll('.info[aria-label="O que é ' + chave + '?"]')];
+  const el = lista[lista.length - 1]; if (!el) return;
+  el.classList.add("aberto"); infoAberto = el; posicionarBalao(el);
+}
 
 function iniciar() {
 const D = window.DADOS;
@@ -479,7 +503,6 @@ function render(ini, fim) {
     `<tr><td>${dataBRcompleta(d.data)}</td><td class="num">${inteiro(d.alcance)}</td><td class="num">${inteiro(d.impressoes)}</td><td class="num">${moeda(d.impressoes ? d.investido / d.impressoes * 1000 : 0)}</td><td class="num">${moeda(d.investido)}</td><td class="num ${d.conversas === maxConv ? "forte" : ""}">${d.conversas}</td><td class="num">${d.conversas ? moeda(d.investido / d.conversas) : "—"}</td></tr>`));
 
   desenharGrafico(sel, prevLista);
-  if (location.hash === "#demo") { const f = document.querySelector(".kpi .info"); if (f) f.classList.add("aberto"); }
 }
 
 let GRAF = null;
@@ -615,7 +638,8 @@ aplicarPreset("30");
     const m = g.innerHTML.trim().match(/^([\s\S]*?)(\S+)$/);
     if (m && !/[<>]/.test(m[2])) g.innerHTML = m[1] + '<span class="nw">' + m[2] + info(t) + '</span>'; else g.insertAdjacentHTML("beforeend", info(t));
   });
-  if (location.hash === "#demo") { aplicarPreset("4"); const f = document.querySelector(".kpi .info"); if (f) f.classList.add("aberto"); const g = document.querySelector(".secao-titulo .info"); if (g) g.classList.add("aberto"); if (window.demoHover) window.demoHover(2); }
+  if (location.hash === "#demo") { aplicarPreset("4"); const f = document.querySelector(".kpi .info"); if (f) { f.classList.add("aberto"); infoAberto = f; posicionarBalao(f); } if (window.demoHover) window.demoHover(2); }
+  if (location.hash.startsWith("#demo:")) setTimeout(() => demoInfo(decodeURIComponent(location.hash.slice(6))), 50);
 
 
 }
