@@ -103,7 +103,7 @@
   .info { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgba(255,92,0,.55); color: var(--laranja); font: 700 9px/1 var(--sans); letter-spacing: 0; text-transform: none; vertical-align: middle; margin-left: 1px; cursor: help; position: relative; background: #fff; flex-shrink: 0; }
   .info:hover, .info.aberto { background: var(--laranja); color: #fff; }
   .info .balao { display: none; }
-  #balao-global { position: fixed; display: none; width: 260px; max-width: calc(100vw - 24px); background: #1C1917; color: #fff; font: 400 12.5px/1.5 var(--sans); letter-spacing: 0; text-transform: none; text-align: left; padding: 10px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 999; pointer-events: none; white-space: normal; }
+  #balao-global { position: fixed; display: none; width: 260px; max-width: calc(100vw - 24px); background: #1C1917; color: #fff; font: 400 12.5px/1.5 var(--sans); letter-spacing: 0; text-transform: none; text-align: left; padding: 10px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 9999; pointer-events: none; white-space: normal; max-height: calc(100vh - 16px); overflow-y: auto; }
   #balao-global::before { content: ""; position: absolute; top: -5px; left: var(--seta, 50%); margin-left: -5px; width: 10px; height: 10px; background: #1C1917; transform: rotate(45deg); }
   #balao-global.acima::before { top: auto; bottom: -5px; }
   #balao-global b { color: #FFB080; font-weight: 600; }
@@ -124,7 +124,7 @@
   @media (max-width: 640px) { .funil-wrap { grid-template-columns: 1fr; } .funil-img { max-width: 220px; margin: 0 auto; } .funil-etapa { padding-left: 14px; } }
   /* ===== gráfico ===== */
   .grafico-wrap { position: relative; }
-  .tip { position: absolute; display: none; pointer-events: none; background: #1C1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 9px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 40; min-width: 170px; white-space: nowrap; }
+  .tip { position: absolute; display: none; pointer-events: none; background: #1C1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 9px 12px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.22); z-index: 40; min-width: 150px; max-width: min(300px, calc(100% - 8px)); white-space: normal; }
   .tip b { color: #FFB080; font-weight: 600; }
   .tip .t-data { font-weight: 600; margin-bottom: 2px; text-transform: capitalize; }
   .tip .t-prev { color: #B5AFA9; border-top: 1px solid rgba(255,255,255,.15); margin-top: 5px; padding-top: 5px; }
@@ -334,6 +334,7 @@ function posicionarBalao(el) {
   let left = Math.round(Math.max(margem, Math.min(vw - w - margem, centro - w / 2)));
   let top = Math.round(r.bottom + 10);
   if (top + h > vh - 8 && r.top - h - 10 > 8) { top = Math.round(r.top - h - 10); BALAO.classList.add("acima"); }
+  top = Math.max(8, top);
   BALAO.style.left = left + "px"; BALAO.style.top = top + "px";
   BALAO.style.setProperty("--seta", Math.max(12, Math.min(w - 12, centro - left)) + "px");
 }
@@ -583,7 +584,7 @@ function desenharGrafico(sel, prev) {
       + (p ? `<div class="t-prev">Período anterior (${dataBR(p.data)}): ${p.conversas}${plural(p.conversas)}</div>` : "");
     tip.style.display = "block";
     const px = GRAF.X(i), tw = tip.offsetWidth, th = tip.offsetHeight;
-    tip.style.left = Math.max(0, Math.min(GRAF.W - tw, px - tw / 2)) + "px";
+    tip.style.left = Math.max(4, Math.min(GRAF.W - tw - 4, px - tw / 2)) + "px";
     const yAlvo = GRAF.Yc(d.conversas) - th - 16;
     tip.style.top = (yAlvo < 0 ? GRAF.Yc(d.conversas) + 16 : yAlvo) + "px";
     if (marcado !== i) {
