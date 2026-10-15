@@ -1,0 +1,46 @@
+name: Enviar alerta no WhatsApp
+
+on:
+  push:
+    branches: [main]
+    paths: ["05-RELATORIOS/alertas/*.md"]
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Data do alerta (AAAA-MM-DD); vazio = hoje"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alerta
+  cancel-in-progress: false
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    env:
+      EVOLUTION_APIKEY: ${{ secrets.EVOLUTION_APIKEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Conferir segredo
+        if: env.EVOLUTION_APIKEY == ''
+        run: echo "EVOLUTION_APIKEY ainda não cadastrado — nada a fazer."
+      - name: Enviar
+        if: env.EVOLUTION_APIKEY != ''
+        run: python3 05-RELATORIOS/enviar_alerta.py ${{ github.event.inputs.data }}
+      - name: Registrar envio
+        if: env.EVOLUTION_APIKEY != ''
+        run: |
+          git config user.name "ADS Company"
+          git config user.email "contato@adscompany.pro"
+          [ -f 05-RELATORIOS/alertas/.enviados ] || { echo "sem registro"; exit 0; }
+          git add 05-RELATORIOS/alertas/.enviados
+          if git diff --cached --quiet; then echo "sem registro novo"; exit 0; fi
+          git commit -m "chore: alerta enviado no WhatsApp"
+          git pull --rebase origin main
+          git push origin main
