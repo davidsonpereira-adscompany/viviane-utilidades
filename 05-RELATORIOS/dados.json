@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-18T07:05:34-03:00",
+  "atualizado_em": "2026-10-19T07:05:00-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -298,10 +298,10 @@
     },
     {
       "data": "2026-10-17",
-      "investido": 18.57,
+      "investido": 18.59,
       "conversas": 2,
       "alcance": 1497,
-      "impressoes": 2110,
+      "impressoes": 2112,
       "cliques": 10,
       "engajamentos": 11,
       "campanhas": {
@@ -311,14 +311,14 @@
           "alcance": 246
         },
         "B | Masculino": {
-          "investido": 10.93,
+          "investido": 10.94,
           "conversas": 2,
           "alcance": 971
         },
         "C | Família e Confiança": {
-          "investido": 5.19,
+          "investido": 5.2,
           "conversas": 0,
-          "alcance": 433
+          "alcance": 434
         }
       },
       "vendas": null,
@@ -326,27 +326,55 @@
     },
     {
       "data": "2026-10-18",
-      "investido": 0.48,
-      "conversas": 0,
-      "alcance": 68,
-      "impressoes": 82,
-      "cliques": 1,
-      "engajamentos": 1,
+      "investido": 29.21,
+      "conversas": 1,
+      "alcance": 2410,
+      "impressoes": 3577,
+      "cliques": 20,
+      "engajamentos": 21,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0.14,
+          "investido": 3.94,
           "conversas": 0,
-          "alcance": 21
+          "alcance": 490
         },
         "B | Masculino": {
-          "investido": 0.32,
-          "conversas": 0,
-          "alcance": 44
+          "investido": 19.5,
+          "conversas": 1,
+          "alcance": 1730
         },
         "C | Família e Confiança": {
-          "investido": 0.02,
+          "investido": 5.77,
           "conversas": 0,
-          "alcance": 5
+          "alcance": 446
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-10-19",
+      "investido": 1.76,
+      "conversas": 0,
+      "alcance": 94,
+      "impressoes": 123,
+      "cliques": 0,
+      "engajamentos": 0,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.26,
+          "conversas": 0,
+          "alcance": 15
+        },
+        "B | Masculino": {
+          "investido": 0.77,
+          "conversas": 0,
+          "alcance": 55
+        },
+        "C | Família e Confiança": {
+          "investido": 0.73,
+          "conversas": 0,
+          "alcance": 30
         }
       },
       "vendas": null,
@@ -357,31 +385,31 @@
     {
       "id": "23859297181030795",
       "nome": "A | Vestidos",
-      "investido": 74.97,
+      "investido": 79.03,
       "conversas": 3,
-      "alcance": 3096,
-      "impressoes": 8264,
-      "cliques": 48,
+      "alcance": 3276,
+      "impressoes": 8873,
+      "cliques": 53,
       "status": "ACTIVE"
     },
     {
       "id": "23859297181800795",
       "nome": "B | Masculino",
-      "investido": 154.94,
-      "conversas": 12,
-      "alcance": 6078,
-      "impressoes": 17894,
-      "cliques": 92,
+      "investido": 174.9,
+      "conversas": 13,
+      "alcance": 6648,
+      "impressoes": 20340,
+      "cliques": 101,
       "status": "ACTIVE"
     },
     {
       "id": "23859297183560795",
       "nome": "C | Família e Confiança",
-      "investido": 79.24,
+      "investido": 85.73,
       "conversas": 8,
-      "alcance": 2896,
-      "impressoes": 7045,
-      "cliques": 44,
+      "alcance": 3066,
+      "impressoes": 7609,
+      "cliques": 49,
       "status": "ACTIVE"
     }
   ],
@@ -390,32 +418,32 @@
       "id": "23859297216290795",
       "nome": "A1 | Olha o que chegou | imagem única",
       "grupo": "A",
-      "investido": 6.09,
+      "investido": 8.25,
       "conversas": 0,
-      "alcance": 529,
-      "impressoes": 746,
-      "cliques": 4,
+      "alcance": 731,
+      "impressoes": 1083,
+      "cliques": 7,
       "status": "ACTIVE"
     },
     {
       "id": "23859297218970795",
       "nome": "A2 | Chegou vestido novo | imagem única",
       "grupo": "A",
-      "investido": 30.29,
+      "investido": 32.08,
       "conversas": 0,
-      "alcance": 1700,
-      "impressoes": 3211,
-      "cliques": 16,
+      "alcance": 1782,
+      "impressoes": 3473,
+      "cliques": 18,
       "status": "ACTIVE"
     },
     {
       "id": "23859297244970795",
       "nome": "A3 | Carrossel vestidos longos",
       "grupo": "A",
-      "investido": 38.59,
+      "investido": 38.7,
       "conversas": 3,
-      "alcance": 2111,
-      "impressoes": 4307,
+      "alcance": 2115,
+      "impressoes": 4317,
       "cliques": 28,
       "status": "ACTIVE"
     },
@@ -423,11 +451,11 @@
       "id": "23859297229690795",
       "nome": "B1 | Pra ele também tem | imagem única",
       "grupo": "B",
-      "investido": 70.49,
+      "investido": 80.9,
       "conversas": 3,
-      "alcance": 3574,
-      "impressoes": 7584,
-      "cliques": 37,
+      "alcance": 4136,
+      "impressoes": 8918,
+      "cliques": 40,
       "status": "ACTIVE"
     },
     {
@@ -445,21 +473,21 @@
       "id": "23859297490470795",
       "nome": "B2 v2 | Carrossel linha masculina (sem marca)",
       "grupo": "B",
-      "investido": 84.45,
-      "conversas": 9,
-      "alcance": 4200,
-      "impressoes": 10310,
-      "cliques": 55,
+      "investido": 94.0,
+      "conversas": 10,
+      "alcance": 4522,
+      "impressoes": 11423,
+      "cliques": 61,
       "status": "ACTIVE"
     },
     {
       "id": "23859297238320795",
       "nome": "C1 | A família inteira encontra | imagem única",
       "grupo": "C",
-      "investido": 3.0,
+      "investido": 3.14,
       "conversas": 0,
-      "alcance": 221,
-      "impressoes": 371,
+      "alcance": 222,
+      "impressoes": 381,
       "cliques": 0,
       "status": "ACTIVE"
     },
@@ -467,21 +495,21 @@
       "id": "23859297239880795",
       "nome": "C2 | A loja que te conhece pelo nome | imagem única",
       "grupo": "C",
-      "investido": 68.18,
+      "investido": 74.52,
       "conversas": 7,
-      "alcance": 2672,
-      "impressoes": 5757,
-      "cliques": 38,
+      "alcance": 2851,
+      "impressoes": 6310,
+      "cliques": 43,
       "status": "ACTIVE"
     },
     {
       "id": "23859297240880795",
       "nome": "C3 | Carrossel para toda a família",
       "grupo": "C",
-      "investido": 8.06,
+      "investido": 8.07,
       "conversas": 1,
       "alcance": 587,
-      "impressoes": 917,
+      "impressoes": 918,
       "cliques": 6,
       "status": "ACTIVE"
     }
@@ -494,7 +522,8 @@
     "2026-10-15T07:05:00-03:00",
     "2026-10-16T07:05:00-03:00",
     "2026-10-17T07:06:13-03:00",
-    "2026-10-18T07:05:34-03:00"
+    "2026-10-18T07:05:34-03:00",
+    "2026-10-19T07:05:00-03:00"
   ],
-  "leitura": "<strong>Desde o início da campanha (07/10), já são 23 conversas iniciadas no WhatsApp, com R$ 309,15 investidos — uma média de R$ 13,44 por conversa.</strong> Ontem (17/10) o dia trouxe R$ 18,57 de investimento e 2 conversas, um custo de R$ 9,29 cada. O grupo B | Masculino continua sendo o que mais traz gente para o WhatsApp, e o próximo passo é revisar os anúncios do grupo A (ainda com pouca resposta) para tentar baixar esse custo por conversa."
+  "leitura": "<strong>Desde o início da campanha (07/10), já são 24 conversas iniciadas no WhatsApp, com R$ 339,66 investidos — uma média de R$ 14,15 por conversa.</strong> Ontem (18/10) o dia trouxe R$ 29,21 de investimento e 1 conversa, um custo de R$ 29,21. O grupo B | Masculino continua sendo o que mais traz gente para o WhatsApp, e o próximo passo é revisar os anúncios do grupo A (ainda com pouca resposta) para tentar baixar esse custo por conversa nos próximos dias."
 }
