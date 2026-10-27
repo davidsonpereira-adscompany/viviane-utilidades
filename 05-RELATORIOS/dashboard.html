@@ -45,6 +45,7 @@
   .grupo-titulo { font-size: .68rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--cinza); margin-bottom: 12px; }
   .grupo-titulo em { color: var(--laranja); font-style: normal; }
   .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 12px; }
+  @media (min-width: 900px) { #kpis-resultado { grid-template-columns: repeat(3, 1fr); } }
   .kpi { background: var(--card); border: 1px solid var(--borda); border-radius: 12px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(20,10,0,0.04); }
   .kpi.destaque-kpi { border-color: rgba(255,92,0,.4); background: linear-gradient(180deg, rgba(255,92,0,.05), var(--card)); }
   .kpi .rotulo { font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cinza); min-height: 26px; }
