@@ -8,6 +8,6 @@
     "557799982666"
   ],
   "observacao": "destinos = grupo da cliente (A.C 40 #VIVIANE UTILIDADES BA). copia = WhatsApp do Davidson, recebe o mesmo texto para acompanhar. Para pausar o envio ao grupo, deixe destinos = []. A segunda mensagem (link do painel) usa mensagem_link, com {link} substituído por link_painel; deixe link_painel vazio para não enviar.",
-  "link_painel": "https://davidsonpereira-adscompany.github.io/viviane-utilidades/05-RELATORIOS/dashboard.html",
-  "mensagem_link": "Para ver tudo em detalhe, o Painel de Resultados está sempre atualizado aqui 👇\n{link}"
+  "link_painel": "https://viviane-utilidades.vercel.app/05-RELATORIOS/dashboard.html",
+  "mensagem_link": "📊 *Painel de Resultados — Viviane Utilidades*\n\nTodos os números dos anúncios, atualizados toda manhã, em uma página só:\n{link}\n\n💡 Toque no *i* ao lado de cada número para ver o que ele quer dizer."
 }
