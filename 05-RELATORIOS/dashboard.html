@@ -279,6 +279,7 @@ const AJUDA = {
   "Conversas iniciadas": "Pessoas que tocaram no anúncio e <b>abriram uma conversa no WhatsApp da loja</b>. É o resultado que a campanha busca.",
   "Custo por conversa": "Quanto custou, em média, cada pessoa que chamou no WhatsApp (investido ÷ conversas). <b>Até R$ 5 é bom</b>; acima disso, ajustamos.",
   "Vendas registradas": "Vendas que a loja anotou na planilha como vindas do WhatsApp ou do anúncio. Depende do preenchimento diário.",
+  "Valor vendido": "Soma em reais das vendas que a loja lançou na planilha como vindas do WhatsApp ou do anúncio, no período escolhido. Atualiza de hora em hora a partir da planilha.",
   "Retorno por real investido": "Para cada R$ 1 investido, quanto voltou em vendas registradas. <b>3x</b> quer dizer que cada real virou três.",
   "Pessoas alcançadas": "Quantas pessoas diferentes viram o anúncio pelo menos uma vez no período.",
   "Impressões": "Quantas vezes o anúncio apareceu na tela — conta repetições para a mesma pessoa.",
@@ -420,6 +421,7 @@ function render(ini, fim) {
     kpi("Conversas iniciadas", inteiro(A.conversas), deltaChip(A.conversas, P && P.conversas, false), { destaque: 1, laranja: 1 }),
     kpi("Custo por conversa", moeda(A.custo_conversa), deltaChip(A.custo_conversa, P && P.custo_conversa, true), { destaque: 1 }),
     kpi("Vendas registradas", inteiro(A.vendas), deltaChip(A.vendas, P && P.vendas, false), { destaque: 1 }),
+    kpi("Valor vendido", moeda(A.valor_vendido), deltaChip(A.valor_vendido, P && P.valor_vendido, false), { destaque: 1, laranja: 1 }),
     kpi("Retorno por real investido", A.retorno.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "x", deltaChip(A.retorno, P && P.retorno, false), { destaque: 1, laranja: 1 })
   ]);
   g("kpis-alcance", [

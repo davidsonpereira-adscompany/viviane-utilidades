@@ -1,7 +1,13 @@
 {
   "evolution_url": "https://evolutionv2.adscompany.app.br",
   "instancia": "ADS COMPANY DC",
-  "destinos": ["120363429909173046@g.us"],
-  "copia": ["557799982666"],
-  "observacao": "destinos = grupo da cliente (A.C 40 #VIVIANE UTILIDADES BA). copia = WhatsApp do Davidson, recebe o mesmo texto para acompanhar. Para pausar o envio ao grupo, deixe destinos = []."
+  "destinos": [
+    "120363429909173046@g.us"
+  ],
+  "copia": [
+    "557799982666"
+  ],
+  "observacao": "destinos = grupo da cliente (A.C 40 #VIVIANE UTILIDADES BA). copia = WhatsApp do Davidson, recebe o mesmo texto para acompanhar. Para pausar o envio ao grupo, deixe destinos = []. A segunda mensagem (link do painel) usa mensagem_link, com {link} substituído por link_painel; deixe link_painel vazio para não enviar.",
+  "link_painel": "https://davidsonpereira-adscompany.github.io/viviane-utilidades/05-RELATORIOS/dashboard.html",
+  "mensagem_link": "Para ver tudo em detalhe, o Painel de Resultados está sempre atualizado aqui 👇\n{link}"
 }

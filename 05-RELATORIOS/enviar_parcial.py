@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Envia a parcial do dia (05-RELATORIOS/parciais/AAAA-MM-DD.md) pelo WhatsApp via Evolution API.
+"""Envia a parcial do dia (05-RELATORIOS/parciais/AAAA-MM-DD.md) pelo WhatsApp via Evolution API,
+seguida de uma segunda mensagem com o link do Painel de Resultados (parcial.json: link_painel / mensagem_link).
 
 Uso: python3 enviar_parcial.py [AAAA-MM-DD] [--somente-copia]
  - sem data: usa a data de hoje em Brasília.
@@ -29,16 +30,28 @@ if data in enviadas and not somente_copia:
 texto = open(arq, encoding="utf-8").read().strip()
 destinos = ([] if somente_copia else CFG.get("destinos", [])) + CFG.get("copia", [])
 url = CFG["evolution_url"].rstrip("/") + "/message/sendText/" + urllib.parse.quote(CFG["instancia"])
-ok = 0
-for numero in destinos:
-    req = urllib.request.Request(url, method="POST", data=json.dumps({"number": numero, "text": texto}).encode(),
+mensagens = [texto]
+link = (CFG.get("link_painel") or "").strip()
+if link:
+    mensagens.append((CFG.get("mensagem_link") or "{link}").replace("{link}", link))
+
+
+def enviar(numero, msg):
+    req = urllib.request.Request(url, method="POST", data=json.dumps({"number": numero, "text": msg}).encode(),
                                  headers={"apikey": KEY, "Content-Type": "application/json"})
     try:
-        urllib.request.urlopen(req, timeout=60); ok += 1; print("enviado para", numero)
+        urllib.request.urlopen(req, timeout=60); return True
     except urllib.error.HTTPError as e:
         print("ERRO", e.code, "para", numero, ":", e.read().decode()[:300])
     except Exception as e:
         print("ERRO para", numero, ":", e)
+    return False
+
+
+ok = 0
+for numero in destinos:
+    if all(enviar(numero, m) for m in mensagens):
+        ok += 1; print("enviado para", numero, f"({len(mensagens)} mensagem(ns))")
 if ok and not somente_copia:
     with open(marcador, "a", encoding="utf-8") as f:
         f.write(data + "\n")
