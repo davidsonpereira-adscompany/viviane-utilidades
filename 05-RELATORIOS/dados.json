@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-30T07:10:00-03:00",
+  "atualizado_em": "2026-10-31T07:06:54-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -596,7 +596,7 @@
           "alcance": 2309
         },
         "C | Família e Confiança": {
-          "investido": 7.0,
+          "investido": 7,
           "conversas": 0,
           "alcance": 513
         }
@@ -687,19 +687,37 @@
       },
       "vendas": null,
       "valor_vendido": null
+    },
+    {
+      "data": "2026-10-31",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "engajamentos": 0,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
     }
   ],
   "grupos": [
-    {
-      "id": "23859297181800795",
-      "nome": "B | Masculino",
-      "investido": 391.01,
-      "conversas": 46,
-      "alcance": 13608,
-      "impressoes": 42161,
-      "cliques": 225,
-      "status": "ACTIVE"
-    },
     {
       "id": "23859297181030795",
       "nome": "A | Vestidos",
@@ -708,6 +726,16 @@
       "alcance": 4920,
       "impressoes": 14336,
       "cliques": 86,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297181800795",
+      "nome": "B | Masculino",
+      "investido": 391.01,
+      "conversas": 46,
+      "alcance": 13608,
+      "impressoes": 42161,
+      "cliques": 225,
       "status": "ACTIVE"
     },
     {
@@ -842,7 +870,8 @@
     "2026-10-27T07:10:00-03:00",
     "2026-10-28T07:05:00-03:00",
     "2026-10-29T07:10-03:00",
-    "2026-10-30T07:10:00-03:00"
+    "2026-10-30T07:10:00-03:00",
+    "2026-10-31T07:06:54-03:00"
   ],
-  "leitura": "<strong>De 07/10 a 29/10, a campanha investiu R$ 669,11 e trouxe 76 conversas no WhatsApp, um custo médio de R$ 8,80 por conversa.</strong> Ontem (29/10) foram R$ 13,08 investidos e 4 conversas. O grupo B | Masculino continua trazendo mais gente, com 46 conversas no período. Próximo passo: a conta de anúncios está pedindo verificação de telefone para continuar rodando — assim que isso for resolvido, os anúncios voltam a circular normalmente."
+  "leitura": "<strong>Os anúncios pararam de rodar ontem por causa de uma verificação pendente na conta.</strong> Desde o início (07/10), foram investidos R$ 669,11 e geradas 76 conversas no WhatsApp, a um custo médio de R$ 8,80 por conversa, e o grupo que mais trouxe gente até agora foi o B | Masculino. Ontem (30/10) o investimento ficou zerado porque a Meta pediu a verificação de um número de telefone na conta de anúncios; assim que isso for resolvido, os anúncios voltam a aparecer normalmente."
 }
