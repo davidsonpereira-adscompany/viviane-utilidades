@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-01T07:10:00-03:00",
+  "atualizado_em": "2026-11-02T07:10:00-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -670,17 +670,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         }
@@ -698,17 +698,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         }
@@ -726,17 +726,45 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0.0,
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0.0,
+          "investido": 0,
+          "conversas": 0,
+          "alcance": 0
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-11-02",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "engajamentos": 0,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0,
           "conversas": 0,
           "alcance": 0
         }
@@ -747,16 +775,6 @@
   ],
   "grupos": [
     {
-      "id": "23859297181800795",
-      "nome": "B | Masculino",
-      "investido": 391.01,
-      "conversas": 46,
-      "alcance": 13608,
-      "impressoes": 42161,
-      "cliques": 225,
-      "status": "ACTIVE"
-    },
-    {
       "id": "23859297181030795",
       "nome": "A | Vestidos",
       "investido": 128.5,
@@ -764,6 +782,16 @@
       "alcance": 4920,
       "impressoes": 14336,
       "cliques": 86,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859297181800795",
+      "nome": "B | Masculino",
+      "investido": 391.01,
+      "conversas": 46,
+      "alcance": 13608,
+      "impressoes": 42161,
+      "cliques": 225,
       "status": "ACTIVE"
     },
     {
@@ -900,7 +928,8 @@
     "2026-10-29T07:10-03:00",
     "2026-10-30T07:10:00-03:00",
     "2026-10-31T07:06:54-03:00",
-    "2026-11-01T07:10:00-03:00"
+    "2026-11-01T07:10:00-03:00",
+    "2026-11-02T07:10:00-03:00"
   ],
-  "leitura": "<strong>Os anúncios continuam parados desde 30/10 por falta da verificação do telefone na conta.</strong> De 07/10 até ontem (31/10) foram investidos R$ 669,11 e 76 conversas iniciadas no WhatsApp, um custo médio de R$ 8,80 por conversa — mas nos últimos dois dias (30 e 31/10) não saiu nenhum real e nenhuma pessoa foi alcançada, porque todos os anúncios ativos estão com o aviso \"com problema\" na conta. O grupo que mais trouxe gente até agora foi o B | Masculino, com 46 conversas. Próximo passo: concluir a verificação do número de telefone da conta de anúncios o quanto antes, pois enquanto isso não for feito os anúncios não voltam a aparecer para ninguém."
+  "leitura": "<strong>Os anúncios pararam de rodar desde o dia 30/10 porque o Meta pediu a verificação de um número de telefone na conta.</strong> Desde o início (07/10) até ontem já investimos R$ 669,11 e geramos 76 conversas no WhatsApp, a um custo médio de R$ 8,80 por conversa, com o grupo B | Masculino trazendo mais gente. Próximo passo: verificar o número de telefone na conta de anúncios o quanto antes para os anúncios voltarem a rodar."
 }
