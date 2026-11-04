@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-03T07:10:00-03:00",
+  "atualizado_em": "2026-11-04T07:06:45-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -596,7 +596,7 @@
           "alcance": 2309
         },
         "C | Família e Confiança": {
-          "investido": 7,
+          "investido": 7.0,
           "conversas": 0,
           "alcance": 513
         }
@@ -670,17 +670,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         }
@@ -698,17 +698,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         }
@@ -726,17 +726,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         }
@@ -754,17 +754,17 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 1,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         }
@@ -782,17 +782,45 @@
       "engajamentos": 0,
       "campanhas": {
         "A | Vestidos": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
-          "investido": 0,
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "C | Família e Confiança": {
-          "investido": 0,
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-11-04",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
+      "cliques": 0,
+      "engajamentos": 0,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         }
@@ -915,7 +943,7 @@
       "id": "23859297232250795",
       "nome": "B2 | Carrossel linha masculina (v1 — substituído, menciona marca)",
       "grupo": "B",
-      "investido": 0,
+      "investido": 0.0,
       "conversas": 0,
       "alcance": 0,
       "impressoes": 0,
@@ -958,7 +986,8 @@
     "2026-10-31T07:06:54-03:00",
     "2026-11-01T07:10:00-03:00",
     "2026-11-02T07:10:00-03:00",
-    "2026-11-03T07:10:00-03:00"
+    "2026-11-03T07:10:00-03:00",
+    "2026-11-04T07:06:45-03:00"
   ],
-  "leitura": "<strong>Os anúncios pararam de rodar desde o dia 30/10.</strong> De 07/10 até 29/10 investimos R$ 669,11 e geramos 77 conversas no WhatsApp, um custo médio de R$ 8,69 por conversa, com o grupo Masculino trazendo mais gente. Ontem não houve investimento nem pessoas alcançadas, e o próximo passo é confirmar o número de telefone cadastrado na conta de anúncios para os anúncios voltarem a aparecer."
+  "leitura": "<strong>Os anúncios pararam de rodar desde o dia 30/10 porque a conta de anúncios precisa confirmar um número de telefone.</strong> Desde o início da campanha, em 07/10, já investimos R$ 669,11 e geramos 77 conversas no WhatsApp, a um custo médio de R$ 8,69 por conversa, com o grupo B | Masculino trazendo mais gente. Ontem não houve investimento nem conversas — assim que o telefone da conta for confirmado, os anúncios voltam a rodar normalmente."
 }
