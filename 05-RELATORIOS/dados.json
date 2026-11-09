@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-08T07:07:28-03:00",
+  "atualizado_em": "2026-11-09T07:10:00-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -1196,10 +1196,10 @@
     },
     {
       "data": "2026-11-07",
-      "investido": 48.46,
+      "investido": 48.49,
       "conversas": 5,
-      "alcance": 2606,
-      "impressoes": 6149,
+      "alcance": 2610,
+      "impressoes": 6157,
       "cliques": 35,
       "engajamentos": 42,
       "campanhas": {
@@ -1234,11 +1234,49 @@
     },
     {
       "data": "2026-11-08",
-      "investido": 2.57,
+      "investido": 27.45,
+      "conversas": 1,
+      "alcance": 1950,
+      "impressoes": 3893,
+      "cliques": 20,
+      "engajamentos": 24,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "D | Esquenta Black": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "E | Black Ofertas com preço": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-11-09",
+      "investido": 3.61,
       "conversas": 0,
-      "alcance": 200,
-      "impressoes": 287,
-      "cliques": 1,
+      "alcance": 286,
+      "impressoes": 501,
+      "cliques": 0,
       "engajamentos": 1,
       "campanhas": {
         "A | Vestidos": {
@@ -1257,14 +1295,14 @@
           "alcance": 0
         },
         "D | Esquenta Black": {
-          "investido": 1.04,
+          "investido": 0.0,
           "conversas": 0,
-          "alcance": 90
+          "alcance": 0
         },
         "E | Black Ofertas com preço": {
-          "investido": 1.53,
+          "investido": 0.0,
           "conversas": 0,
-          "alcance": 134
+          "alcance": 0
         }
       },
       "vendas": null,
@@ -1305,21 +1343,21 @@
     {
       "id": "23859953354200795",
       "nome": "D | Esquenta Black",
-      "investido": 28.7,
+      "investido": 41.39,
       "conversas": 2,
-      "alcance": 1765,
-      "impressoes": 3863,
-      "cliques": 26,
+      "alcance": 2191,
+      "impressoes": 5660,
+      "cliques": 35,
       "status": "ACTIVE"
     },
     {
       "id": "23859954102110795",
       "nome": "E | Black Ofertas com preço",
-      "investido": 35.87,
-      "conversas": 4,
-      "alcance": 2105,
-      "impressoes": 4553,
-      "cliques": 25,
+      "investido": 51.7,
+      "conversas": 5,
+      "alcance": 2778,
+      "impressoes": 6871,
+      "cliques": 35,
       "status": "ACTIVE"
     }
   ],
@@ -1328,54 +1366,54 @@
       "id": "23859954114450795",
       "nome": "E1 | Black | Carrossel Maresia R$ 88,00",
       "grupo": "E",
-      "investido": 23.33,
-      "conversas": 3,
-      "alcance": 1582,
-      "impressoes": 3096,
-      "cliques": 20,
+      "investido": 36.07,
+      "conversas": 4,
+      "alcance": 2271,
+      "impressoes": 4989,
+      "cliques": 27,
       "status": "ACTIVE"
     },
     {
       "id": "23859954115420795",
       "nome": "E2 | Black | Carrossel Malwee R$ 49,90",
       "grupo": "E",
-      "investido": 12.54,
+      "investido": 15.66,
       "conversas": 1,
-      "alcance": 875,
-      "impressoes": 1457,
-      "cliques": 5,
+      "alcance": 1019,
+      "impressoes": 1888,
+      "cliques": 8,
       "status": "ACTIVE"
     },
     {
       "id": "23859954101800795",
       "nome": "D10 | Black | Lista VIP produto",
       "grupo": "D",
-      "investido": 2.34,
+      "investido": 4.07,
       "conversas": 0,
-      "alcance": 283,
-      "impressoes": 395,
-      "cliques": 2,
+      "alcance": 360,
+      "impressoes": 603,
+      "cliques": 3,
       "status": "ACTIVE"
     },
     {
       "id": "23859954100520795",
       "nome": "D9 | Black | Teaser produto",
       "grupo": "D",
-      "investido": 7.07,
+      "investido": 11.63,
       "conversas": 0,
-      "alcance": 537,
-      "impressoes": 821,
-      "cliques": 8,
+      "alcance": 838,
+      "impressoes": 1480,
+      "cliques": 10,
       "status": "ACTIVE"
     },
     {
       "id": "23859953393440795",
       "nome": "D6 | Black | Básicos",
       "grupo": "D",
-      "investido": 0.4,
+      "investido": 0.67,
       "conversas": 0,
-      "alcance": 44,
-      "impressoes": 65,
+      "alcance": 70,
+      "impressoes": 104,
       "cliques": 0,
       "status": "ACTIVE"
     },
@@ -1383,44 +1421,44 @@
       "id": "23859953394010795",
       "nome": "D7 | Black | Novidades catálogo",
       "grupo": "D",
-      "investido": 3.4,
+      "investido": 4.16,
       "conversas": 0,
-      "alcance": 221,
-      "impressoes": 351,
-      "cliques": 1,
+      "alcance": 275,
+      "impressoes": 472,
+      "cliques": 4,
       "status": "ACTIVE"
     },
     {
       "id": "23859953392630795",
       "nome": "D5 | Black | Masculino",
       "grupo": "D",
-      "investido": 1.89,
+      "investido": 3.15,
       "conversas": 1,
-      "alcance": 192,
-      "impressoes": 307,
-      "cliques": 2,
+      "alcance": 283,
+      "impressoes": 448,
+      "cliques": 3,
       "status": "ACTIVE"
     },
     {
       "id": "23859953394510795",
       "nome": "D8 | Black | Conjunto vermelho",
       "grupo": "D",
-      "investido": 2.47,
+      "investido": 3.24,
       "conversas": 0,
-      "alcance": 240,
-      "impressoes": 336,
-      "cliques": 2,
+      "alcance": 306,
+      "impressoes": 471,
+      "cliques": 3,
       "status": "ACTIVE"
     },
     {
       "id": "23859953392180795",
       "nome": "D4 | Black | Vestido de festa",
       "grupo": "D",
-      "investido": 9.76,
+      "investido": 13.24,
       "conversas": 1,
-      "alcance": 892,
-      "impressoes": 1355,
-      "cliques": 7,
+      "alcance": 1187,
+      "impressoes": 1860,
+      "cliques": 8,
       "status": "ACTIVE"
     },
     {
@@ -1596,7 +1634,8 @@
     "2026-11-05T07:04:00-03:00",
     "2026-11-06T07:05:09-03:00",
     "2026-11-07T07:10:00-03:00",
-    "2026-11-08T07:07:28-03:00"
+    "2026-11-08T07:07:28-03:00",
+    "2026-11-09T07:10:00-03:00"
   ],
-  "leitura": "<strong>O grupo B | Masculino foi quem mais trouxe gente para o WhatsApp desde o início da campanha.</strong> De 07/10 até ontem, a loja investiu R$ 836,17 e recebeu 92 conversas, com custo médio de R$ 9,09 por conversa; só ontem entraram R$ 48,46 e vieram 5 conversas (R$ 9,69 cada). Agora a campanha está concentrada nos grupos D e E, com ofertas de Black Friday, e o próximo passo é acompanhar de perto o custo por conversa nos próximos dias para trazer esse número de volta para a faixa combinada."
+  "leitura": "<strong>O grupo da Black Friday já está trazendo mais gente que os anúncios antigos.</strong> Desde 07/10 investimos R$ 864,69 e tivemos 93 conversas no WhatsApp (R$ 9,30 por conversa, em média); ontem foram R$ 27,45 investidos e 1 conversa, mais caro que o normal. Os grupos Vestidos, Masculino e Família seguem pausados enquanto a Black Friday roda com os grupos Esquenta Black e Black Ofertas com preço — esse último é o que mais chama gente por agora — e o próximo passo é acompanhar de perto esse custo por conversa, que está subindo."
 }
