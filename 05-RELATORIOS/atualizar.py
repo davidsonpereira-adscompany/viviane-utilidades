@@ -49,7 +49,7 @@ for v in payload.get("vendas", []):
     dias[v["data"]] = base
 dados["dias"] = [dias[k] for k in sorted(dias)]
 
-for chave in ("grupos", "anuncios", "leitura"):
+for chave in ("grupos", "anuncios", "leitura", "alcance_unico"):
     if payload.get(chave):
         dados[chave] = payload[chave]
 if payload.get("campanha_status"):

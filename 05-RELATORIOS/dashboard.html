@@ -252,6 +252,7 @@ function mapear(J) {
     atualizado_em: atualizado,
     metas: { faturamento_mes: (J.metas || {}).faturamento_mes || 110000, vendas_extras_dia: (J.metas || {}).vendas_extras_dia || 5, ancora: "5 vendas extras por dia pagam o serviço" },
     campanhas_ativas: ativas,
+    alcance_unico: J.alcance_unico || {},
     leitura: J.leitura || "<strong>Campanha no ar desde 07/10 às 17h.</strong> Nos primeiros dias o Instagram ainda está aprendendo para quem mostrar os anúncios — os números começam a estabilizar a partir do terceiro dia. A leitura do gestor é atualizada a cada manhã junto com os dados.",
     dias
   };
@@ -295,6 +296,7 @@ const AJUDA = {
   "Cliques no anúncio": "Quantas vezes alguém tocou no anúncio. A porcentagem mostra quantos dos que viram chegaram a tocar.",
   "Conversas no WhatsApp": "Quem, depois de tocar, realmente abriu conversa com a loja. A porcentagem mostra quantos toques viraram conversa.",
   "Dia com mais conversas": "O dia do período em que mais gente chamou no WhatsApp pelo anúncio.",
+  "Pessoas alcançadas (soma dos dias)": "Neste período personalizado, o número é a soma do alcance de cada dia, então a mesma pessoa pode ser contada mais de uma vez. Nos botões 7, 14, 30 dias, Este mês e Tudo, o número vem direto da Meta e conta cada pessoa uma única vez.",
   "Dia de maior alcance": "O dia em que o anúncio foi visto pelo maior número de pessoas diferentes.",
   "Campanha mais eficiente": "O grupo de anúncios que trouxe conversas pelo <b>menor custo</b> — é para onde vale mandar mais verba.",
   "Média de conversas por dia": "Total de conversas dividido pelos dias do período selecionado.",
@@ -406,6 +408,14 @@ function render(ini, fim) {
   const idx0 = DIAS.findIndex(d => d.data === sel[0].data);
   const prevLista = idx0 >= n ? DIAS.slice(idx0 - n, idx0) : (idx0 > 0 ? DIAS.slice(0, idx0) : []);
   const A = agregar(sel), P = prevLista.length ? agregar(prevLista) : null;
+  // Alcance único (pessoas diferentes) lido direto da Meta para os períodos dos botões.
+  // Somar o alcance de cada dia conta a mesma pessoa várias vezes; por isso, fora dos botões, o rótulo avisa que é soma.
+  const AU = D.alcance_unico || {};
+  const btnAtivo = document.querySelector("#filtro button.ativo");
+  const chaveAU = btnAtivo && AU.ate === fim ? btnAtivo.dataset.dias : null;
+  const REAL = chaveAU && AU[chaveAU] && +AU[chaveAU].alcance > 0 ? AU[chaveAU] : null;
+  if (REAL) { A.alcance = +REAL.alcance; A.frequencia = A.alcance ? A.impressoes / A.alcance : 0; }
+  const rotuloAlcance = REAL ? "Pessoas alcançadas" : "Pessoas alcançadas (soma dos dias)";
 
   document.getElementById("periodo-atual").textContent = dataBRcompleta(sel[0].data) + "  —  " + dataBRcompleta(sel[n - 1].data) + "  ·  " + n + (n > 1 ? " dias" : " dia");
   document.getElementById("nota-comparativo").textContent = prevLista.length
@@ -426,7 +436,7 @@ function render(ini, fim) {
     kpi("Retorno por real investido", A.retorno.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "x", deltaChip(A.retorno, P && P.retorno, false), { destaque: 1, laranja: 1 })
   ]);
   g("kpis-alcance", [
-    kpi("Pessoas alcançadas", inteiro(A.alcance), deltaChip(A.alcance, P && P.alcance, false)),
+    kpi(rotuloAlcance, inteiro(A.alcance), REAL ? '<span class="delta neutro">pessoas diferentes · Meta</span>' : deltaChip(A.alcance, P && P.alcance, false)),
     kpi("Impressões", inteiro(A.impressoes), deltaChip(A.impressoes, P && P.impressoes, false)),
     kpi("Frequência", A.frequencia.toLocaleString("pt-BR", { maximumFractionDigits: 1 }), deltaChip(A.frequencia, P && P.frequencia, null)),
     kpi("CPM", moeda(A.cpm), deltaChip(A.cpm, P && P.cpm, true))
@@ -482,6 +492,7 @@ function render(ini, fim) {
     porCampanha[nome].conversas += d.campanhas[nome].conversas;
     porCampanha[nome].alcance += d.campanhas[nome].alcance;
   }});
+  if (REAL && REAL.grupos) for (const nome in porCampanha) if (REAL.grupos[nome] != null) porCampanha[nome].alcance = +REAL.grupos[nome];
   let melhor = null;
   for (const nome in porCampanha) {
     const c = porCampanha[nome];
