@@ -144,3 +144,25 @@ Toque no botão, mande BLACK no WhatsApp e receba as ofertas antes de todo mundo
 
 ## Reel alfaiataria (17 s, 9:16) — aprovado, NÃO usado por enquanto
 `reels/reel-alfaiataria-esquenta-black__9x16.mp4`. Sem áudio. Copy igual ao D11 quando subir.
+
+---
+
+# Correção de preço Maresia (13/11/2026)
+
+Ana confirmou em áudio de 09/11 (17h51) que a camiseta Maresia fica a **R$ 89,90** na Black, não R$ 88,00. Também pediu que o anúncio mostre sempre o preço à vista.
+
+## E3 v3 · Carrossel Camisetas Maresia R$ 89,90 — 7 cartões 4:5 (substitui o E3 v2)
+**Cartões:** mesmas 7 fotos de 09/11, etiqueta lilás "CAMISETA MARESIA / R$ 89,90" no topo, botão embaixo. Arquivos em `fase2-precos/maresia-v3/`.
+**Texto principal:**
+Na Black da Viviane, camiseta Maresia sai por R$ 89,90. 🖤
+Original, da coleção que acabou de chegar, em várias estampas e tamanhos.
+Toque no botão, mande BLACK no WhatsApp e garanta a sua antes que acabe. Quem manda BLACK também recebe as outras ofertas primeiro.
+**Título:** Camiseta Maresia por R$ 89,90
+**Descrição:** Mande BLACK e garanta a sua
+**Título dos cartões:** Maresia · R$ 89,90
+
+## Próximos itens com preço (Ana, 09/11)
+- Body: preço a confirmar.
+- Blusa assimétrica: R$ 59,90.
+- Blusa Malwee: R$ 49,90 (já no E2).
+- Gola polo: fora, sem estoque.
