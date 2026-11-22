@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-21T08:30:00-03:00",
+  "atualizado_em": "2026-11-22T07:07:00-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
@@ -25,11 +25,6 @@
       "cliques": 2,
       "engajamentos": 7,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 2.39,
-          "conversas": 0,
-          "alcance": 262
-        },
         "A | Vestidos": {
           "investido": 2.42,
           "conversas": 0,
@@ -39,6 +34,11 @@
           "investido": 3.23,
           "conversas": 0,
           "alcance": 335
+        },
+        "C | Família e Confiança": {
+          "investido": 2.39,
+          "conversas": 0,
+          "alcance": 262
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -63,11 +63,6 @@
       "cliques": 14,
       "engajamentos": 23,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 9.96,
-          "conversas": 1,
-          "alcance": 615
-        },
         "A | Vestidos": {
           "investido": 12.09,
           "conversas": 0,
@@ -77,6 +72,11 @@
           "investido": 8.35,
           "conversas": 0,
           "alcance": 661
+        },
+        "C | Família e Confiança": {
+          "investido": 9.96,
+          "conversas": 1,
+          "alcance": 615
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -101,11 +101,6 @@
       "cliques": 9,
       "engajamentos": 12,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 5.03,
-          "conversas": 0,
-          "alcance": 223
-        },
         "A | Vestidos": {
           "investido": 5.61,
           "conversas": 1,
@@ -115,6 +110,11 @@
           "investido": 7.18,
           "conversas": 0,
           "alcance": 521
+        },
+        "C | Família e Confiança": {
+          "investido": 5.03,
+          "conversas": 0,
+          "alcance": 223
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -139,11 +139,6 @@
       "cliques": 20,
       "engajamentos": 26,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 11.49,
-          "conversas": 1,
-          "alcance": 654
-        },
         "A | Vestidos": {
           "investido": 9.53,
           "conversas": 0,
@@ -153,6 +148,11 @@
           "investido": 21.82,
           "conversas": 1,
           "alcance": 1518
+        },
+        "C | Família e Confiança": {
+          "investido": 11.49,
+          "conversas": 1,
+          "alcance": 654
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -177,11 +177,6 @@
       "cliques": 27,
       "engajamentos": 30,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 7.54,
-          "conversas": 1,
-          "alcance": 451
-        },
         "A | Vestidos": {
           "investido": 9.96,
           "conversas": 2,
@@ -191,6 +186,11 @@
           "investido": 20.62,
           "conversas": 1,
           "alcance": 1569
+        },
+        "C | Família e Confiança": {
+          "investido": 7.54,
+          "conversas": 1,
+          "alcance": 451
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -215,11 +215,6 @@
       "cliques": 17,
       "engajamentos": 24,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 4.37,
-          "conversas": 0,
-          "alcance": 428
-        },
         "A | Vestidos": {
           "investido": 6.08,
           "conversas": 0,
@@ -229,6 +224,11 @@
           "investido": 12.42,
           "conversas": 1,
           "alcance": 1147
+        },
+        "C | Família e Confiança": {
+          "investido": 4.37,
+          "conversas": 0,
+          "alcance": 428
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -253,11 +253,6 @@
       "cliques": 31,
       "engajamentos": 39,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 10.84,
-          "conversas": 2,
-          "alcance": 539
-        },
         "A | Vestidos": {
           "investido": 9.07,
           "conversas": 0,
@@ -267,6 +262,11 @@
           "investido": 27.17,
           "conversas": 2,
           "alcance": 2113
+        },
+        "C | Família e Confiança": {
+          "investido": 10.84,
+          "conversas": 2,
+          "alcance": 539
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -291,11 +291,6 @@
       "cliques": 23,
       "engajamentos": 27,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 8.04,
-          "conversas": 1,
-          "alcance": 547
-        },
         "A | Vestidos": {
           "investido": 7.76,
           "conversas": 0,
@@ -305,6 +300,11 @@
           "investido": 18.62,
           "conversas": 2,
           "alcance": 1370
+        },
+        "C | Família e Confiança": {
+          "investido": 8.04,
+          "conversas": 1,
+          "alcance": 547
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -329,11 +329,6 @@
       "cliques": 17,
       "engajamentos": 19,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 7.11,
-          "conversas": 0,
-          "alcance": 561
-        },
         "A | Vestidos": {
           "investido": 5.15,
           "conversas": 0,
@@ -343,6 +338,11 @@
           "investido": 14.24,
           "conversas": 2,
           "alcance": 1048
+        },
+        "C | Família e Confiança": {
+          "investido": 7.11,
+          "conversas": 0,
+          "alcance": 561
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -367,11 +367,6 @@
       "cliques": 13,
       "engajamentos": 16,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 7.26,
-          "conversas": 2,
-          "alcance": 657
-        },
         "A | Vestidos": {
           "investido": 4.71,
           "conversas": 0,
@@ -381,6 +376,11 @@
           "investido": 10.04,
           "conversas": 1,
           "alcance": 1098
+        },
+        "C | Família e Confiança": {
+          "investido": 7.26,
+          "conversas": 2,
+          "alcance": 657
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -405,11 +405,6 @@
       "cliques": 10,
       "engajamentos": 11,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 5.2,
-          "conversas": 0,
-          "alcance": 434
-        },
         "A | Vestidos": {
           "investido": 2.45,
           "conversas": 0,
@@ -419,6 +414,11 @@
           "investido": 10.94,
           "conversas": 2,
           "alcance": 971
+        },
+        "C | Família e Confiança": {
+          "investido": 5.2,
+          "conversas": 0,
+          "alcance": 434
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -443,11 +443,6 @@
       "cliques": 20,
       "engajamentos": 21,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 5.78,
-          "conversas": 0,
-          "alcance": 446
-        },
         "A | Vestidos": {
           "investido": 3.98,
           "conversas": 0,
@@ -457,6 +452,11 @@
           "investido": 19.53,
           "conversas": 1,
           "alcance": 1735
+        },
+        "C | Família e Confiança": {
+          "investido": 5.78,
+          "conversas": 0,
+          "alcance": 446
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -481,11 +481,6 @@
       "cliques": 21,
       "engajamentos": 27,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 7.94,
-          "conversas": 2,
-          "alcance": 426
-        },
         "A | Vestidos": {
           "investido": 3.99,
           "conversas": 0,
@@ -495,6 +490,11 @@
           "investido": 20.04,
           "conversas": 5,
           "alcance": 1366
+        },
+        "C | Família e Confiança": {
+          "investido": 7.94,
+          "conversas": 2,
+          "alcance": 426
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -519,11 +519,6 @@
       "cliques": 26,
       "engajamentos": 30,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 11.05,
-          "conversas": 3,
-          "alcance": 762
-        },
         "A | Vestidos": {
           "investido": 5.95,
           "conversas": 1,
@@ -533,6 +528,11 @@
           "investido": 26.83,
           "conversas": 1,
           "alcance": 1728
+        },
+        "C | Família e Confiança": {
+          "investido": 11.05,
+          "conversas": 3,
+          "alcance": 762
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -557,11 +557,6 @@
       "cliques": 14,
       "engajamentos": 17,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 2.35,
-          "conversas": 0,
-          "alcance": 194
-        },
         "A | Vestidos": {
           "investido": 6.72,
           "conversas": 0,
@@ -571,6 +566,11 @@
           "investido": 21.68,
           "conversas": 5,
           "alcance": 1309
+        },
+        "C | Família e Confiança": {
+          "investido": 2.35,
+          "conversas": 0,
+          "alcance": 194
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -595,11 +595,6 @@
       "cliques": 17,
       "engajamentos": 18,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 4.63,
-          "conversas": 0,
-          "alcance": 299
-        },
         "A | Vestidos": {
           "investido": 3.93,
           "conversas": 0,
@@ -609,6 +604,11 @@
           "investido": 14.33,
           "conversas": 0,
           "alcance": 896
+        },
+        "C | Família e Confiança": {
+          "investido": 4.63,
+          "conversas": 0,
+          "alcance": 299
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -633,11 +633,6 @@
       "cliques": 21,
       "engajamentos": 26,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 8.78,
-          "conversas": 2,
-          "alcance": 587
-        },
         "A | Vestidos": {
           "investido": 3.55,
           "conversas": 0,
@@ -647,6 +642,11 @@
           "investido": 15.4,
           "conversas": 2,
           "alcance": 1171
+        },
+        "C | Família e Confiança": {
+          "investido": 8.78,
+          "conversas": 2,
+          "alcance": 587
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -671,11 +671,6 @@
       "cliques": 13,
       "engajamentos": 15,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 5.26,
-          "conversas": 1,
-          "alcance": 642
-        },
         "A | Vestidos": {
           "investido": 4.44,
           "conversas": 0,
@@ -685,6 +680,11 @@
           "investido": 13.78,
           "conversas": 4,
           "alcance": 1464
+        },
+        "C | Família e Confiança": {
+          "investido": 5.26,
+          "conversas": 1,
+          "alcance": 642
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -709,11 +709,6 @@
       "cliques": 27,
       "engajamentos": 27,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 4.62,
-          "conversas": 4,
-          "alcance": 605
-        },
         "A | Vestidos": {
           "investido": 4.14,
           "conversas": 0,
@@ -723,6 +718,11 @@
           "investido": 17.43,
           "conversas": 5,
           "alcance": 1984
+        },
+        "C | Família e Confiança": {
+          "investido": 4.62,
+          "conversas": 4,
+          "alcance": 605
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -747,11 +747,6 @@
       "cliques": 19,
       "engajamentos": 22,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 8.08,
-          "conversas": 0,
-          "alcance": 840
-        },
         "A | Vestidos": {
           "investido": 2.73,
           "conversas": 1,
@@ -761,6 +756,11 @@
           "investido": 15.82,
           "conversas": 2,
           "alcance": 1823
+        },
+        "C | Família e Confiança": {
+          "investido": 8.08,
+          "conversas": 0,
+          "alcance": 840
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -785,11 +785,6 @@
       "cliques": 15,
       "engajamentos": 17,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 7.0,
-          "conversas": 0,
-          "alcance": 513
-        },
         "A | Vestidos": {
           "investido": 7.51,
           "conversas": 1,
@@ -799,6 +794,11 @@
           "investido": 34.2,
           "conversas": 6,
           "alcance": 2309
+        },
+        "C | Família e Confiança": {
+          "investido": 7.0,
+          "conversas": 0,
+          "alcance": 513
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -823,11 +823,6 @@
       "cliques": 23,
       "engajamentos": 26,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 3.94,
-          "conversas": 0,
-          "alcance": 312
-        },
         "A | Vestidos": {
           "investido": 5.16,
           "conversas": 2,
@@ -837,6 +832,11 @@
           "investido": 26.77,
           "conversas": 1,
           "alcance": 2060
+        },
+        "C | Família e Confiança": {
+          "investido": 3.94,
+          "conversas": 0,
+          "alcance": 312
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -861,11 +861,6 @@
       "cliques": 11,
       "engajamentos": 11,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.94,
-          "conversas": 1,
-          "alcance": 105
-        },
         "A | Vestidos": {
           "investido": 1.57,
           "conversas": 1,
@@ -875,6 +870,11 @@
           "investido": 10.57,
           "conversas": 2,
           "alcance": 1093
+        },
+        "C | Família e Confiança": {
+          "investido": 0.94,
+          "conversas": 1,
+          "alcance": 105
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -899,17 +899,17 @@
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -937,17 +937,17 @@
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -975,17 +975,17 @@
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1013,17 +1013,17 @@
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 1,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1051,17 +1051,17 @@
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1089,11 +1089,6 @@
       "cliques": 5,
       "engajamentos": 7,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 4.64,
-          "conversas": 0,
-          "alcance": 559
-        },
         "A | Vestidos": {
           "investido": 3.91,
           "conversas": 0,
@@ -1103,6 +1098,11 @@
           "investido": 2.84,
           "conversas": 1,
           "alcance": 390
+        },
+        "C | Família e Confiança": {
+          "investido": 4.64,
+          "conversas": 0,
+          "alcance": 559
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -1127,11 +1127,6 @@
       "cliques": 28,
       "engajamentos": 33,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 21.33,
-          "conversas": 0,
-          "alcance": 1432
-        },
         "A | Vestidos": {
           "investido": 9.55,
           "conversas": 0,
@@ -1141,6 +1136,11 @@
           "investido": 21.55,
           "conversas": 3,
           "alcance": 1652
+        },
+        "C | Família e Confiança": {
+          "investido": 21.33,
+          "conversas": 0,
+          "alcance": 1432
         },
         "D | Esquenta Black": {
           "investido": 0.0,
@@ -1165,11 +1165,6 @@
       "cliques": 41,
       "engajamentos": 53,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 14.34,
-          "conversas": 1,
-          "alcance": 972
-        },
         "A | Vestidos": {
           "investido": 5.11,
           "conversas": 0,
@@ -1179,6 +1174,11 @@
           "investido": 19.22,
           "conversas": 4,
           "alcance": 1661
+        },
+        "C | Família e Confiança": {
+          "investido": 14.34,
+          "conversas": 1,
+          "alcance": 972
         },
         "D | Esquenta Black": {
           "investido": 6.65,
@@ -1203,17 +1203,17 @@
       "cliques": 35,
       "engajamentos": 42,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1241,17 +1241,17 @@
       "cliques": 20,
       "engajamentos": 24,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1279,17 +1279,17 @@
       "cliques": 21,
       "engajamentos": 25,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1317,17 +1317,17 @@
       "cliques": 29,
       "engajamentos": 33,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1355,17 +1355,17 @@
       "cliques": 38,
       "engajamentos": 39,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1393,17 +1393,17 @@
       "cliques": 19,
       "engajamentos": 22,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1431,17 +1431,17 @@
       "cliques": 19,
       "engajamentos": 24,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1469,17 +1469,17 @@
       "cliques": 22,
       "engajamentos": 22,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1507,17 +1507,17 @@
       "cliques": 36,
       "engajamentos": 44,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1545,17 +1545,17 @@
       "cliques": 32,
       "engajamentos": 32,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1583,17 +1583,17 @@
       "cliques": 7,
       "engajamentos": 8,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1621,17 +1621,17 @@
       "cliques": 19,
       "engajamentos": 24,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1659,17 +1659,17 @@
       "cliques": 27,
       "engajamentos": 34,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1690,24 +1690,24 @@
     },
     {
       "data": "2026-11-20",
-      "investido": 25.44,
+      "investido": 25.45,
       "conversas": 3,
-      "alcance": 1420,
-      "impressoes": 3501,
+      "alcance": 1424,
+      "impressoes": 3509,
       "cliques": 18,
       "engajamentos": 18,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
         },
         "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
           "investido": 0.0,
           "conversas": 0,
           "alcance": 0
@@ -1728,18 +1728,13 @@
     },
     {
       "data": "2026-11-21",
-      "investido": 1.14,
-      "conversas": 0,
-      "alcance": 122,
-      "impressoes": 172,
-      "cliques": 2,
-      "engajamentos": 3,
+      "investido": 33.73,
+      "conversas": 2,
+      "alcance": 1673,
+      "impressoes": 4158,
+      "cliques": 24,
+      "engajamentos": 27,
       "campanhas": {
-        "C | Família e Confiança": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
-        },
         "A | Vestidos": {
           "investido": 0.0,
           "conversas": 0,
@@ -1750,10 +1745,53 @@
           "conversas": 0,
           "alcance": 0
         },
-        "D | Esquenta Black": {
-          "investido": 0.89,
+        "C | Família e Confiança": {
+          "investido": 0.0,
           "conversas": 0,
-          "alcance": 97
+          "alcance": 0
+        },
+        "D | Esquenta Black": {
+          "investido": 24.47,
+          "conversas": 2,
+          "alcance": 1366
+        },
+        "E | Black Ofertas com preço": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-11-22",
+      "investido": 0.96,
+      "conversas": 0,
+      "alcance": 119,
+      "impressoes": 157,
+      "cliques": 0,
+      "engajamentos": 0,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "D | Esquenta Black": {
+          "investido": 0.69,
+          "conversas": 0,
+          "alcance": 87
         },
         "E | Black Ofertas com preço": {
           "investido": 0.0,
@@ -1767,33 +1805,13 @@
   ],
   "grupos": [
     {
-      "id": "23859954102110795",
-      "nome": "E | Black Ofertas com preço | 25-55 | São Desidério + Sítio Grande 15km",
-      "investido": 165.25,
-      "conversas": 13,
-      "alcance": 4368,
-      "impressoes": 20992,
-      "cliques": 122,
-      "status": "ACTIVE"
-    },
-    {
-      "id": "23859953354200795",
-      "nome": "D | Esquenta Black | 25-55 | São Desidério + Sítio Grande 15km",
-      "investido": 283.03,
-      "conversas": 16,
-      "alcance": 5101,
-      "impressoes": 32558,
-      "cliques": 237,
-      "status": "ACTIVE"
-    },
-    {
-      "id": "23859297183560795",
-      "nome": "C | Família e Confiança | 25-55 | São Desidério + Sítio Grande 15km",
-      "investido": 189.91,
-      "conversas": 22,
-      "alcance": 6479,
-      "impressoes": 18769,
-      "cliques": 116,
+      "id": "23859297181030795",
+      "nome": "A | Vestidos | Mulheres 25-50 | São Desidério + Sítio Grande 15km",
+      "investido": 147.07,
+      "conversas": 10,
+      "alcance": 5527,
+      "impressoes": 16793,
+      "cliques": 96,
       "status": "PAUSED"
     },
     {
@@ -1807,14 +1825,34 @@
       "status": "PAUSED"
     },
     {
-      "id": "23859297181030795",
-      "nome": "A | Vestidos | Mulheres 25-50 | São Desidério + Sítio Grande 15km",
-      "investido": 147.07,
-      "conversas": 10,
-      "alcance": 5527,
-      "impressoes": 16793,
-      "cliques": 96,
+      "id": "23859297183560795",
+      "nome": "C | Família e Confiança | 25-55 | São Desidério + Sítio Grande 15km",
+      "investido": 189.91,
+      "conversas": 22,
+      "alcance": 6479,
+      "impressoes": 18769,
+      "cliques": 116,
       "status": "PAUSED"
+    },
+    {
+      "id": "23859953354200795",
+      "nome": "D | Esquenta Black | 25-55 | São Desidério + Sítio Grande 15km",
+      "investido": 307.3,
+      "conversas": 18,
+      "alcance": 5342,
+      "impressoes": 35485,
+      "cliques": 252,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "23859954102110795",
+      "nome": "E | Black Ofertas com preço | 25-55 | São Desidério + Sítio Grande 15km",
+      "investido": 174.54,
+      "conversas": 13,
+      "alcance": 4467,
+      "impressoes": 22216,
+      "cliques": 129,
+      "status": "ACTIVE"
     }
   ],
   "anuncios": [
@@ -1822,21 +1860,21 @@
       "id": "23860037449000795",
       "nome": "E3 | Carrossel Camisetas Maresia R$ 89,90 v3 (preço na etiqueta)",
       "grupo": "E",
-      "investido": 8.72,
+      "investido": 10.87,
       "conversas": 1,
-      "alcance": 460,
-      "impressoes": 1073,
-      "cliques": 19,
+      "alcance": 553,
+      "impressoes": 1311,
+      "cliques": 20,
       "status": "ACTIVE"
     },
     {
       "id": "23859987600680795",
       "nome": "D11 | Carrossel Alfaiataria (Esquenta, sem preço)",
       "grupo": "D",
-      "investido": 7.46,
+      "investido": 7.61,
       "conversas": 0,
-      "alcance": 407,
-      "impressoes": 517,
+      "alcance": 414,
+      "impressoes": 536,
       "cliques": 4,
       "status": "ACTIVE"
     },
@@ -1844,66 +1882,66 @@
       "id": "23859954115420795",
       "nome": "E2 | Black | Carrossel Malwee R$ 49,90",
       "grupo": "E",
-      "investido": 106.41,
+      "investido": 113.55,
       "conversas": 7,
-      "alcance": 2464,
-      "impressoes": 13149,
-      "cliques": 67,
+      "alcance": 2552,
+      "impressoes": 14135,
+      "cliques": 73,
       "status": "ACTIVE"
     },
     {
       "id": "23859954101800795",
       "nome": "D10 | Black | Lista VIP produto",
       "grupo": "D",
-      "investido": 46.52,
-      "conversas": 2,
-      "alcance": 1543,
-      "impressoes": 5555,
-      "cliques": 43,
+      "investido": 52.32,
+      "conversas": 3,
+      "alcance": 1679,
+      "impressoes": 6305,
+      "cliques": 47,
       "status": "ACTIVE"
     },
     {
       "id": "23859953393440795",
       "nome": "D6 | Black | Básicos",
       "grupo": "D",
-      "investido": 14.58,
+      "investido": 17.92,
       "conversas": 0,
-      "alcance": 548,
-      "impressoes": 1634,
-      "cliques": 6,
+      "alcance": 646,
+      "impressoes": 2053,
+      "cliques": 9,
       "status": "ACTIVE"
     },
     {
       "id": "23859953394010795",
       "nome": "D7 | Black | Novidades catálogo",
       "grupo": "D",
-      "investido": 25.82,
+      "investido": 29.86,
       "conversas": 3,
-      "alcance": 1090,
-      "impressoes": 2699,
-      "cliques": 24,
+      "alcance": 1269,
+      "impressoes": 3152,
+      "cliques": 28,
       "status": "ACTIVE"
     },
     {
       "id": "23859953392630795",
       "nome": "D5 | Black | Masculino",
       "grupo": "D",
-      "investido": 33.54,
+      "investido": 36.92,
       "conversas": 3,
-      "alcance": 1404,
-      "impressoes": 4191,
-      "cliques": 32,
+      "alcance": 1489,
+      "impressoes": 4591,
+      "cliques": 33,
       "status": "ACTIVE"
     },
     {
       "id": "23859953392180795",
       "nome": "D4 | Black | Vestido de festa",
       "grupo": "D",
-      "investido": 95.09,
-      "conversas": 6,
-      "alcance": 3212,
-      "impressoes": 10905,
-      "cliques": 71,
+      "investido": 102.65,
+      "conversas": 7,
+      "alcance": 3341,
+      "impressoes": 11791,
+      "cliques": 74,
       "status": "ACTIVE"
     },
     {
@@ -2133,64 +2171,65 @@
     "2026-11-14T07:10:00-03:00",
     "2026-11-19T07:30:00-03:00",
     "2026-11-20T07:10:00-03:00",
-    "2026-11-21T08:30:00-03:00"
+    "2026-11-21T08:30:00-03:00",
+    "2026-11-22T07:07:00-03:00"
   ],
-  "leitura": "<strong>A campanha de Black Novembro já trouxe 115 conversas no WhatsApp desde o dia 07/10, com R$ 1.219,88 investidos (custo médio de R$ 10,61 por conversa).</strong> Ontem foram R$ 25,44 investidos e 3 conversas iniciadas. O grupo <strong>D | Esquenta Black</strong> é quem está trazendo mais gente para conversar agora. Próximo passo: manter o ritmo dos anúncios da fase Black e observar se o custo por conversa continua saudável nos próximos dias.",
+  "leitura": "<strong>A campanha de Black Novembro segue ativa e trazendo conversas para o WhatsApp.</strong> Desde o início em 07/10 já foram R$ 1.253,44 investidos e 117 conversas iniciadas (custo médio de R$ 10,71 por conversa); ontem, 21/11, foram R$ 33,73 investidos e 2 conversas (R$ 16,87 por conversa). Entre os grupos que estão rodando, o D | Esquenta Black é o que mais traz gente agora, e o próximo passo é manter esse ritmo e ficar de olho no custo por conversa nos próximos dias.",
   "alcance_unico": {
-    "ate": "2026-11-21",
+    "ate": "2026-11-22",
     "7": {
-      "alcance": 3653,
-      "impressoes": 21073,
+      "alcance": 3758,
+      "impressoes": 20970,
       "grupos": {
-        "E | Black Ofertas com preço": 1833,
-        "D | Esquenta Black": 3007,
-        "C | Família e Confiança": 0,
+        "A | Vestidos": 0,
         "B | Masculino": 0,
-        "A | Vestidos": 0
+        "C | Família e Confiança": 0,
+        "D | Esquenta Black": 3077,
+        "E | Black Ofertas com preço": 1876
       }
     },
     "14": {
-      "alcance": 6108,
-      "impressoes": 45413,
+      "alcance": 5914,
+      "impressoes": 45668,
       "grupos": {
-        "E | Black Ofertas com preço": 3612,
-        "D | Esquenta Black": 4642,
-        "C | Família e Confiança": 0,
+        "A | Vestidos": 0,
         "B | Masculino": 0,
-        "A | Vestidos": 0
+        "C | Família e Confiança": 0,
+        "D | Esquenta Black": 4626,
+        "E | Black Ofertas com preço": 3243
       }
     },
     "30": {
-      "alcance": 16254,
-      "impressoes": 88634,
+      "alcance": 15941,
+      "impressoes": 89969,
       "grupos": {
-        "E | Black Ofertas com preço": 4368,
-        "D | Esquenta Black": 5101,
-        "C | Família e Confiança": 4330,
-        "B | Masculino": 10025,
-        "A | Vestidos": 2912
+        "A | Vestidos": 2776,
+        "B | Masculino": 9494,
+        "C | Família e Confiança": 4051,
+        "D | Esquenta Black": 5342,
+        "E | Black Ofertas com preço": 4467
       }
     },
     "mes": {
-      "alcance": 8250,
-      "impressoes": 66376,
+      "alcance": 8496,
+      "impressoes": 70527,
       "grupos": {
-        "E | Black Ofertas com preço": 4368,
-        "D | Esquenta Black": 5101,
-        "C | Família e Confiança": 2227,
+        "A | Vestidos": 1292,
         "B | Masculino": 2852,
-        "A | Vestidos": 1292
+        "C | Família e Confiança": 2227,
+        "D | Esquenta Black": 5342,
+        "E | Black Ofertas com preço": 4467
       }
     },
     "tudo": {
-      "alcance": 22662,
-      "impressoes": 136915,
+      "alcance": 22889,
+      "impressoes": 141066,
       "grupos": {
-        "E | Black Ofertas com preço": 4368,
-        "D | Esquenta Black": 5101,
-        "C | Família e Confiança": 6479,
+        "A | Vestidos": 5527,
         "B | Masculino": 14904,
-        "A | Vestidos": 5527
+        "C | Família e Confiança": 6479,
+        "D | Esquenta Black": 5342,
+        "E | Black Ofertas com preço": 4467
       }
     }
   }
