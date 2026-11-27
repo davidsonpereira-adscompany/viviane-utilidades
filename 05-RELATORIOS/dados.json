@@ -1,12 +1,12 @@
 {
-  "atualizado_em": "2026-11-26T07:08-03:00",
+  "atualizado_em": "2026-11-27T07:10:00-03:00",
   "fonte": "Gerenciador de Anúncios (Meta) — conta 1848623876583730",
   "campanha": {
     "id": "23859297175620795",
     "nome": "VIVIANE | Mensagens WhatsApp | Outubro 2026",
     "inicio": "2026-10-07",
     "orcamento_dia": 30,
-    "status": "ACTIVE"
+    "status": "PAUSED"
   },
   "metas": {
     "faturamento_mes": 110000,
@@ -1186,9 +1186,9 @@
           "alcance": 683
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 6.89,
+          "conversas": 1,
+          "alcance": 693
         }
       },
       "vendas": null,
@@ -1224,9 +1224,9 @@
           "alcance": 1386
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 27.45,
+          "conversas": 3,
+          "alcance": 1753
         }
       },
       "vendas": null,
@@ -1262,9 +1262,9 @@
           "alcance": 915
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 16.34,
+          "conversas": 1,
+          "alcance": 1400
         }
       },
       "vendas": null,
@@ -1300,9 +1300,9 @@
           "alcance": 1320
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 14.65,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 1112
         }
       },
       "vendas": null,
@@ -1338,9 +1338,9 @@
           "alcance": 1366
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 16.83,
+          "conversas": 2,
+          "alcance": 1083
         }
       },
       "vendas": null,
@@ -1376,9 +1376,9 @@
           "alcance": 1227
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 5.91,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 378
         }
       },
       "vendas": null,
@@ -1414,9 +1414,9 @@
           "alcance": 963
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 5.29,
+          "conversas": 3,
+          "alcance": 316
         }
       },
       "vendas": null,
@@ -1452,9 +1452,9 @@
           "alcance": 829
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 4.63,
+          "conversas": 1,
+          "alcance": 385
         }
       },
       "vendas": null,
@@ -1490,9 +1490,9 @@
           "alcance": 876
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 9.91,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 679
         }
       },
       "vendas": null,
@@ -1528,9 +1528,9 @@
           "alcance": 1337
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 9.47,
+          "conversas": 1,
+          "alcance": 679
         }
       },
       "vendas": null,
@@ -1566,9 +1566,9 @@
           "alcance": 1083
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 8.75,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 504
         }
       },
       "vendas": null,
@@ -1604,9 +1604,9 @@
           "alcance": 465
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 2.22,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 255
         }
       },
       "vendas": null,
@@ -1642,9 +1642,9 @@
           "alcance": 1464
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 17.01,
+          "conversas": 1,
+          "alcance": 932
         }
       },
       "vendas": null,
@@ -1680,9 +1680,9 @@
           "alcance": 1220
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 9.98,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 685
         }
       },
       "vendas": null,
@@ -1718,9 +1718,9 @@
           "alcance": 1086
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 9.68,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 654
         }
       },
       "vendas": null,
@@ -1756,9 +1756,9 @@
           "alcance": 1374
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 9.26,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 675
         }
       },
       "vendas": null,
@@ -1794,9 +1794,9 @@
           "alcance": 1619
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 8.11,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 619
         }
       },
       "vendas": null,
@@ -1827,14 +1827,14 @@
           "alcance": 0
         },
         "D | Esquenta Black": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 25.01,
+          "conversas": 1,
+          "alcance": 1175
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
+          "investido": 9.34,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 565
         }
       },
       "vendas": null,
@@ -1865,14 +1865,14 @@
           "alcance": 0
         },
         "D | Esquenta Black": {
-          "investido": 0.0,
+          "investido": 20.66,
           "conversas": 0,
-          "alcance": 0
+          "alcance": 1400
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 11.68,
+          "conversas": 2,
+          "alcance": 791
         }
       },
       "vendas": null,
@@ -1880,12 +1880,12 @@
     },
     {
       "data": "2026-11-25",
-      "investido": 30.51,
+      "investido": 30.53,
       "conversas": 4,
-      "alcance": 1326,
-      "impressoes": 3370,
-      "cliques": 21,
-      "engajamentos": 22,
+      "alcance": 1328,
+      "impressoes": 3376,
+      "cliques": 22,
+      "engajamentos": 23,
       "campanhas": {
         "A | Vestidos": {
           "investido": 0.0,
@@ -1903,14 +1903,14 @@
           "alcance": 0
         },
         "D | Esquenta Black": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 24.7,
+          "conversas": 3,
+          "alcance": 1147
         },
         "E | Black Ofertas com preço": {
-          "investido": 0.0,
-          "conversas": 0,
-          "alcance": 0
+          "investido": 5.83,
+          "conversas": 1,
+          "alcance": 386
         }
       },
       "vendas": null,
@@ -1918,10 +1918,48 @@
     },
     {
       "data": "2026-11-26",
-      "investido": 1.46,
+      "investido": 8.9,
       "conversas": 0,
-      "alcance": 122,
-      "impressoes": 175,
+      "alcance": 593,
+      "impressoes": 992,
+      "cliques": 6,
+      "engajamentos": 6,
+      "campanhas": {
+        "A | Vestidos": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "B | Masculino": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "C | Família e Confiança": {
+          "investido": 0.0,
+          "conversas": 0,
+          "alcance": 0
+        },
+        "D | Esquenta Black": {
+          "investido": 7.29,
+          "conversas": 0,
+          "alcance": 508
+        },
+        "E | Black Ofertas com preço": {
+          "investido": 1.61,
+          "conversas": 0,
+          "alcance": 146
+        }
+      },
+      "vendas": null,
+      "valor_vendido": null
+    },
+    {
+      "data": "2026-11-27",
+      "investido": 0,
+      "conversas": 0,
+      "alcance": 0,
+      "impressoes": 0,
       "cliques": 0,
       "engajamentos": 0,
       "campanhas": {
@@ -1959,22 +1997,22 @@
     {
       "id": "23859954102110795",
       "nome": "E | Black Ofertas com preço | 25-55 | São Desidério + Sítio Grande 15km",
-      "investido": 209.36,
+      "investido": 210.84,
       "conversas": 16,
-      "alcance": 4790,
-      "impressoes": 26401,
+      "alcance": 4809,
+      "impressoes": 26564,
       "cliques": 157,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859953354200795",
       "nome": "D | Esquenta Black | 25-55 | São Desidério + Sítio Grande 15km",
-      "investido": 405.11,
+      "investido": 411.09,
       "conversas": 23,
-      "alcance": 5893,
-      "impressoes": 46848,
-      "cliques": 323,
-      "status": "ACTIVE"
+      "alcance": 5913,
+      "impressoes": 47508,
+      "cliques": 330,
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859297183560795",
@@ -2012,12 +2050,12 @@
       "id": "23860037449000795",
       "nome": "E3 | Carrossel Camisetas Maresia R$ 89,90 v3 (preço na etiqueta)",
       "grupo": "E",
-      "investido": 19.48,
+      "investido": 19.74,
       "conversas": 2,
-      "alcance": 841,
-      "impressoes": 2324,
+      "alcance": 844,
+      "impressoes": 2360,
       "cliques": 36,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859987600680795",
@@ -2028,73 +2066,73 @@
       "alcance": 423,
       "impressoes": 551,
       "cliques": 4,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859954115420795",
       "nome": "E2 | Black | Carrossel Malwee R$ 49,90",
       "grupo": "E",
-      "investido": 139.76,
+      "investido": 140.98,
       "conversas": 9,
-      "alcance": 2745,
-      "impressoes": 17307,
+      "alcance": 2757,
+      "impressoes": 17434,
       "cliques": 85,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859954101800795",
       "nome": "D10 | Black | Lista VIP produto",
       "grupo": "D",
-      "investido": 78.94,
+      "investido": 80.81,
       "conversas": 4,
-      "alcance": 2169,
-      "impressoes": 9565,
-      "cliques": 63,
-      "status": "ACTIVE"
+      "alcance": 2192,
+      "impressoes": 9768,
+      "cliques": 66,
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859953393440795",
       "nome": "D6 | Black | Básicos",
       "grupo": "D",
-      "investido": 36.88,
+      "investido": 37.87,
       "conversas": 0,
-      "alcance": 940,
-      "impressoes": 4092,
+      "alcance": 955,
+      "impressoes": 4235,
       "cliques": 21,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859953394010795",
       "nome": "D7 | Black | Novidades catálogo",
       "grupo": "D",
-      "investido": 42.82,
+      "investido": 43.27,
       "conversas": 5,
-      "alcance": 1543,
-      "impressoes": 4670,
-      "cliques": 39,
-      "status": "ACTIVE"
+      "alcance": 1550,
+      "impressoes": 4725,
+      "cliques": 41,
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859953392630795",
       "nome": "D5 | Black | Masculino",
       "grupo": "D",
-      "investido": 51.49,
+      "investido": 52.43,
       "conversas": 4,
-      "alcance": 1709,
-      "impressoes": 6299,
+      "alcance": 1718,
+      "impressoes": 6391,
       "cliques": 44,
-      "status": "ACTIVE"
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859953392180795",
       "nome": "D4 | Black | Vestido de festa",
       "grupo": "D",
-      "investido": 127.22,
+      "investido": 128.95,
       "conversas": 8,
-      "alcance": 3656,
-      "impressoes": 14614,
-      "cliques": 95,
-      "status": "ACTIVE"
+      "alcance": 3690,
+      "impressoes": 14781,
+      "cliques": 97,
+      "status": "CAMPAIGN_PAUSED"
     },
     {
       "id": "23859297229690795",
@@ -2329,64 +2367,66 @@
     "2026-11-24T07:08:47-03:00",
     "2026-11-24T07:10:50-03:00",
     "2026-11-25T07:10:00-03:00",
-    "2026-11-26T07:08-03:00"
+    "2026-11-26T07:08-03:00",
+    "2026-11-27T07:10:00-03:00",
+    "2026-11-27T07:10:00-03:00"
   ],
-  "leitura": "<strong>A campanha continua ativa e trazendo gente para o WhatsApp desde o início da Black Novembro.</strong> Do dia 07/10 até ontem foram investidos R$ 1.384,61 e 125 conversas iniciadas no WhatsApp (custo médio de R$ 11,08 por conversa); ontem o investimento foi de R$ 30,51 com 4 conversas. O grupo <strong>D | Esquenta Black</strong> é o que está trazendo mais gente entre os grupos ativos hoje. O próximo passo é manter os grupos ativos rodando e acompanhar o custo por conversa nos próximos dias.",
+  "leitura": "<strong>A campanha está pausada e precisa da sua atenção.</strong> Desde 07/10 já foram R$ 1.393,53 investidos e 125 conversas iniciadas no WhatsApp (custo médio de R$ 11,15 por conversa). Ontem (26/11) ainda rodou parte do dia e trouxe R$ 8,90 investidos, mas a campanha foi pausada antes do fim do dia e hoje está parada por completo. O grupo que mais trouxe gente até aqui foi o B | Masculino, com 54 conversas. Próximo passo: reativar a campanha para os grupos D e E voltarem a rodar.",
   "alcance_unico": {
-    "ate": "2026-11-26",
+    "ate": "2026-11-27",
     "7": {
-      "alcance": 3812,
-      "impressoes": 23383,
+      "alcance": 3689,
+      "impressoes": 20686,
       "grupos": {
-        "E | Black Ofertas com preço": 1796,
-        "D | Esquenta Black": 3228,
-        "C | Família e Confiança": 0,
+        "A | Vestidos": 0,
         "B | Masculino": 0,
-        "A | Vestidos": 0
+        "C | Família e Confiança": 0,
+        "D | Esquenta Black": 3138,
+        "E | Black Ofertas com preço": 1652
       }
     },
     "14": {
-      "alcance": 5115,
-      "impressoes": 46219,
+      "alcance": 5002,
+      "impressoes": 44658,
       "grupos": {
-        "E | Black Ofertas com preço": 2630,
-        "D | Esquenta Black": 4300,
-        "C | Família e Confiança": 0,
+        "A | Vestidos": 0,
         "B | Masculino": 0,
-        "A | Vestidos": 0
+        "C | Família e Confiança": 0,
+        "D | Esquenta Black": 4211,
+        "E | Black Ofertas com preço": 2600
       }
     },
     "30": {
-      "alcance": 11757,
-      "impressoes": 91134,
+      "alcance": 9995,
+      "impressoes": 88457,
       "grupos": {
-        "E | Black Ofertas com preço": 4790,
-        "D | Esquenta Black": 5893,
-        "C | Família e Confiança": 2469,
-        "B | Masculino": 5322,
-        "A | Vestidos": 1684
+        "A | Vestidos": 1396,
+        "B | Masculino": 3725,
+        "C | Família e Confiança": 2292,
+        "D | Esquenta Black": 5913,
+        "E | Black Ofertas com preço": 4809
       }
     },
     "mes": {
-      "alcance": 9074,
-      "impressoes": 86086,
+      "alcance": 9085,
+      "impressoes": 86898,
       "grupos": {
-        "E | Black Ofertas com preço": 4790,
-        "D | Esquenta Black": 5893,
-        "C | Família e Confiança": 2227,
+        "A | Vestidos": 1292,
         "B | Masculino": 2852,
-        "A | Vestidos": 1292
+        "C | Família e Confiança": 2227,
+        "D | Esquenta Black": 5913,
+        "E | Black Ofertas com preço": 4809
       }
     },
     "tudo": {
-      "alcance": 23502,
-      "impressoes": 156625,
+      "alcance": 23519,
+      "impressoes": 157437,
       "grupos": {
-        "E | Black Ofertas com preço": 4790,
-        "D | Esquenta Black": 5893,
-        "C | Família e Confiança": 6479,
+        "A | Vestidos": 5527,
         "B | Masculino": 14904,
-        "A | Vestidos": 5527
+        "C | Família e Confiança": 6479,
+        "D | Esquenta Black": 5913,
+        "E | Black Ofertas com preço": 4809
       }
     }
   }
